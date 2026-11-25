@@ -34,6 +34,7 @@ function bwe_gw_home_plugin_active(): bool {
 require BWE_GW_DIR . '/includes/style-engine.php';
 require BWE_GW_DIR . '/includes/icons.php';
 require BWE_GW_DIR . '/includes/sections.php';
+require BWE_GW_DIR . '/includes/mobile-slider.php';
 require BWE_GW_DIR . '/includes/blocks.php';
 require BWE_GW_DIR . '/includes/global-controls.php';
 require BWE_GW_DIR . '/includes/generic-blocks.php';

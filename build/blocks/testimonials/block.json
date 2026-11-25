@@ -53,6 +53,38 @@
       "type": "boolean",
       "default": true
     },
+    "phoneLayout": {
+      "type": "string",
+      "enum": [
+        "list",
+        "slider"
+      ],
+      "default": "slider"
+    },
+    "sliderTablet": {
+      "type": "boolean",
+      "default": false
+    },
+    "slideWidth": {
+      "type": "number",
+      "default": 72
+    },
+    "desktopSlider": {
+      "type": "boolean",
+      "default": true
+    },
+    "desktopSlides": {
+      "type": "number",
+      "default": 3
+    },
+    "sliderDots": {
+      "type": "boolean",
+      "default": true
+    },
+    "sliderArrows": {
+      "type": "boolean",
+      "default": true
+    },
     "bweStyle": {
       "type": "object",
       "default": {}

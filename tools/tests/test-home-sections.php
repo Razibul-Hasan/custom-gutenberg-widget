@@ -74,7 +74,7 @@ function test_home_sections_render_like_the_originals() {
 		$old             = file_get_contents( __DIR__ . "/fixtures/old-home-$id.html" );
 		[ $new, $count ] = bwe_tb_hsx_convert_doc( $old );
 		bwe_tb_assert_true( 1 === $count && false !== strpos( $new, '<!-- wp:' . $name . ' ' ), "pattern $id → $name" );
-		bwe_tb_assert_same( bwe_tb_expected( "home-section-$id", $old ), bwe_tb_render( $new ), "pattern $id renders identically" );
+		bwe_tb_assert_same( bwe_tb_expected( "home-section-$id", $old ), bwe_tb_without_slider( bwe_tb_render( $new ) ), "pattern $id renders identically" );
 	}
 }
 
@@ -177,4 +177,52 @@ function test_home_sections_readers_mode() {
 	}
 	bwe_tb_assert_true( false !== strpos( $html, "\nhttps://www.youtube.com/shorts/LlD2xDq5z_c\n" ) && false === strpos( $html, 'bwex-yt' ), 'readers: the saved embed (link), no thumbnail' );
 	bwe_tb_assert_true( false === strpos( $card, 'bwe-work__art' ), 'readers: no mockup words' );
+}
+
+function test_products_phone_slider() {
+	$cards = '<!-- wp:bwe/product-card {"name":"X"} /--><!-- wp:bwe/product-card {"name":"Y"} /--><!-- wp:bwe/product-card {"name":"Z"} /-->';
+
+	[ $list ] = bwe_tb_hsx_render_clean( '<!-- wp:bwe/products -->' . $cards . '<!-- /wp:bwe/products -->' );
+	bwe_tb_assert_true( false === strpos( $list, 'bwe-ms' ) && false === strpos( $list, 'wp-block-group wp-block-group' ) && false !== strpos( $list, '<div class="wp-block-group elementor-element elementor-element-923a8b6 e-con-full bwex-cards e-flex e-con e-child">' ), 'products: default phone layout is the list (markup unchanged)' );
+
+	[ $html, $problems ] = bwe_tb_hsx_render_clean( '<!-- wp:bwe/products {"phoneLayout":"slider"} -->' . $cards . '<!-- /wp:bwe/products -->' );
+	bwe_tb_assert_same( '', implode( '; ', $problems ), 'products slider: renders without notices' );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwex-cards e-flex e-con e-child bwe-ms bwe-ms--m" style="--bwe-ms-w:85%"' ), 'products slider: list gets the phone slider classes and slide width' );
+	bwe_tb_assert_same( '3', (string) substr_count( $html, 'class="bwe-ms__dot"' ), 'products slider: one dot per card' );
+	bwe_tb_assert_true( false !== strpos( $html, 'aria-label="Card 1 of 3" aria-current="true"' ), 'products slider: first dot is current' );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwe-ms__arrow--prev" aria-label="Previous card" disabled' ) && false !== strpos( $html, 'bwe-ms__arrow--next' ), 'products slider: arrows, previous disabled at the start' );
+	bwe_tb_assert_true( wp_script_is( 'bwe-gw-mobile-slider', 'enqueued' ), 'products slider: script queued' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( '<!-- wp:bwe/products {"phoneLayout":"slider","sliderTablet":true,"slideWidth":120,"sliderDots":false} -->' . $cards . '<!-- /wp:bwe/products -->' );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwe-ms bwe-ms--t" style="--bwe-ms-w:100%"' ) && false !== strpos( $html, 'bwe-ms__nav--t' ), 'products slider: tablets too, width capped at 100%' );
+	bwe_tb_assert_true( false === strpos( $html, 'bwe-ms__dot' ) && false !== strpos( $html, 'bwe-ms__arrows' ), 'products slider: dots off, arrows stay' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( '<!-- wp:bwe/products {"phoneLayout":"slider","sliderDots":false,"sliderArrows":false} -->' . $cards . '<!-- /wp:bwe/products -->' );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwe-ms--m' ) && false === strpos( $html, 'bwe-ms__nav' ), 'products slider: no dots and no arrows → no nav row, still swipes' );
+
+	bwe_tb_assert_true( 1 === preg_match( '#"phoneLayout":"slider"#', '<!-- wp:bwe/products {"phoneLayout":"slider"} -->' ) && function_exists( 'bwe_gw_needs_blocks_css' ), 'slider pages load blocks.css' );
+}
+
+function test_testimonials_slider() {
+	$block = static fn( int $n, string $attrs = '' ): string => '<!-- wp:bwe/testimonials ' . $attrs . ' -->' . str_repeat( '<!-- wp:bwe/video-card {"url":"https://www.youtube.com/shorts/LlD2xDq5z_c"} /-->', $n ) . '<!-- /wp:bwe/testimonials -->';
+
+	[ $html, $problems ] = bwe_tb_hsx_render_clean( $block( 3 ) );
+	bwe_tb_assert_same( '', implode( '; ', $problems ), 'testimonials slider: renders without notices' );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwex-quotes bwe-ms bwe-ms--m" style="--bwe-ms-w:72%"' ) && false === strpos( $html, 'bwe-ms--d' ), 'testimonials: 3 videos slide on phones only' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( $block( 4 ) );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwe-ms bwe-ms--m bwe-ms--d" style="--bwe-ms-w:72%;--bwe-ms-n:3"' ) && false !== strpos( $html, 'bwe-ms__nav bwe-ms__nav--m bwe-ms__nav--d' ), 'testimonials: 4 videos slide on desktop too' );
+	bwe_tb_assert_same( '4', (string) substr_count( $html, 'class="bwe-ms__dot"' ), 'testimonials: one dot per video' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( $block( 4, '{"desktopSlides":4}' ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwe-ms--d' ), 'testimonials: 4 in view, 4 videos, no desktop slider' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( $block( 5, '{"desktopSlider":false}' ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwe-ms--d' ) && false !== strpos( $html, 'bwe-ms--m' ), 'testimonials: desktop slider off' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( $block( 5, '{"phoneLayout":"list"}' ) );
+	bwe_tb_assert_true( false !== strpos( $html, 'bwex-quotes bwex-quotes--list bwe-ms bwe-ms--d" style="--bwe-ms-n:3"' ) && false !== strpos( $html, 'bwe-ms__nav bwe-ms__nav--d"' ), 'testimonials: phone list, desktop slider' );
+
+	[ $html ] = bwe_tb_hsx_render_clean( $block( 3, '{"phoneLayout":"list"}' ) );
+	bwe_tb_assert_true( false !== strpos( $html, '<div class="wp-block-group bwex-quotes bwex-quotes--list">' ) && false === strpos( $html, 'bwe-ms' ), 'testimonials: plain list' );
 }

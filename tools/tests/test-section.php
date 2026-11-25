@@ -23,7 +23,7 @@ function test_sections_render_matches() {
 		$old = file_get_contents( __DIR__ . "/fixtures/old-section-$name.html" );
 		$new = bwe_tb_section_convert( $name );
 		bwe_tb_assert_true( is_array( $new ) && 'bwe/section' === $new['blockName'] && $new['innerBlocks'], "$name: converted, inner blocks kept" );
-		bwe_tb_assert_same( bwe_tb_expected( "section $name renders identically", $old ), bwe_tb_render( serialize_blocks( array( $new ) ) ), "$name renders identically (no style settings)" );
+		bwe_tb_assert_same( bwe_tb_expected( "section $name renders identically", $old ), bwe_tb_without_slider( bwe_tb_render( serialize_blocks( array( $new ) ) ) ), "$name renders identically (no style settings)" );
 	}
 }
 

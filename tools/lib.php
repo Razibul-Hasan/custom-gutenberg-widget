@@ -13,12 +13,29 @@ if ( PHP_SAPI !== 'cli' ) {
 const BWE_TB_PAGES = array( 1104, 512, 513, 514, 519, 521, 544, 547, 754, 761, 762, 763, 822, 826, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 941, 1115 );
 
 /**
- * Loads WordPress from the CLI (Local's MySQL listens on 10011).
+ * Local's MySQL port. Local picks a new one when the site restarts (it was 10011, then 10009), so it is read
+ * from the site's my.cnf (conf/mysql/my.cnf next to the conf/php/php.ini this CLI runs with). BWE_DB_PORT overrides.
+ */
+function bwe_tb_db_port(): int {
+	$env = (int) getenv( 'BWE_DB_PORT' );
+	if ( $env > 0 ) {
+		return $env;
+	}
+	$ini = (string) php_ini_loaded_file();
+	$cnf = '' !== $ini ? dirname( $ini, 2 ) . '/mysql/my.cnf' : '';
+	if ( '' !== $cnf && is_readable( $cnf ) && preg_match( '/^\s*port\s*=\s*(\d+)/m', (string) file_get_contents( $cnf ), $m ) ) {
+		return (int) $m[1];
+	}
+	return 10011;
+}
+
+/**
+ * Loads WordPress from the CLI on Local's MySQL port (bwe_tb_db_port()).
  *
  * @param string $wp_root WordPress root.
  */
 function bwe_tb_boot( string $wp_root ): void {
-	ini_set( 'mysqli.default_port', '10011' ); // phpcs:ignore WordPress.PHP.IniSet.Risky
+	ini_set( 'mysqli.default_port', (string) bwe_tb_db_port() ); // phpcs:ignore WordPress.PHP.IniSet.Risky
 	if ( ! defined( 'ABSPATH' ) ) {
 		require rtrim( $wp_root, '/\\' ) . '/wp-load.php';
 	}
@@ -209,4 +226,15 @@ function bwe_tb_page_fingerprint( string $html ): string {
 	$html = preg_replace( '/(nonce["\']?\s*[:=]\s*["\']?)[a-f0-9]{8,}/i', '$1X', $html );
 	$html = preg_replace( '/gt-wrapper-\d+/', 'gt-wrapper-X', $html ); // GTranslate: random id per request.
 	return bwe_tb_normalize( $html );
+}
+
+/**
+ * Rendered HTML without the Testimonials slider additions (classes, widths, dots / arrows), which the hand-written
+ * originals in the fixtures never had. Product / plain markup is left alone.
+ *
+ * @param string $html Rendered HTML.
+ */
+function bwe_tb_without_slider( string $html ): string {
+	$html = (string) preg_replace( '#(bwex-quotes) bwe-ms bwe-ms--[^"]*" style="--bwe-ms-[^"]*"#', '$1"', $html );
+	return (string) preg_replace( '#<div class="bwe-ms__nav[ "].*?</div>(?:<div class="bwe-ms__arrows">.*?</div>)?</div>#s', '', $html );
 }

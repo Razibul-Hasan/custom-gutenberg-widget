@@ -6,6 +6,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 import {
 	AttrToggle,
 	INLINE,
@@ -14,6 +15,11 @@ import {
 	SectionStyles,
 	useSectionLook,
 } from '../shared/section-parts';
+import {
+	PhoneLayoutPanel,
+	SliderNav,
+	sliderListProps,
+} from '../shared/phone-slider';
 import metadata from './block.json';
 
 const TEMPLATE = [
@@ -33,8 +39,22 @@ function Edit( { attributes, setAttributes, clientId } ) {
 			.join( ' ' ),
 		'data-bwe-anchor': attributes.sectionId || undefined, // the site's #id rules (eyebrow icon …)
 	} );
+	const cardCount = useSelect(
+		( select ) => select( 'core/block-editor' ).getBlockCount( clientId ),
+		[ clientId ]
+	);
+	const slider = sliderListProps( attributes, cardCount );
 	const quotesProps = useInnerBlocksProps(
-		{ className: 'wp-block-group bwex-quotes' },
+		{
+			className: [
+				'wp-block-group bwex-quotes',
+				attributes.phoneLayout !== 'slider' && 'bwex-quotes--list',
+				slider.className,
+			]
+				.filter( Boolean )
+				.join( ' ' ),
+			style: slider.style,
+		},
 		{
 			allowedBlocks: [ 'bwe/video-card' ],
 			template: TEMPLATE,
@@ -57,6 +77,12 @@ function Edit( { attributes, setAttributes, clientId } ) {
 					setAttributes={ setAttributes }
 				/>
 			</SectionSettings>
+			<PhoneLayoutPanel
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				itemName={ __( 'video', 'bestwebexpert' ) }
+				desktop
+			/>
 			<SectionStyles
 				metadata={ metadata }
 				attributes={ attributes }
@@ -74,6 +100,10 @@ function Edit( { attributes, setAttributes, clientId } ) {
 						<div className="wp-block-group elementor-widget-container">
 							<div className="wp-block-group bwex bwex-proofw">
 								<div { ...quotesProps } />
+								<SliderNav
+									attributes={ attributes }
+									count={ cardCount }
+								/>
 								{ attributes.showMore !== false && (
 									<RichText
 										tagName="p"

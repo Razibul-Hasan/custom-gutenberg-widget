@@ -142,7 +142,7 @@
 	font-weight: 600;
 }
 
-/* phone: swipe through the videos */
+/* phone: swipe through the videos (dots, arrows and slide width of the block's "Slider" panel: assets/css/blocks.css) */
 @media (max-width: 767px) {
 	.bwe-h2x-page .bwex .bwex-proof .bwex-quotes:has(.bwex-vt),
 	.bwex .bwex-quotes:has(.bwex-vt) {
@@ -163,7 +163,29 @@
 	}
 }
 
+/* phone layout "List": one video under the other */
+@media (max-width: 781px) {
+	html body .bwex .bwex-quotes.bwex-quotes--list:has(.bwex-vt):not(#bwe-vt-a) {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		width: 100%;
+		max-width: 360px;
+		margin-inline: auto;
+		padding: 0;
+		overflow: visible;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.bwex .bwex-yt img,
 	.bwex .bwex-yt__play { transition: none; }
+}
+
+/* exactly two videos (2026-11-25): two centred columns, each the same width as in the three-column row */
+@media (min-width: 768px) {
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quotes:has(> .bwex-vt:nth-child(2):last-child),
+	.bwex .bwex-quotes:has(> .bwex-vt:nth-child(2):last-child) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		max-width: 646px;
+	}
 }

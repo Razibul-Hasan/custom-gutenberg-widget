@@ -117,7 +117,9 @@ function test_visibility_classes_on_first_element() {
 
 function test_blocks_css_only_where_needed() {
 	$home = get_post( 1104 );
-	bwe_tb_assert_true( $home && ! bwe_gw_needs_blocks_css( 1104 ), 'Home (no new blocks / settings) does not load blocks.css' );
+	// Home has no general-purpose blocks; it loads blocks.css only for a slider (products phone slider, Testimonials).
+	$slider = $home && 1 === preg_match( '#"phoneLayout":"slider"|<!-- wp:bwe/testimonials[\s/]#', $home->post_content );
+	bwe_tb_assert_true( $home && $slider === bwe_gw_needs_blocks_css( 1104 ), 'Home loads blocks.css only when it uses the phone slider' );
 }
 
 function test_manifest_matches_block_json() {

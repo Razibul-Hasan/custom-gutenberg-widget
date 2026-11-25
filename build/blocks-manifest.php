@@ -12041,6 +12041,30 @@ return array(
 				'type' => 'boolean',
 				'default' => true
 			),
+			'phoneLayout' => array(
+				'type' => 'string',
+				'enum' => array(
+					'list',
+					'slider'
+				),
+				'default' => 'list'
+			),
+			'sliderTablet' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'slideWidth' => array(
+				'type' => 'number',
+				'default' => 85
+			),
+			'sliderDots' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'sliderArrows' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
 			'bweStyle' => array(
 				'type' => 'object',
 				'default' => array(
@@ -15971,6 +15995,38 @@ return array(
 				'default' => ''
 			),
 			'showMore' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'phoneLayout' => array(
+				'type' => 'string',
+				'enum' => array(
+					'list',
+					'slider'
+				),
+				'default' => 'slider'
+			),
+			'sliderTablet' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'slideWidth' => array(
+				'type' => 'number',
+				'default' => 72
+			),
+			'desktopSlider' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'desktopSlides' => array(
+				'type' => 'number',
+				'default' => 3
+			),
+			'sliderDots' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'sliderArrows' => array(
 				'type' => 'boolean',
 				'default' => true
 			),

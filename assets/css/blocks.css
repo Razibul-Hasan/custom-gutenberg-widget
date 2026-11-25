@@ -311,3 +311,143 @@ html body .bwex-guide.bwex-guide--last-stretch:not(#bwe-gw-a):not(#bwe-gw-b) ol.
 .bwex-guide.bwex-guide--btn-left .bwex-guide__foot { justify-content: flex-start; text-align: left; }
 .bwex-guide.bwex-guide--btn-center .bwex-guide__foot { justify-content: center; text-align: center; }
 .bwex-guide.bwex-guide--btn-right .bwex-guide__foot { justify-content: flex-end; text-align: right; }
+
+/* ---------- Card slider (phone layout "Slider" and the desktop slider — includes/mobile-slider.php, assets/js/mobile-slider.js) ---------- */
+/* The list becomes a swipe row on phones (bwe-ms--m) or phones + tablets (bwe-ms--t): each card takes --bwe-ms-w of
+   the row, the next one peeks in. The script sets --bwe-ms-bleed-l/-r (distance to the screen edges) so the row runs
+   edge to edge while the first card still lines up with the page text. Four ID-weights: beats the Styles tab's
+   columns (three) and the site's own !important grid rules. */
+.bwe-ms__nav { display: none; }
+@media (max-width: 1024px) {
+	html body .bwe-ms.bwe-ms--t:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) {
+		display: flex !important; flex-flow: row nowrap !important; grid-template-columns: none !important;
+		align-items: stretch !important; justify-content: flex-start !important;
+		width: calc(100% + var(--bwe-ms-bleed-l, 0px) + var(--bwe-ms-bleed-r, 0px)) !important; max-width: none !important; min-width: 0 !important;
+		flex: 0 0 auto !important; align-self: stretch !important; box-sizing: border-box !important;
+		overflow-x: auto !important; overflow-y: hidden !important; overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+		scroll-padding-inline: var(--bwe-ms-bleed-l, 0px) var(--bwe-ms-bleed-r, 0px);
+		margin-inline: calc(-1 * var(--bwe-ms-bleed-l, 0px)) calc(-1 * var(--bwe-ms-bleed-r, 0px)) !important;
+		padding: 8px var(--bwe-ms-bleed-r, 0px) 20px var(--bwe-ms-bleed-l, 0px) !important;
+		margin-block: -8px -20px !important;
+	}
+	html body .bwe-ms.bwe-ms--t:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) > * {
+		flex: 0 0 calc(var(--bwe-ms-w, 85%) * var(--bwe-ms-k, 1)) !important; width: calc(var(--bwe-ms-w, 85%) * var(--bwe-ms-k, 1)) !important; max-width: none !important; min-width: 0 !important;
+		grid-column: auto !important; margin: 0 !important; scroll-snap-align: start; scroll-snap-stop: always;
+	}
+	.bwe-ms.bwe-ms--t::-webkit-scrollbar { display: none; }
+	.bwe-ms__nav--t.is-ready, .editor-styles-wrapper .bwe-ms__nav--t { display: flex; }
+}
+@media (max-width: 781px) {
+	html body .bwe-ms.bwe-ms--m:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) {
+		display: flex !important; flex-flow: row nowrap !important; grid-template-columns: none !important;
+		align-items: stretch !important; justify-content: flex-start !important;
+		width: calc(100% + var(--bwe-ms-bleed-l, 0px) + var(--bwe-ms-bleed-r, 0px)) !important; max-width: none !important; min-width: 0 !important;
+		flex: 0 0 auto !important; align-self: stretch !important; box-sizing: border-box !important;
+		overflow-x: auto !important; overflow-y: hidden !important; overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+		scroll-padding-inline: var(--bwe-ms-bleed-l, 0px) var(--bwe-ms-bleed-r, 0px);
+		margin-inline: calc(-1 * var(--bwe-ms-bleed-l, 0px)) calc(-1 * var(--bwe-ms-bleed-r, 0px)) !important;
+		padding: 8px var(--bwe-ms-bleed-r, 0px) 20px var(--bwe-ms-bleed-l, 0px) !important;
+		margin-block: -8px -20px !important;
+	}
+	html body .bwe-ms.bwe-ms--m:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) > * {
+		flex: 0 0 calc(var(--bwe-ms-w, 85%) * var(--bwe-ms-k, 1)) !important; width: calc(var(--bwe-ms-w, 85%) * var(--bwe-ms-k, 1)) !important; max-width: none !important; min-width: 0 !important;
+		grid-column: auto !important; margin: 0 !important; scroll-snap-align: start; scroll-snap-stop: always;
+	}
+	.bwe-ms.bwe-ms--m::-webkit-scrollbar { display: none; }
+	.bwe-ms__nav--m.is-ready, .editor-styles-wrapper .bwe-ms__nav--m { display: flex; }
+}
+/* Desktop slider (bwe-ms--d: more cards than fit in view): --bwe-ms-n cards across, no peeking. With "Slider on
+   tablets too" (bwe-ms--t) tablets keep the swipe row above. */
+@media (min-width: 782px) {
+	html body .bwe-ms.bwe-ms--d:not(.bwe-ms--t):not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) {
+		display: flex !important; flex-flow: row nowrap !important; grid-template-columns: none !important;
+		align-items: stretch !important; justify-content: flex-start !important; width: 100% !important; min-width: 0 !important; box-sizing: border-box !important;
+		overflow-x: auto !important; overflow-y: hidden !important; overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory; scrollbar-width: none;
+		padding: 8px 0 20px !important; margin-block: -8px -20px !important;
+	}
+	html body .bwe-ms.bwe-ms--d:not(.bwe-ms--t):not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) > :not(.block-list-appender) {
+		flex: 0 0 calc((100% - (var(--bwe-ms-n, 3) - 1) * var(--bwe-ms-gap, 16px)) / var(--bwe-ms-n, 3)) !important;
+		width: auto !important; max-width: none !important; min-width: 0 !important;
+		grid-column: auto !important; margin: 0 !important; scroll-snap-align: start;
+	}
+	.bwe-ms.bwe-ms--d::-webkit-scrollbar { display: none; }
+	.bwe-ms__nav--d.is-ready, .editor-styles-wrapper .bwe-ms__nav--d { display: flex; }
+}
+@media (min-width: 1025px) {
+	html body .bwe-ms.bwe-ms--d.bwe-ms--t:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) {
+		display: flex !important; flex-flow: row nowrap !important; grid-template-columns: none !important;
+		align-items: stretch !important; justify-content: flex-start !important; width: 100% !important; min-width: 0 !important; box-sizing: border-box !important;
+		overflow-x: auto !important; overflow-y: hidden !important; overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory; scrollbar-width: none;
+		padding: 8px 0 20px !important; margin-block: -8px -20px !important;
+	}
+	html body .bwe-ms.bwe-ms--d.bwe-ms--t:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d) > :not(.block-list-appender) {
+		flex: 0 0 calc((100% - (var(--bwe-ms-n, 3) - 1) * var(--bwe-ms-gap, 16px)) / var(--bwe-ms-n, 3)) !important;
+		width: auto !important; max-width: none !important; min-width: 0 !important;
+		grid-column: auto !important; margin: 0 !important; scroll-snap-align: start;
+	}
+}
+/* Testimonials: dots and arrows line up with the centred video row. */
+.bwex-proofw > .bwe-ms__nav { width: 100%; max-width: 980px; margin-inline: auto; box-sizing: border-box; }
+
+/* Editor: the "add block" button at the end of the row keeps its own size. */
+html body .bwe-ms:not(#bwe-ms-a):not(#bwe-ms-b):not(#bwe-ms-c):not(#bwe-ms-d):not(#bwe-ms-e) > .block-list-appender { flex: 0 0 auto !important; width: auto !important; align-self: center; }
+/* Wider screens: smaller slides, so more of the next card shows (85% → 55% from 600px, → 41% from 782px). */
+@media (min-width: 600px) { .bwe-ms { --bwe-ms-k: .65; } }
+@media (min-width: 782px) { .bwe-ms { --bwe-ms-k: .48; } }
+/* Space between cards: 14px unless the block's own "Space between items" is set (that one has three ID-weights). */
+@media (max-width: 1024px) { .bwe-ms.bwe-ms--t { gap: 14px !important; } }
+@media (max-width: 781px) { .bwe-ms.bwe-ms--m { gap: 14px !important; } }
+
+/* Product cards: every slide as tall as the tallest, button at the bottom. */
+@media (max-width: 1024px) {
+	.bwex-cards.bwe-ms--t > *, .bwex-cards.bwe-ms--t > * > .elementor-widget-container { display: flex; flex-direction: column; }
+	.bwex-cards.bwe-ms--t > * > .elementor-widget-container, .bwex-cards.bwe-ms--t .bwex-card, .bwex-cards.bwe-ms--t .bwex-card__body { flex: 1 1 auto; }
+	.bwex-cards.bwe-ms--t .bwex-card__btn { margin-top: auto; }
+	html body .bwex-cards.bwe-ms--t:not(#bwe-ms-a) .bwex-card__btn { height: auto !important; min-height: 48px; padding-inline: 14px !important; font-size: 13px !important; letter-spacing: 1.5px !important; line-height: 1.25 !important; white-space: normal !important; text-align: center; justify-content: center; }
+}
+@media (max-width: 781px) {
+	.bwex-cards.bwe-ms--m > *, .bwex-cards.bwe-ms--m > * > .elementor-widget-container { display: flex; flex-direction: column; }
+	.bwex-cards.bwe-ms--m > * > .elementor-widget-container, .bwex-cards.bwe-ms--m .bwex-card, .bwex-cards.bwe-ms--m .bwex-card__body { flex: 1 1 auto; }
+	.bwex-cards.bwe-ms--m .bwex-card__btn { margin-top: auto; }
+	html body .bwex-cards.bwe-ms--m:not(#bwe-ms-a) .bwex-card__btn { height: auto !important; min-height: 48px; padding-inline: 14px !important; font-size: 13px !important; letter-spacing: 1.5px !important; line-height: 1.25 !important; white-space: normal !important; text-align: center; justify-content: center; }
+}
+
+@media (max-width: 400px) {
+	html body .bwex-cards.bwe-ms:not(#bwe-ms-a) .bwex-card__btn { padding-inline: 10px !important; font-size: 12px !important; letter-spacing: 1px !important; }
+}
+
+/* Dots + arrows under the row. Colours follow the section's text colour, so it also works on dark sections. */
+.bwe-ms__nav { align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; }
+.bwe-ms__dots { display: flex; align-items: center; gap: 2px; margin-left: -8px; }
+.bwe-ms__dots[hidden] { display: none; }
+html body .bwe-ms__dot:not(#bwe-ms-a) {
+	position: relative; display: block; width: 26px; height: 32px; min-height: 0; margin: 0; padding: 0;
+	border: 0; border-radius: 0; background: none; box-shadow: none; color: inherit; cursor: pointer;
+	transition: width .35s cubic-bezier(.2, .8, .2, 1);
+}
+.bwe-ms__dot::before {
+	content: ""; position: absolute; inset: 12px 9px; border-radius: 99px; background: currentColor; opacity: .22;
+	transition: opacity .35s, background-color .35s;
+}
+html body .bwe-ms__dot[aria-current="true"]:not(#bwe-ms-a) { width: 46px; }
+.bwe-ms__dot[aria-current="true"]::before { inset: 11px 8px; opacity: 1; background: var(--bwex-accent, #c8ff3d); box-shadow: inset 0 0 0 1.5px var(--bwex-ink, #0b0b0c); }
+html body .bwe-ms__dot[hidden]:not(#bwe-ms-a) { display: none; }
+.bwe-ms__dot:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; border-radius: 99px; }
+.bwe-ms__arrows { display: flex; gap: 10px; margin-left: auto; }
+html body .bwe-ms__arrow:not(#bwe-ms-a) {
+	display: grid; place-items: center; width: 46px; height: 46px; min-height: 0; margin: 0; padding: 0;
+	border: 1.5px solid currentColor; border-radius: 50%; background: transparent; box-shadow: none;
+	color: inherit; font: 600 18px/1 system-ui, sans-serif; cursor: pointer;
+	transition: transform .2s, opacity .2s, background-color .2s;
+}
+html body .bwe-ms__arrow--next:not(#bwe-ms-a) { border-color: var(--bwex-ink, #0b0b0c); background: var(--bwex-accent, #c8ff3d); color: var(--bwex-ink, #0b0b0c); }
+html body .bwe-ms__arrow:not(#bwe-ms-a):active { transform: scale(.92); }
+html body .bwe-ms__arrow:not(#bwe-ms-a):disabled { opacity: .3; cursor: default; transform: none; }
+.bwe-ms__arrow:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+	.bwe-ms__dot, .bwe-ms__dot::before, .bwe-ms__arrow { transition: none !important; }
+}

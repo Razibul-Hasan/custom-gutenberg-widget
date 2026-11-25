@@ -134,7 +134,7 @@ function bwe_gw_needs_blocks_css( $id ) {
 				$content
 			);
 		};
-		$seen[ $id ] = 1 === preg_match( '#<!-- wp:bwe/(?:buttons|media|grid|gap|guide)[\s/]|"(?:bweHide|headingTag)":#', $expand( $raw( $id ), 0 ) );
+		$seen[ $id ] = 1 === preg_match( '#<!-- wp:bwe/(?:buttons|media|grid|gap|guide|testimonials)[\s/]|"(?:bweHide|headingTag)":|"phoneLayout":"slider"#', $expand( $raw( $id ), 0 ) );
 	}
 	return $seen[ $id ];
 }

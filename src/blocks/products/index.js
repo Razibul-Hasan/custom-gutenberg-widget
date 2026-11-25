@@ -6,6 +6,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 import {
 	AttrToggle,
 	INLINE,
@@ -14,6 +15,11 @@ import {
 	SectionStyles,
 	useSectionLook,
 } from '../shared/section-parts';
+import {
+	PhoneLayoutPanel,
+	SliderNav,
+	sliderListProps,
+} from '../shared/phone-slider';
 import metadata from './block.json';
 
 const TEMPLATE = [
@@ -33,10 +39,20 @@ function Edit( { attributes, setAttributes, clientId } ) {
 			.join( ' ' ),
 		'data-bwe-anchor': attributes.sectionId || undefined, // the site's #id rules (eyebrow icon …)
 	} );
+	const slider = sliderListProps( attributes );
+	const cardCount = useSelect(
+		( select ) => select( 'core/block-editor' ).getBlockCount( clientId ),
+		[ clientId ]
+	);
 	const cardsProps = useInnerBlocksProps(
 		{
-			className:
+			className: [
 				'wp-block-group elementor-element elementor-element-923a8b6 e-con-full bwex-cards e-flex e-con e-child',
+				slider.className,
+			]
+				.filter( Boolean )
+				.join( ' ' ),
+			style: slider.style,
 		},
 		{
 			allowedBlocks: [ 'bwe/product-card' ],
@@ -60,6 +76,10 @@ function Edit( { attributes, setAttributes, clientId } ) {
 					setAttributes={ setAttributes }
 				/>
 			</SectionSettings>
+			<PhoneLayoutPanel
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+			/>
 			<SectionStyles
 				metadata={ metadata }
 				attributes={ attributes }
@@ -74,6 +94,7 @@ function Edit( { attributes, setAttributes, clientId } ) {
 						elementId="addf4f8"
 					/>
 					<div { ...cardsProps } />
+					<SliderNav attributes={ attributes } count={ cardCount } />
 					{ attributes.showMore !== false && (
 						<div className="wp-block-group elementor-element elementor-element-6fc4e95 bwex-more elementor-widget elementor-widget-text-editor">
 							<RichText

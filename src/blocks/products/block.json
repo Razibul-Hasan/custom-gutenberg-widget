@@ -53,6 +53,30 @@
 			"type": "boolean",
 			"default": true
 		},
+		"phoneLayout": {
+			"type": "string",
+			"enum": [
+				"list",
+				"slider"
+			],
+			"default": "list"
+		},
+		"sliderTablet": {
+			"type": "boolean",
+			"default": false
+		},
+		"slideWidth": {
+			"type": "number",
+			"default": 85
+		},
+		"sliderDots": {
+			"type": "boolean",
+			"default": true
+		},
+		"sliderArrows": {
+			"type": "boolean",
+			"default": true
+		},
 		"bweStyle": {
 			"type": "object",
 			"default": {}
