@@ -204,6 +204,45 @@ function bwe_blog_card_date( $content, $block, $instance ) {
 add_filter( 'render_block_core/post-date', 'bwe_blog_card_date', 10, 3 );
 
 /**
+ * Blog post tables with 3+ columns: each body cell gets its column heading as data-label, and the table the class
+ * bwe-table--stack, so on phones the theme's blog-single.css shows every row as a small card ("Includes: …")
+ * instead of a 520px table whose last column sits off-screen. Desktop is unchanged. (2026-11-25)
+ *
+ * @param string $content Rendered table block.
+ */
+function bwe_blog_table_labels( $content ) {
+	if ( ! is_singular( 'post' ) || ! preg_match( '#<thead[^>]*>(.*?)</thead>#is', $content, $head ) ) {
+		return $content;
+	}
+	preg_match_all( '#<th\b[^>]*>(.*?)</th>#is', $head[1], $cells );
+	$labels = array_map( static fn( $h ) => trim( html_entity_decode( wp_strip_all_tags( $h ), ENT_QUOTES, 'UTF-8' ) ), $cells[1] );
+	if ( count( $labels ) < 3 ) {
+		return $content;
+	}
+
+	$tags   = new WP_HTML_Tag_Processor( $content );
+	$column = 0;
+	$body   = false;
+	while ( $tags->next_tag( array( 'tag_closers' => 'visit' ) ) ) {
+		$tag = $tags->get_tag();
+		if ( 'FIGURE' === $tag && ! $tags->is_tag_closer() ) {
+			$tags->add_class( 'bwe-table--stack' );
+		} elseif ( 'TBODY' === $tag ) {
+			$body = ! $tags->is_tag_closer();
+		} elseif ( $body && 'TR' === $tag && ! $tags->is_tag_closer() ) {
+			$column = 0;
+		} elseif ( $body && in_array( $tag, array( 'TD', 'TH' ), true ) && ! $tags->is_tag_closer() ) {
+			if ( '' !== ( $labels[ $column ] ?? '' ) ) {
+				$tags->set_attribute( 'data-label', $labels[ $column ] );
+			}
+			++$column;
+		}
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/table', 'bwe_blog_table_labels' );
+
+/**
  * Query Loop block markup for a grid of post cards.
  *
  * @param array  $query       Query attributes, merged over the defaults.
