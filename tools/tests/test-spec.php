@@ -59,3 +59,41 @@ function test_section_library_cards() {
 	bwe_tb_assert_true( false !== strpos( bwe_sl_cards( $sample ), '<!-- wp:bwe/spec-card' ), 'generator emits bwe/spec-card' );
 	bwe_tb_assert_same( file_get_contents( __DIR__ . '/fixtures/sl-cards.html' ), bwe_tb_render( bwe_sl_cards( $sample ) ), 'generator output renders as before' );
 }
+
+/**
+ * Renders one spec card with the given attributes.
+ *
+ * @param array $attrs Block attributes.
+ */
+function bwe_tb_spec_card( array $attrs ): string {
+	return bwe_tb_render( '<!-- wp:bwe/spec-card ' . serialize_block_attributes( $attrs ) . ' /-->' );
+}
+
+function test_spec_card_whole_card_link() {
+	$demo = 'A wardrobe box. <a href="/capsule-wardrobe-box/">Open the demo →</a>';
+	$html = bwe_tb_spec_card( array( 'name' => 'Capsule Box', 'text' => $demo, 'chip' => 'Bundles' ) );
+	bwe_tb_assert_true( false !== strpos( $html, '<li class="bwex-spec__item--link">' ), 'arrow link at the end of the text → card is clickable' );
+	bwe_tb_assert_true( false !== strpos( $html, '<a class="bwex-spec__cover" href="/capsule-wardrobe-box/" tabindex="-1" aria-hidden="true"></a></li>' ), 'cover uses the text link, hidden from keyboard and screen readers' );
+
+	$ext  = 'Reviews. <a href="https://www.fiverr.com/x" target="_blank" rel="me noopener">Open Fiverr profile →</a>';
+	$html = bwe_tb_spec_card( array( 'name' => 'Fiverr', 'text' => $ext ) );
+	bwe_tb_assert_true( false !== strpos( $html, 'href="https://www.fiverr.com/x" tabindex="-1" aria-hidden="true" target="_blank" rel="me noopener"' ), 'cover keeps the text link\'s new tab and rel' );
+
+	$html = bwe_tb_spec_card( array( 'name' => 'Owner&#8217;s rights', 'text' => 'You own <a href="/terms/">everything</a>.' ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwex-spec__cover' ) && 0 === strpos( $html, '<li><strong' ), 'mid-sentence link → card prints as before' );
+
+	$html = bwe_tb_spec_card( array( 'name' => 'Speed', 'text' => 'Fast. <a href="/speed/">caching</a>' ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwex-spec__cover' ), 'trailing link without an arrow → not clickable' );
+
+	$html = bwe_tb_spec_card( array( 'name' => 'Capsule Box', 'text' => $demo, 'clickable' => false ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwex-spec__cover' ) && 0 === strpos( $html, '<li><strong' ), 'clickable off → card prints as before' );
+
+	$html = bwe_tb_spec_card( array( 'name' => 'Lookbook <em>new</em>', 'text' => 'No link here.', 'url' => 'https://example.com/look', 'newTab' => true ) );
+	bwe_tb_assert_true( false !== strpos( $html, '<a class="bwex-spec__cover" href="https://example.com/look" aria-label="Lookbook new" target="_blank" rel="noopener"></a>' ), 'own URL → labelled cover link in a new tab' );
+
+	$html = bwe_tb_spec_card( array( 'name' => 'Box', 'text' => $demo, 'url' => '/other/' ) );
+	bwe_tb_assert_true( false !== strpos( $html, 'href="/other/" aria-label="Box">' ), 'own URL wins over the text link' );
+
+	$html = bwe_tb_spec_card( array( 'name' => '<a href="/n/">Named</a>', 'text' => $demo ) );
+	bwe_tb_assert_true( false === strpos( $html, 'bwex-spec__cover' ), 'link in the name → no extra cover (the name link covers the card)' );
+}

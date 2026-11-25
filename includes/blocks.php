@@ -121,7 +121,7 @@ add_action( 'enqueue_block_assets', 'bwe_blocks_editor_video_style' );
 const BWE_BLOCKS_OVERRIDABLE = array(
 	'bwe/section-head' => array( 'eyebrow', 'title', 'intro' ),
 	'bwe/step'         => array( 'title', 'text' ),
-	'bwe/spec-card'    => array( 'name', 'text', 'chip' ),
+	'bwe/spec-card'    => array( 'name', 'text', 'chip', 'url' ),
 	'bwe/who-card'     => array( 'title', 'text', 'tag', 'url' ),
 	'bwe/price-row'    => array( 'service', 'note', 'amount', 'unit' ),
 	'bwe/faq-item'     => array( 'question' ),
@@ -176,3 +176,55 @@ function bwe_blocks_missing_build_notice() {
 	}
 }
 add_action( 'admin_notices', 'bwe_blocks_missing_build_notice' );
+
+/**
+ * The full-card link of a Feature card (bwe/spec-card): a transparent <a> laid over the card, or '' for none.
+ *
+ * - Off when "Whole card clickable" is off, or when the name already holds a link (that link covers the card).
+ * - The card's own URL, as a labelled link (it is the card's only way there).
+ * - Else the link at the very end of the text, when its words end in an arrow ("Open the demo →"). That link is
+ *   already in the text, so the cover is hidden from screen readers and the keyboard and keeps its target.
+ *   A link in the middle of a sentence ("You own <a>everything</a>.") does not make the card clickable.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $name       Card name (HTML).
+ * @param string $text       Card text (HTML).
+ * @return string
+ */
+function bwe_gw_spec_card_cover( array $attributes, string $name, string $text ): string {
+	if ( false === ( $attributes['clickable'] ?? true ) || preg_match( '/<a\s/i', $name ) ) {
+		return '';
+	}
+
+	$url = trim( (string) ( $attributes['url'] ?? '' ) );
+	if ( '' !== $url ) {
+		$label = trim( wp_strip_all_tags( $name ) );
+		return sprintf(
+			'<a class="bwex-spec__cover" href="%1$s"%2$s%3$s></a>',
+			esc_url( $url ),
+			'' !== $label ? ' aria-label="' . esc_attr( $label ) . '"' : '',
+			! empty( $attributes['newTab'] ) ? ' target="_blank" rel="noopener"' : ''
+		);
+	}
+
+	// The last link, only when nothing but whitespace follows it.
+	if ( ! preg_match( '#(<a\s[^>]*>)((?:(?!</a>).)*)</a>\s*$#is', $text, $m ) || ! preg_match( '/(?:→|↗|&rarr;|&#8594;)\s*$/u', wp_strip_all_tags( $m[2] ) ) ) {
+		return '';
+	}
+	$tag = new WP_HTML_Tag_Processor( $m[1] );
+	if ( ! $tag->next_tag( 'A' ) ) {
+		return '';
+	}
+	$href = trim( (string) $tag->get_attribute( 'href' ) );
+	if ( '' === $href || '#' === $href ) {
+		return '';
+	}
+	$target = (string) $tag->get_attribute( 'target' );
+	$rel    = (string) $tag->get_attribute( 'rel' );
+	return sprintf(
+		'<a class="bwex-spec__cover" href="%1$s" tabindex="-1" aria-hidden="true"%2$s%3$s></a>',
+		esc_url( $href ),
+		'' !== $target ? ' target="' . esc_attr( $target ) . '"' : '',
+		'' !== $rel ? ' rel="' . esc_attr( $rel ) . '"' : ''
+	);
+}

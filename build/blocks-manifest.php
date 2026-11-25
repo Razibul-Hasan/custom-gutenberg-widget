@@ -14578,6 +14578,18 @@ return array(
 			'chip' => array(
 				'type' => 'string',
 				'default' => ''
+			),
+			'clickable' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'url' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'newTab' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'supports' => array(

@@ -75,6 +75,14 @@ html body.bwe-h2x-page .bwex .bwex-spec__list > li:has(.bwex-spec__name a) :is(.
 html body.bwe-h2x-page .bwex .bwex-spec__name a:focus-visible { outline: none; }
 html body.bwe-h2x-page .bwex .bwex-spec__list > li:has(.bwex-spec__name a:focus-visible) { outline: 2px solid #111; outline-offset: 3px; }
 
+/* Whole card clickable (Feature card → Card link, 2026-11-25): a transparent link covers the card. It goes to the
+ * card's own link, or to the arrow link at the end of the text ("Open the demo →"); links in the text sit above it. */
+.bwex .bwex-spec__list > li.bwex-spec__item--link { position: relative; cursor: pointer; }
+.bwex .bwex-spec__list > li.bwex-spec__item--link > .bwex-spec__cover { position: absolute; inset: 0; z-index: 1; border-radius: inherit; background: none !important; }
+.bwex .bwex-spec__list > li.bwex-spec__item--link :is(.bwex-spec__name, .bwex-spec__text) a { position: relative; z-index: 2; }
+.bwex .bwex-spec__list > li.bwex-spec__item--link > .bwex-spec__cover:focus-visible { outline: none; }
+.bwex .bwex-spec__list > li.bwex-spec__item--link:has(> .bwex-spec__cover:focus-visible) { outline: 2px solid #111; outline-offset: 3px; }
+
 /* Featured (dark) plan price stays bright on every page (sell.css dims all text in the dark card). */
 html body.bwe-h2x-page .bwex .bwex-plan--featured p.bwex-plan__price,
 html body.bwe-h2x-page .bwex .bwex-plan--featured p.bwex-plan__price * { color: #f4f4f0; }

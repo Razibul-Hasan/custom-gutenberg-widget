@@ -27,6 +27,18 @@
 		"chip": {
 			"type": "string",
 			"default": ""
+		},
+		"clickable": {
+			"type": "boolean",
+			"default": true
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"newTab": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {
