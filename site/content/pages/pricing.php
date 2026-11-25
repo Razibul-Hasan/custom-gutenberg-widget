@@ -56,6 +56,7 @@ return array(
 						array( $link( 'wordpress-maintenance', 'WordPress maintenance plan' ), '<strong>$40</strong> per month', 'Ongoing' ),
 						array( 'New WordPress website', '<strong>$250</strong> per project', '2–4 weeks' ),
 						array( $link( 'woocommerce-development', 'WooCommerce store' ), '<strong>$400</strong> per project', '3–5 weeks' ),
+						array( $link( 'wordpress-plugin-development', 'WordPress plugin development' ), '<strong>$299</strong> per project', 'Varies by scope' ),
 					),
 				),
 			)
@@ -80,6 +81,7 @@ return array(
 						array( $link( 'migrate-to-shopify', 'Migration to Shopify' ), '<strong>$149</strong> per store', '3–7 days' ),
 						array( 'Monthly Shopify support', '<strong>$49</strong> per month', 'Ongoing' ),
 						array( $link( 'shopify-store-setup', 'New Shopify store' ), '<strong>$250</strong> per project', '3–5 weeks' ),
+						array( $link( 'shopify-app-development', 'Shopify app development' ), '<strong>$399</strong> per project', 'Varies by scope' ),
 					),
 				),
 				'note'    => 'Shopify expert pricing doesn’t include your <a href="https://www.shopify.com/pricing" target="_blank" rel="noopener">Shopify plan</a> or paid apps, which Shopify bills directly.',
