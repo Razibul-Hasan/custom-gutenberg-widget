@@ -504,8 +504,8 @@ function bwe_pb_data( $slug ) {
  */
 function bwe_pb_slugs() {
 	return array(
-		'wordpress' => array( 'wordpress-speed-optimization', 'wordpress-malware-removal', 'wordpress-migration', 'wordpress-maintenance', 'woocommerce-development' ),
-		'shopify'   => array( 'shopify-store-setup', 'shopify-theme-customization', 'shopify-speed-optimization', 'migrate-to-shopify' ),
+		'wordpress' => array( 'wordpress-speed-optimization', 'wordpress-malware-removal', 'wordpress-migration', 'wordpress-maintenance', 'woocommerce-development', 'wordpress-plugin-development' ),
+		'shopify'   => array( 'shopify-store-setup', 'shopify-theme-customization', 'shopify-speed-optimization', 'migrate-to-shopify', 'shopify-app-development' ),
 		'other'     => array( 'pricing', 'about', 'portfolio' ),
 	);
 }
