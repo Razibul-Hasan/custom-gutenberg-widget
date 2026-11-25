@@ -1,0 +1,1103 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/price-section",
+	"title": "Price list section",
+	"category": "bestwebexpert",
+	"icon": "money-alt",
+	"description": "Service prices section: heading and price cards (chip, title, text, price rows, \"from\" price, button). Add, remove or move cards; 2 or 3 cards per row and every colour are in the Styles tab.",
+	"keywords": [
+		"pricing",
+		"prices",
+		"services",
+		"fixes",
+		"price list",
+		"cards",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "Fixes &amp; services"
+		},
+		"showEyebrow": {
+			"type": "boolean",
+			"default": true
+		},
+		"title": {
+			"type": "string",
+			"default": "Every WordPress &amp; Shopify Price. <em>One Page.</em>"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Support, fixes, speed, security, migrations and new builds. Pick the job, see the starting price and how long it usually takes."
+		},
+		"showIntro": {
+			"type": "boolean",
+			"default": true
+		},
+		"split": {
+			"type": "boolean",
+			"default": true
+		},
+		"sectionId": {
+			"type": "string",
+			"default": "prices"
+		},
+		"classes": {
+			"type": "string",
+			"default": "bwe-scope--bwe-prx"
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		},
+		"bweIcon": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php",
+	"bweStyleMap": [
+		{
+			"key": "paddingTop",
+			"label": "Space above",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-top"
+				}
+			]
+		},
+		{
+			"key": "paddingBottom",
+			"label": "Space below",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-bottom"
+				}
+			]
+		},
+		{
+			"key": "paddingTopMobile",
+			"label": "Space above (phone)",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-top",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "paddingBottomMobile",
+			"label": "Space below (phone)",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-bottom",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "contentWidth",
+			"label": "Content width",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-wrap",
+					"prop": "max-width"
+				}
+			]
+		},
+		{
+			"key": "minHeight",
+			"label": "Minimum height",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "min-height"
+				}
+			]
+		},
+		{
+			"key": "textAlign",
+			"label": "Heading alignment",
+			"panel": "Layout",
+			"control": "select",
+			"options": [
+				{
+					"label": "Left",
+					"value": "left"
+				},
+				{
+					"label": "Centre",
+					"value": "center"
+				},
+				{
+					"label": "Right",
+					"value": "right"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-head",
+					"prop": "text-align"
+				}
+			]
+		},
+		{
+			"key": "bgColor",
+			"label": "Background colour",
+			"panel": "Background",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "bgImage",
+			"label": "Background image",
+			"panel": "Background",
+			"control": "image",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "background-image",
+					"tpl": "url('{v}')"
+				},
+				{
+					"sel": "",
+					"prop": "background-size",
+					"fixed": "cover"
+				},
+				{
+					"sel": "",
+					"prop": "background-position",
+					"fixed": "center"
+				},
+				{
+					"sel": "",
+					"prop": "background-repeat",
+					"fixed": "no-repeat"
+				}
+			]
+		},
+		{
+			"key": "overlay",
+			"label": "Overlay colour (use transparency)",
+			"panel": "Background",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "box-shadow",
+					"tpl": "inset 0 0 0 100vmax {v}"
+				}
+			]
+		},
+		{
+			"key": "accent",
+			"general": true,
+			"label": "Highlight colour (italic words, lines, tags)",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "--bwex-accent"
+				},
+				{
+					"sel": "",
+					"prop": "--bwe-accent"
+				},
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "background-color"
+				},
+				{
+					"sel": " .bwex-h2 h2 em",
+					"prop": "background-image",
+					"tpl": "linear-gradient({v}, {v})"
+				}
+			]
+		},
+		{
+			"key": "textColor",
+			"general": true,
+			"label": "Text colour",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "color"
+				},
+				{
+					"sel": " :where(p)",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "linkColor",
+			"general": true,
+			"label": "Link colour",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " :where(p a, li a:not(.wp-block-button__link))",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "textSize",
+			"general": true,
+			"label": "Text size",
+			"panel": "Colours & text",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " :where(p)",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "eyebrowColor",
+			"label": "Colour",
+			"panel": "Small label (above the heading)",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "eyebrowSize",
+			"label": "Size",
+			"panel": "Small label (above the heading)",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "eyebrowChip",
+			"label": "Icon box colour",
+			"panel": "Small label (above the heading)",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "hideEyebrowIcon",
+			"label": "Hide the icon",
+			"panel": "Small label (above the heading)",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		},
+		{
+			"key": "titleSize",
+			"label": "Size",
+			"panel": "Heading",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "titleSizeMobile",
+			"label": "Size (phone)",
+			"panel": "Heading",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-size",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "titleColor",
+			"label": "Colour",
+			"panel": "Heading",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "titleWeight",
+			"label": "Weight",
+			"panel": "Heading",
+			"control": "select",
+			"options": [
+				{
+					"label": "400 Regular",
+					"value": "400"
+				},
+				{
+					"label": "500 Medium",
+					"value": "500"
+				},
+				{
+					"label": "600 Semibold",
+					"value": "600"
+				},
+				{
+					"label": "700 Bold",
+					"value": "700"
+				},
+				{
+					"label": "800 Extra bold",
+					"value": "800"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-weight"
+				}
+			]
+		},
+		{
+			"key": "titleLineHeight",
+			"label": "Line height",
+			"panel": "Heading",
+			"control": "range",
+			"min": 0.8,
+			"max": 1.6,
+			"step": 0.01,
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "line-height"
+				}
+			]
+		},
+		{
+			"key": "highlightText",
+			"label": "Highlighted words colour",
+			"panel": "Heading",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2 em",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "introColor",
+			"label": "Colour",
+			"panel": "Intro",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "introSize",
+			"label": "Size",
+			"panel": "Intro",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "introWidth",
+			"label": "Max width",
+			"panel": "Intro",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "max-width"
+				}
+			]
+		},
+		{
+			"key": "columns",
+			"label": "Cards per row",
+			"panel": "Cards layout",
+			"control": "select",
+			"options": [
+				{
+					"label": "2 per row",
+					"value": "2"
+				},
+				{
+					"label": "3 per row",
+					"value": "3"
+				}
+			],
+			"rules": []
+		},
+		{
+			"key": "columnsTablet",
+			"label": "Cards per row (tablet)",
+			"panel": "Cards layout",
+			"control": "select",
+			"options": [
+				{
+					"label": "1 per row",
+					"value": "1"
+				},
+				{
+					"label": "2 per row",
+					"value": "2"
+				},
+				{
+					"label": "3 per row",
+					"value": "3"
+				}
+			],
+			"rules": []
+		},
+		{
+			"key": "columnsMobile",
+			"label": "Cards per row (phone)",
+			"panel": "Cards layout",
+			"control": "select",
+			"options": [
+				{
+					"label": "1 per row",
+					"value": "1"
+				},
+				{
+					"label": "2 per row",
+					"value": "2"
+				}
+			],
+			"rules": []
+		},
+		{
+			"key": "gap",
+			"label": "Space between cards",
+			"panel": "Cards layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plats",
+					"prop": "gap"
+				},
+				{
+					"sel": " .bwex-plats",
+					"prop": "--bwe-ps-gap"
+				}
+			]
+		},
+		{
+			"key": "hideLines",
+			"label": "Hide the lines above and below",
+			"panel": "Cards layout",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-plats",
+					"prop": "border-block-width",
+					"valueMap": {
+						"true": "0"
+					}
+				}
+			]
+		},
+		{
+			"key": "linesColor",
+			"label": "Line colour (around and between cards)",
+			"panel": "Cards layout",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plats",
+					"prop": "border-block-color"
+				},
+				{
+					"sel": " .bwex-plats",
+					"prop": "--bwe-ps-line"
+				}
+			]
+		},
+		{
+			"key": "hideDividers",
+			"label": "Hide the lines between cards",
+			"panel": "Cards layout",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-plats",
+					"prop": "--bwe-ps-line-w",
+					"valueMap": {
+						"true": "0px"
+					}
+				}
+			]
+		},
+		{
+			"key": "cardBg",
+			"label": "Background",
+			"panel": "Cards",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "cardBorder",
+			"label": "Border colour",
+			"panel": "Cards",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "cardBorderWidth",
+			"label": "Border width",
+			"panel": "Cards",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "border-width"
+				},
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "border-style",
+					"fixed": "solid"
+				}
+			]
+		},
+		{
+			"key": "cardRadius",
+			"label": "Corner radius",
+			"panel": "Cards",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "cardPadding",
+			"label": "Inner space",
+			"panel": "Cards",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "padding"
+				}
+			]
+		},
+		{
+			"key": "cardShadow",
+			"label": "Shadow",
+			"panel": "Cards",
+			"control": "select",
+			"options": [
+				{
+					"label": "None",
+					"value": "none"
+				},
+				{
+					"label": "Soft",
+					"value": "soft"
+				},
+				{
+					"label": "Strong",
+					"value": "strong"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card",
+					"prop": "box-shadow",
+					"valueMap": {
+						"none": "none",
+						"soft": "0 18px 40px -28px rgba(17, 17, 17, .35)",
+						"strong": "0 28px 60px -24px rgba(17, 17, 17, .55)"
+					}
+				}
+			]
+		},
+		{
+			"key": "cardHoverBorder",
+			"label": "Border on hover",
+			"panel": "Cards",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plats > .elementor-widget-bwex-platform-card:hover",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "chipColor",
+			"label": "Text colour",
+			"panel": "Small tag",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__chip",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "chipBg",
+			"label": "Background",
+			"panel": "Small tag",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__chip",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "chipBorder",
+			"label": "Border colour",
+			"panel": "Small tag",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__chip",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "chipDot",
+			"label": "Dot colour",
+			"panel": "Small tag",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__chip::before",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "hideChipDot",
+			"label": "Hide the dot",
+			"panel": "Small tag",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-plat__chip::before",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		},
+		{
+			"key": "cardTitleSize",
+			"label": "Size",
+			"panel": "Card title",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h3 .elementor-heading-title",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "cardTitleSizeMobile",
+			"label": "Size (phone)",
+			"panel": "Card title",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h3 .elementor-heading-title",
+					"prop": "font-size",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "cardTitleColor",
+			"label": "Colour",
+			"panel": "Card title",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h3 .elementor-heading-title",
+					"prop": "color"
+				},
+				{
+					"sel": " .bwex-h3 .elementor-heading-title a",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "cardTitleHover",
+			"label": "Colour on hover",
+			"panel": "Card title",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h3 .elementor-heading-title a:hover",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "cardTextColor",
+			"label": "Colour",
+			"panel": "Card text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__text p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "cardTextSize",
+			"label": "Size",
+			"panel": "Card text",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plat__text p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "rowService",
+			"label": "Service colour",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__svc",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "rowLinkHover",
+			"label": "Service link on hover",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__svc a:hover",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "rowNote",
+			"label": "Turnaround colour",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__svc small",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "rowAmount",
+			"label": "Price colour",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__amt",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "rowUnit",
+			"label": "Unit colour (/ fix, / site)",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__amt em",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "rowLines",
+			"label": "Line colour",
+			"panel": "Price rows",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-prx__list",
+					"prop": "border-top-color"
+				},
+				{
+					"sel": " .bwe-prx__list li",
+					"prop": "border-bottom-color"
+				}
+			]
+		},
+		{
+			"key": "rowSize",
+			"label": "Service text size",
+			"panel": "Price rows",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwe-prx__list li",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "rowAmountSize",
+			"label": "Price size",
+			"panel": "Price rows",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwe-prx__amt",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "rowSpace",
+			"label": "Row height (space above and below)",
+			"panel": "Price rows",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwe-prx__list li",
+					"prop": "padding-top"
+				},
+				{
+					"sel": " .bwe-prx__list li",
+					"prop": "padding-bottom"
+				}
+			]
+		},
+		{
+			"key": "fromColor",
+			"label": "Text colour",
+			"panel": "\"From\" price",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__price",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "fromAmount",
+			"label": "Amount colour (bold part)",
+			"panel": "\"From\" price",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plat__price strong",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "fromSize",
+			"label": "Text size",
+			"panel": "\"From\" price",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plat__price",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "btnBg",
+			"label": "Background",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnText",
+			"label": "Text colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBorder",
+			"label": "Border colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnRadius",
+			"label": "Corner radius",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "btnSize",
+			"label": "Text size",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "btnFull",
+			"label": "Full width",
+			"panel": "Button",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-btn",
+					"prop": "width",
+					"valueMap": {
+						"true": "100%"
+					}
+				},
+				{
+					"sel": " .bwex-btn .elementor-button",
+					"prop": "width",
+					"valueMap": {
+						"true": "100%"
+					}
+				}
+			]
+		},
+		{
+			"key": "btnHoverBg",
+			"label": "Background on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button:hover",
+					"prop": "background-color"
+				},
+				{
+					"sel": " .bwex-btn .elementor-button:hover",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverText",
+			"label": "Text colour on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-btn .elementor-button:hover",
+					"prop": "color"
+				}
+			]
+		}
+	]
+}

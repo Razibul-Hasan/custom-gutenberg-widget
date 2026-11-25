@@ -1,0 +1,297 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/product-card",
+	"title": "Product card",
+	"category": "bestwebexpert",
+	"icon": "archive",
+	"description": "One product card: picture (animated mockup, your image or none), tag, name, text, demo links and a button.",
+	"keywords": [
+		"product",
+		"plugin",
+		"card",
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/products"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"art": {
+			"type": "string",
+			"default": "reels"
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"imageFit": {
+			"type": "string",
+			"default": "cover",
+			"enum": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			]
+		},
+		"imagePosition": {
+			"type": "string",
+			"default": "center center"
+		},
+		"imagePadding": {
+			"type": "number",
+			"default": 0
+		},
+		"tag": {
+			"type": "string",
+			"default": ""
+		},
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"linksLabel": {
+			"type": "string",
+			"default": "Live demos"
+		},
+		"links": {
+			"type": "string",
+			"default": ""
+		},
+		"showLinks": {
+			"type": "boolean",
+			"default": true
+		},
+		"btnText": {
+			"type": "string",
+			"default": ""
+		},
+		"btnUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"wrapClasses": {
+			"type": "string",
+			"default": "elementor-element elementor-widget elementor-widget-bwex-plugin-card"
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php",
+	"bweStyleMap": [
+		{
+			"key": "bg",
+			"label": "Background",
+			"panel": "Card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "border",
+			"label": "Border colour",
+			"panel": "Card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "radius",
+			"label": "Corner radius",
+			"panel": "Card",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-card",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "tagColor",
+			"label": "Tag colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__tag",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "nameColor",
+			"label": "Name colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__title",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "textColor",
+			"label": "Text colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__text p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "linkColor",
+			"label": "Demo links colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__links a",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "artHeight",
+			"label": "Picture height",
+			"panel": "Picture",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwe-work__art",
+					"prop": "height"
+				}
+			]
+		},
+		{
+			"key": "artBg",
+			"label": "Picture background",
+			"panel": "Picture",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwe-work__art",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnBg",
+			"label": "Background",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnText",
+			"label": "Text colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBorder",
+			"label": "Border colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnRadius",
+			"label": "Corner radius",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "btnSize",
+			"label": "Text size",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "btnHoverBg",
+			"label": "Background on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn:hover",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverText",
+			"label": "Text on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-card__btn:hover",
+					"prop": "color"
+				}
+			]
+		}
+	]
+}

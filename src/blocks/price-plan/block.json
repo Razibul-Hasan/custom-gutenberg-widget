@@ -1,0 +1,290 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/price-plan",
+	"title": "Price plan",
+	"category": "bestwebexpert",
+	"icon": "tag",
+	"description": "One price plan card: badge, name, price (italic = small text), description, feature list and button.",
+	"keywords": [
+		"plan",
+		"price",
+		"package",
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/plans"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"price": {
+			"type": "string",
+			"default": ""
+		},
+		"desc": {
+			"type": "string",
+			"default": ""
+		},
+		"featured": {
+			"type": "boolean",
+			"default": false
+		},
+		"badge": {
+			"type": "string",
+			"default": "Most popular"
+		},
+		"btnText": {
+			"type": "string",
+			"default": ""
+		},
+		"btnUrl": {
+			"type": "string",
+			"default": "/contact/"
+		},
+		"btnNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"btnStyle": {
+			"type": "string",
+			"default": "auto"
+		},
+		"wrapClasses": {
+			"type": "string",
+			"default": "elementor-element elementor-widget elementor-widget-bwex-pricing-plan"
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php",
+	"bweStyleMap": [
+		{
+			"key": "bg",
+			"label": "Background",
+			"panel": "Card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "border",
+			"label": "Border colour",
+			"panel": "Card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "radius",
+			"label": "Corner radius",
+			"panel": "Card",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plan",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "padding",
+			"label": "Inner space",
+			"panel": "Card",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plan",
+					"prop": "padding"
+				}
+			]
+		},
+		{
+			"key": "nameColor",
+			"label": "Name colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan h3",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "priceColor",
+			"label": "Price colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan__price",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "priceSize",
+			"label": "Price size",
+			"panel": "Text",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-plan__price",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "textColor",
+			"label": "Text colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " :is(.bwex-plan__desc, .bwex-checks li)",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "checkColor",
+			"label": "Tick colour",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-checks li::before",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "badgeBg",
+			"label": "Badge background",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan__badge",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "badgeColor",
+			"label": "Badge text",
+			"panel": "Text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-plan__badge",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBg",
+			"label": "Background",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnText",
+			"label": "Text colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBorder",
+			"label": "Border colour",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnRadius",
+			"label": "Corner radius",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "btnSize",
+			"label": "Text size",
+			"panel": "Button",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "btnHoverBg",
+			"label": "Background on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link:hover",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverText",
+			"label": "Text on hover",
+			"panel": "Button",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link:hover",
+					"prop": "color"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,158 @@
+/**
+ * Section block "Section style → Dark": the same dark-grid band as Home's "How it works" (BestWebExpert Home
+ * sell.css), for any content inside — section header, core headings, text, links, columns used as cards.
+ * Loaded on widget pages, where a section uses it, and in the editor (includes/page-mode.php).
+ */
+html body .bwex .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark,
+html body.editor-styles-wrapper .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark {
+	--bwex-hair: rgba(255, 255, 255, .1);
+	--bwex-muted: rgba(244, 244, 240, .66);
+	background-color: #0b0d0c;
+	background-image:
+		radial-gradient(40% 60% at 0% 0%, rgba(10, 108, 240, .12), transparent 70%),
+		radial-gradient(40% 60% at 100% 100%, rgba(200, 255, 61, .12), transparent 70%),
+		linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+	background-size: auto, auto, 44px 44px, 44px 44px;
+	background-position: 0 0, 0 0, center -1px, center -1px;
+	color: #f4f4f0;
+}
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark :is(.bwex-h2, .bwex-h2 .elementor-heading-title, h1, h2, h3, h4, h5, h6, .wp-block-heading) { color: #f4f4f0 !important; }
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark :is(.bwex-h2, h2.wp-block-heading) em {
+	padding: 0;
+	color: #f4f4f0;
+	background: linear-gradient(#c8ff3d, #c8ff3d) 0 96% / 100% .09em no-repeat;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark :is(.bwex-eyebrow, .bwex-eyebrow p) { color: rgba(244, 244, 240, .6) !important; }
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark :is(p, li, .bwex-intro p):not(.bwex-eyebrow p) { color: rgba(244, 244, 240, .72) !important; }
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark :is(p, li) a:not(.wp-block-button__link) { color: #c8ff3d !important; }
+html body .bwex-section.bwe-gw-tone--dark.bwe-gw-tone--dark .wp-block-columns > .wp-block-column {
+	padding: 24px;
+	border: 1px solid rgba(255, 255, 255, .1);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, .03);
+}
+
+/**
+ * Parts placed straight on a widget page, outside any section (Price plans, Steps, Spec list, FAQ question,
+ * plain paragraphs …): centred at the site's 1200px content width with some air, like a section's content.
+ * Front end: everything in the widget-page wrapper that is not a full-width section (or a section block's own
+ * outer wrapper: Selected work, the contact form's .bwe-wfu). Editor: the part blocks only
+ * (other pattern previews keep their own layout).
+ */
+html body .bwe-gw-page.bwe-gw-page > .bwex > :not(section, aside, article, header, footer, nav, main, .bwex-section, .bwex-demobar, style, script, .alignfull, .elementor-widget-bwex-spec, .elementor-widget-bwex-cta, .elementor-widget-bwex-hero, .elementor-widget-bwex-services, .bwex-svcw, .elementor-widget-bwex-work, .bwe-wfu),
+html body.editor-styles-wrapper .is-root-container.bwex > :is(.wp-block-bwe-plans, .wp-block-bwe-steps, .wp-block-bwe-spec-list, .wp-block-bwe-who-list, .wp-block-bwe-price-list, .wp-block-bwe-starting-prices, .wp-block-bwe-cost-panel, .wp-block-bwe-faq-item, .wp-block-bwe-section-head, .wp-block-bwe-platforms) {
+	box-sizing: border-box;
+	width: min(1200px, calc(100% - 40px));
+	max-width: none;
+	margin: clamp(32px, 5vw, 64px) auto;
+	/* Same text colour and font as inside a section (.bwex-section), so a part looks identical either way. */
+	color: var(--bwex-ink, #111);
+	font-family: var(--bwex-font, inherit);
+}
+
+/**
+ * Editor canvas of a widget page = the page on the site. Home's editor script gives the canvas root Home's
+ * wrapper classes (.bwe-home.bwex); the rules below cover what the root being that wrapper (instead of a group
+ * inside it, as on Home) misses. Patterns opened on their own get the same, like on Home.
+ */
+/* Sections run edge to edge, as on the site (Astra caps top-level editor blocks at the content width). */
+html body.editor-styles-wrapper .is-root-container.bwex > :is(.wp-block-bwe-hero, .wp-block-bwe-services, .wp-block-bwe-section, .wp-block-bwe-why-us, .wp-block-bwe-testimonials, .wp-block-bwe-pricing, .wp-block-bwe-process, .wp-block-bwe-products, .wp-block-bwe-faq, .wp-block-bwe-cta) {
+	max-width: none;
+	margin-right: 0 !important; /* Astra: margin-inline auto !important (in the flex root that would shrink them) */
+	margin-left: 0 !important;
+}
+/* No gaps between top-level blocks (home.css: .bwe-home.wp-block-group > * { margin-block: 0 }); the parts rule above adds their own air. */
+html body.editor-styles-wrapper .is-root-container.bwe-home > * {
+	margin-block: 0;
+}
+/* Text colour of the page wrapper (Astra's editor .wp-block-post-content colour wins over .bwe-home otherwise). */
+html body.editor-styles-wrapper .is-root-container.bwe-home {
+	color: var(--bwe-ink, #0b0b0c);
+}
+/* Astra's editor paragraph margin; home.css removes it only for a .bwe-home group inside the root. */
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container.bwe-home p {
+	margin-bottom: 0;
+}
+
+/* Product card demo links: the site prints the links straight after the label; the editor keeps them in one
+   editable span, which must not take the label's small-caps look. */
+.editor-styles-wrapper .bwex-card__links > span.bwe-gw-card-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .35rem .9rem;
+	width: 100%;
+	color: inherit;
+	font-size: inherit !important;
+	letter-spacing: inherit;
+	text-transform: inherit;
+}
+
+/* Call to action chat line: the editor prints the site's own green dot span, so no extra drawn dot. */
+.editor-styles-wrapper p.bwe-final__chat.bwe-gw-chat::before {
+	content: none;
+	display: none;
+}
+
+/* Eyebrow chip without an icon of its own (a Section / Section heading anywhere on a widget page): the
+   "Why us" badge. Sections with their own icon (by ID or class) keep it — those rules are more specific. */
+html body .bwe-gw-page .bwex-eyebrow p::before,
+html body.bwe-gw-page .bwex-eyebrow p::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.9 12a4 4 0 0 1 1.8-3.4 4 4 0 0 1 4.8-4.8 4 4 0 0 1 6.8 0 4 4 0 0 1 4.8 4.8 4 4 0 0 1 0 6.8 4 4 0 0 1-4.8 4.8 4 4 0 0 1-6.8 0 4 4 0 0 1-4.8-4.8A4 4 0 0 1 3.9 12Z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") !important;
+}
+
+/* "Why us" cards with a count other than Home's six keep every row full (same rules as service pages, sections.css). */
+@media (min-width: 900px) {
+	:is(html body.bwe-h2x-page .bwe-gw-page, html body.bwe-h2x-page.bwe-gw-page) .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child:nth-last-child(3) { grid-column: span 2; }
+	:is(html body.bwe-h2x-page .bwe-gw-page, html body.bwe-h2x-page.bwe-gw-page) .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(4):nth-last-child(2) { grid-column: span 2; }
+	:is(html body.bwe-h2x-page .bwe-gw-page, html body.bwe-h2x-page.bwe-gw-page) .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(5):nth-last-child(3) { grid-column: span 2; }
+	:is(html body.bwe-h2x-page .bwe-gw-page, html body.bwe-h2x-page.bwe-gw-page) .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(8):last-child { grid-column: span 4; }
+}
+/* Tablet / phone (2 columns, first and last card full width): a middle card left alone in its row fills it. */
+@media (max-width: 1023px) {
+	:is(html body.bwe-h2x-page .bwe-gw-page, html body.bwe-h2x-page.bwe-gw-page) .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-last-child(2):nth-child(even) { grid-column: 1 / -1; }
+}
+
+/* The site's page wrapper is a flex column (Elementor container): margins of neighbouring blocks add up and a
+   block keeps its children's margins inside. The canvas root is that wrapper here, so it lays out the same. */
+html body.editor-styles-wrapper .block-editor-block-list__layout.is-root-container.bwe-home[data-bwe-wrapped] {
+	display: flex;
+	flex-direction: column;
+	/* Astra's editor pads every top-level group (.is-root-container > .wp-block-group, 51px top / bottom); on the
+	   site these blocks sit inside the wrapper without it. Blocks with padding of their own keep it. */
+	--wp--custom--ast-default-block-top-padding: 0px;
+	--wp--custom--ast-default-block-right-padding: 0px;
+	--wp--custom--ast-default-block-bottom-padding: 0px;
+	--wp--custom--ast-default-block-left-padding: 0px;
+}
+
+/* An empty paragraph inside a Section (the starter's body line) prints nothing on the site; in the editor its
+   "Add text…" placeholder shows only while that Section is being edited. */
+.editor-styles-wrapper .wp-block-bwe-section:not(.is-selected):not(.has-child-selected) p.wp-block-paragraph[data-empty="true"] {
+	display: none;
+}
+
+/* Astra shrinks the site's root font size to 91.2% at 921px and below (its inline theme CSS); the editor canvas
+   didn't, so Tablet / Mobile previews showed every rem-based size about 10% too big. html.bwe-gw-canvas is set
+   on editor canvases only (includes/page-mode.php), never on the admin screen around them. */
+@media (max-width: 921px) {
+	html.bwe-gw-canvas {
+		font-size: 91.2%;
+	}
+}
+
+/* Astra's editor stylesheet pads the canvas body by 10px; the site's body has none, so on a widget page the
+   sections were 20px narrower in the editor (text wrapped earlier on phones). */
+html body.editor-styles-wrapper.bwe-gw-page.wp-embed-responsive {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+/* Items per row on a list that is not inside its usual section (a spec / who list or steps placed on their own
+   stack without a gap): some air between the cards once they share a row. :where() = no weight, so the gap the
+   site's section CSS sets always wins. */
+:where(ul.bwex-spec__list, ol.bwex-who__list, ol.bwex-num)[class*="bwe-s-"] {
+	gap: clamp(12px, 1.6vw, 20px);
+}

@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/spec-card",
+	"title": "Feature card",
+	"category": "bestwebexpert",
+	"icon": "id-alt",
+	"description": "One spec card: a name, a short text and an optional tag.",
+	"keywords": [
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/spec-list",
+		"bwe/why-us"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"chip": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

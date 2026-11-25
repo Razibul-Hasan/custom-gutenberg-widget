@@ -1,0 +1,991 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/process",
+	"title": "How it works",
+	"category": "bestwebexpert",
+	"icon": "editor-ol",
+	"description": "How-it-works section: heading and numbered steps (add, remove or move them; numbers update by themselves). Every look setting is in the Styles tab.",
+	"keywords": [
+		"process",
+		"steps",
+		"how it works",
+		"timeline",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "How it works"
+		},
+		"showEyebrow": {
+			"type": "boolean",
+			"default": true
+		},
+		"title": {
+			"type": "string",
+			"default": "Launch in as Little as 21 Days. <em>Here’s Exactly How.</em>"
+		},
+		"intro": {
+			"type": "string",
+			"default": ""
+		},
+		"showIntro": {
+			"type": "boolean",
+			"default": true
+		},
+		"split": {
+			"type": "boolean",
+			"default": false
+		},
+		"sectionId": {
+			"type": "string",
+			"default": "process"
+		},
+		"headElementId": {
+			"type": "string",
+			"default": "60e9620"
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		},
+		"bweIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"headingId": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php",
+	"bweStyleMap": [
+		{
+			"key": "paddingTop",
+			"label": "Space above",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-top"
+				}
+			]
+		},
+		{
+			"key": "paddingBottom",
+			"label": "Space below",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-bottom"
+				}
+			]
+		},
+		{
+			"key": "paddingTopMobile",
+			"label": "Space above (phone)",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-top",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "paddingBottomMobile",
+			"label": "Space below (phone)",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "padding-bottom",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "contentWidth",
+			"label": "Content width",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-wrap",
+					"prop": "max-width"
+				}
+			]
+		},
+		{
+			"key": "minHeight",
+			"label": "Minimum height",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "min-height"
+				}
+			]
+		},
+		{
+			"key": "textAlign",
+			"label": "Heading alignment",
+			"panel": "Layout",
+			"control": "select",
+			"options": [
+				{
+					"label": "Left",
+					"value": "left"
+				},
+				{
+					"label": "Centre",
+					"value": "center"
+				},
+				{
+					"label": "Right",
+					"value": "right"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-head",
+					"prop": "text-align"
+				}
+			]
+		},
+		{
+			"key": "bgColor",
+			"label": "Background colour",
+			"panel": "Background",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "hideDecor",
+			"general": true,
+			"label": "Hide background decorations (glow, grid)",
+			"panel": "Background",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "background-image",
+					"valueMap": {
+						"true": "none"
+					}
+				},
+				{
+					"sel": "::before",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				},
+				{
+					"sel": "::after",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		},
+		{
+			"key": "bgImage",
+			"label": "Background image",
+			"panel": "Background",
+			"control": "image",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "background-image",
+					"tpl": "url('{v}')"
+				},
+				{
+					"sel": "",
+					"prop": "background-size",
+					"fixed": "cover"
+				},
+				{
+					"sel": "",
+					"prop": "background-position",
+					"fixed": "center"
+				},
+				{
+					"sel": "",
+					"prop": "background-repeat",
+					"fixed": "no-repeat"
+				}
+			]
+		},
+		{
+			"key": "overlay",
+			"label": "Overlay colour (use transparency)",
+			"panel": "Background",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "box-shadow",
+					"tpl": "inset 0 0 0 100vmax {v}"
+				}
+			]
+		},
+		{
+			"key": "accent",
+			"general": true,
+			"label": "Highlight colour (italic words, lines, tags)",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "--bwex-accent"
+				},
+				{
+					"sel": "",
+					"prop": "--bwe-accent"
+				},
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "background-color"
+				},
+				{
+					"sel": " .bwex-h2 h2 em",
+					"prop": "background-image",
+					"tpl": "linear-gradient({v}, {v})"
+				}
+			]
+		},
+		{
+			"key": "textColor",
+			"general": true,
+			"label": "Text colour",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "color"
+				},
+				{
+					"sel": " :where(p)",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "linkColor",
+			"general": true,
+			"label": "Link colour",
+			"panel": "Colours & text",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " :where(p a, li a:not(.wp-block-button__link))",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "textSize",
+			"general": true,
+			"label": "Text size",
+			"panel": "Colours & text",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " :where(p)",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "eyebrowColor",
+			"label": "Colour",
+			"panel": "Small label (above the heading)",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "eyebrowSize",
+			"label": "Size",
+			"panel": "Small label (above the heading)",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "eyebrowChip",
+			"label": "Icon box colour",
+			"panel": "Small label (above the heading)",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "hideEyebrowIcon",
+			"label": "Hide the icon",
+			"panel": "Small label (above the heading)",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-eyebrow p::before",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		},
+		{
+			"key": "titleSize",
+			"label": "Size",
+			"panel": "Heading",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "titleSizeMobile",
+			"label": "Size (phone)",
+			"panel": "Heading",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-size",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "titleColor",
+			"label": "Colour",
+			"panel": "Heading",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "titleWeight",
+			"label": "Weight",
+			"panel": "Heading",
+			"control": "select",
+			"options": [
+				{
+					"label": "400 Regular",
+					"value": "400"
+				},
+				{
+					"label": "500 Medium",
+					"value": "500"
+				},
+				{
+					"label": "600 Semibold",
+					"value": "600"
+				},
+				{
+					"label": "700 Bold",
+					"value": "700"
+				},
+				{
+					"label": "800 Extra bold",
+					"value": "800"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "font-weight"
+				}
+			]
+		},
+		{
+			"key": "titleLineHeight",
+			"label": "Line height",
+			"panel": "Heading",
+			"control": "range",
+			"min": 0.8,
+			"max": 1.6,
+			"step": 0.01,
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2",
+					"prop": "line-height"
+				}
+			]
+		},
+		{
+			"key": "highlightText",
+			"label": "Highlighted words colour",
+			"panel": "Heading",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-h2 h2 em",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "introColor",
+			"label": "Colour",
+			"panel": "Intro",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "introSize",
+			"label": "Size",
+			"panel": "Intro",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "introWidth",
+			"label": "Max width",
+			"panel": "Intro",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-intro p",
+					"prop": "max-width"
+				}
+			]
+		},
+		{
+			"key": "columns",
+			"label": "Columns (desktop)",
+			"panel": "Layout",
+			"control": "range",
+			"min": 1,
+			"max": 6,
+			"rules": [
+				{
+					"sel": " .bwex-num",
+					"prop": "grid-template-columns",
+					"tpl": "repeat({v}, minmax(0, 1fr))",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num",
+					"prop": "display",
+					"fixed": "grid",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "white-space",
+					"fixed": "normal",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "height",
+					"fixed": "auto",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "min-height",
+					"fixed": "40px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-top",
+					"fixed": "8px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-bottom",
+					"fixed": "8px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "text-align",
+					"fixed": "center",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "line-height",
+					"fixed": "1.3",
+					"media": "desktop"
+				}
+			]
+		},
+		{
+			"key": "columnsTablet",
+			"label": "Columns (tablet)",
+			"panel": "Layout",
+			"control": "range",
+			"min": 1,
+			"max": 3,
+			"rules": [
+				{
+					"sel": " .bwex-num",
+					"prop": "grid-template-columns",
+					"tpl": "repeat({v}, minmax(0, 1fr))",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num",
+					"prop": "display",
+					"fixed": "grid",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "white-space",
+					"fixed": "normal",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "height",
+					"fixed": "auto",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "min-height",
+					"fixed": "40px",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-top",
+					"fixed": "8px",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-bottom",
+					"fixed": "8px",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "text-align",
+					"fixed": "center",
+					"media": "tablet"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "line-height",
+					"fixed": "1.3",
+					"media": "tablet"
+				}
+			]
+		},
+		{
+			"key": "columnsMobile",
+			"label": "Columns (phone)",
+			"panel": "Layout",
+			"control": "range",
+			"min": 1,
+			"max": 2,
+			"rules": [
+				{
+					"sel": " .bwex-num",
+					"prop": "grid-template-columns",
+					"tpl": "repeat({v}, minmax(0, 1fr))",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num",
+					"prop": "display",
+					"fixed": "grid",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "white-space",
+					"fixed": "normal",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "height",
+					"fixed": "auto",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "min-height",
+					"fixed": "40px",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-top",
+					"fixed": "8px",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-bottom",
+					"fixed": "8px",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "text-align",
+					"fixed": "center",
+					"media": "mobile"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "line-height",
+					"fixed": "1.3",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "oneRow",
+			"label": "All items on one row (desktop, while they fit)",
+			"panel": "Layout",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-num",
+					"prop": "display",
+					"fixed": "grid",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num",
+					"prop": "grid-template-columns",
+					"fixed": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num > *",
+					"prop": "grid-column",
+					"fixed": "auto",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num > *",
+					"prop": "width",
+					"fixed": "auto",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "white-space",
+					"fixed": "normal",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "height",
+					"fixed": "auto",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "min-height",
+					"fixed": "40px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-top",
+					"fixed": "8px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "padding-bottom",
+					"fixed": "8px",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "text-align",
+					"fixed": "center",
+					"media": "desktop"
+				},
+				{
+					"sel": " .bwex-num :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+					"prop": "line-height",
+					"fixed": "1.3",
+					"media": "desktop"
+				}
+			]
+		},
+		{
+			"key": "gap",
+			"label": "Space between items",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num",
+					"prop": "gap"
+				}
+			]
+		},
+		{
+			"key": "cardBg",
+			"label": "Background",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__item",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "cardBorder",
+			"label": "Border colour",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__item",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "cardRadius",
+			"label": "Corner radius",
+			"panel": "Steps",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num__item",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "cardPadding",
+			"label": "Inner space",
+			"panel": "Steps",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num__item",
+					"prop": "padding"
+				}
+			]
+		},
+		{
+			"key": "cardShadow",
+			"label": "Shadow",
+			"panel": "Steps",
+			"control": "select",
+			"options": [
+				{
+					"label": "None",
+					"value": "none"
+				},
+				{
+					"label": "Soft",
+					"value": "soft"
+				},
+				{
+					"label": "Strong",
+					"value": "strong"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .bwex-num__item",
+					"prop": "box-shadow",
+					"valueMap": {
+						"none": "none",
+						"soft": "0 18px 40px -28px rgba(17, 17, 17, .35)",
+						"strong": "0 28px 60px -24px rgba(17, 17, 17, .55)"
+					}
+				}
+			]
+		},
+		{
+			"key": "cardHoverBorder",
+			"label": "Border on hover",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__item:hover",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "cardTitleColor",
+			"label": "Title colour",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__title",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "cardTitleSize",
+			"label": "Title size",
+			"panel": "Steps",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num__title",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "cardTextColor",
+			"label": "Text colour",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__text p",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "cardTextSize",
+			"label": "Text size",
+			"panel": "Steps",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num__text p",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "numColor",
+			"label": "Number colour",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__n",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "numSize",
+			"label": "Number size",
+			"panel": "Steps",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .bwex-num__n",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "hideNum",
+			"label": "Hide the numbers",
+			"panel": "Steps",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-num__n",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		},
+		{
+			"key": "iconTile",
+			"label": "Icon box colour",
+			"panel": "Steps",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .bwex-num__item::after",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "hideIcons",
+			"label": "Hide the icons",
+			"panel": "Steps",
+			"control": "toggle",
+			"rules": [
+				{
+					"sel": " .bwex-num__item::after",
+					"prop": "display",
+					"valueMap": {
+						"true": "none"
+					}
+				}
+			]
+		}
+	]
+}

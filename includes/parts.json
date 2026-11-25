@@ -1,0 +1,788 @@
+{
+	"general-ghost-button--button": {
+		"block": "core/button",
+		"label": "Ghost button",
+		"context": "Call to action",
+		"classes": "bwe-btn bwe-btn--ghost"
+	},
+	"general-primary-button--button": {
+		"block": "core/button",
+		"label": "Primary button",
+		"context": "Call to action",
+		"classes": "bwe-btn bwe-btn--primary"
+	},
+	"general-outline-button-filled-button--button": {
+		"block": "core/button",
+		"label": "Filled button",
+		"context": "General",
+		"classes": "bwex-btn bwex-btn--fill"
+	},
+	"general-outline-button-filled-button-widget-wrapper-46d77b3--button": {
+		"block": "core/button",
+		"label": "Card button (filled)",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-46d77b3 bwex-btn bwex-btn--fill elementor-widget elementor-widget-button"
+	},
+	"general-site-buttons--buttons": {
+		"block": "core/buttons",
+		"label": "Site buttons (row)",
+		"context": "General",
+		"classes": "bwe-btns-raw"
+	},
+	"general-buttons-row--group": {
+		"block": "core/group",
+		"label": "Buttons row",
+		"context": "Call to action",
+		"classes": "bwe-actions"
+	},
+	"call-to-action-box--group": {
+		"block": "core/group",
+		"label": "Box",
+		"context": "Call to action",
+		"classes": "bwe-final__box"
+	},
+	"general-wrapper--group": {
+		"block": "core/group",
+		"label": "Section box",
+		"context": "Call to action",
+		"classes": "bwe-home bwex bwex-ctaw"
+	},
+	"general-checkmark-list-wrapper--group": {
+		"block": "core/group",
+		"label": "Card checklist box",
+		"context": "About section",
+		"classes": "bwex bwex-checksw"
+	},
+	"general-card-wrapper--group": {
+		"block": "core/group",
+		"label": "Card box",
+		"context": "Platform card",
+		"classes": "bwex bwex-platw"
+	},
+	"general-read-more-wrapper--group": {
+		"block": "core/group",
+		"label": "Read-more box",
+		"context": "About section",
+		"classes": "bwex bwex-readmorew"
+	},
+	"general-services-wrapper--group": {
+		"block": "core/group",
+		"label": "Services area (outer)",
+		"context": "Services band",
+		"classes": "bwex bwex-svcw"
+	},
+	"general-cards-wrapper--group": {
+		"block": "core/group",
+		"label": "Cards box",
+		"context": "Who we build for",
+		"classes": "bwex bwex-whow"
+	},
+	"about-section-shots-row--group": {
+		"block": "core/group",
+		"label": "Screenshots row",
+		"context": "About section",
+		"classes": "bwex-about__shots bwex-about__shots--row"
+	},
+	"guide-chapter-chapter--group": {
+		"block": "core/group",
+		"label": "Chapter",
+		"context": "Guide chapter",
+		"classes": "bwex-chapter"
+	},
+	"guide-chapter-body--group": {
+		"block": "core/group",
+		"label": "Chapter text",
+		"context": "Guide chapter",
+		"classes": "bwex-chapter__body"
+	},
+	"call-to-action-eyebrow--group": {
+		"block": "core/group",
+		"label": "Small label",
+		"context": "Call to action",
+		"classes": "bwex-cta__eyebrow"
+	},
+	"demo-bar-demobar--group": {
+		"block": "core/group",
+		"label": "Demo bar",
+		"context": "Demo bar",
+		"classes": "bwex-demobar"
+	},
+	"general-eyebrow-small-label-above-a-heading--group": {
+		"block": "core/group",
+		"label": "Small label (above a heading)",
+		"context": "General",
+		"classes": "bwex-eyebrow"
+	},
+	"guide-with-contents-body--group": {
+		"block": "core/group",
+		"label": "Chapters column",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__body"
+	},
+	"guide-with-contents-grid--group": {
+		"block": "core/group",
+		"label": "Contents + chapters grid",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__grid"
+	},
+	"guide-with-contents-nav--group": {
+		"block": "core/group",
+		"label": "Contents column",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__nav"
+	},
+	"general-section-heading--group": {
+		"block": "core/group",
+		"label": "Section heading",
+		"context": "General",
+		"classes": "bwex-h2"
+	},
+	"services-band-title--group": {
+		"block": "core/group",
+		"label": "Title",
+		"context": "Services band",
+		"classes": "bwex-h2 bwex-svc__title"
+	},
+	"general-card-heading--group": {
+		"block": "core/group",
+		"label": "Card heading",
+		"context": "General",
+		"classes": "bwex-h3"
+	},
+	"big-screenshot-body--group": {
+		"block": "core/group",
+		"label": "Screenshot area",
+		"context": "Big screenshot",
+		"classes": "bwex-media__body"
+	},
+	"platform-card-plat--group": {
+		"block": "core/group",
+		"label": "Card",
+		"context": "Platform card",
+		"classes": "bwex-plat"
+	},
+	"platform-card-chipwrap--group": {
+		"block": "core/group",
+		"label": "Chip row",
+		"context": "Platform card",
+		"classes": "bwex-plat__chipwrap"
+	},
+	"platform-card-foot--group": {
+		"block": "core/group",
+		"label": "Card footer",
+		"context": "Platform card",
+		"classes": "bwex-plat__foot"
+	},
+	"platform-card-img--group": {
+		"block": "core/group",
+		"label": "Card image",
+		"context": "Platform card",
+		"classes": "bwex-plat__img"
+	},
+	"platform-card-text--group": {
+		"block": "core/group",
+		"label": "Card text",
+		"context": "Platform card",
+		"classes": "bwex-plat__text"
+	},
+	"starting-prices-note-pricenote--group": {
+		"block": "core/group",
+		"label": "Starting prices box",
+		"context": "Starting prices note",
+		"classes": "bwex-pricenote"
+	},
+	"long-text-body--group": {
+		"block": "core/group",
+		"label": "Text column",
+		"context": "Long text",
+		"classes": "bwex-prose__body"
+	},
+	"general-section-dark--group": {
+		"block": "core/group",
+		"label": "Services band (dark section)",
+		"context": "General",
+		"classes": "bwex-section bwex-section--dark bwex-svc-band"
+	},
+	"showcase-body--group": {
+		"block": "core/group",
+		"label": "Demo area",
+		"context": "Showcase",
+		"classes": "bwex-showcase__body"
+	},
+	"showcase-body-bleed--group": {
+		"block": "core/group",
+		"label": "Demo area (full bleed)",
+		"context": "Showcase",
+		"classes": "bwex-showcase__body bwex-showcase__body--bleed"
+	},
+	"showcase-copy--group": {
+		"block": "core/group",
+		"label": "Text column",
+		"context": "Showcase",
+		"classes": "bwex-showcase__copy"
+	},
+	"showcase-grid--group": {
+		"block": "core/group",
+		"label": "Text + demo grid",
+		"context": "Showcase",
+		"classes": "bwex-showcase__grid"
+	},
+	"text-image-copy--group": {
+		"block": "core/group",
+		"label": "Text column",
+		"context": "Text + image",
+		"classes": "bwex-split__copy"
+	},
+	"text-image-grid--group": {
+		"block": "core/group",
+		"label": "Text + image grid",
+		"context": "Text + image",
+		"classes": "bwex-split__grid"
+	},
+	"text-image-media--group": {
+		"block": "core/group",
+		"label": "Image column",
+		"context": "Text + image",
+		"classes": "bwex-split__media"
+	},
+	"screenshot-strip-screenshot-strip--group": {
+		"block": "core/group",
+		"label": "Screenshot strip",
+		"context": "Screenshot strip",
+		"classes": "bwex-strip"
+	},
+	"guide-chapter-sub-card--group": {
+		"block": "core/group",
+		"label": "Sub-card",
+		"context": "Guide chapter",
+		"classes": "bwex-subcard"
+	},
+	"guide-chapter-sub-card-grid--group": {
+		"block": "core/group",
+		"label": "Sub-card grid",
+		"context": "Guide chapter",
+		"classes": "bwex-subgrid"
+	},
+	"services-band-svc--group": {
+		"block": "core/group",
+		"label": "Services box",
+		"context": "Services band",
+		"classes": "bwex-svc"
+	},
+	"services-band-body--group": {
+		"block": "core/group",
+		"label": "Services list area",
+		"context": "Services band",
+		"classes": "bwex-svc__body"
+	},
+	"services-band-head--group": {
+		"block": "core/group",
+		"label": "Services header",
+		"context": "Services band",
+		"classes": "bwex-svc__head"
+	},
+	"services-band-lead--group": {
+		"block": "core/group",
+		"label": "Services intro",
+		"context": "Services band",
+		"classes": "bwex-svc__lead"
+	},
+	"screenshot-tour-tour--group": {
+		"block": "core/group",
+		"label": "Tour",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour"
+	},
+	"screenshot-tour-frame--group": {
+		"block": "core/group",
+		"label": "Screen frame",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__frame"
+	},
+	"screenshot-tour-stage--group": {
+		"block": "core/group",
+		"label": "Screen",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__stage"
+	},
+	"screenshot-tour-tab--group": {
+		"block": "core/group",
+		"label": "Tab",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__tab"
+	},
+	"screenshot-tour-tabs--group": {
+		"block": "core/group",
+		"label": "Tabs",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__tabs"
+	},
+	"who-we-build-for-body--group": {
+		"block": "core/group",
+		"label": "Cards area",
+		"context": "Who we build for",
+		"classes": "bwex-who__body"
+	},
+	"general-content-area-page-width--group": {
+		"block": "core/group",
+		"label": "Content area (page width)",
+		"context": "General",
+		"classes": "bwex-wrap"
+	},
+	"general-content-area-page-width-051d390--group": {
+		"block": "core/group",
+		"label": "Content area (page width)",
+		"context": "Who we build for",
+		"classes": "elementor-element elementor-element-051d390 e-con-full bwex-wrap e-flex e-con e-child"
+	},
+	"general-widget-wrapper-section-head-15dc625--group": {
+		"block": "core/group",
+		"label": "Header box",
+		"context": "Pricing",
+		"classes": "elementor-element elementor-element-15dc625 elementor-widget elementor-widget-bwex-section-head"
+	},
+	"platform-cards-plats-1de90ac--group": {
+		"block": "core/group",
+		"label": "Cards grid (3 per row)",
+		"context": "Platform cards",
+		"classes": "elementor-element elementor-element-1de90ac e-con-full bwex-plats bwex-plats--3 e-flex e-con e-child"
+	},
+	"general-content-area-page-width-2f9aa12--group": {
+		"block": "core/group",
+		"label": "Content area (page width)",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-2f9aa12 e-con-full bwex-wrap e-flex e-con e-child"
+	},
+	"about-section-grid-44e1935--group": {
+		"block": "core/group",
+		"label": "Text + card grid",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-44e1935 e-con-full bwex-about__grid e-flex e-con e-child"
+	},
+	"general-widget-wrapper-who-list-538735e--group": {
+		"block": "core/group",
+		"label": "Cards list box",
+		"context": "Who we build for",
+		"classes": "elementor-element elementor-element-538735e elementor-widget elementor-widget-bwex-who-list"
+	},
+	"about-section-lead-widget-wrapper-5d9fa0f--group": {
+		"block": "core/group",
+		"label": "Lead text box",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-5d9fa0f bwex-about__lead elementor-widget elementor-widget-text-editor"
+	},
+	"general-card-heading-widget-wrapper-5ea19df--group": {
+		"block": "core/group",
+		"label": "Card heading box",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-5ea19df bwex-h3 elementor-widget elementor-widget-heading"
+	},
+	"general-eyebrow-small-label-above-a-heading-widget-wrapper-5fa24d3--group": {
+		"block": "core/group",
+		"label": "Small label box",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-5fa24d3 bwex-eyebrow elementor-widget elementor-widget-text-editor"
+	},
+	"about-section-card-90925e9--group": {
+		"block": "core/group",
+		"label": "Card",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-90925e9 e-con-full bwex-about__card e-flex e-con e-child"
+	},
+	"about-section-copy-929d0d7--group": {
+		"block": "core/group",
+		"label": "Text column",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-929d0d7 e-con-full bwex-about__copy e-flex e-con e-child"
+	},
+	"general-content-area-page-width-b51609b--group": {
+		"block": "core/group",
+		"label": "Content area (page width)",
+		"context": "Platform cards",
+		"classes": "elementor-element elementor-element-b51609b e-con-full bwex-wrap e-flex e-con e-child"
+	},
+	"about-section-more-widget-wrapper-b6a1f79--group": {
+		"block": "core/group",
+		"label": "Read-more area",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-b6a1f79 bwex-about__more elementor-widget elementor-widget-bwex-read-more"
+	},
+	"general-widget-wrapper-services-be895a2--group": {
+		"block": "core/group",
+		"label": "Services area",
+		"context": "Services band",
+		"classes": "elementor-element elementor-element-be895a2 elementor-widget elementor-widget-bwex-services"
+	},
+	"general-content-area-page-width-d60292a--group": {
+		"block": "core/group",
+		"label": "Content area (page width)",
+		"context": "Pricing",
+		"classes": "elementor-element elementor-element-d60292a e-con-full bwex-wrap e-flex e-con e-child"
+	},
+	"general-section-heading-widget-wrapper-e4e543b--group": {
+		"block": "core/group",
+		"label": "Heading box",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-e4e543b bwex-h2 elementor-widget elementor-widget-heading"
+	},
+	"general-widget-wrapper-check-list-fd2f254--group": {
+		"block": "core/group",
+		"label": "Checklist area",
+		"context": "About section",
+		"classes": "elementor-element elementor-element-fd2f254 elementor-widget elementor-widget-bwex-check-list"
+	},
+	"general-widget-wrapper-platform-card-plat0--group": {
+		"block": "core/group",
+		"label": "Card 1 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat0 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-platform-card-plat1--group": {
+		"block": "core/group",
+		"label": "Card 2 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat1 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-platform-card-plat2--group": {
+		"block": "core/group",
+		"label": "Card 3 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat2 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-platform-card-plat3--group": {
+		"block": "core/group",
+		"label": "Card 4 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat3 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-platform-card-plat4--group": {
+		"block": "core/group",
+		"label": "Card 5 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat4 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-platform-card-plat5--group": {
+		"block": "core/group",
+		"label": "Card 6 box",
+		"context": "Platform card",
+		"classes": "elementor-element elementor-element-plat5 elementor-widget elementor-widget-bwex-platform-card"
+	},
+	"general-widget-wrapper-section-head--group": {
+		"block": "core/group",
+		"label": "Section header box",
+		"context": "General",
+		"classes": "elementor-element elementor-widget elementor-widget-bwex-section-head"
+	},
+	"general-widget-wrapper-container--group": {
+		"block": "core/group",
+		"label": "Inner box",
+		"context": "General",
+		"classes": "elementor-widget-container"
+	},
+	"guide-chapter-title--heading": {
+		"block": "core/heading",
+		"label": "Chapter title",
+		"context": "Guide chapter",
+		"classes": "bwex-chapter__title"
+	},
+	"general-section-heading-text-plain--heading": {
+		"block": "core/heading",
+		"label": "Section heading text (plain)",
+		"context": "General",
+		"classes": "elementor-heading-title bwe-h2x-plain"
+	},
+	"general-section-heading-text-default-size--heading": {
+		"block": "core/heading",
+		"label": "Section heading text, default size",
+		"context": "General",
+		"classes": "elementor-heading-title elementor-size-default"
+	},
+	"general-section-heading-text-plain-default-size--heading": {
+		"block": "core/heading",
+		"label": "Section heading text (plain), default size",
+		"context": "General",
+		"classes": "elementor-heading-title elementor-size-default bwe-h2x-plain"
+	},
+	"general-plain-image-no-frame--image": {
+		"block": "core/image",
+		"label": "Plain image (no frame)",
+		"context": "General",
+		"classes": "bwe-raw-img"
+	},
+	"general-framed-screenshot--image": {
+		"block": "core/image",
+		"label": "Framed screenshot",
+		"context": "General",
+		"classes": "bwe-shot"
+	},
+	"reels-hero-shot--image": {
+		"block": "core/image",
+		"label": "Framed screenshot (ProductReels)",
+		"context": "Big screenshot",
+		"classes": "bwe-shot bwe-reels-hero__shot"
+	},
+	"guide-with-contents-shot--image": {
+		"block": "core/image",
+		"label": "Chapter screenshot",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__shot"
+	},
+	"text-image-img--image": {
+		"block": "core/image",
+		"label": "Image",
+		"context": "Text + image",
+		"classes": "bwex-split__img"
+	},
+	"screenshot-strip-shot--image": {
+		"block": "core/image",
+		"label": "Strip screenshot",
+		"context": "Screenshot strip",
+		"classes": "bwex-strip__shot"
+	},
+	"screenshot-tour-shot--image": {
+		"block": "core/image",
+		"label": "Tour screenshot",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__shot"
+	},
+	"general-checkmark-list--list": {
+		"block": "core/list",
+		"label": "Checkmark list",
+		"context": "General",
+		"classes": "bwex-checks"
+	},
+	"guide-with-contents-toc--list": {
+		"block": "core/list",
+		"label": "Contents list",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__toc"
+	},
+	"general-bullet-points--list": {
+		"block": "core/list",
+		"label": "Bullet points",
+		"context": "General",
+		"classes": "bwex-points"
+	},
+	"starting-prices-note-list--list": {
+		"block": "core/list",
+		"label": "Price links",
+		"context": "Starting prices note",
+		"classes": "bwex-pricenote__list"
+	},
+	"general-price-list--list": {
+		"block": "core/list",
+		"label": "Price list",
+		"context": "General",
+		"classes": "bwex-prices"
+	},
+	"general-numbered-steps--list": {
+		"block": "core/list",
+		"label": "Numbered steps",
+		"context": "General",
+		"classes": "bwex-steps"
+	},
+	"services-band-grid--list": {
+		"block": "core/list",
+		"label": "Services list",
+		"context": "Services band",
+		"classes": "bwex-svc__grid"
+	},
+	"services-band-item-ai-seo--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: ai seo",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--ai-seo"
+	},
+	"services-band-item-appreview--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: appreview",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--appreview"
+	},
+	"services-band-item-apps--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: apps",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--apps"
+	},
+	"services-band-item-shopify--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: shopify",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--shopify"
+	},
+	"services-band-item-speed--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: speed",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--speed"
+	},
+	"services-band-item-theme--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: theme",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--theme"
+	},
+	"services-band-item-webdev--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: webdev",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--webdev"
+	},
+	"services-band-item-woocommerce--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: woocommerce",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--woocommerce"
+	},
+	"services-band-item-wordpress--list-item": {
+		"block": "core/list-item",
+		"label": "Service tile: wordpress",
+		"context": "Services band",
+		"classes": "bwex-svc__item bwex-svc__item--wordpress"
+	},
+	"general-eyebrow--paragraph": {
+		"block": "core/paragraph",
+		"label": "Small label",
+		"context": "Call to action",
+		"classes": "bwe-eyebrow"
+	},
+	"call-to-action-chat-line--paragraph": {
+		"block": "core/paragraph",
+		"label": "Chat line",
+		"context": "Call to action",
+		"classes": "bwe-final__chat"
+	},
+	"call-to-action-small-note--paragraph": {
+		"block": "core/paragraph",
+		"label": "Small note",
+		"context": "Call to action",
+		"classes": "bwe-final__note"
+	},
+	"general-lead-text--paragraph": {
+		"block": "core/paragraph",
+		"label": "Lead text",
+		"context": "Call to action",
+		"classes": "bwe-lead"
+	},
+	"about-section-text--paragraph": {
+		"block": "core/paragraph",
+		"label": "Read-more text",
+		"context": "About section",
+		"classes": "bwex-about__text"
+	},
+	"guide-chapter-num--paragraph": {
+		"block": "core/paragraph",
+		"label": "Chapter number",
+		"context": "Guide chapter",
+		"classes": "bwex-chapter__num"
+	},
+	"demo-bar-cta--paragraph": {
+		"block": "core/paragraph",
+		"label": "Link to the plugin",
+		"context": "Demo bar",
+		"classes": "bwex-demobar__cta"
+	},
+	"demo-bar-label--paragraph": {
+		"block": "core/paragraph",
+		"label": "Label",
+		"context": "Demo bar",
+		"classes": "bwex-demobar__label"
+	},
+	"demo-bar-tabs--paragraph": {
+		"block": "core/paragraph",
+		"label": "Demo links",
+		"context": "Demo bar",
+		"classes": "bwex-demobar__tabs"
+	},
+	"guide-with-contents-navtitle--paragraph": {
+		"block": "core/paragraph",
+		"label": "Contents title",
+		"context": "Guide with contents",
+		"classes": "bwex-guide__navtitle"
+	},
+	"general-note-under-the-section--paragraph": {
+		"block": "core/paragraph",
+		"label": "Note under the section",
+		"context": "General",
+		"classes": "bwex-more"
+	},
+	"platform-card-chip--paragraph": {
+		"block": "core/paragraph",
+		"label": "Chip",
+		"context": "Platform card",
+		"classes": "bwex-plat__chip"
+	},
+	"starting-prices-note-label--paragraph": {
+		"block": "core/paragraph",
+		"label": "Label",
+		"context": "Starting prices note",
+		"classes": "bwex-pricenote__label"
+	},
+	"starting-prices-note-note--paragraph": {
+		"block": "core/paragraph",
+		"label": "Note",
+		"context": "Starting prices note",
+		"classes": "bwex-pricenote__note"
+	},
+	"showcase-best--paragraph": {
+		"block": "core/paragraph",
+		"label": "“Best for” line",
+		"context": "Showcase",
+		"classes": "bwex-showcase__best"
+	},
+	"showcase-note--paragraph": {
+		"block": "core/paragraph",
+		"label": "Small note",
+		"context": "Showcase",
+		"classes": "bwex-showcase__note"
+	},
+	"text-image-lead--paragraph": {
+		"block": "core/paragraph",
+		"label": "Lead text",
+		"context": "Text + image",
+		"classes": "bwex-split__lead"
+	},
+	"screenshot-tour-bar--paragraph": {
+		"block": "core/paragraph",
+		"label": "Address bar",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__bar"
+	},
+	"screenshot-tour-name--paragraph": {
+		"block": "core/paragraph",
+		"label": "Tab name",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__name"
+	},
+	"screenshot-tour-num--paragraph": {
+		"block": "core/paragraph",
+		"label": "Tab number",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__num"
+	},
+	"screenshot-tour-text--paragraph": {
+		"block": "core/paragraph",
+		"label": "Tab text",
+		"context": "Screenshot tour",
+		"classes": "bwex-tour__text"
+	},
+	"general-comparison-table-wide--table": {
+		"block": "core/table",
+		"label": "Comparison table (wide)",
+		"context": "General",
+		"classes": "bwe-table"
+	},
+	"general-comparison-table--table": {
+		"block": "core/table",
+		"label": "Comparison table",
+		"context": "General",
+		"classes": "bwex-table"
+	},
+	"general-plain-heading--heading": {
+		"block": "core/heading",
+		"label": "Plain heading (section heading look)",
+		"context": "General",
+		"classes": "bwe-h2x-plain"
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/service-tile",
+	"title": "Service tile",
+	"category": "bestwebexpert",
+	"icon": "screenoptions",
+	"description": "One linked service: tag, name, short text and arrow.",
+	"keywords": [
+		"service",
+		"tile",
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/services"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"bweIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"icon": {
+			"type": "string",
+			"default": "wordpress"
+		},
+		"platform": {
+			"type": "string",
+			"default": "wp"
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"tag": {
+			"type": "string",
+			"default": ""
+		},
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"desc": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

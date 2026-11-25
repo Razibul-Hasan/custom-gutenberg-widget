@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/section-head",
+	"title": "Section header",
+	"category": "bestwebexpert",
+	"icon": "heading",
+	"description": "Small label, heading (italic = lime highlight) and an optional intro beside or under it.",
+	"keywords": [
+		"heading",
+		"title",
+		"eyebrow",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"headingId": {
+			"type": "string",
+			"default": ""
+		},
+		"intro": {
+			"type": "string",
+			"default": ""
+		},
+		"split": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

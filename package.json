@@ -1,0 +1,32 @@
+{
+	"name": "bestwebexpert-gutenberg-widget",
+	"version": "1.0.0",
+	"description": "Best Web Expert Gutenberg Widget — BestWebExpert's own Gutenberg blocks.",
+	"private": true,
+	"author": "BestWebExpert",
+	"license": "GPL-2.0-or-later",
+	"files": [
+		"bestwebexpert-gutenberg-widget.php",
+		"includes/",
+		"assets/",
+		"build/",
+		"readme.txt"
+	],
+	"scripts": {
+		"build": "node tools/build-labels.mjs && node tools/build-heading-compat.mjs && wp-scripts build --webpack-src-dir=src/blocks --output-path=build/blocks --webpack-copy-php && wp-scripts build-blocks-manifest --input=build/blocks --output=build/blocks-manifest.php && node tools/build-icons.mjs",
+		"icons": "node tools/build-icons.mjs",
+		"start": "node tools/build-labels.mjs && wp-scripts start --webpack-src-dir=src/blocks --output-path=build/blocks --webpack-copy-php",
+		"lint:js": "wp-scripts lint-js src",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"test": "node tools/run-all.mjs tests",
+		"verify": "node tools/run-all.mjs verify",
+		"editor": "node tools/run-all.mjs editor",
+		"audit": "node tools/control-audit-front.mjs",
+		"labels": "node tools/build-labels.mjs",
+		"heading-compat": "node tools/build-heading-compat.mjs"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "37.2.0",
+		"lucide-static": "^1.78.0"
+	}
+}

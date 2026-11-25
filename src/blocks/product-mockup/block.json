@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/product-mockup",
+	"title": "Plugin mockup",
+	"category": "bestwebexpert",
+	"icon": "smartphone",
+	"description": "The animated plugin mockup from the product cards (ProductReels phone, ProductBoxes box builder, MigrateLift move), on its own: use it under a hero or in a Big screenshot section.",
+	"keywords": [
+		"mockup",
+		"animation",
+		"plugin",
+		"productreels",
+		"productboxes",
+		"migratelift",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"art": {
+			"type": "string",
+			"default": "boxes",
+			"enum": [
+				"reels",
+				"boxes",
+				"lift"
+			]
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/price-list",
+	"title": "Price list",
+	"category": "bestwebexpert",
+	"icon": "money-alt",
+	"description": "Service price rows: service and turnaround on the left, price on the right.",
+	"keywords": [
+		"pricing",
+		"prices",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"supports": {
+		"html": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

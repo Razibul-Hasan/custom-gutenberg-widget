@@ -1,0 +1,318 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/media",
+	"title": "Image / screenshot",
+	"category": "bestwebexpert",
+	"icon": "format-image",
+	"description": "An image or screenshot in the site's frame (plain, rounded, screenshot with shadow, or a browser window). Responsive sizes (srcset), alt text and lazy loading are done for you; turn on \"Above the fold\" for a hero image. Optional caption and link; width and shape per device in the Styles tab.",
+	"keywords": [
+		"image",
+		"picture",
+		"photo",
+		"screenshot",
+		"media",
+		"figure",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"id": {
+			"type": "number",
+			"default": 0
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"alt": {
+			"type": "string",
+			"default": ""
+		},
+		"caption": {
+			"type": "string",
+			"default": ""
+		},
+		"size": {
+			"type": "string",
+			"default": "large"
+		},
+		"frame": {
+			"type": "string",
+			"default": ""
+		},
+		"barText": {
+			"type": "string",
+			"default": ""
+		},
+		"ratio": {
+			"type": "string",
+			"default": ""
+		},
+		"fit": {
+			"type": "string",
+			"default": "cover"
+		},
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
+		"link": {
+			"type": "string",
+			"default": ""
+		},
+		"linkNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"priority": {
+			"type": "boolean",
+			"default": false
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"bweStyleMap": [
+		{
+			"key": "maxWidth",
+			"label": "Width",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "max-width"
+				}
+			]
+		},
+		{
+			"key": "maxWidthTablet",
+			"label": "Width (tablet)",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "max-width",
+					"media": "tablet"
+				}
+			]
+		},
+		{
+			"key": "maxWidthMobile",
+			"label": "Width (phone)",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "max-width",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "ratioTablet",
+			"label": "Shape (tablet)",
+			"panel": "Size",
+			"control": "select",
+			"options": [
+				{
+					"label": "Original",
+					"value": "auto"
+				},
+				{
+					"label": "16:9",
+					"value": "16/9"
+				},
+				{
+					"label": "4:3",
+					"value": "4/3"
+				},
+				{
+					"label": "1:1",
+					"value": "1/1"
+				},
+				{
+					"label": "3:4",
+					"value": "3/4"
+				}
+			],
+			"rules": [
+				{
+					"sel": " img",
+					"prop": "aspect-ratio",
+					"media": "tablet"
+				}
+			]
+		},
+		{
+			"key": "ratioMobile",
+			"label": "Shape (phone)",
+			"panel": "Size",
+			"control": "select",
+			"options": [
+				{
+					"label": "Original",
+					"value": "auto"
+				},
+				{
+					"label": "16:9",
+					"value": "16/9"
+				},
+				{
+					"label": "4:3",
+					"value": "4/3"
+				},
+				{
+					"label": "1:1",
+					"value": "1/1"
+				},
+				{
+					"label": "3:4",
+					"value": "3/4"
+				}
+			],
+			"rules": [
+				{
+					"sel": " img",
+					"prop": "aspect-ratio",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "marginTop",
+			"label": "Space above",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "margin-top"
+				}
+			]
+		},
+		{
+			"key": "marginBottom",
+			"label": "Space below",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "margin-bottom"
+				}
+			]
+		},
+		{
+			"key": "radius",
+			"label": "Corner radius",
+			"panel": "Frame",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " :is(img, .bwe-gw-media__frame)",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "borderColor",
+			"label": "Border colour",
+			"panel": "Frame",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " :is(.bwe-gw-media__frame, img)",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "shadow",
+			"label": "Shadow",
+			"panel": "Frame",
+			"control": "select",
+			"options": [
+				{
+					"label": "None",
+					"value": "none"
+				},
+				{
+					"label": "Soft",
+					"value": "0 18px 40px -24px rgba(11,13,12,.35)"
+				},
+				{
+					"label": "Deep",
+					"value": "0 40px 80px -40px rgba(11,13,12,.45)"
+				}
+			],
+			"rules": [
+				{
+					"sel": " :is(.bwe-gw-media__frame, img)",
+					"prop": "box-shadow"
+				}
+			]
+		},
+		{
+			"key": "captionColor",
+			"label": "Caption colour",
+			"panel": "Caption",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " figcaption",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "captionSize",
+			"label": "Caption size",
+			"panel": "Caption",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " figcaption",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "captionAlign",
+			"label": "Caption alignment",
+			"panel": "Caption",
+			"control": "select",
+			"options": [
+				{
+					"label": "Left",
+					"value": "left"
+				},
+				{
+					"label": "Centre",
+					"value": "center"
+				},
+				{
+					"label": "Right",
+					"value": "right"
+				}
+			],
+			"rules": [
+				{
+					"sel": " figcaption",
+					"prop": "text-align"
+				}
+			]
+		}
+	],
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

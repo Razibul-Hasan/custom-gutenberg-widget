@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/step",
+	"title": "Step",
+	"category": "bestwebexpert",
+	"icon": "marker",
+	"description": "One numbered step. The number follows the step's position.",
+	"keywords": [
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/steps",
+		"bwe/process",
+		"bwe/guide"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"bweIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"n": {
+			"type": "string",
+			"default": "01"
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"reveal": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

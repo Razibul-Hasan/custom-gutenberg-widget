@@ -1,0 +1,313 @@
+/**
+ * General-purpose blocks (Buttons, Image / screenshot, Grid / columns, Gap / divider) and the settings every block
+ * shares (Visibility). Loaded in the editor and on pages that use them (includes/generic-blocks.php).
+ * Breakpoints = the Styles tab's: desktop 1025px+, tablet 782–1024px, phone 781px and less.
+ */
+
+/* ---------- Visibility (every bwe/* block) ---------- */
+@media (min-width: 1025px) {
+	body:not(.editor-styles-wrapper) .bwe-hide-d { display: none !important; }
+	.editor-styles-wrapper .bwe-hide-d { opacity: .35; outline: 1px dashed #9a9a92; outline-offset: 2px; }
+}
+@media (min-width: 782px) and (max-width: 1024px) {
+	body:not(.editor-styles-wrapper) .bwe-hide-t { display: none !important; }
+	.editor-styles-wrapper .bwe-hide-t { opacity: .35; outline: 1px dashed #9a9a92; outline-offset: 2px; }
+}
+@media (max-width: 781px) {
+	body:not(.editor-styles-wrapper) .bwe-hide-m { display: none !important; }
+	.editor-styles-wrapper .bwe-hide-m { opacity: .35; outline: 1px dashed #9a9a92; outline-offset: 2px; }
+}
+
+/* ---------- Heading tag (every block with a main heading) ---------- */
+/* A heading printed as p / div / span / strong keeps the site's heading font (the site gives it to h1–h6 only). */
+/* Two ID-weights: the theme's site-font.css sets the text font with :not(#bwe-nil) (one ID-weight). */
+html body .bwe-gw-tag:is(p, div, span, strong):not(#bwe-gw-a):not(#bwe-gw-b) { font-family: var(--bwe-site-font) !important; }
+
+/* ---------- Buttons ---------- */
+.bwe-gw-btns.bwe-gw-btns {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 24px 0 0;
+	padding: 0;
+}
+.bwe-gw-btns.bwe-gw-btns:first-child { margin-top: 0; }
+.bwe-gw-btns > .wp-block-button { margin: 0; }
+.bwe-gw-btns--left { justify-content: flex-start; }
+.bwe-gw-btns--center { justify-content: center; }
+.bwe-gw-btns--right { justify-content: flex-end; }
+.bwe-gw-btns--between { justify-content: space-between; }
+@media (max-width: 1024px) {
+	.bwe-gw-btns--left-t { justify-content: flex-start; }
+	.bwe-gw-btns--center-t { justify-content: center; }
+	.bwe-gw-btns--right-t { justify-content: flex-end; }
+	.bwe-gw-btns--between-t { justify-content: space-between; }
+}
+@media (max-width: 781px) {
+	.bwe-gw-btns--left-m { justify-content: flex-start; }
+	.bwe-gw-btns--center-m { justify-content: center; }
+	.bwe-gw-btns--right-m { justify-content: flex-end; }
+	.bwe-gw-btns--between-m { justify-content: space-between; }
+	.bwe-gw-btns--stack-m { flex-direction: column; align-items: flex-start; }
+	.bwe-gw-btns--stack-m.bwe-gw-btns--center, .bwe-gw-btns--stack-m.bwe-gw-btns--center-m { align-items: center; }
+	.bwe-gw-btns--stack-m.bwe-gw-btns--right, .bwe-gw-btns--stack-m.bwe-gw-btns--right-m { align-items: flex-end; }
+	.bwe-gw-btns--full-m { flex-direction: column; align-items: stretch; }
+	.bwe-gw-btns--full-m > .wp-block-button { width: 100%; }
+	.bwe-gw-btns--full-m .wp-block-button__link { width: 100%; box-sizing: border-box; justify-content: center; }
+}
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns--sm .bwe-btn .wp-block-button__link { height: 34px; padding: 0 18px; font-size: 12px; }
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns--lg .bwe-btn .wp-block-button__link { height: 50px; padding: 0 32px; font-size: 14px; }
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns .bwe-btn.bwe-gw-btn--dark .wp-block-button__link {
+	border-color: var(--bwex-ink, #0b0b0c);
+	background: var(--bwex-ink, #0b0b0c);
+	color: #fff;
+}
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns .bwe-btn.bwe-gw-btn--dark .wp-block-button__link:is(:hover, :focus-visible) {
+	border-color: var(--bwex-accent, #c8ff3d);
+	background: var(--bwex-accent, #c8ff3d);
+	color: #0b0b0c;
+}
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns .bwe-btn.bwe-gw-btn--light .wp-block-button__link {
+	border-color: rgba(244, 244, 240, .45);
+	background: transparent;
+	color: #f4f4f0;
+}
+:is(.bwex, .editor-styles-wrapper) .bwe-gw-btns .bwe-btn.bwe-gw-btn--light .wp-block-button__link:is(:hover, :focus-visible) {
+	border-color: var(--bwex-accent, #c8ff3d);
+	background: var(--bwex-accent, #c8ff3d);
+	color: #0b0b0c;
+}
+.bwe-gw-btns.bwe-gw-btns .bwe-gw-btn--link .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: auto;
+	min-height: 40px; /* same row height as the pill buttons, and a comfortable tap target */
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	color: inherit;
+	font-size: inherit;
+	font-weight: 600;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 5px;
+}
+.bwe-gw-btns.bwe-gw-btns .bwe-gw-btn--link .wp-block-button__link:is(:hover, :focus-visible) { text-decoration-thickness: 2px; }
+
+/* ---------- Image / screenshot ---------- */
+.bwe-gw-media.wp-block-image {
+	box-sizing: border-box;
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.bwe-gw-media--left.wp-block-image { margin-left: 0; margin-right: auto; }
+.bwe-gw-media--right.wp-block-image { margin-left: auto; margin-right: 0; }
+.bwe-gw-media--wide.wp-block-image,
+.bwe-gw-media[class*="bwe-gw-ratio-"] { width: 100%; }
+.bwe-gw-media img { display: block; max-width: 100%; height: auto; margin: 0; }
+.bwe-gw-media--wide img, .bwe-gw-media[class*="bwe-gw-ratio-"] img { width: 100%; }
+.bwe-gw-media[class*="bwe-gw-ratio-"] img { height: auto; object-fit: cover; }
+.bwe-gw-media.bwe-gw-fit-contain img { object-fit: contain; }
+.bwe-gw-ratio-16-9 img { aspect-ratio: 16 / 9; }
+.bwe-gw-ratio-21-9 img { aspect-ratio: 21 / 9; }
+.bwe-gw-ratio-4-3 img { aspect-ratio: 4 / 3; }
+.bwe-gw-ratio-3-2 img { aspect-ratio: 3 / 2; }
+.bwe-gw-ratio-1-1 img { aspect-ratio: 1 / 1; }
+.bwe-gw-ratio-3-4 img { aspect-ratio: 3 / 4; }
+.bwe-gw-ratio-2-3 img { aspect-ratio: 2 / 3; }
+.bwe-gw-ratio-9-16 img { aspect-ratio: 9 / 16; }
+.bwe-gw-media__link { display: block; }
+.bwe-gw-media--rounded img { border-radius: 18px; }
+.bwe-gw-media--shot img {
+	border: 1px solid #e3e3dc;
+	border-radius: 24px;
+	box-shadow: 0 40px 80px -40px rgba(11, 13, 12, .35);
+}
+.bwe-gw-media__frame {
+	overflow: hidden;
+	border: 1px solid #e3e3dc;
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 30px 60px -30px rgba(11, 13, 12, .35);
+}
+.bwe-gw-media__bar {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	height: 34px;
+	padding: 0 14px;
+	border-bottom: 1px solid #e3e3dc;
+	background: #f4f4f0;
+	color: #77776f;
+	font-size: 12px;
+	line-height: 1;
+}
+.bwe-gw-media__bar i { width: 9px; height: 9px; border-radius: 50%; background: #d6d6cf; }
+.bwe-gw-media__bar span { margin-left: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bwe-gw-media figcaption.wp-element-caption {
+	margin: 12px 0 0;
+	color: var(--bwex-muted, #77776f);
+	font-size: 14px;
+	line-height: 1.5;
+	text-align: center;
+}
+@media (max-width: 781px) {
+	.bwe-gw-media--shot img { border-radius: 16px; box-shadow: 0 24px 48px -28px rgba(11, 13, 12, .35); }
+	.bwe-gw-media__frame { border-radius: 12px; }
+}
+
+/* ---------- Grid / columns ---------- */
+.bwe-gw-grid {
+	--bwe-gw-c: 3;
+	display: grid;
+	grid-template-columns: repeat(var(--bwe-gw-c), minmax(0, 1fr));
+	gap: clamp(16px, 2.4vw, 28px);
+	box-sizing: border-box;
+	margin-block: 0;
+}
+.bwe-gw-grid > * { box-sizing: border-box; min-width: 0; margin-block: 0 !important; }
+.bwe-gw-grid--c1 { --bwe-gw-c: 1; }
+.bwe-gw-grid--c2 { --bwe-gw-c: 2; }
+.bwe-gw-grid--c3 { --bwe-gw-c: 3; }
+.bwe-gw-grid--c4 { --bwe-gw-c: 4; }
+.bwe-gw-grid--c5 { --bwe-gw-c: 5; }
+.bwe-gw-grid--c6 { --bwe-gw-c: 6; }
+@media (min-width: 1025px) {
+	.bwe-gw-grid--c2.bwe-gw-grid--r2-1 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+	.bwe-gw-grid--c2.bwe-gw-grid--r1-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+	.bwe-gw-grid--c2.bwe-gw-grid--r3-2 { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+	.bwe-gw-grid--c2.bwe-gw-grid--r2-3 { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+	.bwe-gw-grid--c2.bwe-gw-grid--r3-1 { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); }
+	.bwe-gw-grid--c2.bwe-gw-grid--r1-3 { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
+}
+@media (max-width: 1024px) {
+	.bwe-gw-grid--t1 { --bwe-gw-c: 1; }
+	.bwe-gw-grid--t2 { --bwe-gw-c: 2; }
+	.bwe-gw-grid--t3 { --bwe-gw-c: 3; }
+	.bwe-gw-grid--t4 { --bwe-gw-c: 4; }
+	.bwe-gw-grid--t5 { --bwe-gw-c: 5; }
+	.bwe-gw-grid--t6 { --bwe-gw-c: 6; }
+}
+@media (min-width: 782px) and (max-width: 1024px) {
+	.bwe-gw-grid--t2.bwe-gw-grid--r2-1 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+	.bwe-gw-grid--t2.bwe-gw-grid--r1-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+	.bwe-gw-grid--t2.bwe-gw-grid--r3-2 { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+	.bwe-gw-grid--t2.bwe-gw-grid--r2-3 { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+	.bwe-gw-grid--t2.bwe-gw-grid--r3-1 { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); }
+	.bwe-gw-grid--t2.bwe-gw-grid--r1-3 { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
+}
+@media (max-width: 781px) {
+	.bwe-gw-grid--m1 { --bwe-gw-c: 1; }
+	.bwe-gw-grid--m2 { --bwe-gw-c: 2; }
+	.bwe-gw-grid--m3 { --bwe-gw-c: 3; }
+	.bwe-gw-grid--m4 { --bwe-gw-c: 4; }
+	.bwe-gw-grid--m5 { --bwe-gw-c: 5; }
+	.bwe-gw-grid--m6 { --bwe-gw-c: 6; }
+	.bwe-gw-grid--m1.bwe-gw-grid--rev-m { display: flex; flex-direction: column-reverse; }
+}
+.bwe-gw-grid--v-start { align-items: start; }
+.bwe-gw-grid--v-center { align-items: center; }
+.bwe-gw-grid--v-end { align-items: end; }
+.bwe-gw-grid--cards > * {
+	padding: clamp(20px, 2.4vw, 28px);
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 18px;
+	background: #fff;
+	transition: border-color .2s ease-out;
+}
+.bwe-gw-grid--cards > * > :first-child { margin-top: 0; }
+.bwe-gw-grid--cards > * > :last-child { margin-bottom: 0; }
+.bwe-gw-grid--cards-soft > * { border-color: transparent; background: #f6f5f0; }
+.bwe-gw-grid--cards-line > * { background: transparent; }
+.bwe-gw-grid--cards-dark > * { border-color: rgba(255, 255, 255, .1); background: #0b0d0c; color: #f4f4f0; }
+.bwe-gw-grid--cards-dark > * :is(h1, h2, h3, h4, h5, h6) { color: #f4f4f0; }
+.bwe-gw-grid--cards-dark > * :is(p, li) { color: rgba(244, 244, 240, .72); }
+.bwe-gw-grid--cards-dark > * a:not(.wp-block-button__link) { color: #c8ff3d; }
+.bwe-gw-grid--cards > *:hover { border-color: var(--bwex-ink, #0b0b0c); }
+.bwe-gw-grid--cards-dark > *:hover { border-color: rgba(200, 255, 61, .5); }
+@media (max-width: 781px) {
+	.bwe-gw-grid--cards > * { border-radius: 14px; }
+}
+/* Editor: the "+" button takes a whole row, not a grid cell. */
+.bwe-gw-grid > .block-list-appender { grid-column: 1 / -1; }
+
+/* ---------- Gap / divider ---------- */
+.bwe-gw-gap {
+	display: flex;
+	align-items: center;
+	height: 64px;
+	margin-block: 0;
+	padding: 0;
+}
+@media (max-width: 1024px) { .bwe-gw-gap { height: 48px; } }
+@media (max-width: 781px) { .bwe-gw-gap { height: 32px; } }
+.bwe-gw-gap--line::before {
+	content: "";
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	border-top: 1px solid var(--bwex-hair, rgba(17, 17, 17, .12));
+}
+/* Editor: show where an empty gap is. */
+.editor-styles-wrapper .bwe-gw-gap { background: repeating-linear-gradient(-45deg, rgba(154, 154, 146, .1) 0 6px, transparent 6px 12px); }
+
+/* ---------- Guide / checklist (bwe/guide) ---------- */
+/* Same dark cards as "How it works" (.bwex-process). Items per row: --bwe-guide-cols / -t / -m (Styles → Layout).
+   Flex instead of grid, so an incomplete last row can sit in the middle. Two ID-weights + !important: the site's
+   process rules use !important grid columns and widths. */
+.bwex-guide { --bwe-guide-cols: 3; --bwe-guide-gap: 16px; --bwe-guide-n: var(--bwe-guide-cols); }
+@media (max-width: 1024px) { .bwex-guide { --bwe-guide-n: var(--bwe-guide-cols-t, 2); } }
+@media (max-width: 781px) { .bwex-guide { --bwe-guide-n: var(--bwe-guide-cols-m, 1); --bwe-guide-gap: 12px; } }
+html body .bwex-guide:not(#bwe-gw-a):not(#bwe-gw-b) ol.bwex-num.bwex-guide__list {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	justify-content: flex-start !important;
+	align-items: stretch !important;
+	gap: var(--bwe-guide-gap) !important;
+	grid-template-columns: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+html body .bwex-guide.bwex-guide--last-center:not(#bwe-gw-a):not(#bwe-gw-b) ol.bwex-guide__list { justify-content: center !important; }
+html body .bwex-guide:not(#bwe-gw-a):not(#bwe-gw-b) ol.bwex-guide__list > li {
+	flex: 0 0 calc((100% - (var(--bwe-guide-n) - 1) * var(--bwe-guide-gap)) / var(--bwe-guide-n)) !important;
+	width: auto !important;
+	max-width: none !important;
+	min-width: 0 !important;
+	margin: 0 !important;
+	grid-column: auto !important;
+	justify-self: auto !important;
+}
+/* Header: centred (default) or left. */
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-head { text-align: center !important; justify-content: center !important; }
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-head__main { align-items: center !important; margin-inline: auto !important; }
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) :is(.bwex-eyebrow, .bwex-h2, .bwex-intro) { margin-inline: auto !important; text-align: center !important; }
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-eyebrow p { justify-content: center !important; }
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-intro { max-width: 720px !important; width: 100%; }
+html body .bwex-guide.bwex-guide--center:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-intro p { max-width: 62ch; margin-inline: auto !important; }
+html body .bwex-guide.bwex-guide--left:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-intro { max-width: 720px !important; width: 100%; }
+html body .bwex-guide.bwex-guide--left:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-intro p { max-width: 62ch; }
+/* Button + note under the cards, aligned like the header. */
+.bwex-guide .bwex-guide__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: clamp(32px, 4vw, 48px); }
+.bwex-guide.bwex-guide--center .bwex-guide__foot { justify-content: center; text-align: center; }
+.bwex-guide .bwex-guide__foot .wp-block-buttons { margin: 0; }
+html body .bwex-guide:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-guide__note { margin: 0; font-size: 15px; line-height: 1.5; color: rgba(244, 244, 240, .64); }
+.bwex-guide .bwex-guide__note:empty:not(:focus) { display: none; }
+.editor-styles-wrapper .bwex-guide .bwex-guide__note:empty { display: block; min-width: 12em; }
+/* Long button labels wrap on phones instead of widening the page. */
+@media (max-width: 781px) {
+	html body .bwex-guide:not(#bwe-gw-a):not(#bwe-gw-b) .bwex-guide__foot :is(.elementor-button, .wp-block-button__link) { white-space: normal !important; max-width: 100% !important; height: auto !important; min-height: 44px; text-align: center !important; line-height: 1.4 !important; padding-top: 10px !important; padding-bottom: 10px !important; }
+}
+/* Guide: card position right / stretch, and the button's own alignment (overrides the header's). */
+html body .bwex-guide.bwex-guide--last-right:not(#bwe-gw-a):not(#bwe-gw-b) ol.bwex-guide__list { justify-content: flex-end !important; }
+html body .bwex-guide.bwex-guide--last-stretch:not(#bwe-gw-a):not(#bwe-gw-b) ol.bwex-guide__list > li { flex-grow: 1 !important; }
+.bwex-guide.bwex-guide--btn-left .bwex-guide__foot { justify-content: flex-start; text-align: left; }
+.bwex-guide.bwex-guide--btn-center .bwex-guide__foot { justify-content: center; text-align: center; }
+.bwex-guide.bwex-guide--btn-right .bwex-guide__foot { justify-content: flex-end; text-align: right; }

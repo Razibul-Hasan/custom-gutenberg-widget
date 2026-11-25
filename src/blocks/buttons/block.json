@@ -1,0 +1,281 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/buttons",
+	"title": "Buttons",
+	"category": "bestwebexpert",
+	"icon": "button",
+	"description": "One or more buttons in the site's look: lime, outline, dark, light (for dark backgrounds) or an underlined text link. Each opens in a new tab or gets nofollow when you want; alignment and full-width buttons can differ on desktop, tablet and phone.",
+	"keywords": [
+		"button",
+		"buttons",
+		"link",
+		"cta",
+		"call to action",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": []
+		},
+		"align": {
+			"type": "string",
+			"default": ""
+		},
+		"alignTablet": {
+			"type": "string",
+			"default": ""
+		},
+		"alignMobile": {
+			"type": "string",
+			"default": ""
+		},
+		"stackMobile": {
+			"type": "boolean",
+			"default": false
+		},
+		"fullMobile": {
+			"type": "boolean",
+			"default": false
+		},
+		"size": {
+			"type": "string",
+			"default": ""
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"example": {
+		"attributes": {
+			"items": [
+				{
+					"text": "Claim my free audit →",
+					"url": "#",
+					"style": "primary"
+				},
+				{
+					"text": "See pricing",
+					"url": "#",
+					"style": "outline"
+				}
+			]
+		},
+		"viewportWidth": 700
+	},
+	"bweStyleMap": [
+		{
+			"key": "gap",
+			"label": "Space between buttons",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "gap"
+				}
+			]
+		},
+		{
+			"key": "marginTop",
+			"label": "Space above",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "margin-top"
+				}
+			]
+		},
+		{
+			"key": "marginBottom",
+			"label": "Space below",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "margin-bottom"
+				}
+			]
+		},
+		{
+			"key": "marginTopMobile",
+			"label": "Space above (phone)",
+			"panel": "Layout",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "margin-top",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "btnBg",
+			"label": "Background",
+			"panel": "Buttons",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "background-color"
+				},
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnText",
+			"label": "Text colour",
+			"panel": "Buttons",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBorder",
+			"label": "Border colour",
+			"panel": "Buttons",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverBg",
+			"label": "Background on hover",
+			"panel": "Buttons",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link:is(:hover, :focus-visible)",
+					"prop": "background-color"
+				},
+				{
+					"sel": " .wp-block-button__link:is(:hover, :focus-visible)",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverText",
+			"label": "Text colour on hover",
+			"panel": "Buttons",
+			"control": "color",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link:is(:hover, :focus-visible)",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnRadius",
+			"label": "Corner radius",
+			"panel": "Buttons",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "border-radius"
+				}
+			]
+		},
+		{
+			"key": "btnHeight",
+			"label": "Height",
+			"panel": "Buttons",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "height"
+				}
+			]
+		},
+		{
+			"key": "btnPadding",
+			"label": "Side padding",
+			"panel": "Buttons",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "padding-left"
+				},
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "padding-right"
+				}
+			]
+		},
+		{
+			"key": "btnFontSize",
+			"label": "Text size",
+			"panel": "Buttons",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "font-size"
+				}
+			]
+		},
+		{
+			"key": "btnSpacing",
+			"label": "Letter spacing",
+			"panel": "Buttons",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "letter-spacing"
+				}
+			]
+		},
+		{
+			"key": "btnCase",
+			"label": "All capitals",
+			"panel": "Buttons",
+			"control": "select",
+			"options": [
+				{
+					"label": "UPPERCASE",
+					"value": "uppercase"
+				},
+				{
+					"label": "As typed",
+					"value": "none"
+				}
+			],
+			"rules": [
+				{
+					"sel": " .wp-block-button__link",
+					"prop": "text-transform"
+				}
+			]
+		}
+	],
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

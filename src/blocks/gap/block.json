@@ -1,0 +1,172 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/gap",
+	"title": "Gap / divider",
+	"category": "bestwebexpert",
+	"icon": "image-flip-vertical",
+	"description": "Empty space between blocks, with its own height on desktop, tablet and phone — optionally with a divider line (solid, dashed or dotted; colour, thickness and length).",
+	"keywords": [
+		"gap",
+		"space",
+		"spacer",
+		"divider",
+		"separator",
+		"line",
+		"hr",
+		"best web expert",
+		"bwe"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"line": {
+			"type": "boolean",
+			"default": false
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"example": {
+		"attributes": {
+			"line": true
+		},
+		"viewportWidth": 600
+	},
+	"bweStyleMap": [
+		{
+			"key": "height",
+			"label": "Height (desktop)",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "height",
+					"media": "desktop"
+				}
+			]
+		},
+		{
+			"key": "heightTablet",
+			"label": "Height (tablet)",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "height",
+					"media": "tablet"
+				}
+			]
+		},
+		{
+			"key": "heightMobile",
+			"label": "Height (phone)",
+			"panel": "Size",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "",
+					"prop": "height",
+					"media": "mobile"
+				}
+			]
+		},
+		{
+			"key": "lineColor",
+			"label": "Line colour",
+			"panel": "Line",
+			"control": "color",
+			"rules": [
+				{
+					"sel": "::before",
+					"prop": "border-top-color"
+				}
+			]
+		},
+		{
+			"key": "lineWidth",
+			"label": "Line thickness",
+			"panel": "Line",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "::before",
+					"prop": "border-top-width"
+				}
+			]
+		},
+		{
+			"key": "lineLength",
+			"label": "Line length",
+			"panel": "Line",
+			"control": "unit",
+			"rules": [
+				{
+					"sel": "::before",
+					"prop": "width"
+				}
+			]
+		},
+		{
+			"key": "lineStyle",
+			"label": "Line style",
+			"panel": "Line",
+			"control": "select",
+			"options": [
+				{
+					"label": "Solid",
+					"value": "solid"
+				},
+				{
+					"label": "Dashed",
+					"value": "dashed"
+				},
+				{
+					"label": "Dotted",
+					"value": "dotted"
+				}
+			],
+			"rules": [
+				{
+					"sel": "::before",
+					"prop": "border-top-style"
+				}
+			]
+		},
+		{
+			"key": "lineAlign",
+			"label": "Line position",
+			"panel": "Line",
+			"control": "select",
+			"options": [
+				{
+					"label": "Left",
+					"value": "0 auto 0 0"
+				},
+				{
+					"label": "Centre",
+					"value": "0 auto"
+				},
+				{
+					"label": "Right",
+					"value": "0 0 0 auto"
+				}
+			],
+			"rules": [
+				{
+					"sel": "::before",
+					"prop": "margin"
+				}
+			]
+		}
+	],
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php"
+}

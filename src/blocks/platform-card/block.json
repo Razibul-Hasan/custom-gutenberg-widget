@@ -1,0 +1,283 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bwe/platform-card",
+	"title": "Platform card",
+	"category": "bestwebexpert",
+	"icon": "id-alt",
+	"description": "One platform / package card: image, chip, linked title, text, service list, price and button, with an optional badge. Its own colours can differ from the other cards (Styles tab).",
+	"keywords": [
+		"platform",
+		"package",
+		"pack",
+		"card",
+		"best web expert",
+		"bwe"
+	],
+	"parent": [
+		"bwe/platforms"
+	],
+	"textdomain": "bestwebexpert",
+	"attributes": {
+		"wrapClasses": {
+			"type": "string",
+			"default": "elementor-element elementor-widget elementor-widget-bwex-platform-card"
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"chip": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"titleUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"price": {
+			"type": "string",
+			"default": ""
+		},
+		"btnText": {
+			"type": "string",
+			"default": ""
+		},
+		"btnUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"btnNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"badge": {
+			"type": "string",
+			"default": ""
+		},
+		"bweStyle": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "bwe-gw-editor",
+	"render": "file:./render.php",
+	"bweStyleMap": [
+		{
+			"key": "bg",
+			"label": "Card background",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc)",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "border",
+			"label": "Card border",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc)",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "chipBg",
+			"label": "Tag background",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__chip",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "chipColor",
+			"label": "Tag text",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__chip",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "chipDot",
+			"label": "Tag dot",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__chip::before",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "titleColor",
+			"label": "Title",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-h3 .elementor-heading-title",
+					"prop": "color"
+				},
+				{
+					"sel": ":not(#bwe-pc) .bwex-h3 .elementor-heading-title a",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "textColor",
+			"label": "Text",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__text p",
+					"prop": "color"
+				},
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__price",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "listBg",
+			"label": "Service pills",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-checks a",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "listText",
+			"label": "Service pill text",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-checks :is(li, a)",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "amountColor",
+			"label": "Price amount",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-plat__price strong",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnBg",
+			"label": "Button background",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-btn .elementor-button",
+					"prop": "background-color"
+				},
+				{
+					"sel": ":not(#bwe-pc) .bwex-btn .elementor-button",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "btnText",
+			"label": "Button text",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-btn .elementor-button",
+					"prop": "color"
+				}
+			]
+		},
+		{
+			"key": "btnHoverBg",
+			"label": "Button on hover",
+			"panel": "This card",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwex-btn .elementor-button:hover",
+					"prop": "background-color"
+				},
+				{
+					"sel": ":not(#bwe-pc) .bwex-btn .elementor-button:hover",
+					"prop": "border-color"
+				}
+			]
+		},
+		{
+			"key": "badgeBg",
+			"label": "Badge background",
+			"panel": "Badge",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwe-pc-badge",
+					"prop": "background-color"
+				}
+			]
+		},
+		{
+			"key": "badgeColor",
+			"label": "Badge text",
+			"panel": "Badge",
+			"control": "color",
+			"rules": [
+				{
+					"sel": ":not(#bwe-pc) .bwe-pc-badge",
+					"prop": "color"
+				}
+			]
+		}
+	]
+}
