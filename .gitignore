@@ -1,9 +1,6 @@
 # Dependencies
 node_modules/
 
-# Build output (regenerate with `npm run build`)
-build/
-
 # Release zips (`npm run plugin-zip`)
 *.zip
 

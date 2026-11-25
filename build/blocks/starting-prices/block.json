@@ -1,0 +1,597 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/starting-prices",
+  "title": "Starting prices",
+  "category": "bestwebexpert",
+  "icon": "tickets-alt",
+  "description": "Starting-prices card: a label, linked \"service — from $X\" rows (add, remove or move them), a note and a link to every price.",
+  "keywords": [
+    "prices",
+    "pricing",
+    "from",
+    "cost",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "Starting prices"
+    },
+    "showLabel": {
+      "type": "boolean",
+      "default": true
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "label": "WordPress website",
+          "price": "from $250",
+          "url": "/pricing/#wordpress-prices"
+        },
+        {
+          "label": "Shopify store",
+          "price": "from $250",
+          "url": "/pricing/#shopify-prices"
+        },
+        {
+          "label": "WooCommerce store",
+          "price": "from $400",
+          "url": "/pricing/#wordpress-prices"
+        }
+      ]
+    },
+    "note": {
+      "type": "string",
+      "default": "You’ll get a fixed, written quote after your free strategy call."
+    },
+    "showNote": {
+      "type": "boolean",
+      "default": true
+    },
+    "allText": {
+      "type": "string",
+      "default": "See every plan and price →"
+    },
+    "allUrl": {
+      "type": "string",
+      "default": "/pricing/"
+    },
+    "showAll": {
+      "type": "boolean",
+      "default": true
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "bg",
+      "label": "Background",
+      "panel": "Card",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "border",
+      "label": "Border colour",
+      "panel": "Card",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "radius",
+      "label": "Corner radius",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "padding",
+      "label": "Inner space",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding"
+        }
+      ]
+    },
+    {
+      "key": "marginTop",
+      "label": "Space above",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "margin-top"
+        }
+      ]
+    },
+    {
+      "key": "labelColor",
+      "label": "Label colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__label",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "noteColor",
+      "label": "Note colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__note",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "columns",
+      "label": "Columns (desktop)",
+      "panel": "Price rows",
+      "control": "range",
+      "min": 1,
+      "max": 4,
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "columnsTablet",
+      "label": "Items per row (tablet)",
+      "panel": "Layout",
+      "control": "range",
+      "min": 1,
+      "max": 4,
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list > *",
+          "prop": "grid-column",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list > *",
+          "prop": "width",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "columnsMobile",
+      "label": "Columns (phone)",
+      "panel": "Price rows",
+      "control": "range",
+      "min": 1,
+      "max": 2,
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "oneRow",
+      "label": "All items on one row (desktop, while they fit)",
+      "panel": "Layout",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list",
+          "prop": "grid-template-columns",
+          "fixed": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list > *",
+          "prop": "grid-column",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list > *",
+          "prop": "width",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-pricenote__list :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "rowBg",
+      "label": "Background",
+      "panel": "Price rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list a",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "rowBorder",
+      "label": "Border colour",
+      "panel": "Price rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list a",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "rowRadius",
+      "label": "Corner radius",
+      "panel": "Price rows",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list a",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "rowLabel",
+      "label": "Service colour",
+      "panel": "Price rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list span",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "rowPrice",
+      "label": "Price colour",
+      "panel": "Price rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list strong",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "rowHoverBorder",
+      "label": "Border on hover",
+      "panel": "Price rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__list a:hover",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btnBg",
+      "label": "Background",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "btnText",
+      "label": "Text colour",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "btnBorder",
+      "label": "Border colour",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btnRadius",
+      "label": "Corner radius",
+      "panel": "Button",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "btnSize",
+      "label": "Text size",
+      "panel": "Button",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "btnHoverBg",
+      "label": "Background on hover",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a:hover",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "btnHoverText",
+      "label": "Text on hover",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-pricenote__all a:hover",
+          "prop": "color"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,917 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/work",
+  "title": "Selected work",
+  "category": "bestwebexpert",
+  "icon": "portfolio",
+  "description": "Portfolio list: heading and numbered projects (screenshot, title, tag, text, link). On desktop a row shows its screenshot on hover. Add, remove or move projects; every look setting is in the Styles tab.",
+  "keywords": [
+    "portfolio",
+    "work",
+    "projects",
+    "case studies",
+    "showcase",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Selected work"
+    },
+    "showEyebrow": {
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "default": "Work You Can <em>Open Right Now</em>"
+    },
+    "intro": {
+      "type": "string",
+      "default": "Every project here is live. Open one and try the real thing, on desktop or phone."
+    },
+    "showIntro": {
+      "type": "boolean",
+      "default": true
+    },
+    "split": {
+      "type": "boolean",
+      "default": true
+    },
+    "headingId": {
+      "type": "string",
+      "default": ""
+    },
+    "sectionId": {
+      "type": "string",
+      "default": "work"
+    },
+    "wrapClasses": {
+      "type": "string",
+      "default": "elementor-element elementor-widget elementor-widget-bwex-work"
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    },
+    "bweIcon": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "paddingTop",
+      "label": "Space above",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "padding-top"
+        }
+      ]
+    },
+    {
+      "key": "paddingBottom",
+      "label": "Space below",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "padding-bottom"
+        }
+      ]
+    },
+    {
+      "key": "paddingTopMobile",
+      "label": "Space above (phone)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "padding-top",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "paddingBottomMobile",
+      "label": "Space below (phone)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "padding-bottom",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "contentWidth",
+      "label": "Content width",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-wrap",
+          "prop": "max-width"
+        }
+      ]
+    },
+    {
+      "key": "minHeight",
+      "label": "Minimum height",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "min-height"
+        }
+      ]
+    },
+    {
+      "key": "textAlign",
+      "label": "Heading alignment",
+      "panel": "Layout",
+      "control": "select",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Centre",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwex-head",
+          "prop": "text-align"
+        }
+      ]
+    },
+    {
+      "key": "bgColor",
+      "label": "Background colour",
+      "panel": "Background",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "bgImage",
+      "label": "Background image",
+      "panel": "Background",
+      "control": "image",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "background-image",
+          "tpl": "url('{v}')"
+        },
+        {
+          "sel": " .bwex-work",
+          "prop": "background-size",
+          "fixed": "cover"
+        },
+        {
+          "sel": " .bwex-work",
+          "prop": "background-position",
+          "fixed": "center"
+        },
+        {
+          "sel": " .bwex-work",
+          "prop": "background-repeat",
+          "fixed": "no-repeat"
+        }
+      ]
+    },
+    {
+      "key": "overlay",
+      "label": "Overlay colour (use transparency)",
+      "panel": "Background",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "box-shadow",
+          "tpl": "inset 0 0 0 100vmax {v}"
+        }
+      ]
+    },
+    {
+      "key": "accent",
+      "general": true,
+      "label": "Highlight colour (italic words, lines, tags)",
+      "panel": "Colours & text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "--bwex-accent"
+        },
+        {
+          "sel": " .bwex-work",
+          "prop": "--bwe-accent"
+        },
+        {
+          "sel": " .bwex-eyebrow p::before",
+          "prop": "background-color"
+        },
+        {
+          "sel": " .bwex-h2 h2 em",
+          "prop": "background-image",
+          "tpl": "linear-gradient({v}, {v})"
+        }
+      ]
+    },
+    {
+      "key": "textColor",
+      "general": true,
+      "label": "Text colour",
+      "panel": "Colours & text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work",
+          "prop": "color"
+        },
+        {
+          "sel": " :where(p)",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "linkColor",
+      "general": true,
+      "label": "Link colour",
+      "panel": "Colours & text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " :where(p a, li a:not(.wp-block-button__link))",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "textSize",
+      "general": true,
+      "label": "Text size",
+      "panel": "Colours & text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " :where(p)",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "eyebrowColor",
+      "label": "Colour",
+      "panel": "Small label (above the heading)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-eyebrow p",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "eyebrowSize",
+      "label": "Size",
+      "panel": "Small label (above the heading)",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-eyebrow p",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "eyebrowChip",
+      "label": "Icon box colour",
+      "panel": "Small label (above the heading)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-eyebrow p::before",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "hideEyebrowIcon",
+      "label": "Hide the icon",
+      "panel": "Small label (above the heading)",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-eyebrow p::before",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    },
+    {
+      "key": "titleSize",
+      "label": "Size",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "titleSizeMobile",
+      "label": "Size (phone)",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2",
+          "prop": "font-size",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "titleColor",
+      "label": "Colour",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleWeight",
+      "label": "Weight",
+      "panel": "Heading",
+      "control": "select",
+      "options": [
+        {
+          "label": "400 Regular",
+          "value": "400"
+        },
+        {
+          "label": "500 Medium",
+          "value": "500"
+        },
+        {
+          "label": "600 Semibold",
+          "value": "600"
+        },
+        {
+          "label": "700 Bold",
+          "value": "700"
+        },
+        {
+          "label": "800 Extra bold",
+          "value": "800"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2",
+          "prop": "font-weight"
+        }
+      ]
+    },
+    {
+      "key": "titleLineHeight",
+      "label": "Line height",
+      "panel": "Heading",
+      "control": "range",
+      "min": 0.8,
+      "max": 1.6,
+      "step": 0.01,
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2",
+          "prop": "line-height"
+        }
+      ]
+    },
+    {
+      "key": "highlightText",
+      "label": "Highlighted words colour",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-h2 h2 em",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "introColor",
+      "label": "Colour",
+      "panel": "Intro",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-intro p",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "introSize",
+      "label": "Size",
+      "panel": "Intro",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-intro p",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "introWidth",
+      "label": "Max width",
+      "panel": "Intro",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-intro p",
+          "prop": "max-width"
+        }
+      ]
+    },
+    {
+      "key": "rowLines",
+      "label": "Line colour",
+      "panel": "Rows",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__grid",
+          "prop": "border-bottom-color"
+        },
+        {
+          "sel": " .bwex-work__item",
+          "prop": "border-top-color"
+        }
+      ]
+    },
+    {
+      "key": "hideRowLines",
+      "label": "Hide the lines",
+      "panel": "Rows",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__grid",
+          "prop": "border-bottom-width",
+          "valueMap": {
+            "true": "0"
+          }
+        },
+        {
+          "sel": " .bwex-work__item",
+          "prop": "border-top-width",
+          "valueMap": {
+            "true": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "rowSpace",
+      "label": "Row height (space above and below)",
+      "panel": "Rows",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__item",
+          "prop": "padding-top"
+        },
+        {
+          "sel": " .bwex-work__item",
+          "prop": "padding-bottom"
+        }
+      ]
+    },
+    {
+      "key": "listTop",
+      "label": "Space above the list",
+      "panel": "Rows",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__grid",
+          "prop": "margin-top"
+        }
+      ]
+    },
+    {
+      "key": "noFade",
+      "label": "Don’t fade the other rows on hover",
+      "panel": "Rows",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__grid:hover .bwex-work__item",
+          "prop": "opacity",
+          "valueMap": {
+            "true": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "numColor",
+      "label": "Colour",
+      "panel": "Number",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__num",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "numHover",
+      "label": "Colour on hover",
+      "panel": "Number",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item:is(:hover, :focus-within) .bwex-work__num",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "numSize",
+      "label": "Size",
+      "panel": "Number",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__num",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "hideNum",
+      "label": "Hide the numbers",
+      "panel": "Number",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__num",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    },
+    {
+      "key": "workTitleColor",
+      "label": "Colour",
+      "panel": "Project title",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__title",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "workTitleHover",
+      "label": "Colour on hover",
+      "panel": "Project title",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item:is(:hover, :focus-within) .bwex-work__title",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "workTitleSize",
+      "label": "Size (desktop)",
+      "panel": "Project title",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__title",
+          "prop": "font-size",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "workTitleSizeMobile",
+      "label": "Size (tablet and phone)",
+      "panel": "Project title",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__title",
+          "prop": "font-size",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "workTitleWeight",
+      "label": "Weight",
+      "panel": "Project title",
+      "control": "select",
+      "options": [
+        {
+          "label": "400 Regular",
+          "value": "400"
+        },
+        {
+          "label": "500 Medium",
+          "value": "500"
+        },
+        {
+          "label": "600 Semibold",
+          "value": "600"
+        },
+        {
+          "label": "700 Bold",
+          "value": "700"
+        },
+        {
+          "label": "800 Extra bold",
+          "value": "800"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwex-work__title",
+          "prop": "font-weight"
+        }
+      ]
+    },
+    {
+      "key": "workTextColor",
+      "label": "Colour",
+      "panel": "Project text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__text",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "workTextSize",
+      "label": "Size",
+      "panel": "Project text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__text",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "tagColor",
+      "label": "Colour",
+      "panel": "Tag",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__tag",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "tagSize",
+      "label": "Size",
+      "panel": "Tag",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__tag",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "arrowColor",
+      "label": "Arrow colour",
+      "panel": "Arrow (desktop)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item::after",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "arrowBorder",
+      "label": "Circle border",
+      "panel": "Arrow (desktop)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item::after",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "arrowHoverBg",
+      "label": "Circle on hover",
+      "panel": "Arrow (desktop)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item:is(:hover, :focus-within)::after",
+          "prop": "background-color"
+        },
+        {
+          "sel": " .bwex-work__item:is(:hover, :focus-within)::after",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "arrowHoverColor",
+      "label": "Arrow on hover",
+      "panel": "Arrow (desktop)",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__item:is(:hover, :focus-within)::after",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "hideArrow",
+      "label": "Hide the arrow",
+      "panel": "Arrow (desktop)",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__item::after",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    },
+    {
+      "key": "previewWidth",
+      "label": "Width of the hover preview",
+      "panel": "Screenshot",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__shot",
+          "prop": "width",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "shotRadius",
+      "label": "Corner radius",
+      "panel": "Screenshot",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__shot",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "shotBorder",
+      "label": "Border colour",
+      "panel": "Screenshot",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-work__shot",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "thumbWidth",
+      "label": "Thumbnail width (tablet and phone)",
+      "panel": "Screenshot",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-work__item",
+          "prop": "grid-template-columns",
+          "tpl": "{v} minmax(0, 1fr)",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "hidePreview",
+      "label": "No hover preview (desktop)",
+      "panel": "Screenshot",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__shot",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          },
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "hideThumbs",
+      "label": "No thumbnails on tablet and phone",
+      "panel": "Screenshot",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-work__shot",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          },
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-work__item",
+          "prop": "grid-template-columns",
+          "valueMap": {
+            "true": "minmax(0, 1fr)"
+          },
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-work__meta",
+          "prop": "grid-column",
+          "valueMap": {
+            "true": "1"
+          },
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-work__text",
+          "prop": "grid-column",
+          "valueMap": {
+            "true": "1"
+          },
+          "media": "tablet"
+        }
+      ]
+    }
+  ]
+}

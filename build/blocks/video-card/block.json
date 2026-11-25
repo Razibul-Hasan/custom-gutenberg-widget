@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/video-card",
+  "title": "Video testimonial",
+  "category": "bestwebexpert",
+  "icon": "video-alt3",
+  "description": "One video testimonial: a YouTube / Shorts link (shown as a fast click-to-play thumbnail) and who it is from.",
+  "keywords": [
+    "video",
+    "testimonial",
+    "youtube",
+    "best web expert",
+    "bwe"
+  ],
+  "parent": [
+    "bwe/testimonials"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "url": {
+      "type": "string",
+      "default": ""
+    },
+    "who": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php"
+}

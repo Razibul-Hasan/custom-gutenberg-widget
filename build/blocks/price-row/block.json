@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/price-row",
+  "title": "Price row",
+  "category": "bestwebexpert",
+  "icon": "tag",
+  "description": "One service with its turnaround, price and unit.",
+  "keywords": [
+    "best web expert",
+    "bwe"
+  ],
+  "parent": [
+    "bwe/price-list"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "service": {
+      "type": "string",
+      "default": ""
+    },
+    "note": {
+      "type": "string",
+      "default": ""
+    },
+    "amount": {
+      "type": "string",
+      "default": ""
+    },
+    "unit": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php"
+}

@@ -1,0 +1,709 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/hero",
+  "title": "Hero",
+  "category": "bestwebexpert",
+  "icon": "cover-image",
+  "description": "The big dark hero at the top of a page: heading (italic = highlight), text, two buttons and the scroll cue, with its entrance animation. Every look setting is in the Styles tab. Optional kicker line above the heading, buttons that open in a new tab, and numbered jump links (01 Carousel, 02 Stories …).",
+  "keywords": [
+    "hero",
+    "header",
+    "banner",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "kicker": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "lead": {
+      "type": "string",
+      "default": ""
+    },
+    "btn1Text": {
+      "type": "string",
+      "default": ""
+    },
+    "btn1Url": {
+      "type": "string",
+      "default": ""
+    },
+    "btn1NewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "btn2Text": {
+      "type": "string",
+      "default": ""
+    },
+    "btn2Url": {
+      "type": "string",
+      "default": ""
+    },
+    "btn2NewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "showBtn2": {
+      "type": "boolean",
+      "default": true
+    },
+    "scrollText": {
+      "type": "string",
+      "default": "Scroll"
+    },
+    "scrollUrl": {
+      "type": "string",
+      "default": "#services"
+    },
+    "showScroll": {
+      "type": "boolean",
+      "default": true
+    },
+    "jumpLinks": {
+      "type": "array",
+      "default": []
+    },
+    "facts": {
+      "type": "array",
+      "default": []
+    },
+    "modifiers": {
+      "type": "string",
+      "default": "bwe-section bwe-hero bwe-hero--no-visual bwe-hero--paper bwex-hero bwe-hero--night"
+    },
+    "animate": {
+      "type": "boolean",
+      "default": true
+    },
+    "animSpeed": {
+      "type": "number",
+      "default": 1
+    },
+    "animDelay": {
+      "type": "number",
+      "default": 0
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "textAlign",
+      "label": "Text alignment",
+      "panel": "Layout",
+      "control": "select",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Centre",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwe-hero__copy",
+          "prop": "text-align"
+        },
+        {
+          "sel": " .bwe-hero__copy",
+          "prop": "align-items",
+          "valueMap": {
+            "left": "flex-start",
+            "center": "center",
+            "right": "flex-end"
+          }
+        },
+        {
+          "sel": " .bwe-actions",
+          "prop": "justify-content",
+          "valueMap": {
+            "left": "flex-start",
+            "center": "center",
+            "right": "flex-end"
+          }
+        }
+      ]
+    },
+    {
+      "key": "contentWidth",
+      "label": "Content width",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__copy",
+          "prop": "max-width"
+        }
+      ]
+    },
+    {
+      "key": "minHeight",
+      "label": "Minimum height",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "min-height"
+        }
+      ]
+    },
+    {
+      "key": "paddingTop",
+      "label": "Space above",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding-top"
+        }
+      ]
+    },
+    {
+      "key": "paddingBottom",
+      "label": "Space below",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding-bottom"
+        }
+      ]
+    },
+    {
+      "key": "paddingTopMobile",
+      "label": "Space above (phone)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding-top",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "paddingBottomMobile",
+      "label": "Space below (phone)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding-bottom",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "bgColor",
+      "label": "Background colour",
+      "panel": "Background",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "bgImage",
+      "label": "Background image",
+      "panel": "Background",
+      "control": "image",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "background-image",
+          "tpl": "url('{v}')"
+        },
+        {
+          "sel": "",
+          "prop": "background-size",
+          "fixed": "cover"
+        },
+        {
+          "sel": "",
+          "prop": "background-position",
+          "fixed": "center"
+        },
+        {
+          "sel": "",
+          "prop": "background-repeat",
+          "fixed": "no-repeat"
+        }
+      ]
+    },
+    {
+      "key": "overlay",
+      "label": "Overlay colour (use transparency)",
+      "panel": "Background",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "box-shadow",
+          "tpl": "inset 0 0 0 100vmax {v}"
+        }
+      ]
+    },
+    {
+      "key": "kickerColor",
+      "label": "Line above the title: colour",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-kicker",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "kickerSize",
+      "label": "Line above the title: size",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-kicker",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "titleSize",
+      "label": "Size",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "titleSizeTablet",
+      "label": "Size (tablet)",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "font-size",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "titleSizeMobile",
+      "label": "Size (phone)",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "font-size",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "titleColor",
+      "label": "Colour",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleWeight",
+      "label": "Weight",
+      "panel": "Heading",
+      "control": "select",
+      "options": [
+        {
+          "label": "400 Regular",
+          "value": "400"
+        },
+        {
+          "label": "500 Medium",
+          "value": "500"
+        },
+        {
+          "label": "600 Semibold",
+          "value": "600"
+        },
+        {
+          "label": "700 Bold",
+          "value": "700"
+        },
+        {
+          "label": "800 Extra bold",
+          "value": "800"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "font-weight"
+        }
+      ]
+    },
+    {
+      "key": "titleLineHeight",
+      "label": "Line height",
+      "panel": "Heading",
+      "control": "range",
+      "min": 0.8,
+      "max": 1.6,
+      "step": 0.01,
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "line-height"
+        }
+      ]
+    },
+    {
+      "key": "titleLetterSpacing",
+      "label": "Letter spacing",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "letter-spacing"
+        }
+      ]
+    },
+    {
+      "key": "titleWidth",
+      "label": "Title width",
+      "panel": "Heading",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "max-width"
+        },
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "margin-inline",
+          "fixed": "auto"
+        }
+      ]
+    },
+    {
+      "key": "titleBalance",
+      "label": "Even out the title lines",
+      "panel": "Heading",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title",
+          "prop": "text-wrap",
+          "valueMap": {
+            "true": "balance"
+          }
+        }
+      ]
+    },
+    {
+      "key": "highlightNoWrap",
+      "label": "Keep the highlight on one line",
+      "panel": "Heading",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "white-space",
+          "valueMap": {
+            "true": "nowrap"
+          }
+        }
+      ]
+    },
+    {
+      "key": "highlightLinesMobile",
+      "label": "Phones: underline each line of the highlight",
+      "panel": "Heading",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "display",
+          "valueMap": {
+            "true": "inline"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "white-space",
+          "valueMap": {
+            "true": "normal"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "background-image",
+          "valueMap": {
+            "true": "linear-gradient(var(--bwex-hero-line-c,var(--bwe-accent,#c8ff3d)),var(--bwex-hero-line-c,var(--bwe-accent,#c8ff3d)))"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "background-size",
+          "valueMap": {
+            "true": "100% var(--bwex-hero-line-h,.07em)"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "background-position",
+          "valueMap": {
+            "true": "0 100%"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "background-repeat",
+          "valueMap": {
+            "true": "no-repeat"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "-webkit-box-decoration-break",
+          "valueMap": {
+            "true": "clone"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "box-decoration-break",
+          "valueMap": {
+            "true": "clone"
+          },
+          "media": "mobile"
+        },
+        {
+          "sel": " .bwe-hero__title em::after",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          },
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "accent",
+      "label": "Highlight colour (italic words, underline, main button)",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "--bwe-accent"
+        },
+        {
+          "sel": "",
+          "prop": "--bwex-accent"
+        },
+        {
+          "sel": "",
+          "prop": "--bwex-hero-line-c"
+        }
+      ]
+    },
+    {
+      "key": "highlightText",
+      "label": "Highlighted words colour",
+      "panel": "Heading",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-hero__title em",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "leadSize",
+      "label": "Size",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-lead",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "leadSizeMobile",
+      "label": "Size (phone)",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-lead",
+          "prop": "font-size",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "leadColor",
+      "label": "Colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-lead",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "leadWidth",
+      "label": "Width",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-lead",
+          "prop": "max-width"
+        }
+      ]
+    },
+    {
+      "key": "btn1Bg",
+      "label": "Main button background",
+      "panel": "Buttons",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-btn--primary .wp-block-button__link",
+          "prop": "background-color"
+        },
+        {
+          "sel": " .bwe-btn--primary .wp-block-button__link",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btn1Color",
+      "label": "Main button text",
+      "panel": "Buttons",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwe-btn--primary .wp-block-button__link",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "btn2Color",
+      "label": "Second button text",
+      "panel": "Buttons",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-hero__btn2 .wp-block-button__link",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "btn2Border",
+      "label": "Second button border",
+      "panel": "Buttons",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-hero__btn2 .wp-block-button__link",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btnRadius",
+      "label": "Corner radius",
+      "panel": "Buttons",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-btn .wp-block-button__link",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "btnSize",
+      "label": "Text size",
+      "panel": "Buttons",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwe-btn .wp-block-button__link",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "scrollColor",
+      "label": "Colour",
+      "panel": "Scroll-down arrow",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-scroll",
+          "prop": "color"
+        }
+      ]
+    }
+  ]
+}

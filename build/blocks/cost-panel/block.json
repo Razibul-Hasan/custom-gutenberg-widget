@@ -1,0 +1,399 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/cost-panel",
+  "title": "Cost explainer",
+  "category": "bestwebexpert",
+  "icon": "editor-help",
+  "description": "A heading and short explainer points (start each with a bold name). Add, remove or move points.",
+  "keywords": [
+    "cost",
+    "price",
+    "explainer",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "How much does a website really cost? (The honest answer)"
+    },
+    "items": {
+      "type": "array",
+      "default": []
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "bg",
+      "label": "Background",
+      "panel": "Box",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "radius",
+      "label": "Corner radius",
+      "panel": "Box",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "padding",
+      "label": "Inner space",
+      "panel": "Box",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "padding"
+        }
+      ]
+    },
+    {
+      "key": "marginTop",
+      "label": "Space above",
+      "panel": "Box",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "margin-top"
+        }
+      ]
+    },
+    {
+      "key": "titleColor",
+      "label": "Heading colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-cost__title h3",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleSize",
+      "label": "Heading size",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-cost__title h3",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "pointColor",
+      "label": "Point name colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid strong",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "textColor",
+      "label": "Text colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid p",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "textSize",
+      "label": "Text size",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid p",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "columns",
+      "label": "Columns (desktop)",
+      "panel": "Points",
+      "control": "range",
+      "min": 1,
+      "max": 4,
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "columnsTablet",
+      "label": "Items per row (tablet)",
+      "panel": "Layout",
+      "control": "range",
+      "min": 1,
+      "max": 4,
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid > *",
+          "prop": "grid-column",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid > *",
+          "prop": "width",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "tablet"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "oneRow",
+      "label": "All items on one row (desktop, while they fit)",
+      "panel": "Layout",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "grid-template-columns",
+          "fixed": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid > *",
+          "prop": "grid-column",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid > *",
+          "prop": "width",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "desktop"
+        },
+        {
+          "sel": " .bwex-cost__grid :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "gap",
+      "label": "Space between points",
+      "panel": "Points",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid",
+          "prop": "gap"
+        }
+      ]
+    },
+    {
+      "key": "iconBg",
+      "label": "Icon circle colour",
+      "panel": "Points",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid > .elementor-widget::before",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "hideIcons",
+      "label": "Hide the icons",
+      "panel": "Points",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-cost__grid > .elementor-widget::before",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    }
+  ]
+}

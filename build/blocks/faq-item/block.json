@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/faq-item",
+  "title": "FAQ question",
+  "category": "bestwebexpert",
+  "icon": "editor-help",
+  "description": "One numbered FAQ question with its answer. Click the question to open the answer.",
+  "keywords": [
+    "faq",
+    "question",
+    "accordion",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "n": {
+      "type": "string",
+      "default": "01"
+    },
+    "question": {
+      "type": "string",
+      "default": ""
+    },
+    "extra": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php"
+}

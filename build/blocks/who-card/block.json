@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/who-card",
+  "title": "Audience card",
+  "category": "bestwebexpert",
+  "icon": "id",
+  "description": "One linked card: title, short text and a platform tag.",
+  "keywords": [
+    "best web expert",
+    "bwe"
+  ],
+  "parent": [
+    "bwe/who-list"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "url": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "default": ""
+    },
+    "tag": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php"
+}

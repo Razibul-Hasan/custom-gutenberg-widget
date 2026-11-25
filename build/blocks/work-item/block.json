@@ -1,0 +1,158 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/work-item",
+  "title": "Project",
+  "category": "bestwebexpert",
+  "icon": "format-image",
+  "description": "One project in Selected work: screenshot, number, title, tag and text, all linking to the project.",
+  "keywords": [
+    "portfolio",
+    "project",
+    "work",
+    "best web expert",
+    "bwe"
+  ],
+  "parent": [
+    "bwe/work"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "num": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "url": {
+      "type": "string",
+      "default": ""
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "tag": {
+      "type": "string",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "default": ""
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "numColor",
+      "label": "Number",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi) .bwex-work__num",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleColor",
+      "label": "Title",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi) .bwex-work__title",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleHover",
+      "label": "Title on hover",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi):is(:hover, :focus-within) .bwex-work__title",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "tagColor",
+      "label": "Tag",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi) .bwex-work__tag",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "textColor",
+      "label": "Text",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi) .bwex-work__text",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "arrowHoverBg",
+      "label": "Arrow circle on hover",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi):is(:hover, :focus-within)::after",
+          "prop": "background-color"
+        },
+        {
+          "sel": ":not(#bwe-wi):is(:hover, :focus-within)::after",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "shotBg",
+      "label": "Screenshot background",
+      "panel": "This project",
+      "control": "color",
+      "rules": [
+        {
+          "sel": ":not(#bwe-wi) .bwex-work__shot",
+          "prop": "background-color"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,948 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/platforms",
+  "title": "Platform cards",
+  "category": "bestwebexpert",
+  "icon": "columns",
+  "description": "A grid of platform / package cards (image, chip, title, text, service list, price, button). Add a card for a new pack; every look setting is in the Styles tab.",
+  "keywords": [
+    "platform",
+    "package",
+    "pack",
+    "cards",
+    "pricing",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "classes": {
+      "type": "string",
+      "default": "bwex-plats bwex-plats--3"
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php",
+  "bweStyleMap": [
+    {
+      "key": "columns",
+      "label": "Cards per row",
+      "panel": "Layout",
+      "control": "range",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "rules": [
+        {
+          "sel": "",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3"
+        }
+      ]
+    },
+    {
+      "key": "columnsTablet",
+      "label": "Cards per row (tablet)",
+      "panel": "Layout",
+      "control": "range",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "rules": [
+        {
+          "sel": "",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "tablet"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "columnsMobile",
+      "label": "Cards per row (phone)",
+      "panel": "Layout",
+      "control": "range",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "rules": [
+        {
+          "sel": "",
+          "prop": "grid-template-columns",
+          "tpl": "repeat({v}, minmax(0, 1fr))",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "mobile"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "oneRow",
+      "label": "All items on one row (desktop, while they fit)",
+      "panel": "Layout",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "display",
+          "fixed": "grid",
+          "media": "desktop"
+        },
+        {
+          "sel": "",
+          "prop": "grid-template-columns",
+          "fixed": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+          "media": "desktop"
+        },
+        {
+          "sel": " > *",
+          "prop": "grid-column",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " > *",
+          "prop": "width",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "white-space",
+          "fixed": "normal",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "height",
+          "fixed": "auto",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "min-height",
+          "fixed": "40px",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-top",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "padding-bottom",
+          "fixed": "8px",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "text-align",
+          "fixed": "center",
+          "media": "desktop"
+        },
+        {
+          "sel": " :is(.wp-block-button__link, .elementor-button, .bwex-card__btn)",
+          "prop": "line-height",
+          "fixed": "1.3",
+          "media": "desktop"
+        }
+      ]
+    },
+    {
+      "key": "gap",
+      "label": "Space between cards",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "gap"
+        }
+      ]
+    },
+    {
+      "key": "hideLines",
+      "label": "Hide the lines above and below",
+      "panel": "Layout",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "border-block-width",
+          "valueMap": {
+            "true": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "linesColor",
+      "label": "Line colour",
+      "panel": "Layout",
+      "control": "color",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "border-block-color"
+        }
+      ]
+    },
+    {
+      "key": "cardBg",
+      "label": "Background",
+      "panel": "Card",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "cardBorder",
+      "label": "Border colour",
+      "panel": "Card",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "cardBorderWidth",
+      "label": "Border width",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "border-width"
+        }
+      ]
+    },
+    {
+      "key": "cardRadius",
+      "label": "Corner radius",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "cardPadding",
+      "label": "Inner space",
+      "panel": "Card",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "padding"
+        }
+      ]
+    },
+    {
+      "key": "cardShadow",
+      "label": "Shadow",
+      "panel": "Card",
+      "control": "select",
+      "options": [
+        {
+          "label": "None",
+          "value": "none"
+        },
+        {
+          "label": "Soft",
+          "value": "soft"
+        },
+        {
+          "label": "Strong",
+          "value": "strong"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "box-shadow",
+          "valueMap": {
+            "none": "none",
+            "soft": "0 18px 40px -28px rgba(17, 17, 17, .35)",
+            "strong": "0 28px 60px -24px rgba(17, 17, 17, .55)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "cardHoverBorder",
+      "label": "Border on hover",
+      "panel": "Card",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card:hover",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "cardHoverLift",
+      "label": "Lift on hover",
+      "panel": "Card",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " > .elementor-widget-bwex-platform-card",
+          "prop": "transition",
+          "valueMap": {
+            "true": "transform .3s ease, box-shadow .3s ease, border-color .3s ease"
+          }
+        },
+        {
+          "sel": " > .elementor-widget-bwex-platform-card:hover",
+          "prop": "transform",
+          "valueMap": {
+            "true": "translateY(-6px)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "hideImages",
+      "label": "Hide the images",
+      "panel": "Image",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-plat__img",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    },
+    {
+      "key": "imageRatio",
+      "label": "Shape",
+      "panel": "Image",
+      "control": "select",
+      "options": [
+        {
+          "label": "Wide 16:9",
+          "value": "16 / 9"
+        },
+        {
+          "label": "16:10",
+          "value": "16 / 10"
+        },
+        {
+          "label": "3:2",
+          "value": "3 / 2"
+        },
+        {
+          "label": "4:3",
+          "value": "4 / 3"
+        },
+        {
+          "label": "Square",
+          "value": "1 / 1"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwex-plat__img img",
+          "prop": "aspect-ratio"
+        }
+      ]
+    },
+    {
+      "key": "imageRadius",
+      "label": "Corner radius",
+      "panel": "Image",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-plat__img",
+          "prop": "border-radius"
+        },
+        {
+          "sel": " .bwex-plat__img img",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "imageBg",
+      "label": "Background behind the image",
+      "panel": "Image",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__img",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "chipColor",
+      "label": "Text colour",
+      "panel": "Small tag",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__chip",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "chipBg",
+      "label": "Background",
+      "panel": "Small tag",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__chip",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "chipBorder",
+      "label": "Border colour",
+      "panel": "Small tag",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__chip",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "chipDot",
+      "label": "Dot colour",
+      "panel": "Small tag",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__chip::before",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "hideChipDot",
+      "label": "Hide the dot",
+      "panel": "Small tag",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-plat__chip::before",
+          "prop": "display",
+          "valueMap": {
+            "true": "none"
+          }
+        }
+      ]
+    },
+    {
+      "key": "titleSize",
+      "label": "Size",
+      "panel": "Title",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-h3 .elementor-heading-title",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "titleSizeMobile",
+      "label": "Size (phone)",
+      "panel": "Title",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-h3 .elementor-heading-title",
+          "prop": "font-size",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "titleColor",
+      "label": "Colour",
+      "panel": "Title",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-h3 .elementor-heading-title",
+          "prop": "color"
+        },
+        {
+          "sel": " .bwex-h3 .elementor-heading-title a",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleHover",
+      "label": "Colour on hover",
+      "panel": "Title",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-h3 .elementor-heading-title a:hover",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "titleWeight",
+      "label": "Weight",
+      "panel": "Title",
+      "control": "select",
+      "options": [
+        {
+          "label": "400 Regular",
+          "value": "400"
+        },
+        {
+          "label": "500 Medium",
+          "value": "500"
+        },
+        {
+          "label": "600 Semibold",
+          "value": "600"
+        },
+        {
+          "label": "700 Bold",
+          "value": "700"
+        },
+        {
+          "label": "800 Extra bold",
+          "value": "800"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " .bwex-h3 .elementor-heading-title",
+          "prop": "font-weight"
+        }
+      ]
+    },
+    {
+      "key": "textColor",
+      "label": "Colour",
+      "panel": "Text",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__text p",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "textSize",
+      "label": "Size",
+      "panel": "Text",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-plat__text p",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "listText",
+      "label": "Text colour",
+      "panel": "Service list",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-checks :is(li, a)",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "listBg",
+      "label": "Pill background",
+      "panel": "Service list",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-checks a",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "listBorder",
+      "label": "Pill border",
+      "panel": "Service list",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-checks a",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "listRadius",
+      "label": "Pill corner radius",
+      "panel": "Service list",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-checks a",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "listSize",
+      "label": "Text size",
+      "panel": "Service list",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-checks :is(li, a)",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "listHoverBg",
+      "label": "Pill background on hover",
+      "panel": "Service list",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-checks a:hover",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "listHoverText",
+      "label": "Text colour on hover",
+      "panel": "Service list",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-checks a:hover",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "priceColor",
+      "label": "Text colour",
+      "panel": "Price",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__price",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "priceSize",
+      "label": "Text size",
+      "panel": "Price",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-plat__price",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "amountColor",
+      "label": "Amount colour (bold part)",
+      "panel": "Price",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-plat__price strong",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "amountSize",
+      "label": "Amount size",
+      "panel": "Price",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-plat__price strong",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "btnBg",
+      "label": "Background",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "btnText",
+      "label": "Text colour",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "btnBorder",
+      "label": "Border colour",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btnRadius",
+      "label": "Corner radius",
+      "panel": "Button",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "btnSize",
+      "label": "Text size",
+      "panel": "Button",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "btnHeight",
+      "label": "Height",
+      "panel": "Button",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "height"
+        }
+      ]
+    },
+    {
+      "key": "btnFull",
+      "label": "Full width",
+      "panel": "Button",
+      "control": "toggle",
+      "rules": [
+        {
+          "sel": " .bwex-btn",
+          "prop": "width",
+          "valueMap": {
+            "true": "100%"
+          }
+        },
+        {
+          "sel": " .bwex-btn .elementor-button",
+          "prop": "width",
+          "valueMap": {
+            "true": "100%"
+          }
+        }
+      ]
+    },
+    {
+      "key": "btnHoverBg",
+      "label": "Background on hover",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button:hover",
+          "prop": "background-color"
+        },
+        {
+          "sel": " .bwex-btn .elementor-button:hover",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "btnHoverText",
+      "label": "Text colour on hover",
+      "panel": "Button",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " .bwex-btn .elementor-button:hover",
+          "prop": "color"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bwe/grid",
+  "title": "Grid / columns",
+  "category": "bestwebexpert",
+  "icon": "grid-view",
+  "description": "Put any blocks side by side: 1–6 columns, with their own number on tablet and phone; for two columns pick a ratio (2:1, 3:2 …) for text + image layouts. Optionally every item becomes a card (white, soft, dark or outlined). Use it for card rows, feature grids, text beside a screenshot, logos and more.",
+  "keywords": [
+    "grid",
+    "columns",
+    "cards",
+    "split",
+    "layout",
+    "row",
+    "best web expert",
+    "bwe"
+  ],
+  "textdomain": "bestwebexpert",
+  "attributes": {
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "columnsTablet": {
+      "type": "number",
+      "default": 2
+    },
+    "columnsMobile": {
+      "type": "number",
+      "default": 1
+    },
+    "ratio": {
+      "type": "string",
+      "default": ""
+    },
+    "valign": {
+      "type": "string",
+      "default": ""
+    },
+    "cards": {
+      "type": "string",
+      "default": ""
+    },
+    "reverseMobile": {
+      "type": "boolean",
+      "default": false
+    },
+    "bweStyle": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "bweStyleMap": [
+    {
+      "key": "gap",
+      "label": "Space between items",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "gap"
+        }
+      ]
+    },
+    {
+      "key": "gapTablet",
+      "label": "Space between items (tablet)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "gap",
+          "media": "tablet"
+        }
+      ]
+    },
+    {
+      "key": "gapMobile",
+      "label": "Space between items (phone)",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "gap",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "marginTop",
+      "label": "Space above",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "margin-top"
+        }
+      ]
+    },
+    {
+      "key": "marginBottom",
+      "label": "Space below",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "margin-bottom"
+        }
+      ]
+    },
+    {
+      "key": "maxWidth",
+      "label": "Maximum width",
+      "panel": "Layout",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": "",
+          "prop": "max-width"
+        },
+        {
+          "sel": "",
+          "prop": "margin-left",
+          "fixed": "auto"
+        },
+        {
+          "sel": "",
+          "prop": "margin-right",
+          "fixed": "auto"
+        }
+      ]
+    },
+    {
+      "key": "cardBg",
+      "label": "Background",
+      "panel": "Cards",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "background-color"
+        }
+      ]
+    },
+    {
+      "key": "cardBorder",
+      "label": "Border colour",
+      "panel": "Cards",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "cardRadius",
+      "label": "Corner radius",
+      "panel": "Cards",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "border-radius"
+        }
+      ]
+    },
+    {
+      "key": "cardPadding",
+      "label": "Inner space",
+      "panel": "Cards",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "padding"
+        }
+      ]
+    },
+    {
+      "key": "cardPaddingMobile",
+      "label": "Inner space (phone)",
+      "panel": "Cards",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "padding",
+          "media": "mobile"
+        }
+      ]
+    },
+    {
+      "key": "cardShadow",
+      "label": "Shadow",
+      "panel": "Cards",
+      "control": "select",
+      "options": [
+        {
+          "label": "None",
+          "value": "none"
+        },
+        {
+          "label": "Soft",
+          "value": "0 18px 40px -24px rgba(11,13,12,.3)"
+        },
+        {
+          "label": "Deep",
+          "value": "0 30px 60px -30px rgba(11,13,12,.45)"
+        }
+      ],
+      "rules": [
+        {
+          "sel": " > *",
+          "prop": "box-shadow"
+        }
+      ]
+    },
+    {
+      "key": "cardHoverBorder",
+      "label": "Border colour on hover",
+      "panel": "Cards",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > *:hover",
+          "prop": "border-color"
+        }
+      ]
+    },
+    {
+      "key": "cardTitleColor",
+      "label": "Title colour",
+      "panel": "Cards",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > * :is(h2, h3, h4, h5, h6)",
+          "prop": "color"
+        }
+      ]
+    },
+    {
+      "key": "cardTitleSize",
+      "label": "Title size",
+      "panel": "Cards",
+      "control": "unit",
+      "rules": [
+        {
+          "sel": " > * :is(h2, h3, h4, h5, h6)",
+          "prop": "font-size"
+        }
+      ]
+    },
+    {
+      "key": "cardTextColor",
+      "label": "Text colour",
+      "panel": "Cards",
+      "control": "color",
+      "rules": [
+        {
+          "sel": " > * :is(p, li)",
+          "prop": "color"
+        }
+      ]
+    }
+  ],
+  "editorScript": "bwe-gw-editor",
+  "render": "file:./render.php"
+}
