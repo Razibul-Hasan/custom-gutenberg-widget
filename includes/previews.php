@@ -1,7 +1,7 @@
 <?php
 /**
  * Inserter previews: hovering one of our blocks in the inserter shows a picture of it as it looks on the live
- * site (assets/previews/<block>.jpg, made by tools/make-previews.mjs) instead of "No preview available".
+ * site (assets/previews/<block>.webp, made by tools/make-previews.mjs) instead of "No preview available".
  *
  * How: every bwe/* block with a picture gets a hidden attribute "bwePreview" and an "example" that sets it; the
  * editor script below shows the picture when that attribute is on. It is never saved (false = default), so no
@@ -23,8 +23,8 @@ function bwe_gw_preview_file( $name ) {
 		return '';
 	}
 	// One directory listing per request instead of a file check per block.
-	$files = $files ?? array_flip( glob( BWE_GW_DIR . '/assets/previews/*.jpg' ) ?: array() );
-	$file  = BWE_GW_DIR . '/assets/previews/' . substr( $name, 4 ) . '.jpg';
+	$files = $files ?? array_flip( glob( BWE_GW_DIR . '/assets/previews/*.webp' ) ?: array() );
+	$file  = BWE_GW_DIR . '/assets/previews/' . substr( $name, 4 ) . '.webp';
 	return isset( $files[ $file ] ) ? $file : '';
 }
 
@@ -54,8 +54,8 @@ add_filter( 'block_type_metadata', 'bwe_gw_preview_metadata' );
  */
 function bwe_gw_preview_script() {
 	$urls = array();
-	foreach ( glob( BWE_GW_DIR . '/assets/previews/*.jpg' ) ?: array() as $file ) {
-		$urls[ 'bwe/' . basename( $file, '.jpg' ) ] = plugins_url( 'assets/previews/' . basename( $file ), BWE_GW_DIR . '/bestwebexpert-gutenberg-widget.php' ) . '?v=' . filemtime( $file );
+	foreach ( glob( BWE_GW_DIR . '/assets/previews/*.webp' ) ?: array() as $file ) {
+		$urls[ 'bwe/' . basename( $file, '.webp' ) ] = plugins_url( 'assets/previews/' . basename( $file ), BWE_GW_DIR . '/bestwebexpert-gutenberg-widget.php' ) . '?v=' . filemtime( $file );
 	}
 	wp_add_inline_script(
 		'wp-blocks',

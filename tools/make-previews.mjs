@@ -1,5 +1,5 @@
 // Inserter preview images: a screenshot of each block as it looks on the live site, saved to
-// assets/previews/<block>.jpg (shown when the block is hovered in the inserter, see includes/previews.php).
+// assets/previews/<block>.webp (shown when the block is hovered in the inserter, see includes/previews.php).
 // Usage: node tools/make-previews.mjs [block …]   (no args = all). Re-run after a block's look changes.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -47,7 +47,7 @@ const SHOTS = {
 	'faq-item': [ HOME, '#faq details.bwex-faq__item', 560, 24 ],
 	cta: [ HOME, 'section.bwe-final', 0, 24 ],
 };
-const MAX_W = 900; // output image width (px)
+const MAX_W = 480; // output image width (px)
 
 const only = process.argv.slice( 2 );
 const byPage = {};
@@ -75,12 +75,12 @@ for ( const [ url, list ] of Object.entries( byPage ) ) {
 		await sleep( 900 );
 		const w = rect.w + pad * 2;
 		const h = Math.min( rect.h + pad * 2, maxH || 99999 );
-		const s = await b.send( 'Page.captureScreenshot', { format: 'jpeg', quality: 82, captureBeyondViewport: true, clip: { x: Math.max( 0, rect.x - pad ), y: Math.max( 0, rect.y - pad ), width: w, height: h, scale: Math.min( 1, MAX_W / w ) } } );
+		const s = await b.send( 'Page.captureScreenshot', { format: 'webp', quality: 45, captureBeyondViewport: true, clip: { x: Math.max( 0, rect.x - pad ), y: Math.max( 0, rect.y - pad ), width: w, height: h, scale: Math.min( 1, MAX_W / w ) } } );
 		if ( ! s.data ) {
 			console.log( 'FAILED', block, JSON.stringify( s ).slice( 0, 300 ), JSON.stringify( rect ) );
 			continue;
 		}
-		writeFileSync( join( OUT, block + '.jpg' ), Buffer.from( s.data, 'base64' ) );
+		writeFileSync( join( OUT, block + '.webp' ), Buffer.from( s.data, 'base64' ) );
 		console.log( block, Math.round( w ) + 'x' + Math.round( h ) );
 	}
 	b.close();
