@@ -1,0 +1,199 @@
+/**
+ * Home hero on off-white (2026-11-19). Same layout, grid pattern and lime glow/underline as the dark
+ * hero; only the colours flip. Delete this file to go back to the dark hero.
+ */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night {
+	--bwex-paper: #f6f5f0;
+	--bwex-dark: #f6f5f0;
+	--bwex-hero-grid-c: rgba(11, 11, 12, .06);
+	--bwex-hero-glow: rgba(200, 255, 61, .34);
+	--bwex-btn-fg: #0e0e0e;
+	--bwex-btn-on: #f6f5f0;
+	background: #f6f5f0;
+	color: #0e0e0e;
+	border-bottom: 1px solid rgba(11, 11, 12, .08);
+}
+
+.bwe-home.bwex .bwe-hero--night::before {
+	background-image:
+		linear-gradient(var(--bwex-hero-grid-c) 1px, transparent 1px),
+		linear-gradient(90deg, var(--bwex-hero-grid-c) 1px, transparent 1px);
+}
+
+.bwe-home.bwex .bwe-hero--night h1 { color: #0e0e0e; }
+
+/* lime text is unreadable on off-white: ink text, the lime underline stays */
+.bwe-home.bwex .bwe-hero--night .bwe-hero__title em { color: #0e0e0e; }
+
+.bwe-home.bwex .bwe-hero--night .bwe-lead,
+.bwe-home.bwex .bwe-hero--night .bwe-proof { color: #5b5b55; }
+
+.bwe-home.bwex .bwe-hero--night .bwe-proof strong { color: #0e0e0e; }
+.bwe-home.bwex .bwe-hero--night .bwe-proof::before { background: rgba(11, 11, 12, .16); }
+.bwe-home.bwex .bwe-hero--night .bwe-proof__face img { border-color: #f6f5f0; }
+.bwe-home.bwex .bwe-hero--night .bwex-scroll { color: #77776f; }
+.bwe-home.bwex .bwe-hero--night .bwex-scroll i { background: rgba(11, 11, 12, .14); }
+
+/* hero buttons (minimal.css paints them light-on-dark) */
+.bwe-h2x-page .bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link {
+	border-color: #0e0e0e;
+	color: #0e0e0e;
+}
+
+.bwe-h2x-page .bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:hover,
+.bwe-h2x-page .bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:focus-visible {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #0b0b0c;
+}
+
+/* the header floats over the hero until it sticks: dark text while it sits on off-white */
+.bwe-h2x-page .bwe-hf:not(.is-solid):not(.is-stuck) {
+	--bwe-hf-text: #0e0e0e;
+	--bwe-hf-on: #f6f5f0;
+	--bwe-hf-line: rgba(11, 11, 12, .25);
+}
+
+/* ---------- Logo colours (2026-11-20) --------------------------------------------------------
+ * Hero background uses the logo's blue + green instead of the single lime glow:
+ * blue #0a6cf0 / #0080ff and green #03a86e / #8fd61e, a blue-tinted grid and a blue→green
+ * underline. Restore hero-light.css.bak-2026-11-20 to go back to lime.
+ */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night {
+	--bwex-hero-grid-c: rgba(10, 108, 240, .07);
+	background:
+		radial-gradient(45% 55% at 0% 70%, rgba(10, 108, 240, .06), transparent 70%),
+		radial-gradient(45% 55% at 100% 100%, rgba(3, 168, 110, .07), transparent 70%),
+		#f6f5f0;
+}
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night::after {
+	background:
+		radial-gradient(30% 42% at 36% 48%, rgba(10, 108, 240, .20), transparent),
+		radial-gradient(30% 42% at 64% 52%, rgba(143, 214, 30, .26), transparent),
+		radial-gradient(26% 36% at 50% 50%, rgba(3, 168, 110, .10), transparent);
+	border-radius: 0;
+}
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-hero__title em::after {
+	background: linear-gradient(90deg, #0a6cf0, #03a86e 55%, #8fd61e);
+	box-shadow: 0 0 18px rgba(10, 108, 240, .28);
+}
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-pill::before {
+	background: #0a6cf0;
+	box-shadow: 0 0 0 3px rgba(10, 108, 240, .25);
+}
+
+.bwe-h2x-page .bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:hover,
+.bwe-h2x-page .bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:focus-visible {
+	border-color: #0a6cf0;
+	background: #0a6cf0;
+	color: #fff;
+}
+
+/* ---------- Dark grid hero (2026-11-20, second pass) -----------------------------------------
+ * Inspired by a dark, fine, even grid background: near-black base, small square grid over the
+ * whole hero (no fade), light text, logo blue/green only as a faint corner glow, the underline and
+ * the primary button. Restore hero-light.css.bak-2026-11-20b to go back to the light hero.
+ */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night {
+	--bwex-hero-grid-c: rgba(255, 255, 255, .045);
+	--bwex-hero-grid-s: 44px;
+	background:
+		radial-gradient(50% 60% at 0% 0%, rgba(10, 108, 240, .14), transparent 70%),
+		radial-gradient(45% 55% at 100% 100%, rgba(3, 168, 110, .12), transparent 70%),
+		#0b0d0c;
+	color: #f4f4f0;
+	border-bottom-color: rgba(255, 255, 255, .06);
+}
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night::before {
+	background-size: 44px 44px;
+	-webkit-mask-image: none;
+	mask-image: none;
+}
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night::after { display: none; }
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night h1,
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-hero__title em,
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-proof strong { color: #f4f4f0; }
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-lead,
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-proof { color: rgba(244, 244, 240, .7); }
+
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-proof::before { background: rgba(255, 255, 255, .16); }
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-proof__face img { border-color: #0b0d0c; }
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwex-scroll { color: rgba(244, 244, 240, .5); }
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwex-scroll i { background: rgba(255, 255, 255, .14); }
+
+/* buttons: first = logo green fill, second = light outline; both go logo blue on hover */
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link {
+	border-color: rgba(244, 244, 240, .45);
+	background: transparent;
+	color: #f4f4f0;
+}
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn:first-child a.wp-block-button__link {
+	border-color: #03a86e;
+	background: #03a86e;
+	color: #fff;
+}
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:hover,
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:focus-visible {
+	border-color: #0a6cf0;
+	background: #0a6cf0;
+	color: #fff;
+}
+
+/* header floats over the dark hero: light text until it sticks */
+.bwe-h2x-page .bwe-hf:not(.is-solid):not(.is-stuck) {
+	--bwe-hf-text: #f4f4f0;
+	--bwe-hf-on: #0b0d0c;
+	--bwe-hf-line: rgba(255, 255, 255, .3);
+}
+
+/* ---------- Brand green #c8ff3d (2026-11-20, third pass) --------------------------------------
+ * Owner picked #c8ff3d for the title underline, the primary button and the hover of both buttons.
+ * Dark text on it (white on #c8ff3d fails contrast). Restore hero-light.css.bak-2026-11-20c to undo.
+ */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-hero__title em::after {
+	background: #c8ff3d;
+	box-shadow: 0 0 18px rgba(200, 255, 61, .45);
+}
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night .bwe-pill::before {
+	background: #c8ff3d;
+	box-shadow: 0 0 0 3px rgba(200, 255, 61, .3);
+}
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn:first-child a.wp-block-button__link {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #0b0d0c;
+}
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:hover,
+.bwe-h2x-page .bwe-hero--paper.bwe-hero--night .bwe-actions .bwe-btn a.wp-block-button__link:focus-visible {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #0b0d0c;
+	box-shadow: 0 0 0 4px rgba(200, 255, 61, .22), 0 8px 24px rgba(200, 255, 61, .28);
+}
+
+/* ---------- One background under the transparent header (2026-11-20) -------------------------
+ * The header reserves its height as a transparent border-top on the hero (--bwe-hf-space). The
+ * `background` shorthand above reset background-origin, so the gradients tiled into that strip and
+ * the grid started below it: it looked like two backgrounds. Paint from the border box instead.
+ */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night {
+	background-color: #0b0d0c;
+	background-image:
+		radial-gradient(50% 60% at 0% 0%, rgba(10, 108, 240, .14), transparent 70%),
+		radial-gradient(45% 55% at 100% 100%, rgba(3, 168, 110, .12), transparent 70%),
+		linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+	background-size: auto, auto, 44px 44px, 44px 44px;
+	background-position: 0 0, 0 0, center -1px, center -1px;
+	background-repeat: no-repeat, no-repeat, repeat, repeat;
+	background-origin: border-box;
+}
+/* the hero clips its border strip (overflow: hidden), so the grid lives in the background above */
+.bwe-home.bwex .bwe-hero--paper.bwe-hero--night::before { display: none; }

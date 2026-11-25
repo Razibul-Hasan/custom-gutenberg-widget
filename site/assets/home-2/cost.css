@@ -1,0 +1,208 @@
+/**
+ * "How much does a website really cost?" block in #pricing, 2026-11-13. Home (bwe-h2x) only.
+ * Dark rounded panel with 3 icon tiles; phones swipe the tiles sideways to keep it short.
+ * CSS only, no copy changed. Delete this file to revert.
+ */
+
+.bwe-h2x-page .bwex .bwex-cost {
+	position: relative;
+	overflow: hidden;
+	margin-top: clamp(48px, 6vw, 88px);
+	padding: clamp(28px, 4vw, 56px);
+	border: 0;
+	border-radius: 28px;
+	background: #0e0e0e;
+	color: #f4f4f0;
+	isolation: isolate;
+}
+
+/* lime glow, same family as the hero / services band */
+.bwe-h2x-page .bwex .bwex-cost::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: -45%;
+	right: -10%;
+	width: 560px;
+	aspect-ratio: 1;
+	background: radial-gradient(closest-side, rgba(200, 255, 61, .14), transparent 70%);
+	pointer-events: none;
+}
+
+/* eyebrow + title */
+.bwe-h2x-page .bwex .bwex-cost__title::before {
+	content: "What moves the price";
+	display: inline-block;
+	margin-bottom: 1rem;
+	padding: 6px 12px;
+	border: 1px solid rgba(200, 255, 61, .35);
+	border-radius: 999px;
+	color: #c8ff3d;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+}
+
+.bwe-h2x-page .bwex .bwex-cost__title .elementor-heading-title {
+	max-width: 22ch;
+	margin: 0 0 clamp(24px, 3vw, 40px);
+	color: #f4f4f0;
+	font-size: clamp(26px, 3vw, 40px);
+	font-weight: 400;
+	line-height: 1.15;
+	letter-spacing: -.02em;
+}
+
+/* tiles */
+.bwe-h2x-page .bwex .bwex-cost__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	counter-reset: bwex-cost;
+	color: #a3a39c;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget {
+	position: relative;
+	padding: 1.5rem 1.5rem 1.6rem;
+	border: 1px solid rgba(255, 255, 255, .1);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, .03);
+	counter-increment: bwex-cost;
+	transition: border-color .25s var(--bwex-ease), transform .25s var(--bwex-ease), background-color .25s var(--bwex-ease);
+}
+
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:hover {
+	border-color: #c8ff3d;
+	background: rgba(200, 255, 61, .05);
+	transform: translateY(-3px);
+}
+
+/* icon circle */
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget::before {
+	content: "";
+	display: block;
+	width: 44px;
+	height: 44px;
+	margin-bottom: 1.4rem;
+	border-radius: 50%;
+	background: var(--bwex-cost-icon) center / 22px 22px no-repeat, rgba(200, 255, 61, .1);
+}
+
+/* number, top right */
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget::after {
+	content: counter(bwex-cost, decimal-leading-zero);
+	position: absolute;
+	top: 1.6rem;
+	right: 1.5rem;
+	color: #6f6f69;
+	font-size: 13px;
+	line-height: 1;
+	letter-spacing: .12em;
+}
+
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:nth-child(1) { --bwex-cost-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l9 5-9 5-9-5z'/%3E%3Cpath d='M3 13l9 5 9-5'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:nth-child(2) { --bwex-cost-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0z'/%3E%3Cpath d='M12 17v4'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:nth-child(3) { --bwex-cost-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17l6-6 4 4 8-8'/%3E%3Cpath d='M15 7h6v6'/%3E%3C/svg%3E"); }
+
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget p {
+	margin: 0;
+	color: inherit;
+}
+
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget strong {
+	display: block;
+	margin-bottom: .5rem;
+	color: #f4f4f0;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+/* tablets: one wide tile on top, two below */
+@media (max-width: 1100px) and (min-width: 782px) {
+	.bwe-h2x-page .bwex .bwex-cost__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:nth-child(1) {
+		grid-column: 1 / -1;
+	}
+}
+
+/* phones: swipe row, so the block stays short */
+@media (max-width: 781px) {
+	.bwe-h2x-page .bwex .bwex-cost {
+		border-radius: 22px;
+		padding: 26px 0 26px 20px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__title {
+		padding-right: 20px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid,
+	.bwe-h2x-page .bwex .bwex-cost__grid.e-con {
+		display: grid;
+		grid-template-columns: none;
+		grid-auto-flow: column;
+		grid-auto-columns: 82%;
+		gap: 10px;
+		padding-right: 20px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-padding-left: 0;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget {
+		scroll-snap-align: start;
+		padding: 1.2rem 1.15rem 1.3rem;
+		border-radius: 16px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:hover {
+		transform: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget::before {
+		width: 38px;
+		height: 38px;
+		margin-bottom: 1rem;
+		background-size: 19px 19px, auto;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget::after {
+		top: 1.3rem;
+		right: 1.15rem;
+	}
+
+	/* swipe hint after the title */
+	.bwe-h2x-page .bwex .bwex-cost__title::after {
+		content: "Swipe →";
+		display: block;
+		margin: -0.75rem 0 1rem;
+		color: #6f6f69;
+		font-size: 12px;
+		letter-spacing: .14em;
+		text-transform: uppercase;
+	}
+
+	.bwe-h2x-page .bwex .bwex-cost__title .elementor-heading-title {
+		margin-bottom: 1.4rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget { transition: none; }
+	.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:hover { transform: none; }
+}

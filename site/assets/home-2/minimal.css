@@ -1,0 +1,272 @@
+/**
+ * Home minimal layer (2026-11-13). Loaded last on the Home page only (bwe-h2x).
+ * CSS only — no copy, headings or links changed. Delete this file to revert.
+ *
+ * 1. Hero buttons look like the header "Free audit" pill (all widths).
+ * 2. Phones (≤781px): boxed cards become calm hairline rows in
+ *    "Everything we can build", "Who we build for", the WP vs Shopify table and "Real proof".
+ */
+
+/* 1. Hero buttons = header pill ------------------------------------------------ */
+.bwe-h2x-page .bwe-hero .bwe-actions {
+	gap: 12px;
+}
+
+.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	height: 40px;
+	min-height: 0;
+	padding: 0 24px;
+	border: 1px solid #f4f4f0;
+	border-radius: 999px;
+	background: transparent;
+	box-shadow: none;
+	color: #f4f4f0;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background-color .2s ease-out, border-color .2s ease-out, color .2s ease-out;
+}
+
+.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link .elementor-button-text {
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+}
+
+.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link:hover,
+.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link:focus-visible {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #0b0b0c;
+}
+
+@media (max-width: 781px) {
+	.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link {
+		padding: 0 20px;
+		letter-spacing: 2.5px;
+	}
+}
+
+/* 2. Phones: minimal rows ------------------------------------------------------- */
+@media (max-width: 781px) {
+
+	/* Everything we can build: 9 tiles → hairline index */
+	.bwe-h2x-page .bwex .bwex-svc__grid {
+		gap: 0;
+		border-top: 1px solid rgba(255, 255, 255, .12);
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__tile {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		column-gap: 16px;
+		row-gap: 6px;
+		min-height: 0;
+		padding: 20px 0;
+		border: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, .12);
+		border-radius: 0;
+		background: none;
+		transform: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__tile::after {
+		display: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__tile:hover,
+	.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible {
+		background: none;
+		transform: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__top {
+		grid-column: 1;
+		justify-content: flex-start;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__num {
+		color: #c8ff3d;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__tag {
+		padding: 0;
+		border: 0;
+		background: none;
+		font-size: 10px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__name {
+		grid-column: 1;
+		margin: 0;
+		font-size: 19px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__desc {
+		grid-column: 1;
+		padding: 0;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	.bwe-h2x-page .bwex .bwex-svc__arrow {
+		position: static;
+		grid-column: 2;
+		grid-row: 1 / span 3;
+		align-self: center;
+		width: 34px;
+		height: 34px;
+		font-size: 15px;
+	}
+
+	/* Who we build for: 6 cards → hairline rows */
+	.bwe-h2x-page .bwex .bwex-who__list {
+		gap: 0;
+		border-top: 1px solid var(--bwex-hair, #e3e3dc);
+	}
+
+	.bwe-h2x-page .bwex .bwex-who__list a {
+		gap: 6px;
+		padding: 20px 52px 20px 0;
+		border: 0;
+		border-bottom: 1px solid var(--bwex-hair, #e3e3dc);
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		transform: none;
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	.bwe-h2x-page .bwex .bwex-who__list a:hover {
+		background: none;
+		box-shadow: none;
+		transform: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-who__list a::after {
+		top: 50%;
+		right: 0;
+		width: 34px;
+		height: 34px;
+		margin-top: -17px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-who__list strong {
+		padding: 0;
+		font-size: 19px;
+	}
+
+	.bwe-h2x-page .bwex .bwex-who__list em {
+		justify-self: start;
+		padding: 0;
+		background: none;
+		font-size: 10px;
+	}
+
+	/* WP vs Shopify table: stacked cards → hairline rows */
+	.bwe-h2x-page .bwex-table tbody {
+		border-top: 1px solid var(--bwex-hair, #e3e3dc);
+	}
+
+	.bwe-h2x-page .bwex-table tbody tr {
+		column-gap: 20px;
+		margin: 0;
+		padding: 16px 0;
+		border: 0;
+		border-bottom: 1px solid var(--bwex-hair, #e3e3dc);
+		border-radius: 0;
+		background: none;
+	}
+
+	.bwe-h2x-page .bwex-table tbody tr:hover > * {
+		background: none;
+	}
+
+	.bwe-h2x-page .bwex-table tbody th,
+	.bwe-h2x-page .bwex-table tbody tr:last-child > th {
+		padding: 0 0 8px;
+		border: 0;
+		background: none;
+		font-size: 16px;
+	}
+
+	.bwe-h2x-page .bwex-table tbody td,
+	.bwe-h2x-page .bwex-table tbody td + td {
+		padding: 0;
+		border: 0;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+
+	.bwe-h2x-page .bwex-table td::before {
+		margin-bottom: 2px;
+		font-size: 10px;
+	}
+
+	/* Real proof: 3 boxed cards → hairline blocks */
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quotes {
+		gap: 0;
+	}
+
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quote {
+		gap: 14px;
+		padding: 28px 0;
+		border: 0;
+		border-top: 1px solid rgba(255, 255, 255, .12);
+		border-radius: 0;
+		background: none;
+		transform: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quote:last-child {
+		border-bottom: 1px solid rgba(255, 255, 255, .12);
+	}
+
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quote__mark {
+		padding: 0;
+		background: none;
+	}
+
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quote__text p {
+		font-size: 18px;
+		line-height: 1.45;
+	}
+
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quote__who {
+		padding-top: 0;
+		border-top: 0;
+		font-size: 14px;
+	}
+}
+
+/* Hero buttons as core Button blocks (2026-11-21): same text style the old Elementor-class buttons had. */
+html body.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn .wp-block-button__link {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: normal;
+	text-transform: none;
+	line-height: 16px;
+}
+
+/* Small heading line under the badge (BWE Page hero pattern): same style as the About hero. */
+html body.bwe-h2x-page .bwe-hero--night .bwe-kicker {
+	margin: -.35rem 0 0;
+	color: #a3a39c;
+	font-size: .75rem;
+	font-weight: 500;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+html body.bwe-h2x-page .bwe-hero--night .bwe-kicker::before { display: none; }

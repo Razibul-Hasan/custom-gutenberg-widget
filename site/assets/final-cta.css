@@ -1,0 +1,201 @@
+/* Final CTA ("Ready when you are") on every page, 2026-11-17: dark card with a lime glow. With a live-chat line it becomes two columns on desktop.
+ * Delete this file and its enqueue (bwe_final_cta_enqueue in bestwebexpert-home.php) to go back to the lime block. */
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 18px;
+	overflow: hidden;
+	padding: 36px 22px 30px;
+	border: 1px solid rgba(255, 255, 255, .08);
+	border-radius: 28px;
+	background: #0b0b0c;
+	color: #f4f4f0;
+	text-align: left;
+	isolation: isolate;
+}
+/* 2026-11-18: the section right before the CTA (Home FAQ) kept its full 140px bottom padding, leaving a big white gap. */
+.bwex .bwex-section:has(+ * .bwe-final) {
+	padding-bottom: min(var(--bwex-pad, 48px), 48px);
+}
+/* lime glow, top right */
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -2;
+	width: auto;
+	height: auto;
+	aspect-ratio: auto;
+	border: 0;
+	border-radius: 0;
+	background: radial-gradient(60% 70% at 100% 0, rgba(200, 255, 61, .24), transparent 70%);
+	pointer-events: none;
+}
+/* faint grid, fading toward the bottom left */
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	width: auto;
+	height: auto;
+	aspect-ratio: auto;
+	border: 0;
+	border-radius: 0;
+	background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+	background-size: 56px 56px;
+	-webkit-mask-image: radial-gradient(70% 90% at 100% 0, #000, transparent 75%);
+	mask-image: radial-gradient(70% 90% at 100% 0, #000, transparent 75%);
+	pointer-events: none;
+}
+
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-eyebrow {
+	color: rgba(244, 244, 240, .7);
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-eyebrow::before {
+	background: var(--bwex-accent, #c8ff3d);
+	box-shadow: 0 0 0 4px rgba(200, 255, 61, .18);
+}
+
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box h2.wp-block-heading {
+	max-width: 11ch;
+	margin: 0;
+	font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+	font-size: clamp(2.5rem, 1.3rem + 5.4vw, 5rem);
+	font-weight: 700;
+	line-height: .98;
+	letter-spacing: -.035em;
+	color: #fff;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .wp-block-heading em {
+	display: block;
+	padding: 0;
+	border-radius: 0;
+	background: none;
+	font-style: normal;
+	color: var(--bwex-accent, #c8ff3d);
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-lead {
+	max-width: 34em;
+	margin: 0;
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: rgba(244, 244, 240, .68);
+}
+
+/* Buttons */
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions {
+	justify-content: flex-start;
+	gap: 10px;
+	width: 100%;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions .wp-block-button { flex: 1 1 100%; }
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link {
+	width: 100%;
+	height: 50px;
+	justify-content: center;
+	border-color: var(--bwex-accent, #c8ff3d);
+	background: var(--bwex-accent, #c8ff3d);
+	color: #0b0b0c;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link:hover,
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link:focus-visible {
+	border-color: #fff;
+	background: #fff;
+	color: #0b0b0c;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn--ghost .wp-block-button__link {
+	border-color: rgba(255, 255, 255, .28);
+	background: transparent;
+	color: #fff;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn--ghost .wp-block-button__link:hover,
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn--ghost .wp-block-button__link:focus-visible {
+	border-color: #fff;
+	background: rgba(255, 255, 255, .1);
+	color: #fff;
+}
+
+/* Live chat: glass panel */
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 14px;
+	width: 100%;
+	margin: 6px 0 0;
+	padding: 20px;
+	border: 1px solid rgba(255, 255, 255, .12);
+	border-radius: 20px;
+	background: rgba(255, 255, 255, .05);
+	box-shadow: none;
+	color: rgba(244, 244, 240, .8);
+	font-size: 1rem;
+	text-align: left;
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	transform: none;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat:hover { transform: none; box-shadow: none; }
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat > span:not(.bwe-final__dot) { flex: 1 1 0; min-width: 0; }
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat strong {
+	padding: 0;
+	background: none;
+	color: var(--bwex-accent, #c8ff3d);
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href] {
+	flex: 1 1 100%;
+	width: 100%;
+	justify-content: center;
+	padding: .8rem 1.1rem;
+	border: 1px solid rgba(255, 255, 255, .28);
+	background: transparent;
+	color: #fff;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href]:hover,
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href]:focus-visible {
+	border-color: #fff;
+	background: #fff;
+	color: #0b0b0c;
+}
+.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__note {
+	margin: 0;
+	font-size: .875rem;
+	color: rgba(244, 244, 240, .5);
+}
+
+/* Desktop: two columns, chat panel on the right */
+@media (prefers-reduced-motion: reduce) {
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__dot { animation: none; }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box { padding: clamp(48px, 6vw, 80px) clamp(40px, 6vw, 80px); border-radius: 36px; }
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions .wp-block-button { flex: 0 0 auto; }
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions { width: auto; }
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link { width: auto; padding-inline: 28px; }
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat { font-size: 1.125rem; }
+
+	/* chat line present: two columns, chat panel on the right */
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box:has(> .bwe-final__chat) {
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+		grid-template-areas: "eb c" "h c" "l c" "a n";
+		column-gap: clamp(32px, 6vw, 96px);
+		row-gap: 20px;
+		align-items: start;
+	}
+	.bwe-final__box:has(> .bwe-final__chat) > :is(.bwex-cta__eyebrow, .bwe-eyebrow) { grid-area: eb; }
+	.bwe-final__box:has(> .bwe-final__chat) > h2 { grid-area: h; }
+	.bwe-final__box:has(> .bwe-final__chat) > .bwe-lead { grid-area: l; }
+	.bwe-final__box:has(> .bwe-final__chat) > .bwe-actions { grid-area: a; align-self: center; margin-top: 8px; }
+	.bwe-final__box:has(> .bwe-final__chat) > .bwe-final__chat { grid-area: c; align-self: end; margin: 0; padding: 28px; }
+	.bwe-final__box:has(> .bwe-final__chat) > .bwe-final__note { grid-area: n; align-self: center; margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__dot { animation: none; }
+}

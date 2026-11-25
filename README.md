@@ -9,7 +9,7 @@ All blocks are **dynamic** (rendered in PHP by `render.php`), so changing a bloc
 |---|---|
 | Requires WordPress | 6.5+ |
 | Requires PHP | 8.0+ |
-| Requires plugin | `bestwebexpert-home` (BestWebExpert Home): it supplies the site's stylesheets |
+| Requires plugin | None. The plugin is self-contained |
 | Text domain | `bestwebexpert` |
 | License | GPL-2.0-or-later |
 
@@ -25,7 +25,20 @@ cd wp-content/plugins
 git clone https://github.com/Razibul-Hasan/custom-gutenberg-widget.git bestwebexpert-gutenberg-widget
 ```
 
-Then activate **BestWebExpert Home** first, followed by **Best Web Expert Gutenberg Widget**.
+Then activate **Best Web Expert Gutenberg Widget**. No other plugin is needed.
+
+### Site design layer (`site/`)
+
+The styles and scripts the blocks' markup was written for ship inside the plugin, in `site/`. They used to live in a
+separate plugin, BestWebExpert Home. This covers the design CSS and its bundle, the GSAP motion scripts, the render
+filters for buttons, images, the hero and video testimonials, the blog templates, Rank Math schema (FAQPage, Service,
+SoftwareApplication), redirects and GA4 event tracking. Front-end assets load only on pages that use them.
+
+- `site/` loads only when **BestWebExpert Home is not active**. If Home is still active, Home serves all of this
+  itself, because loading both would define the same functions twice. Deactivating or deleting Home switches the
+  plugin's own copy on, and the site looks exactly the same.
+- After editing CSS in `site/assets/`, rebuild the one-file bundle with `npm run site-bundle`. Until you do, pages
+  still look right but load the individual stylesheets.
 
 > **Deploying to another site:** install and activate this plugin **before** you move the database. Pages saved with
 > these blocks show "unsupported block" on a site where the plugin isn't active.
@@ -126,6 +139,7 @@ npm run build               # production build: run this before committing or zi
 | `npm run editor -- <ids>` | Editor check of chosen pages (`bNNN` = synced pattern NNN) |
 | `npm run audit` | Checks that every Styles-tab setting visibly changes the live Home page |
 | `npm run icons` | Rebuild the Lucide icon set |
+| `npm run site-bundle` | Rebuild the site CSS bundle (`site/assets/home-2/bundle/`) after editing CSS in `site/` |
 
 The `verify`, `editor` and `audit` scripts run against a local WordPress install and need admin login cookies from
 `tools/cookie.php`. The output of that script is a secret: keep it out of the web root and out of git.
@@ -142,6 +156,7 @@ build/                               compiled output (committed)
 assets/css/                          front-end CSS
 assets/previews/                     inserter preview images
 languages/                           translations
+site/                                site design layer: CSS/JS, render filters, blog templates, schema
 tools/                               CLI-only build scripts, converters, tests and checks
 ```
 

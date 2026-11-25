@@ -1,0 +1,166 @@
+/* Home #pricing "starting prices" note (2026-11-20): the old one-line text with inline links is now a
+ * card: label + quote note, three price chips (link to /pricing/ anchors) and a dark pill to all prices.
+ * Content lives in page 1104 (group .bwex-pricenote). Delete this file to revert the look. */
+html body.bwe-h2x-page .bwex .bwex-pricenote {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	grid-template-areas: "label all" "note all" "list list";
+	align-items: center;
+	column-gap: 24px;
+	margin: 32px 0 0;
+	padding: 28px;
+	border: 1px solid #e3e3dc;
+	border-radius: 24px;
+	background: #fff;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote > * { margin: 0; }
+
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__label {
+	grid-area: label;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 13px !important;
+	font-weight: 600;
+	line-height: 1.2 !important;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: #111;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__label::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #c8ff3d;
+	box-shadow: 0 0 0 4px rgba(200, 255, 61, .3);
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__note {
+	grid-area: note;
+	margin-top: 8px;
+	font-size: 16px !important;
+	line-height: 1.55 !important;
+	color: #5b5b55;
+}
+
+/* Price chips */
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list {
+	grid-area: list;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	margin: 24px 0 0;
+	padding: 0;
+	list-style: none;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list li { margin: 0; padding: 0; }
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	height: 100%;
+	padding: 18px 20px;
+	border: 1px solid #e3e3dc;
+	border-radius: 16px;
+	background: #f7f7f3;
+	color: #111;
+	text-decoration: none;
+	transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a::after {
+	content: "→";
+	position: absolute;
+	top: 16px;
+	right: 18px;
+	font-size: 18px;
+	line-height: 1;
+	color: #8a8a83;
+	transition: transform .2s ease, color .2s ease;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a:hover,
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a:focus-visible {
+	border-color: #111;
+	background: #c8ff3d;
+	transform: translateY(-2px);
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a:hover::after,
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a:focus-visible::after { color: #111; transform: translateX(3px); }
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a span {
+	font-size: 15px !important;
+	line-height: 1.3 !important;
+	color: #5b5b55;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a:hover span { color: #111; }
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a strong:not(#bwe-nil) {
+	font-family: var(--bwe-site-font, "Bricolage Grotesque"), sans-serif !important;
+	font-size: 28px !important;
+	font-weight: 800;
+	line-height: 1.1 !important;
+	letter-spacing: -.02em;
+	color: #111;
+}
+
+/* "See every plan" pill */
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all { grid-area: all; }
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all a {
+	display: inline-flex;
+	align-items: center;
+	height: 48px;
+	padding: 0 22px;
+	border-radius: 999px;
+	background: #111;
+	font-size: 15px !important;
+	font-weight: 600;
+	line-height: 1 !important;
+	color: #fff;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background-color .2s ease, color .2s ease;
+}
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all a:hover,
+html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all a:focus-visible { background: #c8ff3d; color: #111; }
+
+@media (max-width: 767px) {
+	html body.bwe-h2x-page .bwex .bwex-pricenote {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas: "label" "note" "list" "all";
+		padding: 20px;
+		border-radius: 20px;
+	}
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 18px; }
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		padding: 14px 44px 14px 16px;
+	}
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a::after { top: 50%; right: 16px; margin-top: -9px; }
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__list a strong:not(#bwe-nil) { flex: none; font-size: 20px !important; white-space: nowrap; }
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all { margin-top: 16px; }
+	html body.bwe-h2x-page .bwex .bwex-pricenote .bwex-pricenote__all a { display: flex; justify-content: center; }
+}
+
+/* Plan buttons are core Button blocks since 2026-11-21 (were Custom HTML elementor buttons).
+   Same look as before: pinned to the card bottom, 15px bold caps, full-width 48px on phones. */
+html body.bwe-h2x-page .bwex .bwex-plan .wp-block-buttons.bwex-plan__btns {
+	display: block;
+	margin: auto 0 0;
+	padding-top: 16px;
+	gap: 0;
+}
+html body.bwe-h2x-page .bwex .bwex-plan .bwex-plan__btns .wp-block-button { margin: 0; width: auto; }
+html body.bwe-h2x-page .bwex .bwex-plan .bwex-plan__btns .wp-block-button__link {
+	font-size: 15px !important;
+	font-weight: 700;
+	letter-spacing: 1.8px;
+	line-height: 15px;
+	text-transform: uppercase;
+}
+@media (max-width: 781px) {
+	html body.bwe-h2x-page .bwex .bwex-plan .wp-block-buttons.bwex-plan__btns { padding-top: 14.592px; }
+	html body.bwe-h2x-page .bwex .bwex-plan .bwex-plan__btns .wp-block-button,
+	html body.bwe-h2x-page .bwex .bwex-plan .bwex-plan__btns .wp-block-button__link { width: 100%; }
+	html body.bwe-h2x-page .bwex .bwex-plan .bwex-plan__btns .wp-block-button__link { min-height: 48px; height: 48px; justify-content: center; }
+}

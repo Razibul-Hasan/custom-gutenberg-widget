@@ -1,0 +1,250 @@
+/**
+ * Home palette (2026-11-19): off-white, white, ash gray and lime green. Same layout and type as before,
+ * only the dark bands and dark cards are re-coloured. Delete this file to bring the dark bands back.
+ *
+ *   off-white  #f6f5f0   page + alternate bands
+ *   white      #ffffff   cards
+ *   ash        #ecebe7   bands that used to be dark; #d9d8d3 hairlines; #5b5b55 body text
+ *   lime       #c8ff3d   accents (marker highlights, icons, featured card, buttons on hover)
+ *   ink        #111      headings
+ */
+.bwex {
+	--bwex-paper: #fff;
+	--bwex-soft: #f6f5f0;
+	--bwex-ash: #ecebe7;
+	--bwex-hair: #dcdbd6;
+	--bwex-muted: #5b5b55;
+	--bwex-dark: #ecebe7;
+}
+
+/* ---------- Dark bands -> ash ---------------------------------------------------------------- */
+.bwex .bwex-section--dark,
+.bwex .bwex-svc-band {
+	background: var(--bwex-ash);
+	color: var(--bwex-ink);
+	--bwex-hair: #d9d8d3;
+	--bwex-muted: #5b5b55;
+	--bwex-btn-fg: #111;
+	--bwex-btn-on: #ecebe7;
+}
+
+.bwex .bwex-section--dark .bwex-eyebrow,
+.bwex .bwex-section--dark .bwex-eyebrow p,
+.bwex .bwex-section--dark .bwex-intro p,
+.bwex .bwex-svc__lead p { color: #5b5b55; }
+
+/* lime text is unreadable on light: ink words with a lime marker, like the light sections */
+.bwex .bwex-section--dark .bwex-h2,
+.bwex .bwex-section--dark .bwex-h2 .elementor-heading-title { color: #111; }
+.bwex .bwex-section--dark .bwex-h2 em {
+	padding: 0 .08em;
+	background: linear-gradient(transparent 62%, #c8ff3d 62%, #c8ff3d 94%, transparent 94%);
+	color: #111;
+}
+
+/* services band: glow off, white tiles */
+.bwex .bwex-svc-band::before,
+.bwex .bwex-svc-band::after { opacity: .35; }
+
+.bwex .bwex-svc__tile {
+	border-color: #dcdbd6;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, .04);
+}
+.bwex .bwex-svc__tile:hover,
+.bwex .bwex-svc__tile:focus-visible { border-color: #111; background-color: #fff; }
+.bwex .bwex-svc__title .elementor-heading-title { color: #111; }
+.bwex .bwex-svc__desc { color: #5b5b55; }
+.bwex .bwex-svc__tag { border-color: #dcdbd6; color: #3d3d39; background: #f6f5f0; }
+.bwex .bwex-svc__arrow { border-color: #cfcec9; color: #111; }
+.bwex .bwex-svc__tile:hover .bwex-svc__arrow,
+.bwex .bwex-svc__tile:focus-visible .bwex-svc__arrow { border-color: #c8ff3d; background: #c8ff3d; color: #0b0b0c; }
+.bwex.bwex-svcw a.bwex-svc__tile:visited { color: #111; }
+.bwe-h2x-page .bwex .bwex-svc__grid { border-top-color: #d9d8d3; }
+.bwex .bwex-svc .bwex-more,
+.bwex .bwex-proof .bwex-more { color: #5b5b55; }
+.bwex .bwex-svc .bwex-more a,
+.bwex .bwex-proof .bwex-more a { color: #111; text-decoration-color: #c8ff3d; }
+
+/* testimonials */
+.bwex .bwex-proof .bwex-quote {
+	border-color: #dcdbd6;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, .04);
+}
+.bwex .bwex-proof .bwex-quote__text p,
+.bwex .bwex-proof .bwex-quote__who strong { color: #111; }
+.bwex .bwex-proof .bwex-quote__who { border-top-color: #e3e2dd; color: #5b5b55; }
+.bwex .bwex-proof .bwex-quote__who a { color: #111; text-decoration-color: #c8ff3d; }
+.bwe-h2x-page .bwex .bwex-proof .bwex-quote { border-top-color: #d9d8d3; background: none; box-shadow: none; }
+.bwe-h2x-page .bwex .bwex-proof .bwex-quote:last-child { border-bottom-color: #d9d8d3; }
+
+/* how it works */
+.bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item {
+	border-color: #dcdbd6;
+	background: #fff;
+}
+.bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item:hover { border-color: #111; background: #fff; }
+.bwex .bwex-process ol.bwex-num .bwex-num__title,
+.bwex .bwex-process .bwex-num .bwex-num__title { color: #111; }
+.bwex .bwex-process ol.bwex-num .bwex-num__text,
+.bwex .bwex-process ol.bwex-num .bwex-num__text p,
+.bwex .bwex-process .bwex-num__text { color: #5b5b55; }
+.bwex .bwex-process .bwex-num__n { border-bottom-color: #d9d8d3; color: #111; }
+.bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item:not(:last-child)::after {
+	background: linear-gradient(90deg, #c8ff3d, rgba(200, 255, 61, 0));
+}
+.bwex-num--dark { --bwex-hair: #d9d8d3; --bwex-muted: #5b5b55; color: #111; }
+
+/* ---------- Dark cards -> lime / white ------------------------------------------------------- */
+/* "Speed" card in the Why-us grid */
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child,
+.bwex.bwex-specw .bwex-spec__list li:first-child:hover {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #2b3300;
+}
+.bwex.bwex-specw .bwex-spec__list li:first-child .bwex-spec__name { color: #111; }
+.bwex.bwex-specw .bwex-spec__list li:first-child code,
+.bwex.bwex-specw .bwex-spec__list li:first-child:hover code {
+	border-color: rgba(11, 11, 12, .2);
+	background: rgba(255, 255, 255, .55);
+	color: #111;
+}
+
+/* "Growth" pricing plan */
+.bwex .bwex-plan--featured {
+	background: #fff;
+	color: #111;
+	box-shadow: inset 0 0 0 2px #c8ff3d, 0 12px 32px rgba(17, 17, 17, .06);
+	--bwex-hair: #dcdbd6;
+	--bwex-muted: #5b5b55;
+	--bwex-ink: #111;
+	--bwex-btn-fg: #111;
+	--bwex-btn-on: #fff;
+}
+
+/* "How much does a website really cost?" panel */
+.bwe-h2x-page .bwex .bwex-cost {
+	background: #ecebe7;
+	color: #5b5b55;
+}
+.bwe-h2x-page .bwex .bwex-cost__title .elementor-heading-title { color: #111; }
+.bwe-h2x-page .bwex .bwex-cost__grid { color: #5b5b55; }
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget {
+	border-color: #dcdbd6;
+	background: #fff;
+}
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget strong { color: #111; }
+
+/* ---------- Lime icons / stars / chips need an ink backing on light ------------------------- */
+/* service tile icons: ink chip with the lime icon */
+.bwex .bwex-svc__top::before { border-color: #111; background-color: #111; }
+.bwex .bwex-svc__tile:hover .bwex-svc__top::before,
+.bwex .bwex-svc__tile:focus-visible .bwex-svc__top::before { border-color: #111; background-color: #111; }
+
+/* cost icons */
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget::before {
+	background-color: #111;
+	background-blend-mode: normal;
+}
+
+/* "What moves the price" chip */
+.bwe-h2x-page .bwex .bwex-cost__title::before {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #111;
+}
+.bwe-h2x-page .bwex .bwex-cost::before { opacity: .5; }
+
+/* testimonial stars */
+.bwex .bwex-proof .bwe-quote__stars,
+.bwex .bwex-proof .bwex-quote__stars,
+.bwex .bwex-quote__stars { color: #111; }
+.bwex .bwex-proof .bwex-quote [class*="stars"] { color: #111; background: #c8ff3d; }
+
+/* process step numbers */
+.bwex .bwex-process .bwex-num__n { color: #111; }
+.bwex .bwex-process .bwex-num__n::before { background: #c8ff3d; box-shadow: 0 0 0 5px rgba(200, 255, 61, .35); }
+
+/* ---------- Final CTA (Home only): ash card, lime button -------------------------------------- */
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box {
+	border-color: #dcdbd6;
+	background: #ecebe7;
+	color: #111;
+}
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box::before {
+	background: radial-gradient(60% 70% at 100% 0, rgba(200, 255, 61, .45), transparent 70%);
+}
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box::after {
+	background-image: linear-gradient(rgba(11, 11, 12, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(11, 11, 12, .06) 1px, transparent 1px);
+}
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-eyebrow { color: #5b5b55; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-eyebrow::before { background: #111; box-shadow: 0 0 0 4px rgba(200, 255, 61, .6); }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box h2.wp-block-heading { color: #111; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .wp-block-heading em {
+	color: #111;
+	background: linear-gradient(transparent 64%, #c8ff3d 64%, #c8ff3d 92%, transparent 92%);
+}
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-lead { color: #5b5b55; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link { color: #111; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link:hover,
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link:focus-visible { border-color: #111; background: #111; color: #c8ff3d; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn--ghost .wp-block-button__link { border-color: #111; background: transparent; color: #111; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn--ghost .wp-block-button__link:hover { border-color: #111; background: #fff; color: #111; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat {
+	border-color: #dcdbd6;
+	background: #fff;
+	color: #3d3d39;
+}
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat strong { color: #111; background: #c8ff3d; padding: .05em .3em; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href] { border-color: #111; background: #111; color: #c8ff3d; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href]:hover { border-color: #c8ff3d; background: #c8ff3d; color: #111; }
+.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__note { color: #77776f; }
+
+/* specificity fixes */
+.bwe-h2x-page .bwex .bwex-svc__tile .bwex-svc__top::before,
+.bwe-h2x-page .bwex .bwex-svc__tile:hover .bwex-svc__top::before,
+.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible .bwex-svc__top::before { border-color: #111; background-color: #111; }
+.bwe-h2x-page .bwex .bwex-proof .bwex-quote__mark { background: #c8ff3d; color: #111; }
+
+/* ---------- Hover states ---------------------------------------------------------------------
+ * Rule: cards lift to white with an ink border; lime is a fill (button, pill, arrow), never text;
+ * ink buttons turn lime, lime buttons turn ink with lime text. */
+
+/* service tiles: the old hover turned the text light for a dark tile */
+.bwe-h2x-page .bwex .bwex-svc__tile:hover,
+.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible { border-color: #111; background-color: #fff; box-shadow: 0 14px 30px -16px rgba(17, 17, 17, .25); }
+.bwe-h2x-page .bwex .bwex-svc__tile:hover .bwex-svc__desc,
+.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible .bwex-svc__desc { color: #3d3d39; }
+.bwe-h2x-page .bwex .bwex-svc__tile:hover .bwex-svc__title .elementor-heading-title { color: #111; }
+
+/* process steps: number pill is lime with ink text */
+.bwe-h2x-page .bwex .bwex-process ol.bwex-num li .bwex-num__n {
+	border-color: #c8ff3d;
+	background: #c8ff3d;
+	color: #111;
+}
+.bwe-h2x-page .bwex .bwex-process ol.bwex-num li .bwex-num__n::before { background: #111; }
+.bwe-h2x-page .bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item:hover { border-color: #111; background: #fff; }
+
+/* text links: lime text vanished on light */
+.bwex .bwex-svc .bwex-more a:hover,
+.bwex .bwex-proof .bwex-more a:hover,
+.bwex .bwex-proof .bwex-more a:focus-visible,
+.bwex .bwex-proof .bwex-quote__who a:hover { color: #111; text-decoration-color: #c8ff3d; text-decoration-thickness: 3px; }
+
+/* testimonials + cost cards */
+.bwe-h2x-page .bwex .bwex-proof .bwex-quote:hover { border-color: #111; }
+.bwe-h2x-page .bwex .bwex-cost__grid > .elementor-widget:hover { border-color: #111; background: #fff; }
+
+/* "Our services" cards: ink button -> lime */
+.bwex .bwex-plats--3 .bwex-btn .elementor-button:hover,
+.bwex .bwex-plats--3 .bwex-btn .elementor-button:focus-visible { border-color: #c8ff3d; background: #c8ff3d; color: #0b0b0c; }
+
+/* Growth plan: lime button -> ink with lime text (same as the closing banner) */
+.bwex .bwex-plan--featured .bwe-btn a.wp-block-button__link:hover { border-color: #111; background: #111; color: #c8ff3d; }
+.bwe-h2x-page .bwex .bwex-proof .bwex-quote:hover { background: #fff; }
+.bwex .bwex-faq__toggle:hover,
+.bwex .bwex-faq__toggle:focus { border-color: #111; background: #111; color: #fff; box-shadow: none; outline: none; }
+.bwex .bwex-faq__toggle:focus-visible { outline: 2px solid #111; outline-offset: 3px; }

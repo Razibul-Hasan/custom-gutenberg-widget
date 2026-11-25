@@ -1,0 +1,70 @@
+/**
+ * "Hiring checklist" (#choose), 2026-11-13. Home (bwe-h2x) only, PHONES ONLY.
+ * Desktop/tablet keep the original 3-column layout. On phones the 6 checks become a
+ * sideways swipe row of cards so the section is much shorter.
+ * CSS only, no copy changed. Delete this file to revert.
+ */
+
+@media (max-width: 781px) {
+	/* "Swipe" hint above the cards */
+	.bwe-h2x-page #choose .bwex-checkw::before {
+		content: "6 checks · Swipe →";
+		display: block;
+		margin: 0 0 .9rem;
+		color: #9a9a93;
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: .14em;
+		text-transform: uppercase;
+	}
+
+	.bwe-h2x-page #choose .bwex-check__list {
+		display: grid;
+		grid-template-columns: none;
+		grid-auto-flow: column;
+		grid-auto-columns: 84%;
+		gap: 10px;
+		margin-inline: -20px;
+		padding: 0 20px 4px;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: 20px;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.bwe-h2x-page #choose .bwex-check__list::-webkit-scrollbar {
+		display: none;
+	}
+
+	.bwe-h2x-page #choose .bwex-check__list li {
+		scroll-snap-align: start;
+		gap: .55rem;
+		padding: 1.25rem 1.2rem 1.35rem;
+		border: 1px solid #e3e3dc;
+		border-radius: 18px;
+		background: #f4f4f0;
+		font-size: 15px;
+		line-height: 1.55;
+	}
+
+	.bwe-h2x-page #choose .bwex-check__list li::before {
+		color: #9a9a93;
+		font-size: 12px;
+	}
+
+	.bwe-h2x-page #choose .bwex-check__list strong {
+		font-size: 19px;
+		line-height: 1.25;
+	}
+
+	/* answer pinned to the bottom so all cards line up */
+	.bwe-h2x-page #choose .bwex-check__list em {
+		margin-top: auto;
+	}
+
+	.bwe-h2x-page #choose .bwex-btn--center {
+		margin-top: 1.75rem;
+	}
+}

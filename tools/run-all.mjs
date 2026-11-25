@@ -37,6 +37,8 @@ const editor = ( targets ) => run( 'node', [ join( TOOLS, 'editor-check.mjs' ), 
 const [ cmd = 'tests', ...rest ] = process.argv.slice( 2 );
 if ( cmd === 'tests' ) {
 	process.exit( php( 'run-tests.php', WP, ...rest ) );
+} else if ( cmd === 'site-bundle' ) {
+	process.exit( php( 'build-site-bundle.php', WP ) );
 } else if ( cmd === 'editor' ) {
 	process.exit( editor( rest.length ? rest : PAGES ) );
 } else if ( cmd === 'verify' ) {

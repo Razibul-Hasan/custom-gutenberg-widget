@@ -1,0 +1,262 @@
+/* Home v4: "Our services" = 2 skills (WordPress, Shopify). The AI SEO column was removed 2026-11-16. Delete this file to revert the layout. */
+
+/* "Our services" (2026-11-17, v2): minimal SaaS cards. One quiet card style for both platforms:
+ * hairline border, framed image, tight type, service links as chips, one dark button. Phone first. */
+.bwex .bwex-plats.bwex-plats--3 {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+.bwex .bwex-plats--3 > .elementor-widget-bwex-platform-card,
+.bwex .bwex-plats--3 > .elementor-widget-bwex-platform-card:first-child,
+.bwex .bwex-plats--3 > .elementor-widget-bwex-platform-card:last-child {
+	position: relative;
+	padding: 8px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 20px;
+	background: #fafaf8;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, .04);
+	color: var(--bwex-ink, #111);
+	overflow: hidden;
+}
+
+.bwex .bwex-plats--3 .bwex-platw .bwex-plat,
+.bwex .bwex-plats--3 .bwex-plat:first-child,
+.bwex .bwex-plats--3 .bwex-plat:last-child {
+	position: relative;
+	gap: 0;
+	padding: 0;
+	border: 0;
+}
+.bwex .bwex-plats--3 .bwex-plat > :not(.bwex-plat__img):not(.bwex-plat__chipwrap) {
+	margin-inline: 12px;
+}
+
+/* Framed image with the platform tag on it */
+.bwex .bwex-plats--3 .bwex-plat__img {
+	margin: 0 0 18px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 14px;
+	background: #fff;
+}
+.bwex .bwex-plats--3 .bwex-plat__img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	transform: none;
+}
+.bwex .bwex-plats--3 .bwex-plat:hover .bwex-plat__img img { transform: none; }
+.bwex .bwex-plats--3 .bwex-plat__chipwrap {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	margin: 0;
+}
+.bwex .bwex-plats--3 .bwex-plat__chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	margin: 0;
+	padding: 6px 11px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, .92);
+	color: var(--bwex-ink, #111);
+	font-size: .75rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	text-transform: none;
+	line-height: 1;
+}
+.bwex .bwex-plats--3 .bwex-plat__chip::before { width: 6px; height: 6px; background: var(--bwex-accent, #c8ff3d); box-shadow: 0 0 0 1px rgba(11, 11, 12, .25); }
+
+/* Title + one line */
+.bwex .bwex-plats--3 .bwex-h3 { margin-bottom: 8px; }
+.bwex .bwex-plats--3 .bwex-h3 .elementor-heading-title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.15;
+	letter-spacing: -.02em;
+	color: inherit;
+}
+.bwex .bwex-plats--3 .bwex-h3 a { color: inherit; text-decoration: none; background: none; }
+.bwex .bwex-plats--3 .bwex-h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.bwex .bwex-plats--3 .bwex-plat__text { margin-bottom: 18px; }
+.bwex .bwex-plats--3 .bwex-plat__text p {
+	margin: 0;
+	max-width: 34em;
+	font-size: .9375rem;
+	line-height: 1.55;
+	color: var(--bwex-muted, #6b6b66);
+}
+
+/* Service links as chips */
+.bwex .bwex-plats--3 .bwex-platw ul.bwex-checks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.bwex .bwex-plats--3 .bwex-checks li { margin: 0; padding: 0; border: 0; }
+.bwex .bwex-plats--3 .bwex-checks li::before,
+.bwex .bwex-plats--3 .bwex-checks li::marker { content: none; }
+.bwex .bwex-plats--3 .bwex-checks a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 40px;
+	padding: 0 14px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 999px;
+	background: #fff;
+	font-size: .875rem;
+	font-weight: 500;
+	line-height: 1.2;
+	color: var(--bwex-ink, #111);
+	text-decoration: none;
+	transition: border-color .2s ease, background-color .2s ease;
+}
+.bwex .bwex-plats--3 .bwex-checks a::after { content: none; }
+.bwex .bwex-plats--3 .bwex-checks a:hover,
+.bwex .bwex-plats--3 .bwex-checks a:focus-visible { border-color: #8cc21a; background: #c8ff3d; color: #0b0d0c; } /* lime pill hover (owner, 2026-11-20) */
+.bwex .bwex-plats--3 .bwex-checks a:focus-visible { outline: 2px solid var(--bwex-ink, #111); outline-offset: 2px; }
+
+/* Footer: divider, price, one button */
+.bwex .bwex-plats--3 .bwex-plat__foot {
+	flex-direction: column;
+	align-items: stretch;
+	gap: 12px;
+	margin: auto 12px 8px;
+	padding: 16px 0 4px;
+	border-top: 1px solid var(--bwex-hair, #e3e3dc);
+}
+.bwex .bwex-plats--3 .bwex-plat__price { margin: 0; font-size: .875rem; color: var(--bwex-muted, #6b6b66); }
+.bwex .bwex-plats--3 .bwex-plat__price strong { font-size: 1rem; font-weight: 600; color: var(--bwex-ink, #111); }
+.bwex .bwex-plats--3 .bwex-btn,
+.bwex .bwex-plats--3 .bwex-btn .elementor-button { width: 100%; }
+.bwex .bwex-plats--3 .bwex-btn .elementor-button {
+	height: 46px;
+	border-color: var(--bwex-ink, #111);
+	border-radius: 12px;
+	background: var(--bwex-ink, #111);
+	color: #fff;
+	font-size: .875rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	text-transform: none;
+}
+.bwex .bwex-plats--3 .bwex-btn .elementor-button:hover,
+.bwex .bwex-plats--3 .bwex-btn .elementor-button:focus-visible {
+	border-color: #2a2a2e;
+	background: #2a2a2e;
+	color: #fff;
+}
+
+/* 782px+: two equal cards, price left and button right */
+@media (min-width: 782px) {
+	.bwex .bwex-plats.bwex-plats--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+	.bwex .bwex-plats--3 > .elementor-widget-bwex-platform-card { border-radius: 24px; }
+	.bwex .bwex-plats--3 .bwex-plat > :not(.bwex-plat__img):not(.bwex-plat__chipwrap) { margin-inline: 20px; }
+	.bwex .bwex-plats--3 .bwex-plat__img { margin-bottom: 24px; }
+	.bwex .bwex-plats--3 .bwex-h3 .elementor-heading-title { font-size: 1.75rem; }
+	.bwex .bwex-plats--3 .bwex-plat__foot { flex-direction: row; align-items: center; justify-content: space-between; margin: auto 20px 12px; padding: 20px 0 4px; }
+	.bwex .bwex-plats--3 .bwex-btn,
+	.bwex .bwex-plats--3 .bwex-btn .elementor-button { width: auto; }
+	.bwex .bwex-plats--3 .bwex-btn .elementor-button { padding-inline: 22px; }
+}
+
+/* Final CTA: live chat card (opens Crisp; falls back to /contact/). */
+.bwe-home .bwe-final__chat {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: .6rem .9rem;
+	margin: .25rem 0 0;
+	padding: .55rem .55rem .55rem 1.15rem;
+	border-radius: 999px;
+	background: #fff;
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .06), 0 14px 32px -12px rgba(11, 11, 12, .35);
+	color: var(--bwe-ink);
+	font-size: 1.02rem;
+	line-height: 1.4;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.bwe-home .bwe-final__chat:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .06), 0 20px 40px -14px rgba(11, 11, 12, .45);
+}
+.bwe-home .bwe-final__dot {
+	flex: none;
+	width: .65rem;
+	height: .65rem;
+	border-radius: 50%;
+	background: #16a34a;
+	box-shadow: 0 0 0 0 rgba(22, 163, 74, .55);
+	animation: bwe-chat-ping 1.8s ease-out infinite;
+}
+.bwe-home .bwe-final__chat strong {
+	padding: .05em .3em;
+	border-radius: .3em;
+	background: var(--bwe-accent);
+}
+.bwe-home .bwe-final__chat a[href] {
+	display: inline-flex;
+	align-items: center;
+	gap: .45rem;
+	padding: .6rem 1.1rem;
+	border-radius: 999px;
+	background: var(--bwe-ink);
+	color: var(--bwe-accent);
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background .2s ease, color .2s ease;
+}
+.bwe-home .bwe-final__chat a[href]::before {
+	content: "";
+	width: 1.05em;
+	height: 1.05em;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.bwe-home .bwe-final__chat a[href]:hover,
+.bwe-home .bwe-final__chat a[href]:focus-visible {
+	background: #2a2a2e;
+	color: #fff;
+}
+@keyframes bwe-chat-ping {
+	70%, 100% { box-shadow: 0 0 0 .55rem rgba(22, 163, 74, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.bwe-home .bwe-final__dot { animation: none; }
+	.bwe-home .bwe-final__chat, .bwe-home .bwe-final__chat:hover { transition: none; transform: none; }
+}
+@media (max-width: 520px) {
+	.bwe-home .bwe-final__chat {
+		width: 100%;
+		padding: 1rem;
+		border-radius: 22px;
+		text-align: center;
+	}
+	.bwe-home .bwe-final__chat a[href] { width: 100%; justify-content: center; padding-block: .8rem; }
+}
+
+/* Services cards: footers pin to the card bottom so both buttons line up whatever the chip count. */
+.bwex .bwex-plats--3 .bwex-plat__list { margin-bottom: 24px; }
+.bwex .bwex-plats--3 > .elementor-widget-bwex-platform-card { display: flex; flex-direction: column; }
+.bwex .bwex-plats--3 .bwex-plat { flex: 1 1 auto; }
+
+/* 2026-11-18: home.css "> * { margin-block: 0 }" wiped the FAQ "Show N more" button's top margin, so it touched the last divider. */
+.bwe-home .bwex-faq-section .bwex-faq__toggle.bwex-faq__toggle {
+	margin-top: 28px;
+}
+@media (max-width: 599px) {
+	.bwe-home .bwex-faq-section .bwex-faq__toggle.bwex-faq__toggle { margin-top: 24px; }
+}

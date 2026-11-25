@@ -1,0 +1,107 @@
+/* "Why BestWebExpert" (#spec), 2026-11-17: minimal SaaS bento. Six spec cards, the first one dark and larger.
+ * Phone = one column; 600px+ = 2 columns; 900px+ = 6-column bento (4+2 / 2+4 / 4+2). Delete this file to revert. */
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style: none;
+}
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	min-width: 0;
+	margin: 0;
+	padding: 22px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 20px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, .04);
+	color: var(--bwex-muted, #6b6b66);
+	transition: border-color .2s ease;
+}
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li::before { content: none; }
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover {
+	padding: 22px;
+	border-color: #c9c9c1;
+	background: #fff;
+}
+.bwex.bwex-specw .bwex-spec__name {
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -.015em;
+	color: var(--bwex-ink, #111);
+}
+.bwex.bwex-specw .bwex-spec__text {
+	flex: 1 1 auto;
+	max-width: 34em;
+	font-size: .9375rem;
+	line-height: 1.55;
+}
+/* Proof chip: the measurable promise, small and quiet */
+.bwex.bwex-specw .bwex-spec__list code {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+	padding: 7px 12px;
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 999px;
+	background: #fafaf8;
+	font-family: inherit;
+	font-size: .75rem;
+	font-weight: 500;
+	line-height: 1;
+	color: var(--bwex-ink, #111);
+}
+.bwex.bwex-specw .bwex-spec__list code::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--bwex-accent, #c8ff3d);
+	box-shadow: 0 0 0 1px rgba(11, 11, 12, .25);
+}
+.bwex.bwex-specw .bwex-spec__list li:hover code { border-color: var(--bwex-hair, #e3e3dc); background: #fafaf8; }
+
+/* Feature card: the first spec (speed) is dark, with a soft lime glow in the corner */
+.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child {
+	border-color: #0e0e0e;
+	background: #0e0e0e radial-gradient(70% 90% at 100% 0, rgba(200, 255, 61, .2), transparent 70%);
+	color: rgba(244, 244, 240, .68);
+}
+.bwex.bwex-specw .bwex-spec__list li:first-child:hover { border-color: #0e0e0e; background: #0e0e0e radial-gradient(70% 90% at 100% 0, rgba(200, 255, 61, .2), transparent 70%); }
+.bwex.bwex-specw .bwex-spec__list li:first-child .bwex-spec__name { color: #fff; font-size: 1.5rem; }
+.bwex.bwex-specw .bwex-spec__list li:first-child code,
+.bwex.bwex-specw .bwex-spec__list li:first-child:hover code {
+	border-color: rgba(255, 255, 255, .16);
+	background: rgba(255, 255, 255, .08);
+	color: #fff;
+}
+.bwex.bwex-specw .bwex-spec__list li:first-child code::before { box-shadow: 0 0 0 3px rgba(200, 255, 61, .25); }
+
+/* Footer line */
+.bwex.bwex-specw .bwex-spec__foot { margin-top: 28px; }
+.bwex.bwex-specw .bwex-spec__aside { margin: 0; font-size: .9375rem; color: var(--bwex-muted, #6b6b66); }
+.bwex.bwex-specw .bwex-spec__aside a { color: var(--bwex-ink, #111); font-weight: 500; }
+
+@media (min-width: 600px) {
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child { grid-column: 1 / -1; }
+}
+@media (min-width: 900px) {
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li { grid-column: span 2; padding: 28px; border-radius: 24px; }
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { padding: 28px; }
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(1),
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(4),
+	.bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:nth-child(5) { grid-column: span 4; }
+	.bwex.bwex-specw .bwex-spec__list li:first-child .bwex-spec__name { font-size: 1.875rem; letter-spacing: -.025em; }
+	.bwex.bwex-specw .bwex-spec__list li:first-child .bwex-spec__text { font-size: 1.0625rem; max-width: 28em; }
+}

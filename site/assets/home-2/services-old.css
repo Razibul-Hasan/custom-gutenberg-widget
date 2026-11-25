@@ -1,0 +1,170 @@
+/* "Our services" like old-bestwebexpert.local (2026-11-20): white band, 16px intro on a wide
+ * column, compact 240px cards (22px corners, 22px padding, 64px right for the arrow), light-green
+ * icon chip with a dark icon, small grey platform tag, one-line Bricolage title + 15px text, round
+ * arrow bottom-right. Loaded last on the front page. Delete this file to revert. */
+html body.bwe-h2x-page .bwex .bwex-section.bwex-svc-band {
+	background: #fff !important;
+	padding-block: 84px !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc-band::before,
+html body.bwe-h2x-page .bwex .bwex-svc-band::after { display: none !important; }
+/* next band goes soft so the two white bands don't merge */
+html body.bwe-h2x-page .bwex .bwex-section.bwex-services { background: #f6f5f0 !important; }
+
+/* intro: heading | 80px | 498px intro, like the old site */
+@media (min-width: 782px) {
+	html body.bwe-h2x-page .bwex .bwex-svc__head {
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) !important;
+		column-gap: 80px !important;
+	}
+}
+html body.bwe-h2x-page .bwex .bwex-svc__lead { width: 100% !important; max-width: 498px !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__lead p {
+	max-width: none !important;
+}
+
+/* grid + card */
+html body.bwe-h2x-page .bwex .bwex-svc__grid { gap: 20px !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__tile {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 240px !important;
+	padding: 22.4px 64px 22.4px 22.4px !important;
+	border: 1px solid #e4e4de !important;
+	border-radius: 22px !important;
+	background: #fff !important;
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .03) !important;
+	transition: border-color .25s, transform .25s ease !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__tile:hover,
+html body.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible {
+	border-color: #0b0b0c !important;
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .03) !important;
+	transform: translateY(-3px);
+}
+
+/* top row: icon chip left, tag right (tag pinned like the old card) */
+html body.bwe-h2x-page .bwex .bwex-svc__top {
+	margin: 0 !important; /* titles line up across a row (was auto) */
+	padding: 0 !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__item .bwex-svc__top::before {
+	width: 48px !important;
+	height: 48px !important;
+	border: 0 !important;
+	border-radius: 15px !important;
+	background-color: rgba(200, 255, 61, .38) !important;
+	background-size: 24px 24px !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__tile:hover .bwex-svc__top::before { background-color: #c8ff3d !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__tag {
+	position: absolute;
+	top: 24.8px;
+	right: 22.4px;
+	padding: 4.8px 10.4px !important;
+	border: 1px solid #e4e4de !important;
+	border-radius: 999px !important;
+	background: #f4f4f0 !important;
+	color: #5d5d58 !important;
+	font-family: var(--bwe-site-font) !important;
+	font-size: 10.4px !important;
+	font-weight: 700 !important;
+	line-height: 1.2 !important;
+	letter-spacing: .08em !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__tag::before { display: none !important; }
+
+/* title + text */
+html body.bwe-h2x-page .bwex .bwex-svc__name {
+	display: block;
+	margin: 44px 0 4px !important;
+	padding: 0 !important;
+	color: #0b0b0c !important;
+	white-space: normal;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__desc {
+	padding: 0 !important;
+	color: #44443f !important;
+	font-size: 17px !important;
+	line-height: 27px !important;
+}
+
+/* round arrow, bottom-right */
+html body.bwe-h2x-page .bwex .bwex-svc__arrow {
+	right: 19.2px !important;
+	bottom: 19.2px !important;
+	width: 33.6px !important;
+	height: 33.6px !important;
+	border: 1px solid #e4e4de !important;
+	background: #fff !important;
+	color: #0b0b0c !important;
+	font-size: 15px !important;
+	transform: rotate(-45deg) !important;
+}
+html body.bwe-h2x-page .bwex .bwex-svc__tile:hover .bwex-svc__arrow,
+html body.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible .bwex-svc__arrow {
+	border-color: #0b0b0c !important;
+	background: #c8ff3d !important;
+	color: #0b0b0c !important;
+}
+
+@media (max-width: 1024px) {
+	html body.bwe-h2x-page .bwex .bwex-svc__name { white-space: normal; }
+}
+@media (max-width: 781px) {
+	html body.bwe-h2x-page .bwex .bwex-section.bwex-svc-band { padding-block: 64px !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__grid { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__tile { min-height: 0 !important; padding: 20px 64px 20px 20px !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__tag { top: 22px; right: 20px; }
+	html body.bwe-h2x-page .bwex .bwex-svc__name { margin-top: 18px !important; white-space: normal; }
+	html body.bwe-h2x-page .bwex .bwex-svc__desc { display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
+}
+
+/* icons: same drawings as seo-plan.css, stroked dark for the light chip */
+html body.bwe-h2x-page .bwex .bwex-svc__item--wordpress .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 16 4-4-4-4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='m14.5 4-5 16'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--woocommerce .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='21' r='1'/%3E%3Ccircle cx='19' cy='21' r='1'/%3E%3Cpath d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--gutenberg .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='7' x='14' y='3' rx='1'/%3E%3Cpath d='M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--theme .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='13.5' cy='6.5' r='.5' fill='%230b0d0c'/%3E%3Ccircle cx='17.5' cy='10.5' r='.5' fill='%230b0d0c'/%3E%3Ccircle cx='8.5' cy='7.5' r='.5' fill='%230b0d0c'/%3E%3Ccircle cx='6.5' cy='12.5' r='.5' fill='%230b0d0c'/%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--apps .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M9 8V2'/%3E%3Cpath d='M15 8V2'/%3E%3Cpath d='M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--speed .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 14 4-4'/%3E%3Cpath d='M3.34 19a10 10 0 1 1 17.32 0'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--ai-seo .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z'/%3E%3Cpath d='M20 3v4'/%3E%3Cpath d='M22 5h-4'/%3E%3Cpath d='M4 17v2'/%3E%3Cpath d='M5 18H3'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--redesign .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8'/%3E%3Cpath d='M21 3v5h-5'/%3E%3Cpath d='M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16'/%3E%3Cpath d='M8 16H3v5'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--maintenance .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") !important; }
+/* web dev, Shopify bag, app review: were drawn only on Write for Us, so these service-tile icons showed an empty chip elsewhere (2026-11-23) */
+html body.bwe-h2x-page .bwex .bwex-svc__item--webdev .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m6 10 3 2-3 2M12 15h5'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--shopify .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z'/%3E%3Cpath d='M3 6h18M16 10a4 4 0 0 1-8 0'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwex .bwex-svc__item--appreview .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Cpath d='m17.5 13.5 1.1 2.2 2.4.4-1.7 1.7.4 2.4-2.2-1.1-2.2 1.1.4-2.4-1.7-1.7 2.4-.4Z'/%3E%3C/svg%3E") !important; }
+
+/* "Why BestWebExpert" cards: hover like the service cards (2026-11-20) */
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li {
+	transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background-color .25s ease !important;
+	will-change: transform;
+}
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover {
+	transform: translateY(-4px);
+	border-color: #0b0b0c !important;
+	box-shadow: 0 18px 40px -22px rgba(11, 13, 12, .35) !important;
+}
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:not(:first-child):hover { background: #fff !important; }
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li code { transition: background-color .25s ease, border-color .25s ease, color .25s ease; }
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:not(:first-child):hover code {
+	border-color: #c8ff3d !important;
+	background: #c8ff3d !important;
+	color: #0b0d0c !important;
+}
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:not(:first-child):hover code::before { background: #0b0d0c !important; }
+/* featured lime card */
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child:hover { background: #c8ff3d !important; }
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child:hover code {
+	border-color: #0b0d0c !important;
+	background: #0b0d0c !important;
+	color: #c8ff3d !important;
+}
+html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child:hover code::before { background: #c8ff3d !important; }
+@media (prefers-reduced-motion: reduce) {
+	html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { transform: none; }
+}
+@media (max-width: 767px) {
+	html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { padding: revert-layer; }
+}

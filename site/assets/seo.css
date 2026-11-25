@@ -1,0 +1,109 @@
+/*
+ * Extras for the "best web expert" home page sections and guides: the Rank Math FAQ block, the table of contents
+ * and in-article figures, styled to match the rest of the BestWebExpert design (see home.css).
+ */
+
+/* ---------- Rank Math FAQ block ---------- */
+
+.bwe-home .bwe-faq-block .rank-math-list {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bwe-home .bwe-faq-block .rank-math-list-item {
+	margin: 0;
+	padding: 1.3rem 0;
+	border-bottom: 1px solid #d6d6cf;
+}
+
+.bwe-home .bwe-faq-block .rank-math-question {
+	margin: 0 0 .5rem;
+	color: var(--bwe-ink);
+	font-family: var(--bwe-font-display);
+	font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem);
+	font-weight: 700;
+	line-height: 1.3;
+	letter-spacing: -.02em;
+}
+
+.bwe-home .bwe-faq-block .rank-math-answer {
+	max-width: 40rem;
+	color: var(--bwe-muted);
+}
+
+.bwe-home .bwe-faq-block .rank-math-answer p {
+	margin: 0;
+}
+
+/* In an article the FAQ sits in the reading column, so it needs no top rule of its own. */
+
+.bwe-prose .bwe-faq-block .rank-math-list-item:first-child {
+	padding-top: 0;
+}
+
+/* ---------- Table of contents ---------- */
+
+.bwe-prose .wp-block-rank-math-toc-block {
+	margin-block: 2rem;
+	padding: 1.25rem 1.5rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 16px;
+	background: var(--bwe-soft);
+}
+
+.bwe-prose .wp-block-rank-math-toc-block > p {
+	margin: 0 0 .5rem;
+	font-family: var(--bwe-font-display);
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+.bwe-prose .wp-block-rank-math-toc-block ul {
+	margin: 0;
+	padding-left: 1.2rem;
+}
+
+.bwe-prose .wp-block-rank-math-toc-block li {
+	margin: .3rem 0;
+}
+
+/* ---------- Figures ---------- */
+
+.bwe-prose .wp-block-image {
+	margin-block: 2rem;
+}
+
+.bwe-prose .wp-block-image img {
+	width: 100%;
+	height: auto;
+	border-radius: 16px;
+}
+
+.bwe-prose .wp-block-image figcaption {
+	margin-top: .6rem;
+	color: var(--bwe-muted);
+	font-size: .9rem;
+	text-align: center;
+}
+
+.bwe-prose .bwe-table {
+	margin-block: 1.75rem;
+}
+
+/* ---------- Home page checklist ---------- */
+
+.bwe-home .bwe-actions--center {
+	justify-content: center;
+}
+
+.bwe-home .bwe-ind h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.bwe-home .bwe-ind h3 a:hover {
+	text-decoration: underline;
+}

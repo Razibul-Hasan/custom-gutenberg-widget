@@ -1,0 +1,101 @@
+/**
+ * BestWebExpert — extras shared by the "Best WordPress Expert" and "Best Shopify Expert" landing page patterns.
+ *
+ * Builds on the tokens and components in home.css and services.css.
+ */
+
+/* ---------- Hero ---------- */
+
+/* The price card's label runs longer than the services page's, so the sticker moves off it to the bottom edge. */
+@media (min-width: 600px) {
+	:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-years .bwe-sticker--b {
+		top: auto;
+		right: -1rem;
+		bottom: -1.2rem;
+	}
+}
+
+/* ---------- Service cards ---------- */
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-ind .bwe-wpx-from {
+	align-self: flex-start;
+	margin: 0 0 .4rem;
+	padding: .3rem .75rem;
+	border-radius: 999px;
+	background: var(--bwe-ink);
+	color: var(--bwe-accent);
+	font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-wpx-services .bwe-more {
+	margin-top: 2rem;
+}
+
+/* ---------- Price list & comparison tables ---------- */
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-wpx-table th:nth-child(2) {
+	box-shadow: inset 0 -4px 0 var(--bwe-accent);
+}
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-wpx-table th:nth-child(3) {
+	box-shadow: inset 0 -4px 0 var(--bwe-wp);
+}
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-wpx-table th:nth-child(4) {
+	box-shadow: inset 0 -4px 0 var(--bwe-violet);
+}
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-wpx-table td strong {
+	color: var(--bwe-ink);
+}
+
+.bwe-wpx-pricing .bwe-wpx-table :is(th, td):first-child {
+	width: 46%;
+}
+
+.bwe-wpx-pricing .bwe-wpx-table {
+	max-width: 56rem;
+	margin-inline: auto;
+}
+
+.bwe-wpx-compare .bwe-wpx-table :is(th, td):first-child {
+	width: 22%;
+}
+
+.bwe-wpx-compare .bwe-wpx-table td:nth-child(2) {
+	background: rgba(200, 255, 61, .14);
+	color: var(--bwe-ink);
+}
+
+@media (max-width: 599px) {
+	.bwe-wpx-compare .bwe-wpx-table th {
+		font-size: .85rem;
+		word-break: keep-all;
+	}
+
+	/* A wider first column, so service names wrap between words instead of mid-word. */
+	.bwe-wpx-compare .bwe-wpx-table :is(th, td):first-child {
+		width: 38%;
+		overflow-wrap: normal;
+		hyphens: auto;
+	}
+}
+
+/* ---------- About ---------- */
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-about__copy .bwe-shot {
+	margin-top: 1rem;
+}
+
+/* The social banner has text right up to its edges, so show it whole instead of cropping it to 3:2. */
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-about__copy .bwe-shot img {
+	aspect-ratio: auto;
+}
+
+:is(.bwe-wpx, .bwe-spx, .bwe-pb) .bwe-about__copy .bwe-shot img {
+	border-radius: var(--bwe-radius);
+}

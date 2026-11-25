@@ -1,0 +1,169 @@
+/* Video testimonials (2026-11-20): three 9:16 YouTube Shorts with a caption.
+ * Desktop 3 columns, phone = horizontal swipe. Delete includes/video-testimonials.php to revert. */
+.bwe-h2x-page .bwex .bwex-proof .bwex-quotes:has(.bwex-vt),
+.bwex .bwex-quotes:has(.bwex-vt) {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	max-width: 980px;
+	margin-inline: auto;
+}
+
+.bwex .bwex-vt {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	min-width: 0;
+	margin: 0;
+}
+
+.bwex .bwex-vt .bwex-vt__video {
+	position: relative;
+	margin: 0;
+	aspect-ratio: 9 / 16;
+	overflow: hidden;
+	border-radius: 22px;
+	background: #0b0d0c;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 20px 40px -24px rgba(11, 13, 12, .55);
+}
+
+.bwex .bwex-yt,
+.bwex .bwex-yt__frame {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Player: no YouTube UI. The iframe runs 160px past the card top and bottom; a 9:16 Short still
+ * fits the card width exactly, so only YouTube's letterbox (title bar, logo) is cropped away. */
+.bwex .bwex-vt__video .bwex-yt__frame {
+	top: -160px;
+	height: calc(100% + 320px);
+	pointer-events: none;
+}
+.bwex .bwex-yt[hidden] { display: none; }
+
+.bwex .bwex-yt__ctl {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+.bwex .bwex-yt__ctl .bwex-yt__play { opacity: 0; transition: opacity .2s ease, transform .25s ease; }
+.bwex .bwex-vt__video.is-paused .bwex-yt__ctl { background: rgba(11, 13, 12, .35); }
+.bwex .bwex-vt__video.is-paused .bwex-yt__ctl .bwex-yt__play,
+.bwex .bwex-yt__ctl:focus-visible .bwex-yt__play { opacity: 1; }
+/* while playing, a small pause hint on hover */
+.bwex .bwex-vt__video.is-playing .bwex-yt__ctl:hover .bwex-yt__play { opacity: .9; }
+.bwex .bwex-vt__video.is-playing .bwex-yt__ctl .bwex-yt__play::before {
+	left: 50%;
+	width: 16px;
+	height: 20px;
+	border: 0;
+	border-left: 5px solid #0b0d0c;
+	border-right: 5px solid #0b0d0c;
+}
+.bwex .bwex-yt__ctl:focus-visible { outline: 3px solid #c8ff3d; outline-offset: -3px; }
+
+.bwex .bwex-yt {
+	display: block;
+	padding: 0;
+	background: #0b0d0c;
+	cursor: pointer;
+}
+
+.bwex .bwex-yt img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .5s ease, opacity .3s ease;
+}
+
+/* soft shade so the play button and caption read on any frame */
+.bwex .bwex-yt::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(11, 13, 12, 0) 55%, rgba(11, 13, 12, .55));
+	pointer-events: none;
+}
+
+.bwex .bwex-yt__play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: #c8ff3d;
+	box-shadow: 0 0 0 8px rgba(200, 255, 61, .25);
+	transform: translate(-50%, -50%);
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.bwex .bwex-yt__play::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 54%;
+	border-style: solid;
+	border-width: 10px 0 10px 16px;
+	border-color: transparent transparent transparent #0b0d0c;
+	transform: translate(-50%, -50%);
+}
+
+.bwex .bwex-yt:hover img,
+.bwex .bwex-yt:focus-visible img { transform: scale(1.04); }
+.bwex .bwex-yt:hover .bwex-yt__play,
+.bwex .bwex-yt:focus-visible .bwex-yt__play {
+	transform: translate(-50%, -50%) scale(1.08);
+	box-shadow: 0 0 0 12px rgba(200, 255, 61, .28);
+}
+.bwex .bwex-yt:focus-visible { outline: 3px solid #c8ff3d; outline-offset: -3px; }
+
+.bwex .bwex-vt__who {
+	margin: 0;
+	padding: 0 4px;
+	color: #5b5b55;
+	font-size: .875rem;
+	line-height: 1.45;
+}
+.bwex .bwex-vt__who strong {
+	display: block;
+	color: #111;
+	font-weight: 600;
+}
+
+/* phone: swipe through the videos */
+@media (max-width: 767px) {
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quotes:has(.bwex-vt),
+	.bwex .bwex-quotes:has(.bwex-vt) {
+		display: flex;
+		gap: 14px;
+		margin-inline: calc(var(--bwx-gutter, 20px) * -1);
+		padding: 0 var(--bwx-gutter, 20px) 6px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: var(--bwx-gutter, 20px);
+		scrollbar-width: none;
+	}
+	.bwe-h2x-page .bwex .bwex-proof .bwex-quotes:has(.bwex-vt)::-webkit-scrollbar,
+	.bwex .bwex-quotes:has(.bwex-vt)::-webkit-scrollbar { display: none; }
+	.bwex .bwex-vt {
+		flex: 0 0 68%;
+		scroll-snap-align: start;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bwex .bwex-yt img,
+	.bwex .bwex-yt__play { transition: none; }
+}

@@ -1,0 +1,170 @@
+/**
+ * "Free reality check" (5 Signs) compact, 2026-11-13. Home (bwe-h2x) only.
+ * Short section: heading row on top, then 5 small icon tiles that show only the sign title
+ * (the long sentence under each title is hidden). CSS only. Delete this file to revert.
+ */
+
+.bwe-h2x-page .bwex-signsw .bwex-signs {
+	padding-block: clamp(56px, 7vw, 96px);
+}
+
+/* stack: heading row, then tiles */
+.bwe-h2x-page .bwex-signsw .bwex-signs__grid {
+	grid-template-columns: minmax(0, 1fr);
+	gap: clamp(28px, 3.5vw, 48px);
+}
+
+/* heading row: eyebrow + H2 left, short intro + button right */
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	grid-template-areas: "eye eye" "h2 txt" "h2 btn";
+	column-gap: clamp(32px, 6vw, 96px);
+	row-gap: 1rem;
+	align-items: end;
+	position: static;
+}
+
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro > .bwex-eyebrow { grid-area: eye; }
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro > .bwex-h2 { grid-area: h2; align-self: end; }
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro > .bwex-intro { grid-area: txt; }
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro > .bwex-btn { grid-area: btn; justify-self: start; }
+
+.bwe-h2x-page .bwex-signsw .bwex-signs__intro .bwex-intro p {
+	margin: 0;
+}
+
+/* tiles */
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs ol.bwex-signs__list {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li,
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:last-child {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 0;
+	min-height: 0;
+	padding: 1.4rem 1.4rem 1.5rem;
+	border: 1px solid rgba(255, 255, 255, .1);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, .03);
+	font-size: 0; /* hides the long sentence; the title is resized below */
+	line-height: 0;
+	transition: border-color .25s var(--bwex-ease), transform .25s var(--bwex-ease), background-color .25s var(--bwex-ease);
+}
+
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:hover {
+	border-color: var(--bwex-accent);
+	background: rgba(200, 255, 61, .05);
+	transform: translateY(-3px);
+}
+
+/* number: small, top right */
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li::before {
+	position: absolute;
+	top: 1.5rem;
+	right: 1.4rem;
+	font: 400 13px/1 var(--bwex-font);
+	letter-spacing: .12em;
+	color: #6f6f69;
+}
+
+/* icon: lime line icon in a soft circle, top left */
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li::after {
+	content: "";
+	order: -1;
+	margin-bottom: 1.75rem;
+	flex: none;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background:
+		var(--bwex-sign-icon) center / 22px 22px no-repeat,
+		rgba(200, 255, 61, .1);
+	transition: background-color .25s var(--bwex-ease);
+}
+
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:hover::after {
+	background-color: rgba(200, 255, 61, .2);
+}
+
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(1) { --bwex-sign-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(2) { --bwex-sign-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='7' y='3' width='10' height='18' rx='2.5'/%3E%3Cpath d='M11 17.5h2'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(3) { --bwex-sign-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4l14 6-6 2-2 6z'/%3E%3Cpath d='M13 12l5 5'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(4) { --bwex-sign-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10M7 21h10M8 3v3l4 6 4-6V3M8 21v-3l4-6 4 6v3'/%3E%3C/svg%3E"); }
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(5) { --bwex-sign-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 4h2l2.4 11h10.2L20 8H6.2'/%3E%3Ccircle cx='9' cy='19' r='1.3'/%3E%3Ccircle cx='17' cy='19' r='1.3'/%3E%3C/svg%3E"); }
+
+/* title only */
+.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list strong {
+	margin: auto 0 0;
+	font-size: clamp(17px, 1.35vw, 19px);
+	line-height: 1.3;
+	color: #f4f4f0;
+}
+
+/* tablets: 3 + 2 */
+@media (max-width: 1100px) {
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs ol.bwex-signs__list {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li { grid-column: span 2; }
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(n+4) { grid-column: span 3; }
+}
+
+/* phones: heading stacks, tiles 2 per row, last one full width */
+@media (max-width: 781px) {
+	.bwe-h2x-page .bwex-signsw .bwex-signs__intro {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas: "eye" "h2" "txt" "btn";
+		row-gap: .9rem;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs ol.bwex-signs__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 10px;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li,
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:nth-child(n+4) {
+		grid-column: auto;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li,
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:last-child {
+		gap: 0;
+		padding: 1rem 1rem 1.1rem;
+		border-radius: 14px;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:last-child {
+		grid-column: 1 / -1;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li::before {
+		top: 1.15rem;
+		right: 1rem;
+		font-size: 12px;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li::after {
+		width: 38px;
+		height: 38px;
+		margin-bottom: 1.25rem;
+		background-size: 19px 19px, auto;
+	}
+
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list strong {
+		font-size: 16px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li { transition: none; }
+	.bwe-h2x-page .bwex.bwex-signsw .bwex-signs__list li:hover { transform: none; }
+}

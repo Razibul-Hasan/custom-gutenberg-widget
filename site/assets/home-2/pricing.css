@@ -1,0 +1,109 @@
+/*
+ * Pricing page (839, root .bwe-prx), rebuilt from Home's sections on 2026-11-21.
+ * Only what Home's CSS does not already cover: the service price rows, eyebrow icons,
+ * section rhythm and anchor offsets. Delete this file to fall back to plain Home styles.
+ */
+
+/* Anchors land below the sticky header. */
+.bwe-prx #plans,
+.bwe-prx #prices,
+.bwe-prx #wordpress-prices,
+.bwe-prx #shopify-prices,
+.bwe-prx #care,
+.bwe-prx #faq { scroll-margin-top: 96px; }
+
+/* Rhythm: plans white → prices soft → care white → process dark → FAQ white. */
+html body.bwe-h2x-page .bwe-prx .bwex-specw--soft,
+html body.bwe-h2x-page .bwe-prx #care { background: #fff !important; }
+html body.bwe-h2x-page .bwe-prx #care { padding-top: clamp(72px, 9vw, 128px) !important; }
+
+/* Service price rows inside the two platform cards. */
+html body.bwe-h2x-page .bwe-prx .bwe-prx__list {
+	list-style: none;
+	margin: 4px 0 0;
+	padding: 0;
+	border-top: 1px solid rgba(11, 13, 12, .12);
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin: 0;
+	padding: 15px 0;
+	border-bottom: 1px solid rgba(11, 13, 12, .12);
+	font-size: 16px;
+	line-height: 1.35;
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__list li::before,
+html body.bwe-h2x-page .bwe-prx .bwe-prx__list li::marker { content: none; display: none; }
+html body.bwe-h2x-page .bwe-prx .bwe-prx__svc {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	min-width: 0;
+	color: #0b0d0c;
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__svc a {
+	color: inherit;
+	text-decoration: none;
+	background: none !important;
+	box-shadow: none !important;
+	width: fit-content;
+	background-image: linear-gradient(currentColor, currentColor) !important;
+	background-size: 0 1px !important;
+	background-position: 0 100% !important;
+	background-repeat: no-repeat !important;
+	transition: background-size .3s ease;
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__svc a:hover,
+html body.bwe-h2x-page .bwe-prx .bwe-prx__svc a:focus-visible { background-size: 100% 1px !important; }
+html body.bwe-h2x-page .bwe-prx .bwe-prx__svc small {
+	font-size: 13px;
+	color: rgba(11, 13, 12, .55);
+	letter-spacing: .01em;
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__amt {
+	flex: none;
+	font-family: "Bricolage Grotesque", system-ui, sans-serif;
+	font-weight: 800;
+	font-size: 21px;
+	letter-spacing: -.02em;
+	color: #0b0d0c;
+	white-space: nowrap;
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__amt em {
+	font-style: normal;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 0;
+	color: rgba(11, 13, 12, .55);
+}
+html body.bwe-h2x-page .bwe-prx .bwe-prx__card .bwex-plat__foot { margin-top: 28px; }
+html body.bwe-h2x-page .bwe-prx .bwe-prx__card .bwex-plat__price strong {
+	font-family: "Bricolage Grotesque", system-ui, sans-serif;
+	font-weight: 800;
+	color: #0b0d0c;
+}
+
+/* Eyebrow icons, same style as Home's (eyebrow-icons.css). */
+html body.bwe-h2x-page .bwe-prx #plans .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8Z'/%3E%3Ccircle cx='7' cy='7' r='1.2'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-prx #prices .bwex-section-head .bwex-eyebrow p::before,
+html body.bwe-h2x-page .bwe-prx #prices .bwex-headw .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13M8 12h13M8 18h13'/%3E%3Ccircle cx='3.5' cy='6' r='1'/%3E%3Ccircle cx='3.5' cy='12' r='1'/%3E%3Ccircle cx='3.5' cy='18' r='1'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-prx #care .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3Cpath d='m9 16 2 2 4-4'/%3E%3C/svg%3E") !important; }
+
+@media (max-width: 600px) {
+	html body.bwe-h2x-page .bwe-prx .bwe-prx__list li { padding: 13px 0; font-size: 15px; gap: 14px; }
+	html body.bwe-h2x-page .bwe-prx .bwe-prx__amt { font-size: 18px; }
+}
+
+/* Growth (featured) price: sell.css dims every <p> in the dark card to 70%; keep the price bright like Home. */
+html body.bwe-h2x-page .bwe-prx .bwex .bwex-plan--featured p.bwex-plan__price,
+html body.bwe-h2x-page .bwe-prx .bwex .bwex-plan--featured p.bwex-plan__price * { color: #f4f4f0; }
+
+/* Phone: one care plan per row (Home's 2-up grid squeezes the longer plan names). */
+@media (max-width: 599px) {
+	html body.bwe-h2x-page .bwe-prx #care ul.bwex-spec__list { grid-template-columns: 1fr !important; }
+	html body.bwe-h2x-page .bwe-prx #care ul.bwex-spec__list li { grid-column: 1 / -1 !important; }
+}

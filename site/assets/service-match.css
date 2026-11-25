@@ -1,0 +1,639 @@
+/**
+ * Service pages: match the Home page (2026-11-13).
+ *
+ * Loaded by includes/service-match.php on the 13 service pages (body.bwe-svcx), after
+ * home.css, services.css and wordpress-expert.css. CSS only; no copy, headings or links
+ * changed. Delete this file to revert.
+ *
+ * Home's look: flat #0e0e0e hero, light Outfit headings, split section heads
+ * (title left, intro right), hairline grids instead of rounded/shadowed cards,
+ * dark "How it works" with solid lime numbers, outline pill buttons.
+ */
+
+body.bwe-svcx .bwe-services {
+	--svcx-ink: #111;
+	--svcx-night: #0e0e0e;
+	--svcx-paper: #f4f4f0;
+	--svcx-muted: #6b6b66;
+	--svcx-muted-dark: #a3a39c;
+	--svcx-line: #e3e3dc;
+	--svcx-line-dark: rgba(255, 255, 255, .12);
+	--svcx-lime: #c8ff3d;
+	--svcx-display: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+	--svcx-hero: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* 1. Hero ------------------------------------------------------------------- */
+
+/* Flat night background like Home: no purple/lime colour wash. The faint grid
+ * and soft lime halo (services.css ::before/::after) stay, as on Home. */
+body.bwe-svcx .bwe-services .bwe-svc-hero {
+	background: var(--svcx-night);
+	border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-hero__title.wp-block-heading {
+	color: #f6f6f1;
+	font-family: var(--svcx-hero);
+	text-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-hero__title em::after {
+	box-shadow: none;
+}
+
+/* Buttons = the header "Free audit" pill: outline, lime on hover. */
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-actions {
+	gap: 12px;
+}
+
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-btn .wp-block-button__link {
+	border: 1px solid #f4f4f0;
+	background: transparent;
+	color: #f4f4f0;
+	transition: background-color .2s ease-out, border-color .2s ease-out, color .2s ease-out;
+}
+
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-btn .wp-block-button__link:hover,
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-btn .wp-block-button__link:focus-visible {
+	border-color: var(--svcx-lime);
+	background: var(--svcx-lime);
+	color: #0b0b0c;
+}
+
+/* Jump links: quiet text links instead of chips. */
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-jump a {
+	border-color: transparent;
+	background: transparent;
+	color: var(--svcx-muted-dark);
+}
+
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-jump a:hover {
+	color: #f4f4f0;
+	border-color: rgba(255, 255, 255, .2);
+}
+
+/* Home has no tilted keyword ticker. */
+body.bwe-svcx .bwe-services .bwe-marquee {
+	display: none;
+}
+
+/* 2. Type --------------------------------------------------------------------- */
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-svc-hero):not(.bwe-final) h2.wp-block-heading {
+	font-family: var(--svcx-display);
+	font-size: clamp(2rem, 1.2rem + 2.8vw, 3.5rem);
+	font-weight: 300;
+	line-height: 1.05;
+	letter-spacing: -.025em;
+}
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-svc-hero):not(.bwe-final) h3.wp-block-heading {
+	font-family: var(--svcx-display);
+	font-weight: 400;
+	letter-spacing: -.01em;
+}
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-svc-hero):not(.bwe-final) :is(strong, b) {
+	font-weight: 500;
+}
+
+/* Eyebrow: Home's small tracked label, no lime diamond. */
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-final) .bwe-eyebrow {
+	gap: 0;
+	color: var(--svcx-muted);
+	font-family: var(--svcx-display);
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: .14em;
+}
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-final) .bwe-eyebrow::before {
+	content: none;
+}
+
+body.bwe-svcx .bwe-services :is(.bwe-dark, .bwe-process) .bwe-eyebrow {
+	color: var(--svcx-muted-dark);
+}
+
+/* 3. Section heads: title left, intro right ---------------------------------- */
+
+body.bwe-svcx .bwe-services .bwe-head,
+body.bwe-svcx .bwe-services .bwe-head--center {
+	align-items: flex-start;
+	max-width: none;
+	margin-inline: 0;
+	text-align: left;
+}
+
+body.bwe-svcx .bwe-services .bwe-head > * {
+	text-align: left;
+}
+
+body.bwe-svcx .bwe-services .bwe-head h2.wp-block-heading {
+	max-width: 20em;
+}
+
+@media (min-width: 960px) {
+	body.bwe-svcx .bwe-services .bwe-head:has(> .bwe-lead) {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		column-gap: clamp(2.5rem, 6vw, 6rem);
+		row-gap: 1.1rem;
+		align-items: end;
+	}
+
+	body.bwe-svcx .bwe-services .bwe-head:has(> .bwe-lead) > :not(.bwe-lead) {
+		grid-column: 1;
+	}
+
+	body.bwe-svcx .bwe-services .bwe-head:has(> .bwe-lead) > .bwe-lead {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: end;
+		max-width: 26rem;
+		margin: 0;
+		font-size: .95rem;
+		line-height: 1.7;
+	}
+}
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-svc-hero):not(.bwe-final) .bwe-more {
+	color: var(--svcx-muted);
+	font-size: .9rem;
+	text-align: left;
+}
+
+body.bwe-svcx .bwe-services .bwe-section:not(.bwe-svc-hero):not(.bwe-final) .bwe-more a {
+	font-weight: 500;
+}
+
+body.bwe-svcx .bwe-services .bwe-actions--center {
+	justify-content: flex-start;
+}
+
+/* 4. Cards → hairline grid (like Home's service cards) ----------------------- */
+
+body.bwe-svcx .bwe-services .bwe-grid:has(> .bwe-ind) {
+	gap: 0;
+	border-top: 1px solid var(--svcx-line);
+}
+
+body.bwe-svcx .bwe-services .bwe-ind {
+	gap: .55rem;
+	padding: 2rem 1.75rem 2.25rem;
+	border: 0;
+	border-bottom: 1px solid var(--svcx-line);
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	transform: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-ind:hover {
+	background: rgba(17, 17, 17, .025);
+	transform: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-ind h3.wp-block-heading {
+	font-size: clamp(1.3rem, 1.15rem + .4vw, 1.6rem);
+	line-height: 1.2;
+}
+
+body.bwe-svcx .bwe-services .bwe-ind > p {
+	font-size: .95rem;
+	line-height: 1.65;
+}
+
+/* Arrow: plain glyph, no round chip. */
+body.bwe-svcx .bwe-services .bwe-ind::after {
+	top: 2rem;
+	right: 1.5rem;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+	background: none;
+	color: var(--svcx-muted);
+	font-weight: 400;
+}
+
+body.bwe-svcx .bwe-services .bwe-ind:hover::after {
+	background: none;
+	color: var(--svcx-ink);
+}
+
+/* "From $X" tag → Home's small label with a lime dot. */
+body.bwe-svcx .bwe-services .bwe-ind .bwe-wpx-from {
+	display: inline-flex;
+	align-items: center;
+	gap: .55rem;
+	padding: 0;
+	border-radius: 0;
+	background: none;
+	color: var(--svcx-muted);
+	font-family: var(--svcx-display);
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: .14em;
+}
+
+body.bwe-svcx .bwe-services .bwe-ind .bwe-wpx-from::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--svcx-lime);
+}
+
+@media (min-width: 782px) {
+	body.bwe-svcx .bwe-services :is(.bwe-grid--3, .bwe-grid--2):has(> .bwe-ind) > .bwe-ind {
+		border-right: 1px solid var(--svcx-line);
+	}
+
+	body.bwe-svcx .bwe-services .bwe-grid--3:has(> .bwe-ind) > .bwe-ind:nth-child(3n),
+	body.bwe-svcx .bwe-services .bwe-grid--2:has(> .bwe-ind) > .bwe-ind:nth-child(2n) {
+		border-right: 0;
+	}
+
+	body.bwe-svcx .bwe-services .bwe-grid--3:has(> .bwe-ind) > .bwe-ind:nth-child(3n + 1),
+	body.bwe-svcx .bwe-services .bwe-grid--2:has(> .bwe-ind) > .bwe-ind:nth-child(2n + 1) {
+		padding-left: 0;
+	}
+}
+
+@media (max-width: 781px) {
+	body.bwe-svcx .bwe-services .bwe-grid:has(> .bwe-ind) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	body.bwe-svcx .bwe-services .bwe-ind {
+		padding: 1.5rem 2rem 1.6rem 0;
+	}
+
+	body.bwe-svcx .bwe-services .bwe-ind::after {
+		top: 1.5rem;
+		right: 0;
+	}
+}
+
+/* Check lists: lime "+" and hairline rows, like Home's service bullets. */
+body.bwe-svcx .bwe-services .bwe-checks {
+	gap: 0;
+}
+
+body.bwe-svcx .bwe-services .bwe-checks li {
+	padding: .6rem 0 .6rem 1.6rem;
+	border-bottom: 1px solid var(--svcx-line);
+	font-size: .92rem;
+}
+
+body.bwe-svcx .bwe-services .bwe-checks li::before {
+	content: "+";
+	top: .6rem;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+	background: none;
+	color: var(--svcx-ink);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+body.bwe-svcx .bwe-services :is(.bwe-dark, .bwe-plan--featured) .bwe-checks li {
+	border-color: var(--svcx-line-dark);
+}
+
+body.bwe-svcx .bwe-services :is(.bwe-dark, .bwe-plan--featured) .bwe-checks li::before {
+	background: none;
+	color: var(--svcx-lime);
+}
+
+/* 5. "Signs" section: flat night, light numbers ----------------------------- */
+
+body.bwe-svcx .bwe-services .bwe-mistakes {
+	background: var(--svcx-night);
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes h2.wp-block-heading {
+	color: #f4f4f0;
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes__list li {
+	border-color: var(--svcx-line-dark);
+	color: var(--svcx-muted-dark);
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes__list li::before {
+	font-family: var(--svcx-display);
+	font-weight: 300;
+}
+
+body.bwe-svcx .bwe-services .bwe-section.bwe-mistakes .bwe-mistakes__list li strong {
+	font-family: var(--svcx-display);
+	font-weight: 400;
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes .bwe-lead {
+	color: var(--svcx-muted-dark);
+}
+
+body.bwe-svcx .bwe-services .bwe-dark h2 em {
+	padding: 0;
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes .bwe-btn .wp-block-button__link {
+	border: 1px solid #f4f4f0;
+	background: transparent;
+	color: #f4f4f0;
+}
+
+body.bwe-svcx .bwe-services .bwe-mistakes .bwe-btn .wp-block-button__link:hover {
+	border-color: var(--svcx-lime);
+	background: var(--svcx-lime);
+	color: #0b0b0c;
+}
+
+/* 6. Prices -------------------------------------------------------------------- */
+
+body.bwe-svcx .bwe-services .bwe-plan {
+	border: 1px solid var(--svcx-line);
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: none;
+	transform: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-plan h3.wp-block-heading {
+	color: var(--svcx-muted);
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+body.bwe-svcx .bwe-services .bwe-price {
+	font-family: var(--svcx-display);
+	font-weight: 300;
+	letter-spacing: -.03em;
+}
+
+body.bwe-svcx .bwe-services .bwe-plan--featured {
+	border-color: var(--svcx-night);
+	background: var(--svcx-night);
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-plan--featured h3.wp-block-heading {
+	color: var(--svcx-muted-dark);
+}
+
+body.bwe-svcx .bwe-services .bwe-badge {
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services :is(.bwe-cost, .bwe-cost__grid > *) {
+	box-shadow: none;
+}
+
+/* 7. "How it works": dark, solid lime numbers with a dot rule (Home) --------- */
+
+body.bwe-svcx .bwe-services .bwe-process {
+	background: var(--svcx-night);
+	color: #f4f4f0;
+}
+
+body.bwe-svcx .bwe-services .bwe-process h2.wp-block-heading {
+	color: #f4f4f0;
+}
+
+body.bwe-svcx .bwe-services .bwe-process h2 em {
+	padding: 0;
+	background: none;
+	color: var(--svcx-lime);
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-lead {
+	color: var(--svcx-muted-dark);
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-grid {
+	gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step {
+	gap: .6rem;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step .bwe-step__num {
+	position: relative;
+	margin-bottom: 1rem;
+	padding: 0 0 1.4rem;
+	border-bottom: 1px solid var(--svcx-line-dark);
+	color: var(--svcx-lime);
+	font-family: var(--svcx-display);
+	font-size: clamp(3rem, 2.4rem + 2vw, 4rem);
+	font-weight: 300;
+	-webkit-text-stroke: 0;
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step .bwe-step__num::after {
+	content: "";
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--svcx-lime);
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step h3.wp-block-heading {
+	color: #f4f4f0;
+	font-size: 1.05rem;
+	font-weight: 500;
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step > p:not(.bwe-step__num) {
+	color: var(--svcx-muted-dark);
+	font-size: .9rem;
+	line-height: 1.6;
+}
+
+body.bwe-svcx .bwe-services .bwe-process .bwe-step :is(a, strong) {
+	color: #f4f4f0;
+}
+
+/* 8. "Why us": flat card, no offset shadow --------------------------------- */
+
+body.bwe-svcx .bwe-services .bwe-about__card {
+	border: 1px solid var(--svcx-line);
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-about__card h3.wp-block-heading {
+	font-size: 1.35rem;
+}
+
+/* 9. Services hub extras ---------------------------------------------------- */
+
+body.bwe-svcx .bwe-services :is(.bwe-pick, .bwe-plugin__card, .bwe-cell) {
+	border-radius: 8px;
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-plugin__front {
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-dark.bwe-split {
+	background: var(--svcx-night);
+}
+
+body.bwe-svcx .bwe-services :is(.bwe-cell__big, .bwe-split__price) {
+	font-family: var(--svcx-display);
+	font-weight: 300;
+}
+
+body.bwe-svcx .bwe-services .bwe-chip {
+	box-shadow: none;
+}
+
+/* Tables: no heavy coloured header bars. */
+body.bwe-svcx .bwe-services .bwe-wpx-table th {
+	font-weight: 500;
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table th:nth-child(n + 2) {
+	box-shadow: none;
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table th:nth-child(2) {
+	box-shadow: inset 0 -2px 0 var(--svcx-lime);
+}
+
+/* 10. Closer to Home, round 2 (2026-11-13) -------------------------------- */
+
+/* Hero: Home has just the pill and the h1, no small kicker line above the title. */
+body.bwe-svcx .bwe-services .bwe-svc-hero .bwe-kicker {
+	display: none;
+}
+
+/* Home dropped its stats band; the service pages follow. */
+body.bwe-svcx .bwe-services .bwe-stats {
+	display: none;
+}
+
+/* Tables: flat hairline rows like Home, no rounded box or black header bar. */
+body.bwe-svcx .bwe-services .bwe-wpx-table {
+	border: 0;
+	border-top: 1px solid var(--svcx-ink);
+	border-radius: 0;
+	background: transparent;
+	overflow: visible;
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table th {
+	background: transparent;
+	color: var(--svcx-muted);
+	font-size: .78rem;
+	font-weight: 500;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	border-bottom: 1px solid var(--svcx-line);
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table th:nth-child(2) {
+	color: var(--svcx-ink);
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table td {
+	font-weight: 400;
+	border-bottom: 1px solid var(--svcx-line);
+}
+
+body.bwe-svcx .bwe-services .bwe-wpx-table td:first-child {
+	color: var(--svcx-ink);
+	font-weight: 500;
+}
+
+/* "How can it be affordable": hairline card like the about card, not a dashed box. */
+body.bwe-svcx .bwe-services .bwe-cost {
+	border: 1px solid var(--svcx-line);
+	border-radius: 8px;
+	background: #fff;
+}
+
+/* FAQ: Home's rows. Regular-weight questions, light hairlines, a thin "+" (no circle). */
+body.bwe-svcx .bwe-services .bwe-faq__list {
+	border-top: 0;
+	border-bottom: 1px solid var(--svcx-line);
+}
+
+body.bwe-svcx .bwe-services .bwe-faq__item {
+	border-top: 1px solid var(--svcx-line);
+	border-bottom: 0;
+}
+
+body.bwe-svcx .bwe-services .bwe-faq__item summary {
+	grid-template-columns: 3rem minmax(0, 1fr) 20px;
+	padding-block: 1.4rem;
+	font-family: var(--svcx-display);
+	font-size: clamp(17px, 1.5vw, 20px);
+	font-weight: 400;
+	letter-spacing: -.005em;
+}
+
+body.bwe-svcx .bwe-services .bwe-faq__item summary::before {
+	font: 400 13px/1 var(--svcx-display);
+	letter-spacing: .08em;
+	color: var(--svcx-muted);
+}
+
+body.bwe-svcx .bwe-services .bwe-faq__item summary::after,
+body.bwe-svcx .bwe-services .bwe-faq__item summary:hover::after,
+body.bwe-svcx .bwe-services .bwe-faq__item[open] summary::after {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	font: 200 30px/20px var(--svcx-display);
+	color: var(--svcx-ink);
+}
+
+body.bwe-svcx .bwe-services .bwe-faq__item > p {
+	padding: 0 2rem 1.75rem 3.75rem;
+	color: var(--svcx-muted);
+	line-height: 1.7;
+}
+
+@media (max-width: 781px) {
+	body.bwe-svcx .bwe-services .bwe-faq__item > p {
+		padding-right: 0;
+	}
+}
+
+/* Final CTA: Home's rounded lime card and Bricolage title. */
+body.bwe-svcx .bwe-services .bwe-final__box {
+	border: 0;
+	border-radius: clamp(24px, 4vw, 40px);
+}
+
+body.bwe-svcx .bwe-services .bwe-final h2.wp-block-heading {
+	font-family: var(--svcx-hero);
+}
+
+/* 11. Shorter pages (2026-11-13) ---------------------------------------------- */
+
+/* "How it works" is dark here but has no bwe-dark class, so Home's "two white sections share one gap"
+ * rule took away its top padding and the next section's. Give both their full padding back. */
+body.bwe-svcx .bwe-home.bwe-services .bwe-section.bwe-section.bwe-process,
+body.bwe-svcx .bwe-home.bwe-services .bwe-section.bwe-process + .bwe-section.bwe-section {
+	padding-top: clamp(4.5rem, 10vw, 8.75rem);
+}

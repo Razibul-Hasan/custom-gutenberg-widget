@@ -1,0 +1,117 @@
+/**
+ * BestWebExpert ProductReels — extra components for the "BestWebExpert – ProductReels landing page" pattern.
+ *
+ * Builds on home.css and the services page components in services.css.
+ */
+
+/* ---------- Hero ---------- */
+
+/* Wider screenshot column on desktop; services.css stacks the hero below 1024px. */
+@media (min-width: 1024px) {
+	.bwe-reels .bwe-reels-hero {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+	}
+}
+
+.bwe-reels .bwe-reels-hero .bwe-hero__title.wp-block-heading {
+	font-size: clamp(2.5rem, 1.3rem + 3.6vw, 4.6rem);
+}
+
+.bwe-reels .bwe-reels-by {
+	color: rgba(255, 255, 255, .7);
+	font-size: .9375rem;
+}
+
+.bwe-reels .bwe-reels-by a {
+	color: #fff;
+	font-weight: 600;
+}
+
+.bwe-reels .bwe-reels-hero__visual {
+	position: relative;
+	perspective: 1600px;
+}
+
+.bwe-reels .bwe-reels-hero__shot {
+	border: 1px solid rgba(255, 255, 255, .18);
+	border-radius: 22px;
+	box-shadow: 0 50px 100px -30px rgba(0, 0, 0, .8), 0 0 0 10px rgba(255, 255, 255, .05);
+	transform: rotateY(-10deg) rotateX(4deg);
+	transition: transform .6s var(--bwe-ease);
+}
+
+.bwe-reels .bwe-reels-hero__visual:hover .bwe-reels-hero__shot {
+	transform: none;
+}
+
+.bwe-reels .bwe-reels-hero__shot img {
+	aspect-ratio: 8 / 5;
+}
+
+.bwe-reels .bwe-reels-hero__visual .bwe-burst {
+	top: -2.5rem;
+	right: -1.75rem;
+	left: auto;
+}
+
+.bwe-reels .bwe-reels-hero__visual .bwe-sticker--a {
+	top: auto;
+	right: auto;
+	bottom: -1.25rem;
+	left: 6%;
+}
+
+.bwe-reels .bwe-reels-hero__visual .bwe-sticker--b {
+	top: -1rem;
+	bottom: auto;
+	left: 1.5rem;
+}
+
+/* ---------- Analytics ---------- */
+
+.bwe-reels .bwe-reels-analytics .bwe-chip {
+	background: var(--bwe-violet);
+}
+
+.bwe-reels .bwe-dark .bwe-checks li::before {
+	background: var(--bwe-accent);
+	color: var(--bwe-ink);
+}
+
+.bwe-reels .bwe-reels-analytics .bwe-split__main .bwe-shot {
+	border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.bwe-reels .bwe-reels-analytics .bwe-split__main .bwe-shot img {
+	aspect-ratio: 8 / 5;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+	.bwe-reels .bwe-reels-hero__visual {
+		width: min(100%, 44rem);
+		margin: 1.5rem auto 0;
+	}
+}
+
+@media (max-width: 599px) {
+	.bwe-reels .bwe-reels-hero__shot {
+		transform: none;
+	}
+
+	.bwe-reels .bwe-reels-hero__visual .bwe-burst {
+		top: -2rem;
+		right: -.25rem;
+	}
+
+	.bwe-reels .bwe-reels-hero__visual .bwe-sticker--a {
+		left: .25rem;
+		max-width: calc(100% - .5rem);
+		white-space: normal;
+	}
+
+	.bwe-reels .bwe-reels-hero__visual .bwe-sticker--b {
+		left: .25rem;
+	}
+}

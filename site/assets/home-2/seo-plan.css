@@ -1,0 +1,114 @@
+/**
+ * Home page to the SEO plan (2026-11-19). Home (bwe-h2x) only. CSS only: delete this file to drop
+ * the icons and spacing below; the page content stays.
+ *
+ * 1. "Web Development Services": one icon per service tile, where the 01–09 number used to sit.
+ *    The icon comes from the tile's modifier class (bwex-svc__item--wordpress …), so the tiles stay
+ *    plain, editable list items in the block editor.
+ * 2. "Here's What Our Customers Say": the review links line under the cards, on the dark band.
+ * 3. FAQ answers with several paragraphs and bullet lists.
+ */
+
+/* 1. Service icons ------------------------------------------------------------------------- */
+.bwex .bwex-svc__item .bwex-svc__top::before {
+	content: "";
+	flex: none;
+	width: 44px;
+	height: 44px;
+	border: 1px solid rgba(200, 255, 61, .22);
+	border-radius: 12px;
+	background: rgba(200, 255, 61, .08) no-repeat center / 22px 22px;
+	transition: background-color .35s, border-color .35s;
+}
+.bwex .bwex-svc__tile:hover .bwex-svc__top::before,
+.bwex .bwex-svc__tile:focus-visible .bwex-svc__top::before {
+	border-color: rgba(200, 255, 61, .5);
+	background-color: rgba(200, 255, 61, .14);
+}
+
+/* Custom WordPress Development: code */
+.bwex .bwex-svc__item--wordpress .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 16 4-4-4-4'/%3E%3Cpath d='m6 8-4 4 4 4'/%3E%3Cpath d='m14.5 4-5 16'/%3E%3C/svg%3E");
+}
+/* WooCommerce Development: cart */
+.bwex .bwex-svc__item--woocommerce .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='21' r='1'/%3E%3Ccircle cx='19' cy='21' r='1'/%3E%3Cpath d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'/%3E%3C/svg%3E");
+}
+/* Gutenberg Block Development: blocks */
+.bwex .bwex-svc__item--gutenberg .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='7' height='7' x='14' y='3' rx='1'/%3E%3Cpath d='M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3'/%3E%3C/svg%3E");
+}
+/* Shopify Theme Customization: palette */
+.bwex .bwex-svc__item--theme .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='13.5' cy='6.5' r='.5' fill='%23c8ff3d'/%3E%3Ccircle cx='17.5' cy='10.5' r='.5' fill='%23c8ff3d'/%3E%3Ccircle cx='8.5' cy='7.5' r='.5' fill='%23c8ff3d'/%3E%3Ccircle cx='6.5' cy='12.5' r='.5' fill='%23c8ff3d'/%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z'/%3E%3C/svg%3E");
+}
+/* Shopify App Integration: plug */
+.bwex .bwex-svc__item--apps .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22v-5'/%3E%3Cpath d='M9 8V2'/%3E%3Cpath d='M15 8V2'/%3E%3Cpath d='M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z'/%3E%3C/svg%3E");
+}
+/* Website Speed Optimization: gauge */
+.bwex .bwex-svc__item--speed .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 14 4-4'/%3E%3Cpath d='M3.34 19a10 10 0 1 1 17.32 0'/%3E%3C/svg%3E");
+}
+/* AI SEO: sparkles */
+.bwex .bwex-svc__item--ai-seo .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z'/%3E%3Cpath d='M20 3v4'/%3E%3Cpath d='M22 5h-4'/%3E%3Cpath d='M4 17v2'/%3E%3Cpath d='M5 18H3'/%3E%3C/svg%3E");
+}
+/* Website Redesign: refresh */
+.bwex .bwex-svc__item--redesign .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8'/%3E%3Cpath d='M21 3v5h-5'/%3E%3Cpath d='M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16'/%3E%3Cpath d='M8 16H3v5'/%3E%3C/svg%3E");
+}
+/* Website Maintenance: shield with a check */
+.bwex .bwex-svc__item--maintenance .bwex-svc__top::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8ff3d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 781px) {
+	.bwex .bwex-svc__item .bwex-svc__top::before {
+		width: 36px;
+		height: 36px;
+		border-radius: 10px;
+		background-size: 18px 18px;
+	}
+}
+
+/* 2. Testimonials: review links under the cards ------------------------------------------- */
+.bwex .bwex-proof .bwex-more {
+	margin-top: clamp(24px, 3vw, 40px);
+	color: #a3a39c;
+}
+.bwex .bwex-proof .bwex-more a {
+	color: #f4f4f0;
+	text-decoration: underline;
+	text-decoration-color: rgba(200, 255, 61, .7);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 4px;
+}
+.bwex .bwex-proof .bwex-more a:hover,
+.bwex .bwex-proof .bwex-more a:focus-visible {
+	color: var(--bwex-accent, #c8ff3d);
+}
+
+/* 3. FAQ answers: gap between paragraphs and lists (home.css zeroes child margins in groups). */
+.bwe-home .bwex-faq-section .bwex-faq__a > * + * {
+	margin-top: .75rem;
+}
+.bwe-home .bwex-faq-section .bwex-faq__a ul {
+	margin-bottom: 0;
+	padding-left: 1.25rem;
+	list-style: disc;
+}
+.bwe-home .bwex-faq-section .bwex-faq__a li {
+	margin: 0;
+	padding-left: .2rem;
+}
+.bwe-home .bwex-faq-section .bwex-faq__a li + li {
+	margin-top: .35rem;
+}
+.bwe-home .bwex-faq-section .bwex-faq__a li::marker {
+	color: var(--bwex-ink, #111);
+}
+.bwe-home .bwex-faq-section .bwex-faq__a strong {
+	color: var(--bwex-ink, #111);
+	font-weight: 600;
+}

@@ -1,0 +1,201 @@
+/*
+ * Portfolio "Selected work" (2026-11-22, v2 — owner picked "numbered list + hover image").
+ * Synced pattern "Portfolio – Selected Work" (1861) on /portfolio/ (#work). Core blocks only.
+ * v1 (2-up screenshot grid, rejected) is in app/backups/portfolio-work-2026-11-22/work-v1-grid.css.
+ *
+ * Base (phone, tablets without hover, block editor): each row = small screenshot + number, title, tag, one line.
+ * Desktop with a mouse (front end only): big numbered rows on hairlines; hovering a row shows its screenshot
+ * next to the cursor (js/work.js sets --x/--y; without JS it sits at a fixed spot) and dims the other rows.
+ * Delete this file (and js/work.js) to revert the styling.
+ */
+
+html body.bwe-h2x-page .bwex .bwex-work { background: #fff; }
+
+html body.bwe-h2x-page .bwex .bwex-work__grid {
+	display: block;
+	margin-top: clamp(32px, 5vw, 64px);
+	border-bottom: 1px solid #dcdbd6;
+}
+html body.bwe-h2x-page .bwex .bwex-work__grid > * { margin: 0 !important; }
+html body.bwe-h2x-page .bwex .bwex-work__hint { display: none !important; }
+
+/* ---------- Base row: thumbnail + text ---------- */
+html body.bwe-h2x-page .bwex .bwex-work__item {
+	position: relative;
+	display: grid;
+	grid-template-columns: clamp(96px, 18vw, 168px) minmax(0, 1fr);
+	column-gap: clamp(16px, 2.4vw, 28px);
+	row-gap: 6px;
+	align-items: center;
+	padding: 18px 0;
+	border-top: 1px solid #dcdbd6;
+}
+html body.bwe-h2x-page .bwex .bwex-work__item > * { margin: 0 !important; }
+
+html body.bwe-h2x-page .bwex .bwex-work__shot {
+	grid-row: 1 / 3;
+	align-self: center;
+	overflow: hidden;
+	border: 1px solid #e3e3dc;
+	border-radius: 12px;
+	background: #f6f5f0;
+}
+html body.bwe-h2x-page .bwex .bwex-work__shot a { display: block; }
+html body.bwe-h2x-page .bwex .bwex-work__shot img {
+	display: block;
+	width: 100% !important;
+	height: auto !important;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	object-position: top left;
+	border-radius: 0;
+}
+
+html body.bwe-h2x-page .bwex .bwex-work__meta {
+	grid-column: 2;
+	align-self: end;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: 10px;
+	row-gap: 6px;
+}
+html body.bwe-h2x-page .bwex .bwex-work__meta > * { margin: 0 !important; }
+
+html body.bwe-h2x-page .bwex .bwex-work__num {
+	flex: none;
+	color: #8a8a83;
+	font-family: "Bricolage Grotesque", system-ui, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: .08em;
+	font-variant-numeric: tabular-nums;
+}
+html body.bwe-h2x-page .bwex .bwex-work__title {
+	flex: 1 1 12ch;
+	min-width: 0;
+	color: #111;
+	font-family: "Bricolage Grotesque", system-ui, sans-serif;
+	font-size: clamp(19px, 2.2vw, 24px);
+	font-weight: 800;
+	letter-spacing: -.02em;
+	line-height: 1.1;
+	overflow-wrap: normal;
+	word-break: normal;
+}
+html body.bwe-h2x-page .bwex .bwex-work__title a {
+	color: inherit !important;
+	text-decoration: none !important;
+	background: none !important;
+}
+/* the whole row opens the page */
+html body.bwe-h2x-page .bwex .bwex-work__title a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+html body.bwe-h2x-page .bwex .bwex-work__title a:focus-visible { outline: none; }
+html body.bwe-h2x-page .bwex .bwex-work__item:has(.bwex-work__title a:focus-visible) { outline: 2px solid #111; outline-offset: 4px; }
+
+html body.bwe-h2x-page .bwex .bwex-work__tag {
+	flex: none;
+	color: #5b5b55;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .06em;
+	line-height: 1.2;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+html body.bwe-h2x-page .bwex .bwex-work__text {
+	grid-column: 2;
+	align-self: start;
+	max-width: 62ch;
+	color: #5b5b55;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+@media (max-width: 599px) {
+	html body.bwe-h2x-page .bwex .bwex-work__item { padding: 16px 0; }
+	html body.bwe-h2x-page .bwex .bwex-work__title { flex-basis: 100%; order: 2; }
+	html body.bwe-h2x-page .bwex .bwex-work__num { order: 1; }
+	html body.bwe-h2x-page .bwex .bwex-work__tag { order: 1; }
+	html body.bwe-h2x-page .bwex .bwex-work__text {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		font-size: 14px;
+	}
+}
+
+/* ---------- Desktop with a mouse (front end only): numbered rows + floating preview ---------- */
+@media (hover: hover) and (pointer: fine) and (min-width: 900px) {
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item {
+		grid-template-columns: 72px minmax(0, 1.15fr) minmax(0, 1fr) 150px 56px;
+		grid-template-rows: auto;
+		column-gap: clamp(16px, 2.4vw, 32px);
+		padding: clamp(26px, 2.6vw, 36px) 0;
+		transition: opacity .35s ease;
+	}
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__meta { display: contents; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__num { grid-column: 1; grid-row: 1; align-self: center; font-size: 14px; transition: color .3s ease; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__title {
+		grid-column: 2;
+		grid-row: 1;
+		align-self: center;
+		font-size: clamp(30px, 3.6vw, 52px);
+		line-height: 1;
+		letter-spacing: -.035em;
+		transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+	}
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__text { grid-column: 3; grid-row: 1; align-self: center; font-size: 15px; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__tag { grid-column: 4; grid-row: 1; align-self: center; justify-self: end; }
+
+	/* arrow chip */
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item::after {
+		content: "→";
+		grid-column: 5;
+		grid-row: 1;
+		align-self: center;
+		justify-self: end;
+		display: grid;
+		place-items: center;
+		width: 48px;
+		height: 48px;
+		border: 1px solid #dcdbd6;
+		border-radius: 999px;
+		color: #111;
+		font-size: 18px;
+		transition: background-color .3s ease, border-color .3s ease, transform .45s cubic-bezier(.2, .7, .2, 1);
+	}
+
+	/* floating screenshot: hidden until the row is hovered */
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__shot {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		width: clamp(280px, 26vw, 380px);
+		border-radius: 16px;
+		box-shadow: 0 30px 60px -24px rgba(11, 13, 12, .45);
+		pointer-events: none;
+		opacity: 0;
+		scale: .85;
+		rotate: -3deg;
+		translate: var(--x, 52vw) var(--y, -30%);
+		transition: opacity .3s ease, scale .45s cubic-bezier(.2, .7, .2, 1), rotate .45s cubic-bezier(.2, .7, .2, 1), translate .18s ease-out;
+	}
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__shot img { aspect-ratio: 16 / 10; }
+
+	/* hover state */
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__grid:hover .bwex-work__item { opacity: .35; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__grid .bwex-work__item:is(:hover, :focus-within) { opacity: 1; z-index: 4; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item:is(:hover, :focus-within) .bwex-work__shot { opacity: 1; scale: 1; rotate: 0deg; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item:is(:hover, :focus-within) .bwex-work__title { transform: translateX(12px); }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item:is(:hover, :focus-within) .bwex-work__num { color: #111; }
+	html body.bwe-h2x-page:not(.editor-styles-wrapper) .bwex .bwex-work__item:is(:hover, :focus-within)::after { background: #c8ff3d; border-color: #c8ff3d; transform: rotate(-45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html body.bwe-h2x-page .bwex :is(.bwex-work__item, .bwex-work__shot, .bwex-work__title) { transition: none !important; }
+	html body.bwe-h2x-page .bwex .bwex-work__item::after { transition: none !important; }
+	html body.bwe-h2x-page .bwex .bwex-work__shot { rotate: 0deg !important; scale: 1 !important; }
+}

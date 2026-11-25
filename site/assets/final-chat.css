@@ -1,0 +1,90 @@
+/**
+ * Final CTA live-chat line on pages other than Home (2026-11-13).
+ * Copied from home-2/v4.css; loaded by includes/service-match.php on any page whose content has bwe-final__chat.
+ */
+
+/* Final CTA: live chat card (opens Crisp; falls back to /contact/). */
+.bwe-final .bwe-final__chat {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: .6rem .9rem;
+	margin: .25rem 0 0;
+	padding: .55rem .55rem .55rem 1.15rem;
+	border-radius: 999px;
+	background: #fff;
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .06), 0 14px 32px -12px rgba(11, 11, 12, .35);
+	color: #111;
+	font-size: 1.02rem;
+	line-height: 1.4;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.bwe-final .bwe-final__chat:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 1px 0 rgba(11, 11, 12, .06), 0 20px 40px -14px rgba(11, 11, 12, .45);
+}
+.bwe-final .bwe-final__dot {
+	flex: none;
+	width: .65rem;
+	height: .65rem;
+	border-radius: 50%;
+	background: #16a34a;
+	box-shadow: 0 0 0 0 rgba(22, 163, 74, .55);
+	animation: bwe-chat-ping 1.8s ease-out infinite;
+}
+.bwe-final .bwe-final__chat strong {
+	padding: .05em .3em;
+	border-radius: .3em;
+	background: #c8ff3d;
+}
+.bwe-final .bwe-final__chat a[href] {
+	display: inline-flex;
+	align-items: center;
+	gap: .45rem;
+	padding: .6rem 1.1rem;
+	border-radius: 999px;
+	background: #111;
+	color: #c8ff3d;
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background .2s ease, color .2s ease;
+}
+.bwe-final .bwe-final__chat a[href]::before {
+	content: "";
+	width: 1.05em;
+	height: 1.05em;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.bwe-final .bwe-final__chat a[href]:hover,
+.bwe-final .bwe-final__chat a[href]:focus-visible {
+	background: #2a2a2e;
+	color: #fff;
+}
+@keyframes bwe-chat-ping {
+	70%, 100% { box-shadow: 0 0 0 .55rem rgba(22, 163, 74, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.bwe-final .bwe-final__dot { animation: none; }
+	.bwe-final .bwe-final__chat, .bwe-final .bwe-final__chat:hover { transition: none; transform: none; }
+}
+@media (max-width: 520px) {
+	.bwe-final .bwe-final__chat {
+		width: 100%;
+		padding: 1rem;
+		border-radius: 22px;
+		text-align: center;
+	}
+	.bwe-final .bwe-final__chat a[href] { width: 100%; justify-content: center; padding-block: .8rem; }
+}
+
+/* Home's CTA buttons are plain wp:html buttons inside a group: lay them out in a row. */
+.bwe-final .bwe-final__box > .bwe-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+}

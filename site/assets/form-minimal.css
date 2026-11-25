@@ -1,0 +1,131 @@
+/**
+ * Minimal Contact Form 7 look: placeholder-only fields, pill choices, one full-width black button.
+ * Used by the Contact page form and the Write for Us pitch form. Loads after contact.css and wins on specificity.
+ */
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-form-card {
+	padding: clamp(24px, 4vw, 44px);
+	border: 1px solid var(--bwex-hair, #e3e3dc);
+	border-radius: 24px;
+	background: #fff;
+	box-shadow: none;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 {
+	gap: 16px;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__row {
+	gap: 16px;
+}
+
+/* Choice pills */
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__choices legend {
+	margin-bottom: 14px;
+	color: var(--bwex-ink, #111);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-radio {
+	gap: 8px;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-list-item label {
+	padding: 10px 20px;
+	border: 1px solid #d9d9d3;
+	border-radius: 999px;
+	background: #fff;
+	color: var(--bwex-ink, #111);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-list-item label:hover {
+	border-color: var(--bwex-ink, #111);
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-list-item label:has(input:checked) {
+	border-color: var(--bwex-ink, #111);
+	background: var(--bwex-ink, #111);
+	color: #fff;
+}
+
+/* Fields */
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-form-control:is(.wpcf7-text, .wpcf7-email, .wpcf7-tel, .wpcf7-url, .wpcf7-select, .wpcf7-textarea) {
+	min-height: 56px;
+	padding: 16px 18px;
+	border: 1px solid #d9d9d3;
+	border-radius: 16px;
+	background-color: #fff;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-textarea {
+	min-height: 112px;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-form-control::placeholder {
+	color: #8c8c86;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-form-control:is(.wpcf7-text, .wpcf7-email, .wpcf7-tel, .wpcf7-url, .wpcf7-select, .wpcf7-textarea):focus {
+	border-color: var(--bwex-ink, #111);
+	background-color: #fff;
+	box-shadow: none;
+}
+
+/* Send row: full-width pill, small caps label, quiet italic note underneath. */
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__send {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 18px;
+	margin-top: 8px;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-submit {
+	width: 100%;
+	min-height: 56px;
+	padding: 0 24px;
+	border: 1px solid var(--bwex-ink, #111);
+	border-radius: 999px;
+	background: var(--bwex-ink, #111);
+	box-shadow: none;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	transform: none;
+	transition: background-color .2s ease-out, color .2s ease-out;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-submit:hover {
+	background: var(--bwex-accent, #c8ff3d);
+	color: var(--bwex-ink, #111);
+	box-shadow: none;
+	transform: none;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__note {
+	flex: none;
+	margin: 0;
+	color: var(--bwex-muted, #6b6b66);
+	font-size: 14px;
+	font-style: italic;
+	text-align: center;
+}
+
+.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7 .wpcf7-spinner {
+	position: absolute;
+}
+
+@media (max-width: 600px) {
+	.bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

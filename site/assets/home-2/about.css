@@ -1,0 +1,23 @@
+/* About section text (2026-11-20).
+ * Owner's plain copy: lead paragraph + 2 always-visible paragraphs (.bwex-about__text), no toggle.
+ * Delete this file to revert to default paragraph styling. */
+
+html body.bwe-h2x-page section.bwex-about .bwex-readmorew { display: grid; gap: 16px; }
+html body.bwe-h2x-page section.bwex-about p.bwex-about__text {
+	margin: 0 !important;
+	max-width: 640px;
+	color: #44443f !important;
+	font-size: 18px !important;
+	line-height: 30px !important;
+}
+html body.bwe-h2x-page section.bwex-about p.bwex-about__text a {
+	color: #0b0b0c !important;
+	font-weight: 600;
+	text-decoration: underline !important;
+	text-decoration-color: #c8ff3d !important;
+	text-decoration-thickness: 3px !important;
+	text-underline-offset: 3px !important;
+}
+@media (max-width: 767px) {
+	html body.bwe-h2x-page section.bwex-about p.bwex-about__text { font-size: 17px !important; line-height: 28px !important; }
+}

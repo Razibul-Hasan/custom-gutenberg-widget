@@ -1,0 +1,1167 @@
+/**
+ * BestWebExpert Home — styles for the ProductReels demo store patterns (Shop the look, Lookbook, Reel layouts).
+ *
+ * The pages play a fictional fashion store, so they use their own warm palette (tokens on .bwe-demo).
+ * The demo bar and the closing call to action stay in the BestWebExpert brand, so visitors can tell the two apart.
+ * In the editor, italic text inside the call-to-action heading becomes the lime highlight.
+ */
+
+/* ---------- Tokens & base ---------- */
+
+.bwe-demo {
+	--dm-ink: #1b1a17;
+	--dm-paper: #fff;
+	--dm-cream: #f6f1ea;
+	--dm-sand: #e7ddcf;
+	--dm-muted: #6b645b;
+	--dm-clay: #c2603f;
+	--dm-clay-ink: #a9512f;
+	--dm-night-text: #b9b0a4;
+	--dm-night-accent: #e39a7f;
+	--dm-brand-ink: #0b0b0c;
+	--dm-brand-lime: #c8ff3d;
+	--dm-radius: 22px;
+	--dm-max: 1200px;
+	--dm-gutter: clamp(1rem, 4vw, 2rem);
+	--dm-inline: max(var(--dm-gutter), calc((100% - var(--dm-max)) / 2));
+	--dm-font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+	--dm-ease: cubic-bezier(.2, .7, .2, 1);
+
+	background: var(--dm-paper);
+	color: var(--dm-ink);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	overflow-x: clip;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Astra pads top-level groups (front end and editor); the page handles its own gutters. */
+:is(.entry-content, .block-editor-block-list__layout.is-root-container) > .bwe-demo.wp-block-group {
+	padding: 0;
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container .bwe-demo p {
+	margin-bottom: 0;
+}
+
+html:has(.bwe-demo) {
+	scroll-behavior: smooth;
+}
+
+.bwe-demo [id] {
+	scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + var(--bwe-site-header, 0px) + 1rem);
+}
+
+.bwe-demo *,
+.bwe-demo *::before,
+.bwe-demo *::after {
+	box-sizing: border-box;
+}
+
+.bwe-demo.wp-block-group > *,
+.bwe-demo .wp-block-group > * {
+	margin-block: 0;
+}
+
+.bwe-demo .wp-block-heading {
+	margin: 0;
+	color: inherit;
+	font-family: var(--dm-font-display);
+	font-weight: 700;
+	line-height: 1.06;
+	letter-spacing: -.02em;
+	text-wrap: balance;
+}
+
+.bwe-demo h2.wp-block-heading {
+	font-size: clamp(2rem, 1.45rem + 2.2vw, 3rem);
+}
+
+.bwe-demo h3.wp-block-heading {
+	font-size: 1.1875rem;
+	line-height: 1.25;
+	letter-spacing: -.01em;
+}
+
+.bwe-demo p {
+	margin: 0;
+	text-wrap: pretty;
+}
+
+.bwe-demo :is(a, button):focus-visible {
+	outline: 3px solid currentColor;
+	outline-offset: 3px;
+}
+
+/* ---------- Sections ---------- */
+
+.bwe-demo .bwe-demo-sec {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2rem, 4vw, 3rem);
+	padding-block: clamp(4rem, 8vw, 6.5rem);
+	padding-inline: var(--dm-inline);
+}
+
+.bwe-demo .bwe-demo-sec--tight {
+	gap: 1.5rem;
+	padding-block: clamp(2.75rem, 5vw, 4rem);
+}
+
+.bwe-demo .bwe-demo-sec--cream {
+	background: var(--dm-cream);
+}
+
+.bwe-demo .bwe-demo-sec--night {
+	background: var(--dm-ink);
+	color: var(--dm-cream);
+}
+
+/* Full-bleed reels (marquee): the section drops its side padding and gives it back to everything else. */
+.bwe-demo .bwe-demo-sec--bleed {
+	padding-inline: 0;
+}
+
+.bwe-demo .bwe-demo-sec--bleed > :not(.alignfull) {
+	margin-inline: var(--dm-inline);
+}
+
+.bwe-demo .bwe-demo-sec .alignfull {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0;
+}
+
+/* ---------- Type ---------- */
+
+.bwe-demo .bwe-demo-head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .875rem;
+	max-width: 44rem;
+}
+
+.bwe-demo .bwe-demo-head--center {
+	align-self: center;
+	align-items: center;
+	text-align: center;
+}
+
+.bwe-demo .bwe-demo-eyebrow {
+	color: var(--dm-clay-ink);
+	font-size: .8125rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.bwe-demo .bwe-demo-sec--night .bwe-demo-eyebrow {
+	color: var(--dm-night-accent);
+}
+
+.bwe-demo .bwe-demo-title {
+	font-size: clamp(2.75rem, 1.6rem + 4.6vw, 4.75rem);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -.03em;
+}
+
+.bwe-demo .bwe-demo-h-sm.wp-block-heading {
+	font-size: 1.5rem;
+}
+
+.bwe-demo .bwe-demo-lead {
+	color: var(--dm-muted);
+	font-size: clamp(1.0625rem, 1rem + .3vw, 1.1875rem);
+	line-height: 1.6;
+}
+
+.bwe-demo .bwe-demo-muted {
+	color: var(--dm-muted);
+}
+
+.bwe-demo .bwe-demo-sec--night :is(.bwe-demo-lead, .bwe-demo-muted) {
+	color: var(--dm-night-text);
+}
+
+/* ---------- Buttons ---------- */
+
+.bwe-demo .bwe-demo-btns {
+	gap: .75rem;
+	margin-top: .5rem;
+}
+
+.bwe-demo .bwe-demo-head--center .bwe-demo-btns {
+	justify-content: center;
+}
+
+.bwe-demo .bwe-demo-btn .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	padding: .95rem 1.75rem;
+	border: 1.5px solid var(--dm-ink);
+	border-radius: 999px;
+	background: var(--dm-ink);
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	transition: transform .2s var(--dm-ease), background-color .2s, border-color .2s, color .2s, box-shadow .2s;
+}
+
+.bwe-demo .bwe-demo-btn .wp-block-button__link:hover {
+	transform: none;
+	border-color: var(--dm-clay-ink);
+	background: var(--dm-clay-ink);
+	box-shadow: 0 10px 24px -12px rgb(169 81 47 / .7);
+}
+
+.bwe-demo .bwe-demo-btn--ghost .wp-block-button__link {
+	background: transparent;
+	color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-btn--ghost .wp-block-button__link:hover {
+	border-color: var(--dm-ink);
+	background: var(--dm-ink);
+	color: #fff;
+	box-shadow: none;
+}
+
+.bwe-demo .bwe-demo-btn--clay .wp-block-button__link {
+	border-color: var(--dm-clay-ink);
+	background: var(--dm-clay-ink);
+}
+
+.bwe-demo .bwe-demo-btn--clay .wp-block-button__link:hover {
+	border-color: var(--dm-ink);
+	background: var(--dm-ink);
+	box-shadow: none;
+}
+
+/* ---------- Demo bar (BestWebExpert brand) ---------- */
+
+.bwe-demo .bwe-demo-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: .625rem 1.5rem;
+	padding: .625rem var(--dm-inline);
+	background: var(--dm-brand-ink);
+	color: #d9d9d3;
+	font-size: .875rem;
+	line-height: 1.4;
+}
+
+.bwe-demo .bwe-demo-bar a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.bwe-demo .bwe-demo-bar__label strong {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	margin-right: .5rem;
+	padding: .2rem .6rem;
+	border-radius: 999px;
+	background: var(--dm-brand-lime);
+	color: var(--dm-brand-ink);
+	font-size: .6875rem;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	vertical-align: 1px;
+}
+
+.bwe-demo .bwe-demo-bar__label strong::before {
+	content: "";
+	width: .4rem;
+	height: .4rem;
+	border-radius: 50%;
+	background: currentColor;
+	animation: bwe-demo-pulse 1.6s ease-in-out infinite;
+}
+
+.bwe-demo .bwe-demo-bar__label a {
+	text-decoration: underline;
+	text-decoration-color: var(--dm-brand-lime);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+
+.bwe-demo .bwe-demo-bar__tabs {
+	display: flex;
+	gap: .25rem;
+	padding: .25rem;
+	border-radius: 999px;
+	background: rgb(255 255 255 / .08);
+}
+
+.bwe-demo .bwe-demo-bar__tabs a {
+	padding: .375rem .9rem;
+	border-radius: 999px;
+	color: #d9d9d3;
+	white-space: nowrap;
+	transition: background-color .2s, color .2s;
+}
+
+.bwe-demo .bwe-demo-bar__tabs a:hover {
+	background: rgb(255 255 255 / .1);
+	color: #fff;
+}
+
+.bwe-demo .bwe-demo-bar__tabs a[aria-current="page"] {
+	background: #fff;
+	color: var(--dm-brand-ink);
+	font-weight: 600;
+}
+
+.bwe-demo .bwe-demo-bar__cta a {
+	color: var(--dm-brand-lime);
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.bwe-demo .bwe-demo-bar__cta a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+@keyframes bwe-demo-pulse {
+	50% {
+		opacity: .35;
+	}
+}
+
+/* ---------- Images ---------- */
+
+.bwe-demo .bwe-demo-shot {
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+	border-radius: var(--dm-radius);
+	background: var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-shot :is(a, img) {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.bwe-demo .bwe-demo-shot img {
+	object-fit: cover;
+	transition: transform .6s var(--dm-ease);
+}
+
+.bwe-demo .bwe-demo-shot a:hover img {
+	transform: scale(1.04);
+}
+
+/* ---------- Shop the look: hero ---------- */
+
+.bwe-demo .bwe-demo-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	align-items: center;
+	gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.bwe-demo .bwe-demo-hero__copy {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.25rem;
+}
+
+.bwe-demo .bwe-demo-hero__copy .bwe-demo-lead {
+	max-width: 34rem;
+}
+
+.bwe-demo .bwe-demo-rating {
+	margin-top: .5rem;
+	color: var(--dm-muted);
+	font-size: .9375rem;
+}
+
+.bwe-demo .bwe-demo-rating strong {
+	color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-stars {
+	margin-right: .25rem;
+	color: var(--dm-clay);
+	letter-spacing: .08em;
+}
+
+/* One tall photo on the left, two square ones stacked on the right; all three end on the same line. */
+.bwe-demo .bwe-demo-collage {
+	display: grid;
+	grid-template-columns: 1.35fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 1rem;
+	aspect-ratio: 1.12;
+}
+
+.bwe-demo .bwe-demo-collage__main {
+	position: relative;
+	grid-row: span 2;
+}
+
+.bwe-demo .bwe-demo-collage__main .bwe-demo-shot {
+	height: 100%;
+}
+
+.bwe-demo .bwe-demo-collage > .bwe-demo-shot {
+	min-height: 0;
+}
+
+/* Product tag on the hero photo, like the cards in the reels. */
+.bwe-demo .bwe-demo-tag {
+	position: absolute;
+	right: .875rem;
+	bottom: .875rem;
+	left: .875rem;
+	display: flex;
+	flex-direction: column;
+	padding: .65rem .85rem;
+	border-radius: 14px;
+	background: rgb(255 255 255 / .94);
+	box-shadow: 0 12px 30px -14px rgb(27 26 23 / .5);
+	font-size: .875rem;
+	line-height: 1.35;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+.bwe-demo .bwe-demo-tag a {
+	color: var(--dm-ink);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bwe-demo .bwe-demo-tag a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.bwe-demo .bwe-demo-tag span,
+.bwe-demo .bwe-demo-prices span {
+	color: var(--dm-clay-ink);
+	font-weight: 600;
+}
+
+.bwe-demo :is(.bwe-demo-tag, .bwe-demo-prices, .bwe-demo-shot) s {
+	margin-right: .25rem;
+	color: var(--dm-muted);
+	font-weight: 400;
+}
+
+/* ---------- Shop the look: perks ---------- */
+
+.bwe-demo .bwe-demo-perks {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.bwe-demo .bwe-demo-perk {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	padding: 1.5rem 1.5rem 1.625rem;
+	border: 1px solid var(--dm-sand);
+	border-radius: 18px;
+}
+
+.bwe-demo .bwe-demo-perk::before {
+	content: "";
+	width: 2.75rem;
+	height: 2.75rem;
+	margin-bottom: .5rem;
+	border-radius: 50%;
+	background: var(--dm-cream) var(--dm-icon) center / 1.375rem no-repeat;
+}
+
+.bwe-demo .bwe-demo-perk p {
+	color: var(--dm-muted);
+	font-size: 1rem;
+}
+
+.bwe-demo .bwe-demo-perk--ship {
+	--dm-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9512f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 6.5h12v9.5H2zM14 10h4.2L21 13v3h-7'/%3E%3Ccircle cx='6' cy='17.5' r='1.8' fill='%23f6f1ea'/%3E%3Ccircle cx='17' cy='17.5' r='1.8' fill='%23f6f1ea'/%3E%3C/svg%3E");
+}
+
+.bwe-demo .bwe-demo-perk--return {
+	--dm-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9512f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 14 4 9l5-5'/%3E%3Cpath d='M4 9h10.5a5.5 5.5 0 0 1 0 11H11'/%3E%3C/svg%3E");
+}
+
+.bwe-demo .bwe-demo-perk--video {
+	--dm-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9512f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='2.5' width='12' height='19' rx='3'/%3E%3Cpath d='m10.5 9.5 4 2.5-4 2.5z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Two columns: image or reels beside text ---------- */
+
+.bwe-demo .bwe-demo-split {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	align-items: center;
+	gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.bwe-demo .bwe-demo-split--image {
+	grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+}
+
+.bwe-demo .bwe-demo-shot--portrait {
+	aspect-ratio: 4 / 5;
+}
+
+/* ---------- Lookbook ---------- */
+
+.bwe-demo .bwe-demo-meta {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .5rem;
+}
+
+.bwe-demo .bwe-demo-meta span {
+	padding: .3rem .8rem;
+	border: 1px solid var(--dm-sand);
+	border-radius: 999px;
+	background: var(--dm-paper);
+	color: var(--dm-ink);
+	font-size: .875rem;
+	font-weight: 600;
+}
+
+/* Four portraits in a staggered row, captioned like a printed lookbook. */
+.bwe-demo .bwe-demo-strip {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(.75rem, 2vw, 1.5rem);
+	margin-top: 1rem;
+}
+
+.bwe-demo .bwe-demo-strip .bwe-demo-shot {
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+	overflow: visible;
+	border-radius: 0;
+	background: none;
+}
+
+.bwe-demo .bwe-demo-strip .bwe-demo-shot:nth-child(even) {
+	margin-top: 2.5rem;
+}
+
+.bwe-demo .bwe-demo-strip .bwe-demo-shot a {
+	aspect-ratio: 3 / 4;
+	overflow: hidden;
+	border-radius: var(--dm-radius);
+	background: var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-strip figcaption {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: .125rem .5rem;
+	margin: 0;
+	color: var(--dm-clay-ink);
+	font-size: .875rem;
+	font-weight: 600;
+	text-align: left;
+}
+
+.bwe-demo .bwe-demo-strip figcaption strong {
+	color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-prices {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	margin: .5rem 0 0;
+	padding: 0;
+	border-top: 1px solid var(--dm-sand);
+	list-style: none;
+}
+
+.bwe-demo .bwe-demo-prices li {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1rem;
+	margin: 0;
+	padding: .8rem 0;
+	border-bottom: 1px solid var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-prices a {
+	color: var(--dm-ink);
+	font-weight: 600;
+	text-decoration: none;
+	transition: color .2s;
+}
+
+.bwe-demo .bwe-demo-prices a:hover {
+	color: var(--dm-clay-ink);
+}
+
+.bwe-demo .bwe-demo-prices span {
+	white-space: nowrap;
+}
+
+/* ---------- Reel layouts ---------- */
+
+.bwe-demo .bwe-demo-jump {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .5rem;
+	margin-top: .75rem;
+}
+
+.bwe-demo .bwe-demo-jump a {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .5rem 1rem;
+	border: 1.5px solid var(--dm-sand);
+	border-radius: 999px;
+	background: var(--dm-paper);
+	color: var(--dm-ink);
+	font-size: .9375rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: border-color .2s, transform .2s var(--dm-ease);
+}
+
+.bwe-demo .bwe-demo-jump a:hover {
+	transform: translateY(-2px);
+	border-color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-jump span {
+	color: var(--dm-clay-ink);
+	font-size: .8125rem;
+	font-variant-numeric: tabular-nums;
+}
+
+.bwe-demo .bwe-demo-best {
+	padding: .45rem .95rem;
+	border: 1px solid var(--dm-sand);
+	border-radius: 999px;
+	background: var(--dm-paper);
+	color: var(--dm-muted);
+	font-size: .875rem;
+	white-space: nowrap;
+}
+
+.bwe-demo .bwe-demo-best strong {
+	color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-sec--night .bwe-demo-best {
+	border-color: rgb(255 255 255 / .16);
+	background: rgb(255 255 255 / .06);
+	color: var(--dm-night-text);
+}
+
+.bwe-demo .bwe-demo-sec--night .bwe-demo-best strong {
+	color: var(--dm-cream);
+}
+
+/* The popup section's picture: a browser window with a reel in its corner, where the real one appears. */
+.bwe-demo .bwe-demo-browser {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 16 / 10;
+	padding: 3rem 9rem 2rem 2rem;
+	border: 1px solid var(--dm-sand);
+	border-radius: 18px;
+	background:
+		radial-gradient(circle at 1.1rem 1rem, #e9a28a .3rem, transparent .32rem),
+		radial-gradient(circle at 2rem 1rem, #e8cf8a .3rem, transparent .32rem),
+		radial-gradient(circle at 2.9rem 1rem, #a9cf9a .3rem, transparent .32rem),
+		linear-gradient(var(--dm-sand), var(--dm-sand)) 0 2rem / 100% 1px no-repeat,
+		var(--dm-paper);
+	box-shadow: 0 30px 60px -40px rgb(27 26 23 / .45);
+}
+
+.bwe-demo .bwe-demo-browser::after {
+	content: "";
+	position: absolute;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	width: 22%;
+	aspect-ratio: 9 / 15;
+	border: 3px solid var(--dm-paper);
+	border-radius: 12px;
+	background:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m9 7 8 5-8 5z' fill='%23fff'/%3E%3C/svg%3E") center / 40% no-repeat,
+		linear-gradient(160deg, var(--dm-clay), var(--dm-ink));
+	box-shadow: 0 16px 30px -12px rgb(27 26 23 / .6);
+	animation: bwe-demo-float 3s ease-in-out infinite;
+}
+
+.bwe-demo .bwe-demo-browser__note {
+	color: var(--dm-muted);
+	font-family: var(--dm-font-display);
+	font-size: clamp(1.125rem, 1rem + .6vw, 1.5rem);
+	font-weight: 700;
+	line-height: 1.25;
+	text-wrap: balance;
+}
+
+.bwe-demo .bwe-demo-browser__note::after {
+	content: " ↘";
+	color: var(--dm-clay-ink);
+}
+
+@keyframes bwe-demo-float {
+	50% {
+		transform: translateY(-6px);
+	}
+}
+
+/* ---------- Closing call to action (BestWebExpert brand) ---------- */
+
+.bwe-demo .bwe-demo-cta {
+	align-items: center;
+	gap: 1.25rem;
+	background:
+		radial-gradient(55% 80% at 88% 0%, rgb(200 255 61 / .14), transparent 70%),
+		radial-gradient(50% 70% at 8% 100%, rgb(124 92 255 / .22), transparent 70%),
+		var(--dm-brand-ink);
+	color: #fff;
+	text-align: center;
+}
+
+.bwe-demo .bwe-demo-cta .bwe-demo-eyebrow {
+	color: var(--dm-brand-lime);
+}
+
+.bwe-demo .bwe-demo-cta__title.wp-block-heading {
+	max-width: 46rem;
+	font-size: clamp(2.2rem, 1.4rem + 3.2vw, 3.75rem);
+	font-weight: 800;
+	line-height: 1.02;
+}
+
+.bwe-demo .bwe-demo-cta__title em {
+	padding-inline: .1em;
+	border-radius: .08em;
+	background: var(--dm-brand-lime);
+	color: var(--dm-brand-ink);
+	font-style: normal;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+.bwe-demo .bwe-demo-cta .bwe-demo-lead {
+	max-width: 40rem;
+	color: #c9c9c2;
+}
+
+.bwe-demo .bwe-demo-cta .bwe-demo-btns {
+	justify-content: center;
+}
+
+.bwe-demo .bwe-demo-btn--lime .wp-block-button__link {
+	border-color: var(--dm-brand-lime);
+	background: var(--dm-brand-lime);
+	color: var(--dm-brand-ink);
+}
+
+.bwe-demo .bwe-demo-btn--lime .wp-block-button__link:hover {
+	border-color: #fff;
+	background: #fff;
+	box-shadow: 0 12px 30px -12px rgb(200 255 61 / .6);
+}
+
+.bwe-demo .bwe-demo-cta .bwe-demo-btn--ghost .wp-block-button__link {
+	border-color: rgb(255 255 255 / .35);
+	color: #fff;
+}
+
+.bwe-demo .bwe-demo-cta .bwe-demo-btn--ghost .wp-block-button__link:hover {
+	border-color: #fff;
+	background: #fff;
+	color: var(--dm-brand-ink);
+}
+
+.bwe-demo .bwe-demo-cta__meta {
+	margin-top: .5rem;
+	color: #9d9d96;
+	font-size: .875rem;
+}
+
+/* ---------- Guide: long-form reading section under the demo ---------- */
+
+.bwe-demo .bwe-demo-guide {
+	border-top: 1px solid var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-guide__body {
+	width: 100%;
+	max-width: 46rem;
+	align-self: center;
+	font-size: 1.0625rem;
+	line-height: 1.7;
+}
+
+.bwe-demo .bwe-demo-guide__body > * + * {
+	margin-top: 1.1rem;
+}
+
+.bwe-demo .bwe-demo-guide__body > .bwe-demo-eyebrow + h2 {
+	margin-top: .75rem;
+	font-size: clamp(2rem, 1.45rem + 2.2vw, 2.75rem);
+}
+
+.bwe-demo .bwe-demo-guide__body > h2 {
+	margin-top: 3.25rem;
+	font-size: clamp(1.625rem, 1.3rem + 1.2vw, 2.125rem);
+	line-height: 1.15;
+}
+
+.bwe-demo .bwe-demo-guide__body > h3 {
+	margin-top: 1.75rem;
+}
+
+.bwe-demo .bwe-demo-guide__body > h3 + p {
+	margin-top: .5rem;
+}
+
+.bwe-demo .bwe-demo-guide__body p,
+.bwe-demo .bwe-demo-guide__body li {
+	color: #3d3a35;
+}
+
+.bwe-demo .bwe-demo-guide__body a:not(.wp-block-button__link) {
+	color: var(--dm-ink);
+	text-decoration: underline;
+	text-decoration-color: var(--dm-clay);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	transition: color .2s;
+}
+
+.bwe-demo .bwe-demo-guide__body a:not(.wp-block-button__link):hover {
+	color: var(--dm-clay-ink);
+}
+
+.bwe-demo .bwe-demo-guide__body strong {
+	color: var(--dm-ink);
+}
+
+.bwe-demo .bwe-demo-guide__body code {
+	padding: .1em .4em;
+	border-radius: 6px;
+	background: var(--dm-cream);
+	color: var(--dm-ink);
+	font-size: .9em;
+}
+
+/* Rank Math's table of contents, as a compact numbered box. */
+.bwe-demo .wp-block-rank-math-toc-block {
+	margin-top: 1.75rem;
+	padding: 1.25rem 1.5rem 1.375rem;
+	border-radius: 18px;
+	background: var(--dm-cream);
+}
+
+.bwe-demo .wp-block-rank-math-toc-block > p {
+	margin: 0 0 .75rem;
+	color: var(--dm-clay-ink);
+	font-size: .8125rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.bwe-demo .wp-block-rank-math-toc-block ul {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: .5rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: bwe-toc;
+}
+
+.bwe-demo .wp-block-rank-math-toc-block li {
+	display: flex;
+	gap: .6rem;
+	margin: 0;
+	counter-increment: bwe-toc;
+	font-size: .9688rem;
+	line-height: 1.4;
+}
+
+.bwe-demo .wp-block-rank-math-toc-block li::before {
+	content: counter(bwe-toc, decimal-leading-zero);
+	flex: none;
+	padding-top: .1em;
+	color: var(--dm-clay-ink);
+	font-size: .8125rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+.bwe-demo .bwe-demo-guide__body .wp-block-rank-math-toc-block a {
+	font-weight: 600;
+	text-decoration-color: transparent;
+}
+
+.bwe-demo .bwe-demo-guide__body .wp-block-rank-math-toc-block a:hover {
+	text-decoration-color: var(--dm-clay);
+}
+
+.bwe-demo .bwe-demo-points,
+.bwe-demo .bwe-demo-steps {
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+	padding: 0;
+	list-style: none;
+}
+
+.bwe-demo .bwe-demo-points li,
+.bwe-demo .bwe-demo-steps li {
+	position: relative;
+	margin: 0;
+	padding-left: 2.25rem;
+}
+
+.bwe-demo .bwe-demo-points li::before {
+	content: "";
+	position: absolute;
+	top: .6em;
+	left: .5rem;
+	width: .55rem;
+	height: .55rem;
+	border-radius: 50%;
+	background: var(--dm-clay);
+}
+
+.bwe-demo .bwe-demo-steps {
+	counter-reset: bwe-step;
+}
+
+.bwe-demo .bwe-demo-steps li {
+	counter-increment: bwe-step;
+}
+
+.bwe-demo .bwe-demo-steps li::before {
+	content: counter(bwe-step);
+	position: absolute;
+	top: .15em;
+	left: 0;
+	display: grid;
+	place-items: center;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	background: var(--dm-ink);
+	color: #fff;
+	font-size: .8125rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.bwe-demo .bwe-demo-guide__shot {
+	margin-block: 2rem 0;
+	overflow: hidden;
+	border: 1px solid var(--dm-sand);
+	border-radius: 18px;
+}
+
+.bwe-demo .bwe-demo-guide__shot img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.bwe-demo .bwe-demo-table {
+	margin-block: 1.5rem 0;
+	overflow-x: auto;
+	border: 1px solid var(--dm-sand);
+	border-radius: 14px;
+}
+
+.bwe-demo .bwe-demo-table table {
+	width: 100%;
+	min-width: 32rem;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	font-size: .9375rem;
+	line-height: 1.45;
+}
+
+.bwe-demo .bwe-demo-table :is(th, td) {
+	padding: .75rem 1rem;
+	border: 0;
+	border-bottom: 1px solid var(--dm-sand);
+	color: #3d3a35;
+	text-align: left;
+	vertical-align: top;
+}
+
+.bwe-demo .bwe-demo-table th {
+	background: var(--dm-cream);
+	color: var(--dm-ink);
+	font-weight: 700;
+}
+
+.bwe-demo .bwe-demo-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.bwe-demo .bwe-demo-table td:first-child {
+	color: var(--dm-ink);
+	font-weight: 600;
+}
+
+.bwe-demo .bwe-demo-faq {
+	margin-top: 0;
+	border-bottom: 1px solid var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-guide__body > h2 + .bwe-demo-faq {
+	margin-top: 1.25rem;
+	border-top: 1px solid var(--dm-sand);
+}
+
+.bwe-demo .bwe-demo-faq summary {
+	position: relative;
+	padding: 1.1rem 2.5rem 1.1rem 0;
+	color: var(--dm-ink);
+	font-weight: 600;
+	list-style: none;
+	cursor: pointer;
+}
+
+.bwe-demo .bwe-demo-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.bwe-demo .bwe-demo-faq summary::after {
+	content: "+";
+	position: absolute;
+	top: 50%;
+	right: .25rem;
+	color: var(--dm-clay-ink);
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1;
+	transform: translateY(-50%);
+	transition: transform .2s;
+}
+
+.bwe-demo .bwe-demo-faq[open] summary::after {
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.bwe-demo .bwe-demo-faq > p {
+	padding: 0 2.5rem 1.25rem 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+	.bwe-demo .bwe-demo-hero,
+	.bwe-demo .bwe-demo-split,
+	.bwe-demo .bwe-demo-split--image {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	/* On one column the text comes first, then the picture or the reels. */
+	.bwe-demo .bwe-demo-split:not(.bwe-demo-split--text-first) > .bwe-demo-head {
+		order: -1;
+	}
+
+	.bwe-demo .bwe-demo-split--image .bwe-demo-shot--portrait {
+		aspect-ratio: 4 / 3;
+	}
+
+	.bwe-demo .bwe-demo-perks {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.bwe-demo .bwe-demo-browser {
+		max-width: 34rem;
+	}
+}
+
+@media (max-width: 781px) {
+	.bwe-demo .bwe-demo-bar {
+		gap: .5rem 1rem;
+		padding-block: .625rem .75rem;
+	}
+
+	.bwe-demo .bwe-demo-bar__more {
+		display: none;
+	}
+
+	.bwe-demo .bwe-demo-bar__tabs {
+		order: 3;
+		flex-basis: 100%;
+	}
+
+	.bwe-demo .bwe-demo-bar__tabs a {
+		flex: 1;
+		padding-inline: .5rem;
+		text-align: center;
+	}
+
+	.bwe-demo .bwe-demo-best {
+		white-space: normal;
+	}
+
+	.bwe-demo .bwe-demo-strip {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		row-gap: 1.5rem;
+	}
+
+	.bwe-demo .bwe-demo-strip .bwe-demo-shot:nth-child(even) {
+		margin-top: 0;
+	}
+
+	.bwe-demo .bwe-demo-strip figcaption {
+		flex-direction: column;
+	}
+
+	.bwe-demo .bwe-demo-browser {
+		padding-right: 7rem;
+	}
+
+	.bwe-demo .wp-block-rank-math-toc-block ul {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bwe-demo *,
+	.bwe-demo *::before,
+	.bwe-demo *::after {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	html:has(.bwe-demo) {
+		scroll-behavior: auto;
+	}
+}

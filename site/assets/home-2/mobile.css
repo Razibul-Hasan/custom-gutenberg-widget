@@ -1,0 +1,222 @@
+/**
+ * Home on phones (2026-11-19), 767px and below. Same design, tighter and easier to tap. Delete to revert.
+ *  - shorter page: 56px section padding, 32px head gap, 16px intro text, slimmer cards
+ *  - 48px tap targets: equal-width full buttons (hero, pricing, closing banner, plugins)
+ *  - small links get a taller hit area
+ */
+@media (max-width: 767px) {
+	.bwe-h2x-page { --bwx-section: 56px; --bwx-head: 32px; }
+
+	/* type */
+	.bwe-h2x-page .bwex .bwex-intro p,
+	.bwe-h2x-page .bwex .bwex-svc__lead p,
+	.bwe-h2x-page .bwex .bwex-about__lead,
+	.bwe-h2x-page .bwex .bwex-faq__intro p,
+	.bwe-h2x-page .bwex .bwex-about__lead p { font-size: 16px; line-height: 1.6; }
+	.bwe-h2x-page .bwex .bwex-head:not(.bwex-head--split) .bwex-intro,
+	.bwe-h2x-page .bwex .bwex-svc__head { margin-top: 16px; }
+	.bwe-h2x-page .bwex .bwex-svc__head { row-gap: 16px; }
+
+	/* hero: two equal buttons, full width */
+	.bwe-h2x-page .bwe-hero .bwe-actions { width: 100%; flex-direction: column; align-items: stretch; gap: 12px; }
+	.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn { width: 100%; }
+	.bwe-h2x-page .bwe-hero .bwe-actions .bwe-btn a.wp-block-button__link { width: 100%; height: 48px; padding: 0 20px; }
+
+	/* buttons: 48px, full width */
+	.bwe-h2x-page .bwex .bwex-plan .bwex-btn,
+	.bwe-h2x-page .bwex .bwex-plan .bwex-btn .elementor-button,
+	.bwe-h2x-page .bwex .bwex-card .bwex-card__btn,
+	.bwe-h2x-page .bwex .bwex-faq__intro .bwe-btn a.wp-block-button__link,
+	.bwe-h2x-page .bwex .bwex-about__card .elementor-button { width: 100%; }
+	.bwe-h2x-page .bwex .bwex-plan .bwex-btn .elementor-button,
+	.bwe-h2x-page .bwex .bwex-card .bwex-card__btn,
+	.bwe-h2x-page .bwex .bwex-faq__intro .bwe-btn a.wp-block-button__link,
+	.bwe-h2x-page .bwex .bwex-about__card .elementor-button,
+	.bwe-h2x-page .bwex .bwex-faq__toggle { min-height: 48px; height: 48px; justify-content: center; }
+	.bwe-h2x-page .bwex .bwex-faq__toggle { width: 100%; padding-block: 0; }
+
+	/* pricing: air around the highlighted plan */
+	.bwe-h2x-page .bwex .bwex-plans { row-gap: 24px; }
+
+	/* closing banner */
+	.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box { padding: 32px 24px; border-radius: 24px; }
+	.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions { flex-direction: column; gap: 12px; }
+	.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-actions .wp-block-button { flex: none; width: 100%; }
+	.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-btn .wp-block-button__link { height: 48px; }
+	.bwe-h2x-page .bwe-final.bwe-final .bwe-final__box.bwe-final__box .bwe-final__chat a[href] { min-height: 48px; }
+
+	/* cards: slimmer padding */
+
+
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item { padding: 20px; }
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num li .bwex-num__n { margin-bottom: 16px; }
+
+	/* small links: taller hit area without changing the look */
+	.bwe-h2x-page .bwex .bwex-card a:not(.bwex-card__btn) { display: inline-block; padding-block: 6px; }
+
+	/* FAQ rows */
+	.bwe-h2x-page .bwex .bwex-faq__q,
+	.bwe-h2x-page .bwex .bwex-faq__item > button { min-height: 56px; }
+
+	/* Experts: compact cards, chips two per row */
+	.bwe-h2x-page .bwex .bwex-plats--3 .bwex-plat__img img { aspect-ratio: 16 / 9; }
+	.bwe-h2x-page .bwex .bwex-plats--3 .bwex-checks { gap: 8px; }
+	.bwe-h2x-page .bwex .bwex-plats--3 .bwex-checks a { min-height: 36px; padding: 0 12px; font-size: 13px; }
+	.bwe-h2x-page .bwex .bwex-plats--3 .bwex-h3 .elementor-heading-title { font-size: 1.25rem; }
+	.bwe-h2x-page .bwex .bwex-plats--3 .bwex-plat__text { margin-bottom: 14px; }
+
+	/* Pricing: every plan is a card */
+	.bwe-h2x-page .bwex .bwex-plans { border-top: 0; }
+	.bwe-h2x-page .bwex .bwex-plan:not(.bwex-plan--featured) {
+		padding: 24px !important;
+		border: 1px solid #dcdbd6 !important;
+		border-radius: 20px;
+		background: #fff;
+	}
+	.bwe-h2x-page .bwex .bwex-plan--featured { border-radius: 20px; }
+
+	/* How it works: number beside the title */
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: center;
+		column-gap: 12px;
+		row-gap: 12px;
+		padding: 18px;
+	}
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num li .bwex-num__n { margin: 0; }
+	.bwe-h2x-page .bwex .bwex-process .bwex-num__body { display: contents; }
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num .bwex-num__title { margin: 0; font-size: 1.125rem; }
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num .bwex-num__text { grid-column: 1 / -1; font-size: 14px; }
+	.bwe-h2x-page .bwex .bwex-process ol.bwex-num.bwex-num--row li.bwex-num__item::after { display: none; }
+
+	/* Plugins: shorter artwork, calmer text */
+	.bwe-h2x-page .bwex .bwex-card .bwe-work__art { aspect-ratio: 2.2 / 1; min-height: 0; }
+	.bwe-h2x-page .bwex .bwex-card__text p { font-size: 15px; line-height: 1.55; }
+
+	/* About card */
+	.bwe-h2x-page .bwex .bwex-about__card { padding: 24px; }
+}
+
+/* ---- Phones and tablets (1023px and below): card grids instead of long rows ---------------------- */
+@media (max-width: 1023px) {
+	/* "Our services": 2-column cards instead of a long list. Icon + arrow on top, title, short text. */
+	.bwe-h2x-page .bwex .bwex-svc__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+		border-top: 0;
+	}
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__tile {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		height: 100%;
+		min-height: 0;
+		padding: 16px;
+		border: 1px solid #dcdbd6;
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: none;
+	}
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__item:last-child:nth-child(odd) .bwex-svc__desc { -webkit-line-clamp: 3; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__top { margin: 0 0 4px; gap: 0; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__top::before { width: 40px; height: 40px; border-radius: 12px; background-size: 20px 20px; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__tag { display: none; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__name {
+		padding: 0;
+		font-size: 16px;
+		line-height: 1.25;
+		font-weight: 500;
+		letter-spacing: -.01em;
+	}
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__desc {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font-size: 13px;
+		line-height: 1.45;
+	}
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__arrow {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		bottom: auto;
+		width: 32px;
+		height: 32px;
+		font-size: 14px;
+		grid-column: auto;
+		grid-row: auto;
+	}
+
+	/* Why us: Speed full width, the other five two per row */
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li { height: 100%; padding: 16px; gap: 8px; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child { grid-column: 1 / -1; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:last-child { grid-column: 1 / -1; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__name { font-size: 1rem; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:not(:first-child) { font-size: 13px; line-height: 1.45; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__list li:not(:first-child) code { margin-top: auto; padding: 5px 10px; font-size: 11px; }
+
+
+	/* Who we build for: 2-column cards like Our services */
+	.bwe-h2x-page .bwex .bwex-who__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border-top: 0; }
+	.bwe-h2x-page .bwex .bwex-who__list li { margin: 0; }
+	.bwe-h2x-page .bwex .bwex-who__list a {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		height: 100%;
+		padding: 16px;
+		border: 1px solid #dcdbd6;
+		border-radius: 16px;
+		background: #fff;
+	}
+	.bwe-h2x-page .bwex .bwex-who__list a::after { display: none; }
+	.bwe-h2x-page .bwex .bwex-who__list strong { font-size: 15px; line-height: 1.25; font-weight: 500; }
+	.bwe-h2x-page .bwex .bwex-who__list span { font-size: 13px; line-height: 1.45; }
+	.bwe-h2x-page .bwex .bwex-who__list em { margin-top: auto; align-self: flex-start; }
+
+
+	/* chips never push a card wider than the screen */
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__list code { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* ---- Tablets (768-1023px): three columns, so nothing is left alone on the last row ----------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+	.bwe-h2x-page .bwex .bwex-svc__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__item:last-child:nth-child(odd) { grid-column: auto; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__item:last-child:nth-child(odd) .bwex-svc__desc { -webkit-line-clamp: 4; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__name { font-size: 17px; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__desc { font-size: 14px; }
+	.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__tile { padding: 20px; }
+	.bwe-h2x-page .bwex .bwex-who__list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+	.bwe-h2x-page .bwex .bwex-who__list a { padding: 20px; }
+	.bwe-h2x-page .bwex .bwex-who__list strong { font-size: 16px; }
+	.bwe-h2x-page .bwex .bwex-who__list span { font-size: 14px; }
+	.bwe-h2x-page .bwex .bwex-quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+	.bwe-h2x-page .bwex .bwex-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+	.bwe-h2x-page .bwex .bwex-cards .bwex-card__text p { font-size: 14px; }
+	.bwe-h2x-page .bwex .bwex-cards .bwex-card__btn { height: auto; min-height: 48px; padding: 10px 12px; font-size: 11px; letter-spacing: 1.5px; line-height: 1.3; text-align: center; white-space: normal; }
+	.bwe-h2x-page .bwex .bwex-plats,
+	.bwe-h2x-page .bwex .bwex-plats.bwex-plats--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	/* pricing: stacked cards until there is room for three columns */
+	.bwe-h2x-page .bwex .bwex-plans { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; border-top: 0; }
+	.bwe-h2x-page .bwex .bwex-plan:not(.bwex-plan--featured) { padding: 28px !important; border: 1px solid #dcdbd6 !important; border-radius: 20px; background: #fff; }
+	.bwe-h2x-page .bwex .bwex-plan--featured { border-radius: 20px; }
+}
+
+/* ---- Small laptops (1024-1199px): same three-column grids as desktop, no orphan cards ---------------- */
+@media (min-width: 1024px) and (max-width: 1199px) {
+	.bwe-h2x-page .bwex .bwex-svc__grid,
+	.bwe-h2x-page .bwex .bwex-quotes,
+	.bwe-h2x-page .bwex .bwex-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.bwe-h2x-page .bwex .bwex-cards .bwex-card__btn { height: auto; min-height: 48px; padding: 10px 12px; letter-spacing: 1.5px; text-align: center; white-space: normal; }
+}
+
+/* Touch devices up to tablet width: small text links get a 32px+ hit area */
+@media (max-width: 1023px) {
+	.bwe-h2x-page .bwex .bwex-card a:not(.bwex-card__btn) { display: inline-block; padding-block: 6px; }
+}

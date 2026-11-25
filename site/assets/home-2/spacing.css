@@ -1,0 +1,81 @@
+/**
+ * Home spacing (2026-11-19): one scale, no fractional pixels. Delete this file to revert.
+ *
+ *   gutter (page edge)     24 / 32 (640+) / 40 (1024+)       content is max 1200 wide, centred
+ *   section padding        64 / 88 (768+) / 112 (1100+)      top = bottom, everywhere
+ *   head -> content        40 / 56 (768+) / 64 (1100+)
+ *   card gap               16 tiles, 24 big cards
+ *
+ * Header, content, closing banner and footer all share the same left/right edge.
+ */
+.bwe-h2x-page {
+	--bwx-gutter: 24px;
+	--bwx-section: 64px;
+	--bwx-head: 40px;
+	--bwx-col: 48px;
+}
+@media (min-width: 640px) { .bwe-h2x-page { --bwx-gutter: 32px; } }
+@media (min-width: 768px) { .bwe-h2x-page { --bwx-section: 88px; --bwx-head: 56px; --bwx-col: 64px; } }
+@media (min-width: 1024px) { .bwe-h2x-page { --bwx-gutter: 40px; } }
+@media (min-width: 1100px) { .bwe-h2x-page { --bwx-section: 112px; --bwx-head: 64px; --bwx-col: 80px; } }
+
+/* Edges ------------------------------------------------------------------------------------ */
+.bwe-h2x-page .bwex .bwex-wrap {
+	max-width: calc(var(--bwex-max, 1200px) + 2 * var(--bwx-gutter));
+	padding-inline: var(--bwx-gutter);
+}
+.bwe-h2x-page .bwe-home,
+.bwe-h2x-page .bwe-home .bwe-final { --bwe-gutter: var(--bwx-gutter); }
+
+.bwe-h2x-page .bwe-hf.bwe-hf--site .bwe-hf__inner,
+.bwe-h2x-page .bwe-ft.bwe-ft--site .bwe-ft__inner {
+	max-width: calc(1200px + 2 * var(--bwx-gutter));
+	padding-left: var(--bwx-gutter);
+	padding-right: var(--bwx-gutter);
+}
+
+/* Section rhythm --------------------------------------------------------------------------- */
+.bwe-h2x-page .bwex,
+.bwe-h2x-page .bwex.bwex { --bwex-pad: var(--bwx-section); }
+.bwe-h2x-page .bwex .bwex-section { padding-block: var(--bwx-section); }
+
+/* two neighbours on the same background share one gap instead of stacking two */
+.bwe-h2x-page .bwex .bwex-work + .bwex-about,
+.bwe-h2x-page .bwex .bwex-section--soft + .bwex-section--soft { padding-top: 0; }
+
+/* FAQ -> closing banner: same gap as every other section break */
+.bwe-h2x-page .bwex .bwex-section:has(+ * .bwe-final),
+.bwe-h2x-page .bwex .bwex-faq-section { padding-bottom: 0; }
+.bwe-h2x-page .bwe-home .bwe-final { padding-block: var(--bwx-section); }
+
+/* Head -> content --------------------------------------------------------------------------- */
+.bwe-h2x-page .bwex .bwex-head,
+.bwe-h2x-page .bwex .bwex-process .bwex-head,
+.bwe-h2x-page .bwex .bwex-svc__head { margin-bottom: var(--bwx-head); }
+.bwe-h2x-page .bwex .bwex-svc .bwex-more,
+.bwe-h2x-page .bwex .bwex-proof .bwex-more { margin-top: 32px; }
+
+/* Gaps -------------------------------------------------------------------------------------- */
+.bwe-h2x-page .bwex .bwex-svc__grid,
+.bwe-h2x-page .bwex .bwex-spec__list,
+.bwe-h2x-page .bwex .bwex-quotes,
+.bwe-h2x-page .bwex .bwex-who__list,
+.bwe-h2x-page .bwex ol.bwex-num.bwex-num--row,
+.bwe-h2x-page .bwex .bwex-cost__grid { gap: 16px; }
+
+.bwe-h2x-page .bwex .bwex-plats,
+.bwe-h2x-page .bwex .bwex-plats.bwex-plats--3,
+.bwe-h2x-page .bwex .bwex-cards { gap: 24px; }
+
+.bwe-h2x-page .bwex .bwex-about__grid,
+.bwe-h2x-page .bwex .bwex-faq__grid { column-gap: var(--bwx-col); }
+
+/* Hero: same gutter as everything else */
+.bwe-h2x-page .bwe-home.bwex .bwe-hero--paper { padding-inline: var(--bwx-gutter); }
+
+/* Footer: top/bottom on the same 8px scale */
+.bwe-h2x-page .bwe-ft.bwe-ft--site { padding-top: 80px; padding-bottom: 48px; }
+
+/* FAQ head: eyebrow -> title gap same as every other section (was 44px, others 20px) */
+.bwe-h2x-page .bwex .bwex-faq__intro .bwex-headw .bwex-eyebrow { margin-bottom: 20px; }
+.bwe-h2x-page .bwex .bwex-about .bwex-eyebrow { margin-bottom: -4px; }

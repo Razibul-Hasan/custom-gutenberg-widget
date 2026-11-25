@@ -1,0 +1,1438 @@
+/**
+ * BestWebExpert Blog — posts page, post archives, single posts and comments.
+ *
+ * Deliberately quieter than the landing pages: white space, one reading column, few accents.
+ * Builds on the tokens in home.css; re-brand from the tokens on .bwe-home.
+ */
+
+.bwe-blog {
+	--bwe-read: 42rem;
+	--bwe-text: #2b2b29;
+}
+
+/* ---------- Blog header ---------- */
+
+.bwe-blog .bwe-blog-head {
+	align-items: flex-start;
+	gap: 1rem;
+	padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
+	border-bottom: 1px solid var(--bwe-line);
+}
+
+.bwe-home .bwe-blog-head .bwe-blog-head__title.wp-block-heading {
+	max-width: 18em;
+	font-size: clamp(2.2rem, 1.4rem + 3vw, 3.75rem);
+	line-height: 1.05;
+}
+
+.bwe-blog .bwe-blog-head .bwe-lead {
+	max-width: 38rem;
+	font-size: clamp(1.05rem, 1rem + .25vw, 1.2rem);
+}
+
+.bwe-blog .bwe-back a {
+	color: var(--bwe-muted);
+	font-size: .9375rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bwe-blog .bwe-back a:hover {
+	color: var(--bwe-ink);
+}
+
+/* Category links. The default "Uncategorized" category (ID 1) is hidden, and the row with it when it's alone. */
+.bwe-blog ul.bwe-cats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin: .5rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bwe-blog .bwe-cats:not(:has(li:not(.cat-item-1, .cat-item-none))),
+.bwe-blog .bwe-cats :is(.cat-item-1, .cat-item-none) {
+	display: none;
+}
+
+.bwe-blog .bwe-cats li {
+	margin: 0;
+}
+
+.bwe-blog .bwe-cats a {
+	display: inline-flex;
+	padding: .35rem .9rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 999px;
+	color: var(--bwe-ink);
+	font-size: .875rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: border-color .2s, background-color .2s;
+}
+
+.bwe-blog .bwe-cats a:hover {
+	border-color: var(--bwe-ink);
+}
+
+.bwe-blog .bwe-cats .current-cat a {
+	border-color: var(--bwe-ink);
+	background: var(--bwe-ink);
+	color: #fff;
+}
+
+/* ---------- Post list ---------- */
+
+.bwe-blog .bwe-feed {
+	padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.bwe-blog ul.bwe-posts__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 2.5vw, 2rem);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Astra adds its article classes (and padding) to each post. */
+.bwe-blog .bwe-posts__grid > li.wp-block-post {
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.bwe-blog .bwe-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	width: 100%;
+}
+
+.bwe-blog .bwe-card__img {
+	margin: 0;
+	overflow: hidden;
+	border-radius: 16px;
+	background: var(--bwe-soft);
+}
+
+/* Thumbnails are 1200x630; match that ratio so nothing is cropped
+   (the block adds an inline 3/2 aspect-ratio, hence !important). */
+.bwe-blog .bwe-card__img img {
+	display: block;
+	width: 100%;
+	height: auto !important;
+	aspect-ratio: 1200 / 630 !important;
+	object-fit: contain !important;
+}
+
+/* Posts without a featured image get a plain placeholder. */
+.bwe-blog .bwe-card:not(:has(.wp-block-post-featured-image))::before {
+	content: "✦";
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1200 / 630;
+	border-radius: 16px;
+	background: var(--bwe-soft);
+	color: #d3d3cb;
+	font-size: 3rem;
+}
+
+.bwe-blog .bwe-card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .6rem;
+}
+
+.bwe-blog .bwe-card__cat {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .2rem .75rem;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.bwe-blog .bwe-card__cat .wp-block-post-terms__separator {
+	display: none;
+}
+
+.bwe-blog .bwe-card__cat a {
+	color: var(--bwe-muted);
+	text-decoration: none;
+}
+
+.bwe-blog .bwe-card__cat a:hover {
+	color: var(--bwe-ink);
+}
+
+.bwe-blog .bwe-card__title {
+	margin: 0;
+	font-family: var(--bwe-font-display);
+	font-size: clamp(1.2rem, 1.05rem + .45vw, 1.4rem);
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -.01em;
+	text-wrap: balance;
+}
+
+.bwe-blog .bwe-card__title a {
+	color: var(--bwe-ink);
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	text-decoration-thickness: .12em;
+	text-underline-offset: .2em;
+	transition: text-decoration-color .2s;
+}
+
+.bwe-blog .bwe-card:hover .bwe-card__title a {
+	text-decoration-color: currentColor;
+}
+
+/* The whole card is the link. */
+.bwe-blog .bwe-card__title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.bwe-blog .bwe-card__excerpt {
+	margin: 0;
+	color: var(--bwe-muted);
+	font-size: .975rem;
+	line-height: 1.6;
+}
+
+.bwe-blog .bwe-card__excerpt p {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+}
+
+.bwe-blog .bwe-card__date {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-top: auto;
+	color: var(--bwe-muted);
+	font-size: .875rem;
+}
+
+.bwe-blog .bwe-card__read::before {
+	content: "·";
+	margin-right: .5rem;
+}
+
+/* The newest post on the first page spans the row. */
+@media (min-width: 782px) {
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child {
+		grid-column: 1 / -1;
+		padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+		border-bottom: 1px solid var(--bwe-line);
+	}
+
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child .bwe-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+		align-items: center;
+		gap: clamp(1.5rem, 4vw, 3.5rem);
+	}
+
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child .bwe-card__body {
+		gap: .9rem;
+	}
+
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child .bwe-card__title {
+		font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.4rem);
+		line-height: 1.12;
+	}
+
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child .bwe-card__excerpt {
+		font-size: 1.0625rem;
+	}
+
+	body:not(.paged) .bwe-feed .bwe-posts__grid > li:first-child .bwe-card__date {
+		margin-top: .4rem;
+	}
+}
+
+/* ---------- Pagination & empty state ---------- */
+
+.bwe-blog .bwe-pager {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: .4rem;
+	margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.bwe-blog .wp-block-query-pagination-numbers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .4rem;
+}
+
+.bwe-blog .bwe-pager :is(a, .page-numbers) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .4rem;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	margin: 0;
+	padding: 0 .9rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 999px;
+	color: var(--bwe-ink);
+	font-size: .9375rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bwe-blog .bwe-pager a:hover {
+	border-color: var(--bwe-ink);
+}
+
+.bwe-blog .bwe-pager .page-numbers.current {
+	border-color: var(--bwe-ink);
+	background: var(--bwe-ink);
+	color: #fff;
+}
+
+.bwe-blog .bwe-pager .page-numbers.dots {
+	border-color: transparent;
+}
+
+.bwe-blog .bwe-empty {
+	padding: clamp(2rem, 5vw, 3.5rem);
+	border-radius: 16px;
+	background: var(--bwe-soft);
+	color: var(--bwe-muted);
+	text-align: center;
+}
+
+/* ---------- Blog call to action ---------- */
+
+.bwe-blog .bwe-blog-cta {
+	padding-block: 0 clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.bwe-blog .bwe-blog-cta__box {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.25rem 2rem;
+	padding: clamp(1.5rem, 4vw, 2.5rem);
+	border-radius: 20px;
+	background: var(--bwe-soft);
+}
+
+/* Four small overlapping thumbnails of the kind of sites we build. */
+.bwe-blog .bwe-blog-cta__stack {
+	display: flex;
+	flex: none;
+}
+
+.bwe-blog .bwe-blog-cta__img {
+	flex: none;
+	width: 3.75rem;
+	margin: 0 0 0 -1rem;
+	overflow: hidden;
+	border: 3px solid var(--bwe-soft);
+	border-radius: 14px;
+	aspect-ratio: 1;
+	box-shadow: 0 6px 14px -8px rgba(11, 11, 12, .35);
+}
+
+.bwe-blog .bwe-blog-cta__img:first-child {
+	margin-left: 0;
+}
+
+.bwe-blog .bwe-blog-cta__img img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bwe-blog .bwe-blog-cta__text {
+	display: flex;
+	flex: 1 1 18rem;
+	flex-direction: column;
+	gap: .4rem;
+	max-width: 36rem;
+}
+
+.bwe-home .bwe-blog-cta__text h2.wp-block-heading {
+	font-size: clamp(1.4rem, 1.15rem + .9vw, 1.85rem);
+	line-height: 1.2;
+}
+
+.bwe-blog .bwe-blog-cta__text p {
+	color: var(--bwe-muted);
+}
+
+/* ---------- Single post ---------- */
+
+/*
+ * The page sits in the site's content width (--bwe-max). Inside it, the post is a reading column
+ * of about 70 characters a line beside a sticky sidebar. The header lines up with the column.
+ */
+.bwe-single {
+	--bwe-read: 46rem;
+	--bwe-side: 16.5rem;
+	--bwe-text: #2f2f2c;
+}
+
+.bwe-single .bwe-article__head,
+.bwe-single .bwe-article__cover,
+.bwe-single .bwe-article__body {
+	width: min(calc(100% - 2 * var(--bwe-gutter)), var(--bwe-max));
+	margin-inline: auto;
+}
+
+.bwe-single .bwe-article__head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.1rem;
+	padding-top: clamp(2.5rem, 7vw, 5rem);
+}
+
+.bwe-single .bwe-article__head > * {
+	max-width: var(--bwe-read);
+}
+
+.bwe-single .bwe-article__crumbs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	color: #b4b4ac;
+	font-size: .875rem;
+	font-weight: 600;
+}
+
+.bwe-single .bwe-article__crumbs a {
+	color: var(--bwe-muted);
+	text-decoration: none;
+}
+
+.bwe-single .bwe-article__crumbs a:hover {
+	color: var(--bwe-ink);
+}
+
+.bwe-home .bwe-single .bwe-article__title.wp-block-heading {
+	max-width: 52rem;
+	font-size: clamp(2.1rem, 1.3rem + 3vw, 3.5rem);
+	line-height: 1.08;
+	letter-spacing: -.03em;
+	text-wrap: balance;
+}
+
+.bwe-single .bwe-article__lead {
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	color: var(--bwe-muted);
+	font-size: clamp(1.125rem, 1.05rem + .35vw, 1.3rem);
+	line-height: 1.55;
+	text-wrap: pretty;
+}
+
+.bwe-single .bwe-article__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .4rem .6rem;
+	margin-top: .25rem;
+	color: var(--bwe-muted);
+	font-size: .9375rem;
+}
+
+.bwe-single .bwe-article__meta > :is(time, span)::before {
+	content: "·";
+	margin-right: .6rem;
+	color: #b4b4ac;
+}
+
+.bwe-single .bwe-article__avatar {
+	flex: none;
+	border-radius: 50%;
+}
+
+.bwe-single .bwe-article__author {
+	color: var(--bwe-ink);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bwe-single .bwe-article__author:empty {
+	display: none;
+}
+
+.bwe-single .bwe-article__author:hover {
+	text-decoration: underline;
+	text-underline-offset: .2em;
+}
+
+.bwe-single .bwe-article__cover {
+	margin-top: clamp(2rem, 5vw, 3.25rem);
+	overflow: hidden;
+	border-radius: 14px;
+	background: var(--bwe-soft);
+}
+
+.bwe-single .bwe-article__cover img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* Without a cover, a hairline separates the header from the post. */
+.bwe-single .bwe-article__head:not(:has(+ .bwe-article__cover)) {
+	padding-bottom: clamp(2rem, 4vw, 2.5rem);
+	border-bottom: 1px solid var(--bwe-line);
+}
+
+/* ---------- Reading column and sidebar ---------- */
+
+.bwe-single .bwe-article__body {
+	display: grid;
+	grid-template-columns: minmax(0, var(--bwe-read)) var(--bwe-side);
+	justify-content: space-between;
+	gap: clamp(3rem, 6vw, 6rem);
+	margin-top: clamp(2.5rem, 5vw, 4rem);
+	padding-bottom: clamp(3.5rem, 7vw, 5rem);
+}
+
+.bwe-single .bwe-article__main {
+	min-width: 0;
+}
+
+.bwe-single .bwe-article__side-inner {
+	position: sticky;
+	top: var(--bwe-sticky-top);
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-height: calc(100vh - var(--bwe-sticky-top) - 1.5rem);
+	overflow-y: auto;
+	scrollbar-width: thin;
+}
+
+.bwe-single .bwe-side__label {
+	margin-bottom: .85rem;
+	color: var(--bwe-muted);
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.bwe-single .bwe-toc ol {
+	margin: 0;
+	padding: 0;
+	border-left: 1px solid var(--bwe-line);
+	list-style: none;
+}
+
+.bwe-single .bwe-toc li {
+	margin: 0;
+}
+
+.bwe-single .bwe-toc a {
+	display: block;
+	margin-left: -1px;
+	padding: .4rem 0 .4rem 1rem;
+	border-left: 2px solid transparent;
+	color: var(--bwe-muted);
+	font-size: .9063rem;
+	line-height: 1.4;
+	text-decoration: none;
+	transition: color .2s, border-color .2s;
+}
+
+.bwe-single .bwe-toc a:hover {
+	color: var(--bwe-ink);
+}
+
+.bwe-single .bwe-toc a[aria-current] {
+	border-left-color: var(--bwe-ink);
+	color: var(--bwe-ink);
+	font-weight: 600;
+}
+
+.bwe-single .bwe-share__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.bwe-single .bwe-share__links a {
+	padding: .4rem .85rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 999px;
+	color: var(--bwe-ink);
+	font-size: .875rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: border-color .2s;
+}
+
+.bwe-single .bwe-share__links a:hover {
+	border-color: var(--bwe-ink);
+}
+
+.bwe-single .bwe-article__cta {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .5rem;
+	padding: 1.4rem;
+	border-radius: 14px;
+	background: var(--bwe-soft);
+}
+
+.bwe-single .bwe-article__cta-title {
+	color: var(--bwe-ink);
+	font-family: var(--bwe-font-display);
+	font-size: 1.15rem;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.bwe-single .bwe-article__cta p:not([class]) {
+	color: var(--bwe-muted);
+	font-size: .9063rem;
+	line-height: 1.55;
+}
+
+/* Tables, buttons, figure captions and code keep the sans/mono UI faces. */
+.bwe-home .bwe-prose :is(table, figcaption, .wp-block-button__link, .bwe-shot, .wp-block-rank-math-toc-block) {
+	font-family: var(--bwe-font-body, system-ui, -apple-system, "Segoe UI", sans-serif);
+}
+
+/* .bwe-home a:not(...) outranks a single class, so match it. */
+.bwe-single a.bwe-article__cta-link:not(.wp-block-button__link) {
+	margin-top: .4rem;
+	padding: .65rem 1.15rem;
+	border-radius: 999px;
+	background: var(--bwe-ink);
+	color: #fff;
+	font-size: .9063rem;
+	font-weight: 700;
+	text-decoration: none;
+	transition: opacity .2s;
+}
+
+.bwe-single a.bwe-article__cta-link:not(.wp-block-button__link):hover {
+	color: #fff;
+	opacity: .85;
+}
+
+/* The sidebar lists the sections, so the in-post table of contents only shows on smaller screens. */
+@media (min-width: 1024px) {
+	.bwe-single .has-toc .bwe-prose .wp-block-rank-math-toc-block {
+		display: none;
+	}
+}
+
+@media (max-width: 1023px) {
+	.bwe-single :is(.bwe-article__head, .bwe-article__body) {
+		width: min(calc(100% - 2 * var(--bwe-gutter)), var(--bwe-read));
+	}
+
+	.bwe-single .bwe-article__body {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.bwe-single .bwe-article__side-inner {
+		position: static;
+		max-height: none;
+	}
+
+	.bwe-single .bwe-toc {
+		display: none;
+	}
+}
+
+/* ---------- Post content ---------- */
+
+.bwe-single .bwe-prose {
+	--bwe-font-read: "Source Serif 4", Georgia, "Times New Roman", serif;
+	color: var(--bwe-text);
+	font-family: var(--bwe-font-read);
+	font-size: clamp(1.125rem, 1.07rem + .3vw, 1.25rem);
+	font-optical-sizing: auto;
+	font-kerning: normal;
+	line-height: 1.8;
+	overflow-wrap: break-word;
+}
+
+.bwe-home .bwe-prose > * {
+	margin-block: 0;
+}
+
+.bwe-home .bwe-prose > * + * {
+	margin-block-start: 1.35em;
+}
+
+.bwe-home .bwe-prose :is(h2, h3, h4, h5, h6) {
+	margin-block: 2em 0;
+	color: var(--bwe-ink);
+	font-family: var(--bwe-font-display);
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -.015em;
+	text-wrap: balance;
+	scroll-margin-top: calc(var(--bwe-header-offset) + 1.5rem);
+}
+
+.bwe-home .bwe-prose h2 {
+	font-size: clamp(1.45rem, 1.25rem + .8vw, 1.8rem);
+}
+
+.bwe-home .bwe-prose h3 {
+	font-size: clamp(1.2rem, 1.1rem + .4vw, 1.375rem);
+}
+
+.bwe-home .bwe-prose :is(h4, h5, h6) {
+	font-size: 1.1rem;
+}
+
+.bwe-home .bwe-prose > :is(h2, h3, h4, h5, h6) + * {
+	margin-block-start: .65em;
+}
+
+/* Headings in posts keep it simple: no highlighter. */
+.bwe-home .bwe-prose .wp-block-heading em {
+	padding: 0;
+	background: none;
+	font-style: italic;
+}
+
+.bwe-home .bwe-prose strong {
+	color: var(--bwe-ink);
+	font-weight: 650;
+}
+
+.bwe-home .bwe-prose a {
+	color: var(--bwe-ink);
+	text-decoration: underline;
+	text-decoration-color: rgba(11, 11, 12, .3);
+	text-decoration-thickness: 1px;
+	text-underline-offset: .22em;
+	transition: text-decoration-color .2s;
+}
+
+.bwe-home .bwe-prose a:hover {
+	text-decoration-color: currentColor;
+}
+
+.bwe-home .bwe-prose :is(ul, ol) {
+	margin-inline: 0;
+	padding-left: 1.3em;
+}
+
+.bwe-home .bwe-prose li {
+	padding-left: .2em;
+}
+
+.bwe-home .bwe-prose li + li {
+	margin-top: .5em;
+}
+
+.bwe-home .bwe-prose li::marker {
+	color: #9c9c94;
+}
+
+.bwe-home .bwe-prose :is(blockquote, .wp-block-quote, .wp-block-pullquote) {
+	margin-inline: 0;
+	padding: .1em 0 .1em 1.25rem;
+	border: 0;
+	border-left: 2px solid var(--bwe-ink);
+	background: none;
+	color: var(--bwe-ink);
+	font-size: 1.05em;
+	font-style: italic;
+	text-align: left;
+}
+
+.bwe-home .bwe-prose :is(blockquote, .wp-block-quote) :is(cite, footer) {
+	display: block;
+	margin-top: .5rem;
+	color: var(--bwe-muted);
+	font-size: .875rem;
+	font-style: normal;
+}
+
+.bwe-home .bwe-prose :not(pre) > code {
+	padding: .1em .35em;
+	border-radius: 4px;
+	background: var(--bwe-soft);
+	font-size: .875em;
+}
+
+.bwe-home .bwe-prose pre code {
+	padding: 0;
+	background: none;
+	font-size: inherit;
+}
+
+.bwe-home .bwe-prose pre {
+	overflow-x: auto;
+	padding: 1rem 1.25rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 8px;
+	background: #fafaf8;
+	color: var(--bwe-ink);
+	font-size: .875rem;
+	line-height: 1.6;
+}
+
+/* Astra's "content images shadow" option targets every figure in the article. */
+.bwe-home .bwe-prose :is(figure, .wp-block-image) {
+	margin-inline: 0;
+	box-shadow: none;
+}
+
+.bwe-home .bwe-prose > :is(figure, .wp-block-image) {
+	margin-block: 2em;
+}
+
+.bwe-single :is(.bwe-article__cover, .bwe-prose img) {
+	box-shadow: none;
+}
+
+.bwe-home .bwe-prose img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+/* Post images show whole, not cropped like the landing-page .bwe-shot. */
+.bwe-home .bwe-prose .bwe-shot {
+	overflow: visible;
+	border-radius: 0;
+	background: none;
+}
+
+.bwe-home .bwe-prose .bwe-shot img {
+	aspect-ratio: auto;
+	object-fit: contain;
+}
+
+.bwe-home .bwe-prose figcaption {
+	margin-top: .6rem;
+	color: var(--bwe-muted);
+	font-size: .875rem;
+	text-align: center;
+}
+
+.bwe-home .bwe-prose :is(hr, .wp-block-separator) {
+	width: 4rem;
+	height: 1px;
+	margin: 3em auto;
+	border: 0;
+	background: var(--bwe-line);
+}
+
+/* Tables: hairlines only. Overrides the landing-page .bwe-table look. */
+.bwe-home .bwe-prose :is(.bwe-table, .wp-block-table) {
+	overflow-x: auto;
+	border: 0;
+	border-radius: 0;
+	background: none;
+}
+
+.bwe-home .bwe-prose table {
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	border-collapse: collapse;
+	font-size: .9375rem;
+	line-height: 1.5;
+}
+
+.bwe-home .bwe-prose :is(thead, tfoot) {
+	border: 0;
+}
+
+.bwe-home.bwe-single .bwe-prose :is(th, td) {
+	width: auto;
+	padding: .75rem 1rem .75rem 0;
+	border: 0;
+	border-bottom: 1px solid var(--bwe-line);
+	background: none;
+	color: var(--bwe-text);
+	font-weight: 400;
+	text-align: left;
+	vertical-align: top;
+}
+
+.bwe-home.bwe-single .bwe-prose th {
+	border-bottom-color: var(--bwe-ink);
+	box-shadow: none;
+	color: var(--bwe-ink);
+	font-family: inherit;
+	font-size: .8125rem;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.bwe-home .bwe-prose tbody tr:hover td {
+	background: none;
+}
+
+.bwe-home .bwe-prose .wp-block-button__link {
+	padding: .8rem 1.4rem;
+	border-radius: 999px;
+	background: var(--bwe-ink);
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.bwe-home .bwe-prose .alignwide {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0;
+}
+
+.bwe-home .bwe-prose .alignfull {
+	width: 100vw;
+	max-width: none;
+	margin-inline: calc(50% - 50vw);
+}
+
+.bwe-home .bwe-prose .alignfull img {
+	border-radius: 0;
+}
+
+/* Table of contents (Rank Math): a quiet list under a small label. */
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block {
+	margin-block: 2em;
+	padding: 1.25rem 1.5rem;
+	border: 0;
+	border-radius: 12px;
+	background: var(--bwe-soft);
+	font-size: .9688rem;
+	line-height: 1.5;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block > p {
+	margin: 0 0 .75rem;
+	color: var(--bwe-muted);
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block :is(ul, ol) {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: bwe-toc;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block ul ul {
+	margin-top: .4rem;
+	padding-left: 1.6rem;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block li {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .6rem;
+	padding: 0;
+	counter-increment: bwe-toc;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block li::before {
+	content: counter(bwe-toc, decimal-leading-zero);
+	min-width: 1.6em;
+	color: #b4b4ac;
+	font-variant-numeric: tabular-nums;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block li > :is(ul, ol) {
+	flex-basis: 100%;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block li + li {
+	margin-top: .4rem;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block a {
+	flex: 1;
+	color: var(--bwe-muted);
+	text-decoration: none;
+}
+
+.bwe-home .bwe-prose .wp-block-rank-math-toc-block a:hover {
+	color: var(--bwe-ink);
+	text-decoration: underline;
+}
+
+/* FAQ (Rank Math): question and answer pairs divided by hairlines. */
+.bwe-home .bwe-prose .rank-math-list {
+	border-top: 1px solid var(--bwe-line);
+}
+
+.bwe-home .bwe-prose .rank-math-list-item {
+	margin: 0;
+	padding-block: 1.25rem;
+	border-bottom: 1px solid var(--bwe-line);
+}
+
+.bwe-home .bwe-prose .rank-math-question {
+	margin: 0;
+	font-size: 1.0625rem;
+	letter-spacing: -.01em;
+}
+
+.bwe-home .bwe-prose .rank-math-answer {
+	margin-top: .4rem;
+	color: var(--bwe-muted);
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.bwe-home .bwe-prose .rank-math-answer > * + * {
+	margin-top: .75em;
+}
+
+.bwe-single .bwe-pages {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	font-weight: 700;
+}
+
+/* ---------- After the post ---------- */
+
+.bwe-single .bwe-article__foot {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: clamp(3rem, 6vw, 4rem);
+	padding-top: 2rem;
+	border-top: 1px solid var(--bwe-line);
+}
+
+.bwe-blog ul.bwe-article__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .4rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bwe-blog .bwe-article__tags li {
+	margin: 0;
+}
+
+.bwe-blog .bwe-article__tags a {
+	display: inline-flex;
+	padding: .3rem .8rem;
+	border-radius: 999px;
+	background: var(--bwe-soft);
+	color: var(--bwe-muted);
+	font-size: .875rem;
+	text-decoration: none;
+}
+
+.bwe-blog .bwe-article__tags a:hover {
+	color: var(--bwe-ink);
+}
+
+.bwe-single .bwe-author {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.bwe-single .bwe-author__avatar {
+	flex: none;
+	border-radius: 50%;
+}
+
+.bwe-single .bwe-author__text {
+	display: flex;
+	flex-direction: column;
+	gap: .2rem;
+}
+
+.bwe-single .bwe-author__name {
+	color: var(--bwe-ink);
+	font-weight: 700;
+}
+
+.bwe-single .bwe-author__bio {
+	color: var(--bwe-muted);
+	font-size: .9375rem;
+	line-height: 1.6;
+}
+
+/* Related posts. */
+.bwe-single .bwe-related {
+	gap: clamp(1.5rem, 3vw, 2.25rem);
+	padding-block: clamp(3rem, 6vw, 4.5rem);
+	border-top: 1px solid var(--bwe-line);
+}
+
+.bwe-home .bwe-related .bwe-related__title.wp-block-heading {
+	font-size: clamp(1.35rem, 1.15rem + .7vw, 1.65rem);
+}
+
+.bwe-single .bwe-related .bwe-card__excerpt {
+	display: none;
+}
+
+/* ---------- Comments ---------- */
+
+.bwe-single .bwe-comments {
+	padding-block: clamp(3rem, 6vw, 4.5rem) clamp(3.5rem, 7vw, 5.5rem);
+	border-top: 1px solid var(--bwe-line);
+}
+
+/* Lines up with the reading column. */
+.bwe-single .bwe-comments__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	width: 100%;
+	max-width: var(--bwe-read);
+}
+
+@media (max-width: 1023px) {
+	.bwe-single .bwe-comments__inner {
+		margin-inline: auto;
+	}
+}
+
+.bwe-home .bwe-comments .bwe-comments__title.wp-block-heading {
+	display: flex;
+	align-items: baseline;
+	gap: .5rem;
+	font-size: clamp(1.35rem, 1.15rem + .7vw, 1.65rem);
+}
+
+.bwe-single .bwe-comments__count {
+	color: var(--bwe-muted);
+	font-weight: 500;
+}
+
+.bwe-single :is(ol.bwe-comment-list, .bwe-comment-list .children) {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bwe-single .bwe-comment {
+	margin: 0;
+}
+
+.bwe-single ol.bwe-comment-list > .bwe-comment + .bwe-comment {
+	margin-top: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--bwe-line);
+}
+
+.bwe-single .bwe-comment-list .children {
+	margin-top: 1.25rem;
+	padding-left: clamp(1rem, 4vw, 1.75rem);
+	border-left: 1px solid var(--bwe-line);
+}
+
+.bwe-single .bwe-comment-list .children > .bwe-comment + .bwe-comment {
+	margin-top: 1.25rem;
+}
+
+.bwe-single .bwe-comment__card {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.bwe-single .bwe-comment__head {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+}
+
+.bwe-single .bwe-comment__avatar {
+	flex: none;
+	border-radius: 50%;
+}
+
+.bwe-single .bwe-comment__who {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: .15rem .6rem;
+	line-height: 1.3;
+}
+
+.bwe-single .bwe-comment__name {
+	font-weight: 700;
+}
+
+.bwe-single .bwe-comment__name a {
+	color: var(--bwe-ink);
+	text-decoration: none;
+}
+
+.bwe-single .bwe-comment__badge {
+	padding: .05rem .45rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 999px;
+	color: var(--bwe-muted);
+	font-size: .6875rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+.bwe-single .bwe-comment__time {
+	color: var(--bwe-muted);
+	font-size: .8125rem;
+	text-decoration: none;
+}
+
+.bwe-single .bwe-comment__pending {
+	color: #b3361d;
+	font-size: .875rem;
+}
+
+.bwe-single .bwe-comment__body {
+	padding-left: calc(44px + .75rem);
+	color: var(--bwe-text);
+	line-height: 1.7;
+}
+
+.bwe-single .bwe-comment__body p + p {
+	margin-top: .75em;
+}
+
+.bwe-single .bwe-comment__actions {
+	display: flex;
+	gap: 1rem;
+	padding-left: calc(44px + .75rem);
+	font-size: .875rem;
+}
+
+.bwe-single .bwe-comment__actions a {
+	color: var(--bwe-muted);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.bwe-single .bwe-comment__actions a:hover {
+	color: var(--bwe-ink);
+	text-decoration: underline;
+}
+
+.bwe-single .bwe-comments__closed {
+	color: var(--bwe-muted);
+}
+
+/* Comment form: no card, just the fields. */
+.bwe-single .bwe-respond {
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
+.bwe-comment-list .bwe-respond {
+	margin-top: 1.25rem;
+	padding: 1.25rem;
+	border: 1px solid var(--bwe-line);
+	border-radius: 12px;
+}
+
+#comments .bwe-respond__title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: .5rem 1rem;
+	margin: 0;
+	font-family: var(--bwe-font-display);
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+#comments .bwe-respond__title small a {
+	color: var(--bwe-muted);
+	font-family: system-ui, sans-serif;
+	font-size: .875rem;
+	font-weight: 600;
+}
+
+.bwe-single .bwe-form {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.bwe-single .bwe-form > * {
+	grid-column: 1 / -1;
+	margin: 0;
+}
+
+.bwe-single .bwe-form > :is(.comment-form-author, .comment-form-email, .comment-form-url) {
+	grid-column: auto;
+}
+
+.bwe-single .bwe-form :is(.comment-notes, .logged-in-as) {
+	color: var(--bwe-muted);
+	font-size: .875rem;
+}
+
+.bwe-single .bwe-form .logged-in-as a {
+	color: var(--bwe-ink);
+}
+
+.bwe-single .bwe-form label {
+	display: block;
+	margin-bottom: .35rem;
+	font-size: .875rem;
+	font-weight: 600;
+}
+
+.bwe-single .bwe-form .required {
+	color: #b3361d;
+}
+
+.bwe-single .bwe-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) {
+	display: block;
+	width: 100%;
+	padding: .75rem .9rem;
+	border: 1px solid #d6d6cf;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: none;
+	color: var(--bwe-ink);
+	font: inherit;
+	transition: border-color .2s, box-shadow .2s;
+}
+
+.bwe-single .bwe-form :is(input[type="text"], input[type="email"], input[type="url"], textarea):focus {
+	border-color: var(--bwe-ink);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(11, 11, 12, .08);
+}
+
+.bwe-single .bwe-form textarea {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+.bwe-single .bwe-form .comment-form-cookies-consent {
+	display: flex;
+	align-items: flex-start;
+	gap: .6rem;
+	color: var(--bwe-muted);
+	font-size: .875rem;
+}
+
+.bwe-single .bwe-form .comment-form-cookies-consent input {
+	margin-top: .3em;
+	accent-color: var(--bwe-ink);
+}
+
+.bwe-single .bwe-form .comment-form-cookies-consent label {
+	margin: 0;
+	font-weight: 400;
+}
+
+/* #comments outranks Astra's "#comments .submit" rule. */
+#comments .bwe-form .bwe-submit {
+	padding: .75rem 1.4rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--bwe-ink);
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 700;
+	line-height: 1.2;
+	transition: opacity .2s;
+}
+
+#comments .bwe-form .bwe-submit:hover {
+	opacity: .85;
+}
+
+#comments .bwe-form .bwe-submit:focus-visible {
+	outline: 3px solid var(--bwe-accent);
+	outline-offset: 2px;
+}
+
+/* ---------- Reading progress ---------- */
+
+.bwe-single .bwe-progress {
+	position: fixed;
+	top: var(--wp-admin--admin-bar--height, 0px);
+	left: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 2px;
+	background: var(--bwe-ink);
+	pointer-events: none;
+	transform: scaleX(0);
+	transform-origin: 0 50%;
+}
+
+@supports (animation-timeline: scroll()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.bwe-single .bwe-progress {
+			animation: bwe-progress linear both;
+			animation-timeline: scroll(root);
+		}
+	}
+}
+
+@keyframes bwe-progress {
+	to { transform: scaleX(1); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+	.bwe-blog ul.bwe-posts__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 599px) {
+	.bwe-blog ul.bwe-posts__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.bwe-single .bwe-form {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.bwe-single :is(.bwe-comment__body, .bwe-comment__actions) {
+		padding-left: 0;
+	}
+
+	.bwe-blog .bwe-blog-cta__box .wp-block-buttons {
+		width: 100%;
+	}
+}

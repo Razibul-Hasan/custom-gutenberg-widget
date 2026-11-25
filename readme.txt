@@ -1,11 +1,17 @@
 === Best Web Expert Gutenberg Widget ===
 Requires at least: 6.5
 Requires PHP: 8.0
-Requires Plugins: bestwebexpert-home
+Stable tag: 1.1.0
 License: GPL-2.0-or-later
 
 BestWebExpert's own Gutenberg blocks. Each block prints exactly the markup the site's CSS was written for, in the
-editor and on the live page, so the editor looks like the site. Styles come from the BestWebExpert Home plugin.
+editor and on the live page, so the editor looks like the site.
+
+Self-contained since 1.1.0: the site design layer that used to be the BestWebExpert Home plugin lives in site/
+(styles, GSAP motion scripts, render filters, blog templates, schema, redirects, GA4 events). It loads only when
+BestWebExpert Home is NOT active; with Home active, Home keeps serving it (both would define the same functions).
+Its CSS bundle (site/assets/home-2/bundle/) is rebuilt with: npm run site-bundle — run it after editing site CSS
+(until then the changed side simply loads the individual files).
 
 == Blocks ==
 

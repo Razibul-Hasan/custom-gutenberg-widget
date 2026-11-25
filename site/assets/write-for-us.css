@@ -1,0 +1,84 @@
+/**
+ * Write for Us: the pitch form area, in the Home page's quiet style.
+ * Everything else on the page uses Home's own bwex-* components.
+ */
+
+.bwe-wfu .bwex-wfu-form__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: clamp(32px, 6vw, 88px);
+	align-items: start;
+}
+
+.bwe-wfu .bwex-wfu-form__aside .bwex-intro {
+	margin-top: 24px;
+	max-width: 46ch;
+}
+
+.bwe-wfu .bwex-wfu-form__aside .bwex-intro p + p {
+	margin-top: 16px;
+}
+
+.bwe-wfu .bwex-wfu-form__aside a {
+	color: var(--bwex-ink);
+	text-decoration-color: var(--bwex-accent);
+	text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+	.bwe-wfu .bwex-wfu-form__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* Closing call to action: identical to Home's. contact.css and services.css, loaded here for the form, widen its button gap on phones. */
+@media (max-width: 781px) {
+	.bwe-wfu .bwex-ctaw .bwe-final .bwe-final__box > .bwe-actions {
+		gap: .75rem;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * v2 (2026-11-20): the page is rebuilt from Home's own sections
+ * (service tiles, #spec bento, dark #process cards, About + checklist,
+ * split FAQ). These rules only add this page's icons.
+ * ------------------------------------------------------------------ */
+
+/* Section-label icons (Home's lime chip; #process and #faq come from Home). */
+html body.bwe-h2x-page .bwe-wfu #topics .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-wfu #why .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-wfu #guidelines .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='2' width='8' height='4' rx='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-wfu #pitch .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") !important; }
+
+/* "How it works" icon tiles: send, approved, write (4 = Home's rocket). */
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-process ol.bwex-num li.bwex-num__item:nth-child(1)::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") !important;
+}
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-process ol.bwex-num li.bwex-num__item:nth-child(2)::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='m8.5 12 2.5 2.5 4.5-5'/%3E%3C/svg%3E") !important;
+}
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-process ol.bwex-num li.bwex-num__item:nth-child(3)::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E") !important;
+}
+
+/* ------------------------------------------------------------------
+ * Contact page (2026-11-20): /contact/ reuses this file (root class
+ * "bwe-wfu bwe-ctx"). Its own section-label and step icons.
+ * ------------------------------------------------------------------ */
+html body.bwe-h2x-page .bwe-ctx #form .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-ctx #help .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-ctx #promise .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-ctx #about .bwex-eyebrow p::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0c' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") !important; }
+
+/* Steps: 1 send (shared), 2 reply = chat bubble, 3 quote = document, 4 rocket (Home). */
+html body.bwe-h2x-page .bwe-wfu.bwe-ctx .bwex .bwex-process ol.bwex-num li.bwex-num__item:nth-child(2)::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.5-5.3A8.5 8.5 0 1 1 21 11.5Z'/%3E%3C/svg%3E") !important;
+}
+html body.bwe-h2x-page .bwe-wfu.bwe-ctx .bwex .bwex-process ol.bwex-num li.bwex-num__item:nth-child(3)::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z'/%3E%3Cpath d='M14 2v6h6M9 13h6M9 17h4'/%3E%3C/svg%3E") !important;
+}
+
+/* Write for Us topic tiles added 2026-11-20 (web dev, Shopify bag, Shopify app review). */
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-svc__item--webdev .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m6 10 3 2-3 2M12 15h5'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-svc__item--shopify .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z'/%3E%3Cpath d='M3 6h18M16 10a4 4 0 0 1-8 0'/%3E%3C/svg%3E") !important; }
+html body.bwe-h2x-page .bwe-wfu .bwex .bwex-svc__item--appreview .bwex-svc__top::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0d0c' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Cpath d='m17.5 13.5 1.1 2.2 2.4.4-1.7 1.7.4 2.4-2.2-1.1-2.2 1.1.4-2.4-1.7-1.7 2.4-.4Z'/%3E%3C/svg%3E") !important; }
