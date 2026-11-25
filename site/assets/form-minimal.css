@@ -22,9 +22,9 @@
 .bwe-home :is(.bwex-wfu-form, .bwe-contact-form) .bwe-cf7__choices legend {
 	margin-bottom: 14px;
 	color: var(--bwex-ink, #111);
-	font-size: 11px;
+	font-size: 12px; /* was 11px: the form's questions, 12px minimum (2026-11-25) */
 	font-weight: 500;
-	letter-spacing: .16em;
+	letter-spacing: .14em;
 	text-transform: uppercase;
 }
 

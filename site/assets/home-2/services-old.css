@@ -114,11 +114,33 @@ html body.bwe-h2x-page .bwex .bwex-svc__tile:focus-visible .bwex-svc__arrow {
 }
 @media (max-width: 781px) {
 	html body.bwe-h2x-page .bwex .bwex-section.bwex-svc-band { padding-block: 64px !important; }
-	html body.bwe-h2x-page .bwex .bwex-svc__grid { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
-	html body.bwe-h2x-page .bwex .bwex-svc__tile { min-height: 0 !important; padding: 20px 64px 20px 20px !important; }
-	html body.bwe-h2x-page .bwex .bwex-svc__tag { top: 22px; right: 20px; }
-	html body.bwe-h2x-page .bwex .bwex-svc__name { margin-top: 18px !important; white-space: normal; }
-	html body.bwe-h2x-page .bwex .bwex-svc__desc { display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__grid { grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; }
+	/* Phones (2026-11-25): icon chip beside the title instead of above it, arrow top-right. Same look,
+	 * about half the height per card (258px → ~130px), so the 9 services are no longer a 2,200px scroll. */
+	html body.bwe-h2x-page .bwex .bwex-svc__tile {
+		display: grid !important;
+		grid-template-columns: 44px minmax(0, 1fr);
+		grid-template-rows: auto 1fr;
+		column-gap: 14px;
+		row-gap: 4px;
+		align-items: start;
+		min-height: 0 !important;
+		padding: 18px 56px 18px 18px !important;
+	}
+	html body.bwe-h2x-page .bwex .bwex-svc__top { grid-column: 1; grid-row: 1 / span 2; }
+	html body.bwe-h2x-page .bwex .bwex-svc__item .bwex-svc__top::before { width: 44px !important; height: 44px !important; border-radius: 14px !important; background-size: 22px 22px !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__tag { display: none !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__name { grid-column: 2; margin: 0 !important; font-size: 17px !important; line-height: 1.3 !important; white-space: normal; }
+	html body.bwe-h2x-page .bwex .bwex-svc__desc { grid-column: 2; display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; font-size: 15px !important; line-height: 1.5 !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__arrow { top: 16px !important; right: 14px !important; bottom: auto !important; }
+	/* Tap feedback: the chip turns lime, the card presses in slightly. */
+	html body.bwe-h2x-page .bwex .bwex-svc__tile:active { transform: scale(.985); border-color: #0b0b0c !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__tile:active .bwex-svc__top::before { background-color: #c8ff3d !important; }
+}
+/* Large phones / small tablets (600-781px): the same compact cards, two per row; an odd last card spans both. */
+@media (min-width: 600px) and (max-width: 781px) {
+	html body.bwe-h2x-page .bwex .bwex-svc__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+	html body.bwe-h2x-page .bwex .bwex-svc__grid .bwex-svc__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* icons: same drawings as seo-plan.css, stroked dark for the light chip */
@@ -165,6 +187,5 @@ html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-c
 @media (prefers-reduced-motion: reduce) {
 	html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { transform: none; }
 }
-@media (max-width: 767px) {
-	html body.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { padding: revert-layer; }
-}
+/* Phones/tablets: a hovered card keeps its 16px padding (mobile.css). The rule here was "padding: revert-layer",
+ * which, with no cascade layers on the site, reset a tapped card's padding to 0. */

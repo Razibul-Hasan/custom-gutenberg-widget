@@ -260,7 +260,7 @@ html body.bwe-h2x-page .bwex .bwex-demobar p { margin: 0; color: inherit; }
 html body.bwe-h2x-page .bwex .bwex-demobar a { color: #f4f4f0; text-decoration: none; }
 html body.bwe-h2x-page .bwex .bwex-demobar__label strong {
 	display: inline-flex; align-items: center; gap: 6px; margin-right: 8px; padding: 3px 10px; border-radius: 999px;
-	background: #c8ff3d; color: #0b0d0c; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; vertical-align: 1px;
+	background: #c8ff3d; color: #0b0d0c; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; vertical-align: 1px; /* was 11px (2026-11-25) */
 }
 html body.bwe-h2x-page .bwex .bwex-demobar__label strong::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: bwex-demo-pulse 1.6s ease-in-out infinite; }
 @keyframes bwex-demo-pulse { 50% { opacity: .25; } }
@@ -456,3 +456,10 @@ html body.bwe-h2x-page .bwex .bwex-guide .bwex-guide__shot figcaption { margin-t
 	html body.bwe-h2x-page .bwex .bwex-guide__nav { position: sticky; top: 110px; max-height: calc(100vh - 140px); overflow-y: auto; }
 }
 
+
+/* Check lists with links or bold words inside an item ("Find Razibul on: Fiverr, Upwork, LinkedIn, Facebook"):
+ * the item was a flex row, so every text run and link became its own column; on phones the label was squeezed
+ * into a narrow column and the links ran out of the card. Such items flow as normal text; the "+" keeps its
+ * 1rem column (absolutely placed at the first line). Plain-text items are unchanged. (2026-11-25) */
+html body.bwe-h2x-page .bwex .bwex-checks li:not(.bwex-plats--3 li):has(> :is(a, strong, b, em, code)) { position: relative; display: block; padding-left: 1.75rem; }
+html body.bwe-h2x-page .bwex .bwex-checks li:not(.bwex-plats--3 li):has(> :is(a, strong, b, em, code))::before { position: absolute; left: 0; }

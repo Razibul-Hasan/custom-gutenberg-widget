@@ -154,6 +154,8 @@
 	/* Why us: Speed full width, the other five two per row */
 	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li { height: 100%; padding: 16px; gap: 8px; }
+	/* Same padding while hovered or tapped: spec.css gives hovered cards the desktop 22/28px padding. */
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { padding: 16px; }
 	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:first-child { grid-column: 1 / -1; }
 	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:last-child { grid-column: 1 / -1; }
 	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__name { font-size: 1rem; }
@@ -219,4 +221,22 @@
 /* Touch devices up to tablet width: small text links get a 32px+ hit area */
 @media (max-width: 1023px) {
 	.bwe-h2x-page .bwex .bwex-card a:not(.bwex-card__btn) { display: inline-block; padding-block: 6px; }
+	/* Link lists (platform cards' service lists): the whole 44px row is the link, not just its 22px of text.
+	 * Not the pill lists of the 3-up platform cards (.bwex-plats--3, v4.css): their links are 40px pills already. */
+	.bwe-h2x-page .bwex .bwex-checks li:not(.bwex-plats--3 li) > a:only-child { display: block; margin-block: -10px; padding-block: 10px; }
+}
+
+/* ---- Phones (599px and below), 2026-11-25 ------------------------------------------------------------ */
+@media (max-width: 599px) {
+	/* "Why us" bento: one card per row. Two columns left ~150px per card: 2-4 words a line and wrapped chips.
+	 * The lime first card, the chips with their dot and the hover/tap lift stay. */
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li,
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:hover { grid-column: auto; height: auto; padding: 18px; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec ul.bwex-spec__list li:not(:first-child) { font-size: 15px; line-height: 1.55; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__name { font-size: 1.0625rem; }
+	.bwe-h2x-page .bwex.bwex-specw .bwex-spec__list li:not(:first-child) code { margin-top: 6px; padding: 6px 11px; font-size: 12px; }
+
+	/* Small reading text never under 12px (hero kicker line under the badge). */
+	html body.bwe-h2x-page .bwe-hero--night .bwe-kicker { font-size: 12px; }
 }
