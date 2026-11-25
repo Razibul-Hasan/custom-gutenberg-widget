@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Best Web Expert Gutenberg Widget
  * Description:       BestWebExpert's own Gutenberg blocks (FAQ item, spec card, price row, steps, section head …). The editor shows the same markup as the live site. Self-contained: brings the site's styles, scripts and schema with it.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:           BestWebExpert
@@ -16,7 +16,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'BWE_GW_DIR', __DIR__ );
-define( 'BWE_GW_VERSION', '1.1.0' );
+define( 'BWE_GW_VERSION', '1.2.0' );
 
 /**
  * Whether the old BestWebExpert Home plugin is active (and its file exists). This plugin loads before it, so its

@@ -1,7 +1,7 @@
 === Best Web Expert Gutenberg Widget ===
 Requires at least: 6.5
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPL-2.0-or-later
 
 BestWebExpert's own Gutenberg blocks. Each block prints exactly the markup the site's CSS was written for, in the
@@ -117,6 +117,15 @@ Build layout (2026-11-24, faster editor and site):
   style maps are read from it, instead of decoding every block.json on each request.
 * Starter content (inserter variations) is only built for editor / REST / AJAX requests, and once per request.
 Tools (CLI only): tools/ — converters, snapshot/compare, editor check, tests.
+
+== Changelog ==
+
+= 1.2.0 (2026-11-25) =
+* Testimonials: slider on phones, and on computers once there are more videos than fit in view (3 by default). New
+  "Slider" settings panel.
+* Our products: optional slider on phones ("Phone layout" panel).
+* Phone and tablet layout and text size fixes on the Home page; blog table cells get column labels.
+* Prices for custom WordPress plugin development ($299) and Shopify app development ($399).
 
 == Deploying ==
 
